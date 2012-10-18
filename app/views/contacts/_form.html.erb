@@ -1,0 +1,65 @@
+<%= form_for(@contact) do |f| %>
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+      <ul>
+      <% @contact.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+	<%= f.label :first_name, "First Name" %><br/>
+	<%= f.text_field :first_name, id: "first_name"  %>
+	<br/>
+	<%= f.label :last_name, "Last Name" %><br/>
+	<%= f.text_field :last_name, id: "last_name"  %>
+	<br/>
+	<%= f.label :spouse_name, "Spouse Name" %><br/>
+	<%= f.text_field :spouse_name, id: "spouse_name"  %>
+	<br/>
+	<%= f.label :email, "Email" %><br/>
+	<%= f.text_field :email, id: "email"  %>
+	<br/>
+	<%= f.label :spouse_email, "Spouse Email" %><br/>
+	<%= f.text_field :spouse_email, id: "spouse_email"  %>
+	<br/>
+	<%= f.label :address_1, "Address 1" %><br/>
+	<%= f.text_field :address_1, id: "address_1"  %>
+	<br/>
+	<%= f.label :address_2, "Address 2" %><br/>
+	<%= f.text_field :address_2, id: "address_2"  %>
+	<br/>
+	<%= f.label :city, "City" %><br/>
+	<%= f.text_field :city, id: "city"  %>
+	<br/>
+	<%= f.label :state_id, "State id" %><br/>
+	<%= f.text_field :state_id, id: "state_id"  %>
+	<br/>
+	<%= f.label :zip, "Zip" %><br/>
+	<%= f.text_field :zip, id: "zip"  %>
+	<br/>
+	<%= f.label :country_id, "Country id" %><br/>
+	<%= f.text_field :country_id, id: "country_id"  %>
+	<br/>
+	<%= f.label :children, "Children" %><br/>
+	<%= f.text_field :children, id: "Children"  %>
+	<br/>
+	<%= f.label :preferred_contact, "Preferred Contact" %><br/>
+	<%= f.select :preferred_contact, Contact::CONTACTS, id: "preferred_contact"  %>
+	<br/>
+	<%= f.label :network, "Network" %><br/>
+	<%= f.select :network, Contact::NETWORKS, id: "network"  %>
+	<br/>
+	<%= f.label :tags, "Tags" %><br/>
+	<%= f.text_field :tags, id: "tags"  %>
+	<br/>
+	<%= f.label :receive_newsletter, "Receive Newsletter" %><br/>
+	<%= f.check_box :receive_newsletter, id: "receive_newsletter"  %>
+	<br/>
+  <div class="actions">
+    <%= f.submit :id => "create_contact" %>
+  </div>
+<% end %>
+

@@ -1,0 +1,8 @@
+<%= form_for([@contact, @phone_number]) do |f| %>
+	<%= f.label :type, "Type" %><br/>
+	<%= f.text_field :type, id: "type" %><br/>
+	<br/>
+	<%= f.label :number, "Phone Number" %><br/>
+	<%= f.text_field :number, id: "Phone Number" %><br/>
+
+<% end %>
