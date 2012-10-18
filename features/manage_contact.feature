@@ -29,7 +29,7 @@ Feature: A user manages their contacts
 	Scenario: A user should be able to add multiple phone numbers to a contact
 		Given there is a contact "The Doctor"
 		And I am on the show page for "The Doctor"
-		When I click the "add phone number" link
+		When I click the "Add Phone Number" link
 		And I select "Home" from "phone_type"
 		And I fill in "phone_number" with "14082182617"
 		And I click the "create_phone_number" button
