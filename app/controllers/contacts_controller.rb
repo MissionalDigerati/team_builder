@@ -14,12 +14,11 @@ class ContactsController < ApplicationController
   # GET /contacts/1.json
   def show
     @contact = Contact.find(params[:id])
-
+    @number = @contact.numbers.where(:contact_id == @contact)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @contact }
     end
-    puts @contact.id
     puts "cheesecake"
   end
 

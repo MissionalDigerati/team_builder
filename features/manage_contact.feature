@@ -30,10 +30,10 @@ Feature: A user manages their contacts
 		Given there is a contact "The Doctor"
 		And I am on the show page for "The Doctor"
 		When I click the "Add Phone Number" link
-		And I select "Home" from "phone_type"
-		And I fill in "phone_number" with "14082182617"
-		And I click the "create_phone_number" button
-		Then I should see "Phone Number was successfully created."
+		And I select "Home" from "number_phone_type"
+		And I fill in "number_number" with "14082182617"
+		And I click the "Create Number" button
+		Then I should see "Your number has been saved!"
 
 		
 		

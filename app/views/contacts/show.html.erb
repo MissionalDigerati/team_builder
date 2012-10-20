@@ -24,4 +24,18 @@ Basic Info
 <br/>
 Phone Number(s)
 <br/>
+<% if @number.length > 0 %>
+<table>
+	<thead>
+		<th>Type</th>
+		<th>Number</th>
+	</thead>
+<% @number.each do |number| %>
+	<tr>
+	<td><%= number.phone_type %></td>
+	<td><%= number.number %></td>
+	</tr>
+<% end %>
+</table>
+<% end %>
 <%= link_to "Add Phone Number", new_contact_number_path(@contact)%>

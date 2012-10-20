@@ -1,0 +1,10 @@
+<br/>
+<br/>
+<%= form_for([@contact, @number]) do |f| %>
+	<%= f.label :phone_type, "Type" %><br/>
+	<%= f.select :phone_type, Number::TYPES %><br/>
+	<%= f.label :number, "Phone Number" %><br/>
+	<%= f.text_field :number %><br/>
+	<br/>
+	<%= f.submit %>
+<% end %>
