@@ -1,6 +1,7 @@
 class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
+  before_filter :sub_contact_info, :only => [:show] 
   def index
     @contacts = Contact.all
 
@@ -13,13 +14,10 @@ class ContactsController < ApplicationController
   # GET /contacts/1
   # GET /contacts/1.json
   def show
-    @contact = Contact.find(params[:id])
-    @number = @contact.numbers.where(:contact_id == @contact)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @contact }
     end
-    puts "cheesecake"
   end
 
   # GET /contacts/new
@@ -81,4 +79,13 @@ class ContactsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  
+  private
+    def sub_contact_info
+      @contact = Contact.find(params[:id])
+      @number = @contact.numbers.where(:contact_id == @contact)
+      @occasion = @contact.occasions.where(:contact_id == @contact)
+    end
+    
 end

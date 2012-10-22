@@ -22,6 +22,9 @@ Basic Info
 <%= @contact.news_letter(@contact.receive_newsletter) %><br/>
 <br/>
 <br/>
+
+<!-- phone numbers -->
+
 Phone Number(s)
 <br/>
 <% if @number.length > 0 %>
@@ -39,3 +42,33 @@ Phone Number(s)
 </table>
 <% end %>
 <%= link_to "Add Phone Number", new_contact_number_path(@contact)%>
+<br/>
+<br/>
+
+<!-- special occasion -->
+<% if @occasion.length > 0 %>
+<table>
+	<thead>
+		<th>Day</th>
+		<th>Month</th>
+		<th>Year</th>
+		<th>Occasion</th>
+	</thead>
+<% @occasion.each do |occasion| %>
+	<tr>
+	<td><%= occasion.day %></td>
+	<td><%= occasion.month %></td>
+	<td><%= occasion.year %></td>
+	<td><%= occasion.occasion %></td>
+	</tr>
+<% end %>
+</table>
+<% end %>
+<br/>
+<%= link_to "Add Special Date", new_contact_occasion_path(@contact) %>
+
+
+
+
+
+

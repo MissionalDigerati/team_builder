@@ -1,6 +1,7 @@
 TeamBuilder::Application.routes.draw do
   resources :contacts do
     resources :numbers
+    resources :occasions
   end
 
   # The priority is based upon order of creation:

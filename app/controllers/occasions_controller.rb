@@ -1,20 +1,20 @@
-class NumbersController < ApplicationController
+class OccasionsController < ApplicationController
   
   def new
     @contact = Contact.find(params[:contact_id])
-    @number = @contact.numbers.build
+    @occasions = @contact.occasions.build
   end
   
   def create
     @contact = Contact.find(params[:contact_id])
-    @number = @contact.numbers.new(params[:number])
+    @occasions = @contact.occasions.new(params[:occasion])
     respond_to do |format|
-      if @number.save
+      if @occasions.save
         format.html {redirect_to(contact_path(@contact))}
-        flash[:notice] = "Your number has been saved!"
+        flash[:notice] = "Your Occasion has been saved!"
       else
         format.html {render action: "new"}
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
+        flash[:notice] = "Your Occasion has not been saved"
       end
     end
   end

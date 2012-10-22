@@ -34,8 +34,21 @@ Feature: A user manages their contacts
 		And I fill in "number_number" with "14082182617"
 		And I click the "Create Number" button
 		Then I should see "Your number has been saved!"
-
+		And I should be on the doctor's show page
+		And I should see "14082182617"
 		
+	Scenario: A user should be able to add special dates to their contact
+		Given there is a contact "The Doctor"
+		And I am on the show page for "The Doctor"
+		When I click the "Add Special Date" link
+		And I select "Jan" from "Month"
+		And I select "12" from "Day"
+		And I select "2012" from "Year"
+		And I fill in "Occasion" with "birthday"
+		And I click the "Create Occasion" button
+		Then I should see "Your Occasion has been saved!"
+		And I should be on the doctor's show page
+		And I should see "birthday"
 		
 		
 		# 

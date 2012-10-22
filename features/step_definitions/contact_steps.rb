@@ -17,5 +17,9 @@ Given /^I am on the show page for "(.*?)"$/ do |first_name|
   contact = Contact.where(first_name: first_name).first
   visit contact_path(contact)
 end
+Then /^I should be on the doctor's show page$/ do
+  thedoctor = Contact.where(first_name: "The Doctor").first
+  page.current_path.should == contact_path(thedoctor)
+end
 
 # adding phone numbers
