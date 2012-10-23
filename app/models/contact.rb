@@ -2,13 +2,20 @@ class Contact < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :spouse_name, :email, :spouse_email, :tags, :network, :address_1, :address_2, :city, :state_id, :zip, :country_id, :receive_newsletter, :children, :preferred_contact
   has_many :numbers
   has_many :occasions
+  has_many :donations
   validates :first_name, :email, :presence => true
+  
+  NAMES = []
+  
+  Contact.all.each do |contact|
+    NAMES << contact.first_name
+  end
   
   NETWORKS = ['Please Choose', '168 Film Festival', 'AACF - Cal Poly Pomona', 'Bible Study Fellowship', 'Cal Poly Pomona', 
   'Calvary Chapel', 'Co-Worker', "Dillions International", 'Extended Faimly', 'First Church of God - Pomona', 'Friends of Friends',
   'Grace Brethen', 'Hesperia High School', 'Immediate Family', 'SIS: Ping Core', 'Missional Digerati Referrals', 'Mobile Ministry Forum',
   'Perspectives at Lake Avenue Church', 'Pragmatic Studios', 'Roommates', 'Ruby Meetup', 'San Gabriel Union Church and Christian School',
-  'Strategicon Board Game Convention', 'US Center for World Mission']
+  'Strategicon Board Game Convention', 'US Center for World Mission', 'Other']
   
   CONTACTS = ['Please Choose','Email', 'Letter', 'Twitter', 'Facebook', 'Call', 'In Person', 'Skype', 'FaceTime', 'Other']
 

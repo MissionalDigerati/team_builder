@@ -86,6 +86,7 @@ class ContactsController < ApplicationController
       @contact = Contact.find(params[:id])
       @number = @contact.numbers.where(:contact_id == @contact)
       @occasion = @contact.occasions.where(:contact_id == @contact)
+      @donation = @contact.donations.where(:contact_id == @contact)
     end
     
 end

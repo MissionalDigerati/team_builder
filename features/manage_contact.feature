@@ -50,6 +50,16 @@ Feature: A user manages their contacts
 		And I should be on the doctor's show page
 		And I should see "birthday"
 		
+	Scenario: A user should be able to add donation to their contact
+		Given there is a contact "The Doctor"
+		And I am on the show page for "The Doctor"
+		When I click the "Add Donation" link
+		And I fill in "Amount" with "15.00"
+		And I fill in "Project" with "Team builder"
+		And I click the "Create Donation" button
+		Then I should see "Your Donation has been saved!"
+		And I should be on the doctor's show page
+		And I should see "Team builder"
 		
 		# 
 		# <Contact id: nil, first_name: nil, last_name: nil, spouse_name: nil, 

@@ -53,6 +53,7 @@ Phone Number(s)
 		<th>Month</th>
 		<th>Year</th>
 		<th>Occasion</th>
+		<th>Action</th>
 	</thead>
 <% @occasion.each do |occasion| %>
 	<tr>
@@ -60,12 +61,37 @@ Phone Number(s)
 	<td><%= occasion.month %></td>
 	<td><%= occasion.year %></td>
 	<td><%= occasion.occasion %></td>
+	<td><%= link_to "Edit", edit_contact_occasion_path(occasion) %> | </td>
 	</tr>
 <% end %>
 </table>
 <% end %>
 <br/>
 <%= link_to "Add Special Date", new_contact_occasion_path(@contact) %>
+
+<!-- donation -->
+<br/>
+<br/>
+<% if @donation.length > 0 %>
+<table>
+	<thead>
+		<th>Date</th>
+		<th>Amount</th>
+		<th>Project</th>
+		<th>Action</th>
+	</thead>
+<% @donation.each do |donation| %>
+	<tr>
+	<td><%= donation.date %></td>
+	<td><%= donation.amount %></td>
+	<td><%= donation.project %></td>
+	<td><%= link_to "Edit" %> | </td>
+	</tr>
+<% end %>
+</table>
+<% end %>
+<br/>
+<%= link_to "Add Donation", new_contact_donation_path(@contact) %>
 
 
 
