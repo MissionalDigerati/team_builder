@@ -32,11 +32,13 @@ Phone Number(s)
 	<thead>
 		<th>Type</th>
 		<th>Number</th>
+		<th>Action</th>
 	</thead>
 <% @number.each do |number| %>
 	<tr>
 	<td><%= number.phone_type %></td>
 	<td><%= number.number %></td>
+	<td><%= link_to "Edit" %> | <%= link_to "Delete", contact_number_path(@contact, number), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
 	</tr>
 <% end %>
 </table>
@@ -61,7 +63,7 @@ Phone Number(s)
 	<td><%= occasion.month %></td>
 	<td><%= occasion.year %></td>
 	<td><%= occasion.occasion %></td>
-	<td><%= link_to "Edit", edit_contact_occasion_path(occasion) %> | </td>
+	<td><%= link_to "Edit", edit_contact_occasion_path(occasion) %> | <%= link_to "Delete", contact_occasion_path(@contact, occasion), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
 	</tr>
 <% end %>
 </table>
@@ -85,7 +87,7 @@ Phone Number(s)
 	<td><%= donation.date %></td>
 	<td><%= donation.amount %></td>
 	<td><%= donation.project %></td>
-	<td><%= link_to "Edit" %> | </td>
+	<td><%= link_to "Edit" %> | <%= link_to "Delete", contact_donation_path(@contact, donation), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
 	</tr>
 <% end %>
 </table>

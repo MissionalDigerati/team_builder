@@ -1,6 +1,7 @@
 <%= form_for([@contact, @donations]) do |f| %>
 	<%= f.label :contact_id, "Contact" %><br/>
-	<%= f.select :contact_id, Contact::NAMES %><br/>
+	<!-- <%= f.select :contact_id, @all_contacts, :selected => params[:id] %><br/> -->
+	<%= f.select(:contact_id, Contact.all.collect {|p| [ p.first_name, p.id ] }, { :include_blank => true }) %><br/>
 	<%= f.label :date, "Date" %><br/>
 	<%= f.text_field :date %><br/>
 	<%= f.label :amount, "Amount" %><br/>

@@ -5,11 +5,6 @@ class Contact < ActiveRecord::Base
   has_many :donations
   validates :first_name, :email, :presence => true
   
-  NAMES = []
-  
-  Contact.all.each do |contact|
-    NAMES << contact.first_name
-  end
   
   NETWORKS = ['Please Choose', '168 Film Festival', 'AACF - Cal Poly Pomona', 'Bible Study Fellowship', 'Cal Poly Pomona', 
   'Calvary Chapel', 'Co-Worker', "Dillions International", 'Extended Faimly', 'First Church of God - Pomona', 'Friends of Friends',

@@ -19,4 +19,13 @@ class NumbersController < ApplicationController
     end
   end
   
+  def destroy
+     @number = Number.find(params[:id])
+     @number.destroy
+     respond_to do |format|
+       format.html { redirect_to :back }
+       format.json { head :no_content }
+     end
+   end
+  
 end

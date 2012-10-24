@@ -22,6 +22,10 @@ class OccasionsController < ApplicationController
   def destroy
      @occasions = Occasion.find(params[:id])
      @occasions.destroy
+     respond_to do |format|
+       format.html { redirect_to :back }
+       format.json { head :no_content }
+     end
    end
   
 end

@@ -3,6 +3,9 @@ class DonationsController < ApplicationController
   def new
     @contact = Contact.find(params[:contact_id])
     @donations = @contact.donations.build
+    @all_contacts = Contact.find(:all, :order => "last_name")
+    puts "candy"
+    puts @all_contacts
   end
   
   def create
@@ -18,5 +21,14 @@ class DonationsController < ApplicationController
       end
     end
   end
+  
+  def destroy
+     @donations = Donation.find(params[:id])
+     @donations.destroy
+     respond_to do |format|
+       format.html { redirect_to :back }
+       format.json { head :no_content }
+     end
+   end
   
 end
