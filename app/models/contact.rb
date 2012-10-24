@@ -1,6 +1,6 @@
 class Contact < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :spouse_name, :email, :spouse_email, :tags, :network, :address_1, :address_2, :city, :state_id, :zip, :country_id, :receive_newsletter, :children, :preferred_contact
-  has_many :numbers
+  has_many :numbers, :dependent => :destroy
   has_many :occasions
   has_many :donations
   validates :first_name, :email, :presence => true
@@ -22,12 +22,7 @@ class Contact < ActiveRecord::Base
     end
   end
   
-  
-  def testing_123
-    Contacts.each do |x|
-      contact_array << x
-    end
-  end
+
   
 end
 #<Contact id: nil, first_name: nil, last_name: nil, spouse_name: nil, 

@@ -19,6 +19,25 @@ class NumbersController < ApplicationController
     end
   end
   
+  def edit
+    @contact = Contact.find(params[:contact_id])
+    @number = @contact.numbers.find(params[:id])
+  end
+  
+  def update
+    @contact = Contact.find(params[:contact_id])
+    @number = @contact.numbers.find(params[:id])
+    respond_to do |format|
+      if @number.update_attributes(params[:number])
+        format.html {redirect_to(contact_path(@contact))}
+        flash[:notice] = "Your phone number has been updated."
+      else
+        format.html {render action: "edit"}
+        flash[:notice] = "Your phone number was not updated."
+      end
+    end
+  end
+  
   def destroy
      @number = Number.find(params[:id])
      @number.destroy

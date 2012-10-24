@@ -4,8 +4,6 @@ class DonationsController < ApplicationController
     @contact = Contact.find(params[:contact_id])
     @donations = @contact.donations.build
     @all_contacts = Contact.find(:all, :order => "last_name")
-    puts "candy"
-    puts @all_contacts
   end
   
   def create
@@ -22,6 +20,25 @@ class DonationsController < ApplicationController
     end
   end
   
+  def edit
+    @contact = Contact.find(params[:contact_id])
+    @donations = @contact.donations.find(params[:id])
+  end
+  
+  def update
+    @contact = Contact.find(params[:contact_id])
+    @donations = @contact.donations.find(params[:id])
+    respond_to do |format|
+      if @donations.update_attributes(params[:donation])
+        format.html {redirect_to(contact_path(@contact))}
+        flash[:notice] = "Your Donation has been updated!"
+      else
+        format.html {render action: "edit"}
+        flash[:notice] = "Your Donation has not been updated"
+      end
+    end
+  end
+  
   def destroy
      @donations = Donation.find(params[:id])
      @donations.destroy
@@ -32,3 +49,5 @@ class DonationsController < ApplicationController
    end
   
 end
+
+

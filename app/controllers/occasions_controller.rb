@@ -19,6 +19,26 @@ class OccasionsController < ApplicationController
     end
   end
   
+  def edit
+    @contact = Contact.find(params[:contact_id])
+    @occasions = @contact.occasions.find(params[:id])
+  end
+   
+  def update
+    @contact = Contact.find(params[:contact_id])
+    @occasions = @contact.occasions.find(params[:id])
+    respond_to do |format|
+      if @occasions.update_attributes(params[:occasion])
+        format.html {redirect_to(contact_path(@contact))}
+        flash[:notice] = "Your Occasion has ben updated."
+      else
+        format.html {render action: "edit"}
+        flash[:notice] = "Your Occasion could not be saved."
+      end
+    end
+  end
+  
+   
   def destroy
      @occasions = Occasion.find(params[:id])
      @occasions.destroy
