@@ -7,7 +7,7 @@ Feature: A user should be able to create tasks for a user, edit, update, and cre
 		And I am on the show page for "Matt Smith"
 		When I click the "Add Task" link
 		And I fill in "Task" with "Get to the tardis"
-		And I fill in "due_date" with "1/2/201121"
+		And I fill in "Due Date" with "1/2/201121"
 		And I select "Call" from "Category"
 		And I click the "Create Task" button
 		Then I should see "Your Task has been saved!"

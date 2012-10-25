@@ -62,12 +62,13 @@ ActiveRecord::Schema.define(:version => 20121025053415) do
   end
 
   create_table "tasks", :force => true do |t|
-    t.boolean  "completed"
+    t.integer  "contact_id"
+    t.boolean  "completed",  :default => false
     t.string   "task"
     t.string   "due_date"
     t.string   "category"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
 end

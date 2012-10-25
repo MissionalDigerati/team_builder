@@ -1,0 +1,11 @@
+<%= form_for([@contact, @task]) do |f| %>
+	<%= f.label :contact_id, "Contact"%><br/>
+	<%= f.select(:contact_id, Contact.all.collect {|p| [ p.first_name, p.id ] }, { :include_blank => true }) %><br/>
+	<%= f.label :task, "Task" %><br/>
+	<%= f.text_field :task %><br/>
+	<%= f.label :due_date, "Due Date" %><br/>
+	<%= f.text_field :due_date %><br/>
+	<%= f.label :category, "Category"%><br/>
+	<%= f.select :category, Task::CATEGORY, :include_blank => true %><br/>
+	<%= f.submit %>
+<% end %>

@@ -1,7 +1,8 @@
 class CreateTasks < ActiveRecord::Migration
   def change
     create_table :tasks do |t|
-      t.boolean :completed
+      t.integer :contact_id
+      t.boolean :completed, :default => false
       t.string :task
       t.string :due_date
       t.string :category

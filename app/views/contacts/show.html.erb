@@ -95,6 +95,31 @@ Phone Number(s)
 <br/>
 <%= link_to "Add Donation", new_contact_donation_path(@contact) %>
 
+<br/>
+<br/>
+<% if @task.length > 0 %>
+<table>
+	<thead>
+		<th>Completed?</th>
+		<th>Task</th>
+		<th>Due date</th>
+		<th>Category</th>
+		<th>Action</th>		
+	</thead>
+<% @task.each do |task| %>
+	<tr>
+		<td><%= task.completed %></td>
+		<td><%= task.task %></td>
+		<td><%= task.due_date %></td>
+		<td><%= task.category %></td>
+		<td><%= link_to "Edit" %> | <%= link_to "Delete" %> </td>
+	</tr>
+<% end %>
+</table>
+<% end %>
+<br/>
+<%= link_to "Add Task", new_contact_task_path(@contact)%>
+
 
 
 
