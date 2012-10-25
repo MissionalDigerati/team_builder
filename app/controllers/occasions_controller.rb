@@ -44,7 +44,7 @@ class OccasionsController < ApplicationController
      @occasions.destroy
      respond_to do |format|
        format.html { redirect_to :back }
-       format.json { head :no_content }
+       flash[:notice] = "Your Occasion has been deleted."
      end
    end
   

@@ -43,7 +43,7 @@ class NumbersController < ApplicationController
      @number.destroy
      respond_to do |format|
        format.html { redirect_to :back }
-       format.json { head :no_content }
+       flash[:notice] = "Your phone number has been deleted."
      end
    end
   

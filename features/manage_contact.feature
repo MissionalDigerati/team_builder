@@ -24,42 +24,8 @@ Feature: A user manages their contacts
 		And I check the "receive_newsletter" checkboxes
 		And I click the "create_contact" button
 		Then I should see "Contact was successfully created."
-		
-		
-	Scenario: A user should be able to add multiple phone numbers to a contact
-		Given there is a contact "The Doctor"
-		And I am on the show page for "The Doctor"
-		When I click the "Add Phone Number" link
-		And I select "Home" from "number_phone_type"
-		And I fill in "number_number" with "14082182617"
-		And I click the "Create Number" button
-		Then I should see "Your number has been saved!"
-		And I should be on the doctor's show page
-		And I should see "14082182617"
-		
-	Scenario: A user should be able to add special dates to their contact
-		Given there is a contact "The Doctor"
-		And I am on the show page for "The Doctor"
-		When I click the "Add Special Date" link
-		And I select "Jan" from "Month"
-		And I select "12" from "Day"
-		And I select "2012" from "Year"
-		And I fill in "Occasion" with "birthday"
-		And I click the "Create Occasion" button
-		Then I should see "Your Occasion has been saved!"
-		And I should be on the doctor's show page
-		And I should see "birthday"
-		
-	Scenario: A user should be able to add donation to their contact
-		Given there is a contact "The Doctor"
-		And I am on the show page for "The Doctor"
-		When I click the "Add Donation" link
-		And I fill in "Amount" with "15.00"
-		And I fill in "Project" with "Team builder"
-		And I click the "Create Donation" button
-		Then I should see "Your Donation has been saved!"
-		And I should be on the doctor's show page
-		And I should see "Team builder"
+
+
 		
 		# 
 		# <Contact id: nil, first_name: nil, last_name: nil, spouse_name: nil, 
