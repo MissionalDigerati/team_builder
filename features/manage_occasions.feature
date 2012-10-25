@@ -20,6 +20,9 @@ Feature: A user should be able to manage their occasions that belong to users
 		And I am on the show page for "edit occasions"
 		And I should see "birthday"
 		When I click on the "Edit" link for "birthday"
+		And I select "Jan" from "Month"
+		And I select "12" from "Day"
+		And I select "2012" from "Year"
 		And I fill in "Occasion" with "halloween"
 		And I click the "Update Occasion" button
 		Then I should see "Your Occasion has ben updated."

@@ -7,6 +7,7 @@ Feature: A user should be able to create, edit, and delete donations from their 
 		Given there is a contact "The Doctor"
 		And I am on the show page for "The Doctor"
 		When I click the "Add Donation" link
+		And I fill in "Date" with "1/1/2012"
 		And I fill in "Amount" with "15.00"
 		And I fill in "Project" with "Team builder"
 		And I click the "Create Donation" button
@@ -20,6 +21,7 @@ Feature: A user should be able to create, edit, and delete donations from their 
 		And I am on the show page for "sulu"
 		When I click the "Add Donation" link
 		And I select "scotty" from "Contact"
+		And I fill in "Date" with "1/2/2322"
 		And I fill in "Amount" with "35.00"
 		And I fill in "Project" with "Starship enterprise"
 		And I click the "Create Donation" button

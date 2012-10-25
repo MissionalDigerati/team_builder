@@ -3,6 +3,7 @@ TeamBuilder::Application.routes.draw do
     resources :numbers
     resources :occasions
     resources :donations
+    resources :tasks
   end
 
   # The priority is based upon order of creation:
