@@ -3,11 +3,11 @@
 <br/>
 <%= form_for([@contact, @occasions]) do |f| %>
 		<%= f.label :day, "Day"%><br/>
-		<%= f.select :day, Occasion::DAYS %><br/>
+		<%= f.select :day, Occasion::DAYS, :include_blank => true %><br/>
 		<%= f.label :month, "Month"%><br/>
-		<%= f.select :month, Occasion::MONTHS %><br/>
+		<%= f.select :month, Occasion::MONTHS, :include_blank => true %><br/>
 		<%= f.label :year, "Year"%><br/>
-		<%= f.select :year, Occasion::YEARS %><br/>
+		<%= f.select :year, Occasion::YEARS, :include_blank => true %><br/>
 		<%= f.label :occasion, "Occasion"%><br/>
 		<%= f.text_field :occasion %><br/>
 		<%= f.submit %>
