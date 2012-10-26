@@ -24,7 +24,8 @@ Feature: A user manages their contacts
 		And I check the "receive_newsletter" checkboxes
 		And I click the "create_contact" button
 		Then I should see "Contact was successfully created."
-
+		
+	Scenario: A user should be able to create a contact with multiple phone numbers, web presence, donations, and special dates on the same form. 	
 
 		
 		# 
