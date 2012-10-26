@@ -124,6 +124,8 @@ Basic Info
 <br/>
 <%= link_to "Add Task", new_contact_task_path(@contact)%>
 
+
+<!-- Notes -->
 <br/>
 <br/>
 <h3>Notes</h3><br/>
@@ -142,6 +144,50 @@ Basic Info
 </table>
 <% end %>
 <%= link_to "Add Note", new_contact_note_path(@contact)%>
+
+<!-- web presence -->
+<br/>
+<br/>
+<h3>Web Presence</h3><br/>
+<% if @presence.length > 0 %>
+<table>
+	<thead>
+		<th>Site</th>
+		<th>URL</th>
+		<th>Account</th>
+		<th>Action</th>
+	</thead>
+<% @presence.each do |presence| %>
+	<tr>
+		<td><%= presence.site %></td>
+		<td><%= presence.url %></td>
+		<td><%= presence.account %></td>
+		<td><%= link_to "Edit", edit_contact_presence_path(@contact, presence) %> | <%= link_to "Delete" %></td>
+	</tr>
+<% end %>
+</table>
+<% end %>
+<%= link_to "Add Web Presence", new_contact_presence_path(@contact) %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

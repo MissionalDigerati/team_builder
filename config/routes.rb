@@ -5,6 +5,7 @@ TeamBuilder::Application.routes.draw do
     resources :donations
     resources :tasks
     resources :notes
+    resources :presences
   end
 
   # The priority is based upon order of creation:

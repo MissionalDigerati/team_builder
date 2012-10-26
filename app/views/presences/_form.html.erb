@@ -1,0 +1,12 @@
+<%= form_for([@contact, @presence]) do |f| %>
+	<%= f.label :site, "Site" %><br/>
+	<%= f.select :site, Presence::SITES, {:include_blank => true} %><br/>
+	<%= f.label :url, "URL" %><br/>
+	<%= f.text_field :url %><br/>
+	<%= f.label :account, "Account" %><br/>
+	<%= f.text_field :account %><br/>
+	<%= f.submit %>
+<% end %>
+
+
+<!-- <Presence id: nil, contact_id: nil, site: nil, url: nil, account: nil, created_at: nil, updated_at: nil>  -->

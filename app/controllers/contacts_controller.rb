@@ -90,6 +90,7 @@ class ContactsController < ApplicationController
       @donation = @contact.donations.where(:contact_id == @contact)
       @task = @contact.tasks.where(:contact_id == @contact)
       @note = @contact.notes.where(:contact_id == @contact)
+      @presence = @contact.presences.where(:contact_id == @contact)
     end
     
 end

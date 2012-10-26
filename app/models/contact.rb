@@ -5,6 +5,7 @@ class Contact < ActiveRecord::Base
   has_many :donations
   has_many :tasks
   has_many :notes, :dependent => :destroy
+  has_many :presences
   validates :first_name, :email, :presence => true
   
   
