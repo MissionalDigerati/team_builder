@@ -25,7 +25,7 @@ Basic Info
 
 <!-- phone numbers -->
 
-Phone Number(s)
+<h3>Phone Number(s)</h3>
 <br/>
 <% if @number.length > 0 %>
 <table>
@@ -48,7 +48,7 @@ Phone Number(s)
 <br/>
 
 <!-- special occasion -->
-Special Dates
+<h3>Special Dates</h3>
 <br/>
 <% if @occasion.length > 0 %>
 <table>
@@ -76,7 +76,7 @@ Special Dates
 <!-- donation -->
 <br/>
 <br/>
-Donations <br/>
+<h3>Donations</h3> <br/>
 <% if @donation.length > 0 %>
 <table>
 	<thead>
@@ -100,7 +100,7 @@ Donations <br/>
 
 <br/>
 <br/>
-Tasks<br/>
+<h3>Tasks</h3><br/>
 <% if @task.length > 0 %>
 <table>
 	<thead>
@@ -124,7 +124,24 @@ Tasks<br/>
 <br/>
 <%= link_to "Add Task", new_contact_task_path(@contact)%>
 
-
+<br/>
+<br/>
+<h3>Notes</h3><br/>
+<% if @note.length > 0 %>
+<table>
+	<thead>
+		<th>Note</th>
+		<th>Action</th>
+	</thead>
+<% @note.each do |note| %>
+	<tr>
+		<td><%= note.note %></td>
+		<td><%= link_to "Edit", edit_contact_note_path(@contact, note)%> | <%= link_to "Delete", contact_note_path(@contact, note), :method => :delete, data: { confirm: 'Are you sure?'} %></td>
+	</tr>
+<% end %>
+</table>
+<% end %>
+<%= link_to "Add Note", new_contact_note_path(@contact)%>
 
 
 
