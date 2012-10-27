@@ -162,7 +162,7 @@ Basic Info
 		<td><%= presence.site %></td>
 		<td><%= presence.url %></td>
 		<td><%= presence.account %></td>
-		<td><%= link_to "Edit", edit_contact_presence_path(@contact, presence) %> | <%= link_to "Delete" %></td>
+		<td><%= link_to "Edit", edit_contact_presence_path(@contact, presence) %> | <%= link_to "Delete", contact_presence_path(@contact, presence), :method => :delete, data: {confirm: 'Are you sure'} %></td>
 	</tr>
 <% end %>
 </table>

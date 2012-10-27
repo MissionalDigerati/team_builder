@@ -34,3 +34,19 @@ Feature: A user should be able to edit and create phone numbers for their contac
 		Then I should see "Your phone number has been deleted."
 		And I am on the show page for "delete phone test"
 		And I should not see "1111111111"
+	
+	Scenario: A user should be able to add a phone number for a contact through another contact
+		Given given there are contacts "iphone" and "android"
+		And I am on the show page for "iphone"
+		When I click the "Add Phone Number" link
+		And I select "android" from "Contact"
+		And I select "Mobile" from "number_phone_type"
+		And I fill in "number_number" with "2312321232"
+		And I click the "Create Number" button
+		Then I should see "Your number has been saved!"
+		And I should be on the show page for "android"
+		And I should see "2312321232"
+		And I should see "Mobile"
+		Then I am on the show page for "iphone"
+		And I should not see "2312321232"	
+		And I should not see "Mobile"		

@@ -6,7 +6,7 @@ class PresencesController < ApplicationController
   end
   
   def create
-    @contact = Contact.find(params[:contact_id])
+    @contact = Contact.find(params[:presence][:contact_id])
     @presence = @contact.presences.new(params[:presence])
     respond_to do |format|
       if @presence.save 
@@ -38,5 +38,14 @@ class PresencesController < ApplicationController
     end
   end
   
+  def destroy
+    @contact = Contact.find(params[:contact_id])
+    @presence = Presence.find(params[:id])
+    @presence.destroy
+    respond_to do |format|
+      format.html{redirect_to :back}
+      flash[:notice] = "Your Web Presence has been deleted!"
+    end
+  end
   
 end

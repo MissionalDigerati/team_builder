@@ -2,6 +2,8 @@
 <br/>
 <br/>
 <%= form_for([@contact, @occasions]) do |f| %>
+		<%= f.label :contact_id, "Contact" %><br/>
+		<%= f.select(:contact_id, Contact.all.collect {|p| [ p.first_name, p.id ] }, { :include_blank => true }) %><br/>
 		<%= f.label :day, "Day"%><br/>
 		<%= f.select :day, Occasion::DAYS, :include_blank => true %><br/>
 		<%= f.label :month, "Month"%><br/>

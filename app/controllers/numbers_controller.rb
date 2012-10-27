@@ -6,7 +6,7 @@ class NumbersController < ApplicationController
   end
   
   def create
-    @contact = Contact.find(params[:contact_id])
+    @contact = Contact.find(params[:number][:contact_id])
     @number = @contact.numbers.new(params[:number])
     respond_to do |format|
       if @number.save

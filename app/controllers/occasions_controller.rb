@@ -6,7 +6,7 @@ class OccasionsController < ApplicationController
   end
   
   def create
-    @contact = Contact.find(params[:contact_id])
+    @contact = Contact.find(params[:occasion][:contact_id])
     @occasions = @contact.occasions.new(params[:occasion])
     respond_to do |format|
       if @occasions.save

@@ -1,6 +1,8 @@
 <br/>
 <br/>
 <%= form_for([@contact, @number]) do |f| %>
+	<%= f.label :contact_id, "Contact" %><br/>
+	<%= f.select(:contact_id, Contact.all.collect {|p| [ p.first_name, p.id ] }, { :include_blank => true }) %><br/>
 	<%= f.label :phone_type, "Type" %><br/>
 	<%= f.select :phone_type, Number::TYPES, :include_blank => true %><br/>
 	<%= f.label :number, "Phone Number" %><br/>

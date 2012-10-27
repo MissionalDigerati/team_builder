@@ -29,3 +29,31 @@ Feature: A user should be able to create, edit, and delete web presences from th
 	  Then I should see "Your Web Presence has been updated!"
 		And I should see "Twitter"
 		And I should see "www.twitter.com"
+		
+	Scenario: A user should be able to delete an existing web presence
+		Given There is a contact "delete presence" and they have a web presence "tumblr"
+		And I am on the show page for "delete presence"
+		And I should see "tumblr"
+		When I click on the "Delete" link for "tumblr"
+		Then I should see "Your Web Presence has been deleted!"
+		And I should be on the show page for "delete presence"
+		And I should not see "tumblr"
+		
+	Scenario: A user should be able to add web presence for a contact through another contact
+		Given given there are contacts "cow" and "chicken"
+		And I am on the show page for "cow"
+		When I click the "Add Web Presence" link
+		And I select "chicken" from "Contact"
+		And I select "Twitter" from "Site"
+		And I fill in "URL" with "www.twitter.com"
+		And I fill in "Account" with "testing filler"
+		And I click the "Create Presence" button
+		Then I should see "Your Web Presence has been saved!"
+		And I should be on the show page for "chicken"
+		And I should see "Twitter"
+		And I should see "www.twitter.com"
+		And I should see "testing filler"
+		Then I am on the show page for "cow"
+		And I should not see "Twitter"
+		And I should not see "www.twitter.com"
+		And I should not see "testing filler"

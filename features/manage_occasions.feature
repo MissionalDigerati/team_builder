@@ -38,3 +38,21 @@ Feature: A user should be able to manage their occasions that belong to users
 		Then I should see "Your Occasion has been deleted."
 		And I am on the show page for "delete occasions"
 		And I should not see "holiday"
+		
+	Scenario: A user should be able to add a special date for a contact through another contact
+		Given given there are contacts "cup" and "mug"
+		And I am on the show page for "cup"
+		When I click the "Add Special Date" link
+		And I select "mug" from "Contact"
+		And I select "Feb" from "Month"
+		And I select "2" from "Day"
+		And I select "2012" from "Year"
+		And I fill in "Occasion" with "party"
+		And I click the "Create Occasion" button
+		Then I should see "Your Occasion has been saved!"
+		And I should be on the show page for "mug"
+		And I should see "party"
+		And I should see "2012"
+		Then I am on the show page for "cup"
+		And I should not see "party"	
+		And I should not see "2012"
