@@ -1,5 +1,7 @@
 class Contact < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :spouse_name, :email, :spouse_email, :tags, :network, :address_1, :address_2, :city, :state_id, :zip, :country_id, :receive_newsletter, :children, :preferred_contact
+  #number
+  attr_accessible :numbers_attributes
   has_many :numbers, :dependent => :destroy
   has_many :occasions
   has_many :donations
@@ -7,6 +9,7 @@ class Contact < ActiveRecord::Base
   has_many :notes, :dependent => :destroy
   has_many :presences
   validates :first_name, :email, :presence => true
+  accepts_nested_attributes_for :numbers
   
   
   NETWORKS = ['Please Choose', '168 Film Festival', 'AACF - Cal Poly Pomona', 'Bible Study Fellowship', 'Cal Poly Pomona', 
