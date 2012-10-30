@@ -4,9 +4,9 @@
 	<%= f.label :site, "Site" %><br/>
 	<%= f.select :site, Presence::SITES, {:include_blank => true} %><br/>
 	<%= f.label :url, "URL" %><br/>
-	<%= f.text_field :url %><br/>
+	<%= f.text_field :url, :required => true %><br/>
 	<%= f.label :account, "Account" %><br/>
-	<%= f.text_field :account %><br/>
+	<%= f.text_field :account, :required => true %><br/>
 	<%= f.submit %>
 <% end %>
 

@@ -57,10 +57,14 @@
 	<br/>
 	<%= f.label :receive_newsletter, "Receive Newsletter" %><br/>
 	<%= f.check_box :receive_newsletter, id: "receive_newsletter"  %>
+	
+	<br/>
+	<br/>
 	<br/>
 	
 	<!-- Numbers -->
 	<!-- <Number id: nil, phone_type: nil, number: nil, created_at: nil, updated_at: nil, contact_id: nil>  -->
+		Phone Numbers<br/>
 	<%= f.fields_for :numbers do |builder| %>
 		<%= builder.label :phone_type, "Phone Type" %><br/>
 		<%= builder.select :phone_type, Number::TYPES, :include_blank => true, :require => true %><br/>
@@ -68,9 +72,50 @@
 		<%= builder.text_field :number %><br/>
 	<% end %>
 	
+	<br/>
+	<br/>
+	<br/>
 	
-  <div class="actions">
+	<!-- special dates -->
+	<!-- <Occasion id: nil, day: nil, month: nil, year: nil, occasion: nil, created_at: nil, updated_at: nil, contact_id: nil>  -->
+		Special Occasions<br/>
+	<%= f.fields_for :occasions do |builder| %>
+		<%= builder.label :day, "Day" %><br/>
+		<%= builder.text_field :day %><br/>
+		<%= builder.label :month, "Month" %><br/>
+		<%= builder.text_field :month %><br/>
+		<%= builder.label :year, "Year" %><br/>
+		<%= builder.text_field :year %><br/>
+		<%= builder.label :occasion, "Occasion" %><br/>
+		<%= builder.text_field :occasion %><br/>
+	<% end %>
+	
+	<br/>
+	<br/>
+	<br/>
+	<!-- <Presence id: nil, contact_id: nil, site: nil, url: nil, account: nil, created_at: nil, updated_at: nil>  -->
+  
+		Web Presence<br/>
+	<%= f.fields_for :presences do |builder| %>
+		<%= builder.label :site, "Site" %><br/>
+		<%= builder.text_field :site %><br/>
+		<%= builder.label :url, "URL" %><br/>
+		<%= builder.text_field :url %><br/>
+		<%= builder.label :account, "Account" %><br/>
+		<%= builder.text_field :account %><br/>
+	<% end %>	
+
+
+	<div class="actions">
     <%= f.submit :id => "create_contact" %>
   </div>
 <% end %>
+
+
+
+
+
+
+
+
 
