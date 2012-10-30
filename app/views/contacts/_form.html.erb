@@ -63,7 +63,7 @@
 	<!-- <Number id: nil, phone_type: nil, number: nil, created_at: nil, updated_at: nil, contact_id: nil>  -->
 	<%= f.fields_for :numbers do |builder| %>
 		<%= builder.label :phone_type, "Phone Type" %><br/>
-		<%= builder.select :phone_type, Number::TYPES %><br/>
+		<%= builder.select :phone_type, Number::TYPES, :include_blank => true, :require => true %><br/>
 		<%= builder.label :number, "Phone Number" %><br/>
 		<%= builder.text_field :number %><br/>
 	<% end %>

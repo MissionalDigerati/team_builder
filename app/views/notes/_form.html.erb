@@ -1,6 +1,6 @@
 <%= form_for([@contact, @note]) do |f| %>
 		<%= f.label :contact_id, "Contact"%><br/>
-		<%= f.select(:contact_id, Contact.all.collect {|p| [ p.first_name, p.id ] }, { :include_blank => true }) %><br/>
+		<%= f.select(:contact_id, Contact.all.collect {|p| [ p.first_name, p.id ] }) %><br/>
 		<%= f.label :note, "Note" %><br/>
 		<%= f.text_area :note, :rows => 5 %><br/>
 		<%= f.submit %><br/>
