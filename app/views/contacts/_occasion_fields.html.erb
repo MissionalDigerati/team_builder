@@ -1,0 +1,12 @@
+<fieldset>
+	<%= f.label :day, "Day" %><br/>
+	<%= f.text_field :day %><br/>
+	<%= f.label :month, "Month" %><br/>
+	<%= f.text_field :month %><br/>
+	<%= f.label :year, "Year" %><br/>
+	<%= f.text_field :year %><br/>
+	<%= f.label :occasion, "Occasion" %><br/>
+	<%= f.text_field :occasion %><br/>
+	<%= f.hidden_field :_destroy %>
+	<%= link_to "remove", '#', class: "remove_fields" %>
+</fieldset>

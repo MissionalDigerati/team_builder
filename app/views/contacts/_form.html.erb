@@ -66,11 +66,9 @@
 	<!-- <Number id: nil, phone_type: nil, number: nil, created_at: nil, updated_at: nil, contact_id: nil>  -->
 		Phone Numbers<br/>
 	<%= f.fields_for :numbers do |builder| %>
-		<%= builder.label :phone_type, "Phone Type" %><br/>
-		<%= builder.select :phone_type, Number::TYPES, :include_blank => true, :require => true %><br/>
-		<%= builder.label :number, "Phone Number" %><br/>
-		<%= builder.text_field :number %><br/>
+		<%= render 'contacts/number_fields', f: builder %>
 	<% end %>
+	<%= link_to_add_fields "Add Phone Number", f, :numbers %>
 	
 	<br/>
 	<br/>
@@ -80,15 +78,9 @@
 	<!-- <Occasion id: nil, day: nil, month: nil, year: nil, occasion: nil, created_at: nil, updated_at: nil, contact_id: nil>  -->
 		Special Occasions<br/>
 	<%= f.fields_for :occasions do |builder| %>
-		<%= builder.label :day, "Day" %><br/>
-		<%= builder.text_field :day %><br/>
-		<%= builder.label :month, "Month" %><br/>
-		<%= builder.text_field :month %><br/>
-		<%= builder.label :year, "Year" %><br/>
-		<%= builder.text_field :year %><br/>
-		<%= builder.label :occasion, "Occasion" %><br/>
-		<%= builder.text_field :occasion %><br/>
+		<%= render 'contacts/occasion_fields', f: builder %>
 	<% end %>
+	<%= link_to_add_fields "Add Special Occasion", f, :occasions %>
 	
 	<br/>
 	<br/>
@@ -97,17 +89,13 @@
   
 		Web Presence<br/>
 	<%= f.fields_for :presences do |builder| %>
-		<%= builder.label :site, "Site" %><br/>
-		<%= builder.text_field :site %><br/>
-		<%= builder.label :url, "URL" %><br/>
-		<%= builder.text_field :url %><br/>
-		<%= builder.label :account, "Account" %><br/>
-		<%= builder.text_field :account %><br/>
-		<%= builder.hidden_field :_destroy %>
-		<%= link_to "remove", '#', class: "remove_fields" %>
+		<%= render 'contacts/presence_fields', f: builder %>
 	<% end %>	
+	<%= link_to_add_fields "Add Web Presence", f, :presences %>
 
-
+	<br/>
+	<br/>
+	
 	<div class="actions">
     <%= f.submit :id => "create_contact" %>
   </div>

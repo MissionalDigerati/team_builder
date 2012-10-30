@@ -1,0 +1,10 @@
+<fieldset>
+	<%= f.label :site, "Site" %><br/>
+	<%= f.text_field :site %><br/>
+	<%= f.label :url, "URL" %><br/>
+	<%= f.text_field :url %><br/>
+	<%= f.label :account, "Account" %><br/>
+	<%= f.text_field :account %><br/>
+	<%= f.hidden_field :_destroy %>
+	<%= link_to "remove", '#', class: "remove_fields" %>
+</fieldset>
