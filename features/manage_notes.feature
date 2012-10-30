@@ -44,4 +44,12 @@ Feature: A user should be able to create, edit, and delete notes from their cont
 		And I should be on the show page for "cake"
 		And I should see "pumpkin pie is better than cheesecake"
 		Then I am on the show page for "cheese"
-		And I should not see "pumpkin pie is better than cheesecake"		
+		And I should not see "pumpkin pie is better than cheesecake"
+		
+	Scenario: A user should not be able to create a note without all necessary info. 
+		Given there is a contact "error note"
+		And I am on the show page for "error note"
+		When I click the "Add Note" link
+		And I click the "Create Note" button
+		Then I should be on the new notes page for "error note"
+			

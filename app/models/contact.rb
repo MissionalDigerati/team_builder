@@ -11,9 +11,9 @@ class Contact < ActiveRecord::Base
   has_many :notes, :dependent => :destroy
   has_many :presences
   validates :first_name, :email, :presence => true
-  accepts_nested_attributes_for :numbers, :reject_if => lambda { |a| a[:number].blank? }
-  accepts_nested_attributes_for :occasions, :reject_if => lambda { |a| a[:occasion].blank? }
-  accepts_nested_attributes_for :presences, :reject_if => lambda { |a| a[:url].blank? }
+  accepts_nested_attributes_for :numbers, :reject_if => lambda { |a| a[:number].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :occasions, :reject_if => lambda { |a| a[:occasion].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :presences, :reject_if => lambda { |a| a[:url].blank? }, :allow_destroy => true
   
   
   NETWORKS = ['Please Choose', '168 Film Festival', 'AACF - Cal Poly Pomona', 'Bible Study Fellowship', 'Cal Poly Pomona', 

@@ -56,3 +56,7 @@ Feature: A user should be able to manage their occasions that belong to users
 		Then I am on the show page for "cup"
 		And I should not see "party"	
 		And I should not see "2012"
+		
+
+		
+		

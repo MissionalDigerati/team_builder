@@ -53,3 +53,18 @@ Feature: A user should be able to create, edit, and delete donations from their 
 		Then I should see "Your Donation has been deleted."
 		And I am on the show page for "delete donations contact"
 		And I should not see "tba"
+		
+	Scenario: A user should not be able to create a donation without all necessary info. 
+		Given there is a contact "donation error"
+		And I am on the show page for "donation error"
+		When I click the "Add Donation" link
+		And I click the "Create Donation" button
+		Then I should see "Your Donation has not been saved"
+	
+	
+	
+	
+	
+	
+	
+		
