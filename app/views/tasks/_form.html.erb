@@ -2,7 +2,7 @@
 	<%= f.label :contact_id, "Contact"%><br/>
 	<%= f.select(:contact_id, Contact.all.collect {|p| [ p.first_name, p.id ] }) %><br/>
 	<%= f.label :completed %><br/>
-	<%= f.check_box :completed %><br/>
+	<%= f.check_box :completed, :class => "Completed" %><br/>
 	<%= f.label :task, "Task" %><br/>
 	<%= f.text_field :task %><br/>
 	<%= f.label :due_date, "Due Date" %><br/>

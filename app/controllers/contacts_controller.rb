@@ -91,7 +91,7 @@ class ContactsController < ApplicationController
       @number = @contact.numbers.where(:contact_id == @contact)
       @occasion = @contact.occasions.where(:contact_id == @contact)
       @donation = @contact.donations.where(:contact_id == @contact)
-      @task = @contact.tasks.where(:contact_id == @contact)
+      @task = @contact.tasks.where(:contact_id => @contact, :completed => false )
       @note = @contact.notes.where(:contact_id == @contact)
       @presence = @contact.presences.where(:contact_id == @contact)
     end

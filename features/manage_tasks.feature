@@ -54,3 +54,25 @@ Feature: A user should be able to create tasks for a user, edit, update, and cre
 		And I should not see "destroy tardis"
 		
 	Scenario: A user should be able to mark a task as completed	
+		Given There is a contact "mark task" and they have a task "buy a house"
+		And I am on the show page for "mark task"
+		When I click on the "Edit" link for "buy a house"
+		And I check the checkbox for "Completed"
+		And I click the "Update Task" button
+		Then I should see "Your Task has been updated!"
+		And I should be on the show page for "mark task"
+		And I should not see "buy a house"
+
+	Scenario: A user should be able to dynamically mark a task as completed	
+		Given There is a contact "dynamic task" and they have a task "buy iphone"
+		And I am on the show page for "dynamic task"
+		And I should see "buy iphone"
+		When I click on the "Mark as Completed" link for "buy iphone"
+		Then I should not see "buy iphone"
+		
+		
+	
+	
+	
+	
+	
