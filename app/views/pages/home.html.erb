@@ -1,3 +1,40 @@
 <h2>Home page</h2>
 <%= link_to "All Contacts", contacts_path%><br/>
 <%= link_to "Create New Contact", new_contact_path %>
+
+<br/>
+<br/>
+
+<div class="row-fluid">
+	
+	<div class="span9">
+		<h2> 
+			Tasks
+		</h2>
+		
+		<table class="table">
+			<thead>
+				<th>Completed?</th>
+				<th>Task</th>
+				<th>Due date</th>
+				<th>Category</th>
+				<th>Action</th>		
+			</thead>
+		<% @task.each do |task| %>
+			<tr rel="<%= task.id %>" >
+				<td><%= task.completed %> <%= link_to "Mark as Completed", remote: true, :class => "completed_button" %></td>
+				<td><%= task.task %></td>
+				<td><%= task.due_date %></td>
+				<td><%= task.category %></td>
+				<td><%= link_to "Edit", edit_task_path(task.contact_id, task) %> | <%= link_to "Delete", task_path(task), :method => :delete, data: { confirm: 'Are you sure?'} %></td>
+			</tr>
+		<% end %>	
+		</table>
+		<%= link_to "Add Task" %>
+	</div>
+
+	<div class="span3">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	</div>
+
+</div>

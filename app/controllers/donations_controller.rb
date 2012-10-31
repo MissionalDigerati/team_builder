@@ -1,13 +1,24 @@
 class DonationsController < ApplicationController
   
   def new
-    @contact = Contact.find(params[:contact_id])
-    @donations = @contact.donations.build
+    # @contact = Contact.find(params[:contact_id])
+    #     @donations = @contact.donations.build
+    if params[:contact_id] == nil
+      @donations = Donation.new
+    else
+      @contact = Contact.find(params[:contact_id])
+      @donations = @contact.donations.build
+    end
   end
   
   def create
-    @contact = Contact.find(params[:donation][:contact_id])
-    @donations = @contact.donations.new(params[:donation])
+    if params[:contact_id] == nil
+      @donations = Donation.new(params[:donation])
+      @contact = Contact.find(@donations.contact_id)
+    else
+      @contact = Contact.find(params[:donation][:contact_id])
+      @donations = @contact.donations.new(params[:donation])
+    end
     respond_to do |format|
       if @donations.save
         format.html {redirect_to(contact_path(@contact))}
@@ -25,8 +36,8 @@ class DonationsController < ApplicationController
   end
   
   def update
-    @contact = Contact.find(params[:contact_id])
-    @donations = @contact.donations.find(params[:id])
+    @donations = Donation.find(params[:id])
+    @contact = Contact.find(@donations.contact_id)
     respond_to do |format|
       if @donations.update_attributes(params[:donation])
         format.html {redirect_to(contact_path(@contact))}

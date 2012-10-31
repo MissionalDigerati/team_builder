@@ -38,12 +38,12 @@ Basic Info
 	<tr>
 	<td><%= number.phone_type %></td>
 	<td><%= number.number %></td>
-	<td><%= link_to "Edit", edit_contact_number_path(@contact, number) %> | <%= link_to "Delete", contact_number_path(@contact, number), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
+	<td><%= link_to "Edit", edit_number_path(@contact, number) %> | <%= link_to "Delete", number_path(@contact, number), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
 	</tr>
 <% end %>
 </table>
 <% end %>
-<%= link_to "Add Phone Number", new_contact_number_path(@contact)%>
+<%= link_to "Add Phone Number", new_number_path(@contact)%>
 <br/>
 <br/>
 
@@ -65,13 +65,13 @@ Basic Info
 	<td><%= occasion.month %></td>
 	<td><%= occasion.year %></td>
 	<td><%= occasion.occasion %></td>
-	<td><%= link_to "Edit", edit_contact_occasion_path(@contact, occasion) %> | <%= link_to "Delete", contact_occasion_path(@contact, occasion), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
+	<td><%= link_to "Edit", edit_occasion_path(@contact, occasion) %> | <%= link_to "Delete", occasion_path(@contact, occasion), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
 	</tr>
 <% end %>
 </table>
 <% end %>
 <br/>
-<%= link_to "Add Special Date", new_contact_occasion_path(@contact) %>
+<%= link_to "Add Special Date", new_occasion_path(@contact) %>
 
 <!-- donation -->
 <br/>
@@ -90,13 +90,13 @@ Basic Info
 	<td><%= donation.date %></td>
 	<td><%= donation.amount %></td>
 	<td><%= donation.project %></td>
-	<td><%= link_to "Edit", edit_contact_donation_path(@contact, donation) %> | <%= link_to "Delete", contact_donation_path(@contact, donation), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
+	<td><%= link_to "Edit", edit_donation_path(donation, contact_id: donation.contact_id) %> | <%= link_to "Delete", donation_path(donation), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
 	</tr>
 <% end %>
 </table>
 <% end %>
 <br/>
-<%= link_to "Add Donation", new_contact_donation_path(@contact) %>
+<%= link_to "Add Donation", new_donation_path(contact_id: @contact.id) %>
 
 <br/>
 <br/>
@@ -116,13 +116,13 @@ Basic Info
 		<td><%= task.task %></td>
 		<td><%= task.due_date %></td>
 		<td><%= task.category %></td>
-		<td><%= link_to "Edit", edit_contact_task_path(@contact, task) %> | <%= link_to "Delete", contact_task_path(@contact, task), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
+		<td><%= link_to "Edit", edit_task_path(@contact, task) %> | <%= link_to "Delete", task_path(@contact, task), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
 	</tr>
 <% end %>
 </table>
 <% end %>
 <br/>
-<%= link_to "Add Task", new_contact_task_path(@contact)%>
+<%= link_to "Add Task", new_task_path(@contact)%>
 
 
 <!-- Notes -->
@@ -138,12 +138,12 @@ Basic Info
 <% @note.each do |note| %>
 	<tr>
 		<td><%= note.note %></td>
-		<td><%= link_to "Edit", edit_contact_note_path(@contact, note)%> | <%= link_to "Delete", contact_note_path(@contact, note), :method => :delete, data: { confirm: 'Are you sure?'} %></td>
+		<td><%= link_to "Edit", edit_note_path(@contact, note)%> | <%= link_to "Delete", note_path(@contact, note), :method => :delete, data: { confirm: 'Are you sure?'} %></td>
 	</tr>
 <% end %>
 </table>
 <% end %>
-<%= link_to "Add Note", new_contact_note_path(@contact)%>
+<%= link_to "Add Note", new_note_path(@contact)%>
 
 <!-- web presence -->
 <br/>
@@ -162,12 +162,12 @@ Basic Info
 		<td><%= presence.site %></td>
 		<td><%= presence.url %></td>
 		<td><%= presence.account %></td>
-		<td><%= link_to "Edit", edit_contact_presence_path(@contact, presence) %> | <%= link_to "Delete", contact_presence_path(@contact, presence), :method => :delete, data: {confirm: 'Are you sure'} %></td>
+		<td><%= link_to "Edit", edit_presence_path(@contact, presence) %> | <%= link_to "Delete", presence_path(@contact, presence), :method => :delete, data: {confirm: 'Are you sure'} %></td>
 	</tr>
 <% end %>
 </table>
 <% end %>
-<%= link_to "Add Web Presence", new_contact_presence_path(@contact) %>
+<%= link_to "Add Web Presence", new_presence_path(@contact) %>
 
 
 

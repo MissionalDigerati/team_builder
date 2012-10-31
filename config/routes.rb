@@ -1,15 +1,13 @@
 TeamBuilder::Application.routes.draw do
-  resources :contacts do
-    resources :numbers
-    resources :occasions
-    resources :donations
-    resources :tasks
-    resources :notes
-    resources :presences
-    match 'tasks/completed/:id' => 'tasks#completed', method: :get, as: :complete_task
-  end
-  
-
+  resources :contacts
+  resources :numbers
+  resources :occasions
+  resources :donations
+  resources :tasks
+  resources :notes
+  resources :presences
+  match 'tasks/completed/:id' => 'tasks#completed', method: :get, as: :complete_task
+    
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
