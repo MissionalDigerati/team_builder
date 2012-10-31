@@ -1,6 +1,6 @@
 <fieldset>
 	<%= f.label :site, "Site" %><br/>
-	<%= f.text_field :site %><br/>
+	<%= f.select :site, Presence::SITES, {:include_blank => true} %><br/>
 	<%= f.label :url, "URL" %><br/>
 	<%= f.text_field :url %><br/>
 	<%= f.label :account, "Account" %><br/>

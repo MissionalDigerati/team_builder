@@ -25,8 +25,38 @@ Feature: A user manages their contacts
 		And I click the "create_contact" button
 		Then I should see "Contact was successfully created."
 		
-	Scenario: A user should be able to create a contact with multiple phone numbers, web presence, donations, and special dates on the same form. 	
-
+	Scenario: A user should be able to create a contact phone numbers, web presence, and special dates on the same form. 	
+		Given I am on the home page
+		And I click the "Create New Contact" link
+		Then I should be on the add contact page
+		When I fill in "first_name" with "Jeff"
+		And I fill in "last_name" with "Bridges"
+		And I fill in "spouse_name" with "nancy"
+		And I fill in "email" with "jeff@thedude.com"
+		And I fill in "address_1" with "123 la street"	
+		And I fill in "city" with "los angeles"
+		And I fill in "state_id" with "california"
+		And I fill in "zip" with "91801"				
+		And I fill in "country_id" with "USA"
+		And I fill in "Children" with "none"		
+		And I select "Email" from "contact_preferred_contact"
+		And I select "Roommates" from "contact_network"
+		And I fill in "tags" with "none"
+		And I check the "receive_newsletter" checkboxes
+		And I select "Home" from "Phone Type"
+		And I fill in "Phone Number" with "7777777"
+		And I select "Jan" from "Month"
+		And I select "1" from "Day"
+		And I select "2012" from "Year"
+		And I fill in "Occasion" with "new years"
+		And I select "Facebook" from "Site"
+		And I fill in "URL" with "www.facebook.com"
+		And I fill in "Account" with "facebook filler"
+		And I click the "create_contact" button
+		Then I should see "Contact was successfully created."
+		And I should see "7777777"
+		And I should see "new years"
+		And I should see "Facebook"
 		
 		# 
 		# <Contact id: nil, first_name: nil, last_name: nil, spouse_name: nil, 
