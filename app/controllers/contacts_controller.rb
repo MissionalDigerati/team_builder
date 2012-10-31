@@ -96,4 +96,6 @@ class ContactsController < ApplicationController
       @presence = @contact.presences.where(:contact_id == @contact)
     end
     
+    
+    
 end

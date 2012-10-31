@@ -47,4 +47,15 @@ class TasksController < ApplicationController
     end
   end
   
+  def completed
+    @contact = Contact.find(params[:contact_id])
+    @task = @contact.tasks.find(params[:id])
+    @task[:completed] = true
+    respond_to do |format|
+      if @task.save
+        format.js
+      end
+    end
+  end
+  
 end

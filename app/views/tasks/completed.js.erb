@@ -1,0 +1,2 @@
+// the tr that contains the task in the show pages, has a rel tag with the value of its tasks id. This snippit matches that tr with its corresponding id and removes it. 
+$('tr[rel="<%= @task.id %>"]').remove();

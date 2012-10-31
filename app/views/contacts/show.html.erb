@@ -111,8 +111,8 @@ Basic Info
 		<th>Action</th>		
 	</thead>
 <% @task.each do |task| %>
-	<tr>
-		<td><%= task.completed %></td>
+	<tr rel="<%= task.id %>" >
+		<td><%= task.completed %> <%= link_to "Mark as Completed", contact_complete_task_path(@contact, task), remote: true, :class => "completed_button" %></td>
 		<td><%= task.task %></td>
 		<td><%= task.due_date %></td>
 		<td><%= task.category %></td>
