@@ -1,8 +1,12 @@
 class TasksController < ApplicationController
   
   def new
-    @contact = Contact.find(params[:contact_id])
-    @task = @contact.tasks.build
+    if params[:contact_id] == nil
+      @task = Task.new
+    else
+      @contact = Contact.find(params[:contact_id])
+      @task = @contact.tasks.build
+    end
   end
   
   def create
@@ -21,12 +25,12 @@ class TasksController < ApplicationController
   
   def edit
     @contact = Contact.find(params[:contact_id])
-    @task = @contact.tasks.find(params[:id])
+    @task = Task.find(params[:id])
   end
   
   def update
-    @contact = Contact.find(params[:contact_id])
-    @task = @contact.tasks.find(params[:id])
+    @task = Task.find(params[:id])
+    @contact = Contact.find(@task.contact_id)
     respond_to do |format|
       if @task.update_attributes(params[:task])
         format.html {redirect_to(contact_path(@contact))}
@@ -48,8 +52,8 @@ class TasksController < ApplicationController
   end
   
   def completed
-    @contact = Contact.find(params[:contact_id])
-    @task = @contact.tasks.find(params[:id])
+    @task = Task.find(params[:id])
+    # @contact = Contact.find(params[:contact_id])
     @task[:completed] = true
     respond_to do |format|
       if @task.save

@@ -98,6 +98,9 @@ Basic Info
 <br/>
 <%= link_to "Add Donation", new_donation_path(contact_id: @contact.id) %>
 
+
+<!-- tasks -->
+
 <br/>
 <br/>
 <h3>Tasks</h3><br/>
@@ -112,17 +115,17 @@ Basic Info
 	</thead>
 <% @task.each do |task| %>
 	<tr rel="<%= task.id %>" >
-		<td><%= task.completed %> <%= link_to "Mark as Completed", contact_complete_task_path(@contact, task), remote: true, :class => "completed_button" %></td>
+		<td><%= check_box_tag "#{task.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(task), remote: true, :class => "completed_button #{task.id} hidden" %></td>
 		<td><%= task.task %></td>
 		<td><%= task.due_date %></td>
 		<td><%= task.category %></td>
-		<td><%= link_to "Edit", edit_task_path(@contact, task) %> | <%= link_to "Delete", task_path(@contact, task), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
+		<td><%= link_to "Edit", edit_task_path(task, contact_id: task.contact_id) %> | <%= link_to "Delete", task_path(task), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
 	</tr>
 <% end %>
 </table>
 <% end %>
 <br/>
-<%= link_to "Add Task", new_task_path(@contact)%>
+<%= link_to "Add Task", new_task_path(contact_id: @contact.id )%>
 
 
 <!-- Notes -->

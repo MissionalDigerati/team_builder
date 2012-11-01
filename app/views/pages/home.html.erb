@@ -14,7 +14,7 @@
 		
 		<table class="table">
 			<thead>
-				<th>Completed?</th>
+				<th>Complete</th>
 				<th>Task</th>
 				<th>Due date</th>
 				<th>Category</th>
@@ -22,15 +22,15 @@
 			</thead>
 		<% @task.each do |task| %>
 			<tr rel="<%= task.id %>" >
-				<td><%= task.completed %> <%= link_to "Mark as Completed", remote: true, :class => "completed_button" %></td>
+				<td><%= check_box_tag "#{task.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(task), remote: true, :class => "completed_button #{task.id} hidden" %>Check to complete</td>
 				<td><%= task.task %></td>
 				<td><%= task.due_date %></td>
 				<td><%= task.category %></td>
-				<td><%= link_to "Edit", edit_task_path(task.contact_id, task) %> | <%= link_to "Delete", task_path(task), :method => :delete, data: { confirm: 'Are you sure?'} %></td>
+				<td><%= link_to "Edit", edit_task_path(task.contact_id, task) %> | <%= link_to "Delete", task_path(task), :method => :delete, data: { confirm: 'Are you sure?'} %> | <%= link_to "View Contact", contact_path(task.contact_id)%></td>
 			</tr>
 		<% end %>	
 		</table>
-		<%= link_to "Add Task" %>
+		<%= link_to "Add Task", new_task_path %>
 	</div>
 
 	<div class="span3">

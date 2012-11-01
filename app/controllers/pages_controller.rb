@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @task = Task.find(:all, :limit => 10)
+    @task = Task.where(:completed => false).limit(10)
   end
   
 end

@@ -14,3 +14,6 @@
 fieldset {
     border: 0;
 }
+a.hidden{
+	display: none;
+}

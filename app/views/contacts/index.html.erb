@@ -1,22 +1,38 @@
-<h1>Listing contacts</h1><br/>
-<%= link_to 'Home', root_path %><br/>
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="row-fluid">
 
-<% @contacts.each do |contact| %>
-  <tr>
-		<td><%= contact.first_name %></td>
-    <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-    <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-		<td><%= link_to 'Show', contact %></td>
-  </tr>
-<% end %>
-</table>
+	<h1>All Contacts</h1><br/>
+	<%= link_to 'Home', root_path %><br/>
+	<table class="table index">
+	  <tr>
+		  <th>Image</th>
+	    <th>First Name</th>
+			<th>Last Name</th>
+			<th>Spouse Name</th>
+			<th>Children</th>
+			<th>Preferred Contact</th>
+			<th>Created at</th>
+			<th>Updated at</th>
+	    <th>Action</th>
+	  </tr>
 
-<br />
+	<% @contacts.each do |contact| %>
+	  <tr>
+			<td></td>
+			<td><%= contact.first_name %></td>
+	    <td><%= contact.last_name %></td>
+			<td><%= contact.spouse_name %></td>
+			<td><%= contact.children %></td>
+			<td><%= contact.preferred_contact %></td>
+			<td><%= contact.created_at.strftime('%m/%d/%Y') %></td>
+			<td><%= contact.updated_at.strftime('%m/%d/%Y') %></td>
+			<td class="center"><%= link_to 'Edit', edit_contact_path(contact) %> | <%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %> | <%= link_to 'Show', contact %></td>
+			
+	  </tr>
+	<% end %>
+	</table>
 
-<%= link_to 'New Contact', new_contact_path %>
+	<br />
+
+	<%= link_to 'New Contact', new_contact_path %>
+
+</div>

@@ -12,3 +12,8 @@ jQuery ->
 		regexp = new RegExp($(this).data('id'), 'g')
 		$(this).before($(this).data('fields').replace(regexp, time))
 		event.preventDefault()	
+		
+	$(".checkbox").click ->
+		$(this).closest("td").find("a.completed_button").click()
+
+	
