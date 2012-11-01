@@ -1,8 +1,12 @@
 class PresencesController < ApplicationController
   
   def new
-    @contact = Contact.find(params[:contact_id])
-    @presence = @contact.presences.build
+    if params[:contact_id] == nil
+      @presence = Presence.new
+    else
+      @contact = Contact.find(params[:contact_id])
+      @presence = @contact.presences.build
+    end
   end
   
   def create
@@ -25,8 +29,8 @@ class PresencesController < ApplicationController
   end
   
   def update
-    @contact = Contact.find(params[:contact_id])
     @presence = Presence.find(params[:id])
+    @contact = Contact.find(@presence.contact_id)
     respond_to do |format|
       if @presence.update_attributes(params[:presence])
         format.html {redirect_to(contact_path(@contact))}
@@ -39,7 +43,6 @@ class PresencesController < ApplicationController
   end
   
   def destroy
-    @contact = Contact.find(params[:contact_id])
     @presence = Presence.find(params[:id])
     @presence.destroy
     respond_to do |format|

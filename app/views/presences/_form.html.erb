@@ -1,4 +1,4 @@
-<%= form_for([@contact, @presence]) do |f| %>
+<%= form_for([@presence]) do |f| %>
 	<%= f.label :contact_id, "Contact" %><br/>
 	<%= f.select(:contact_id, Contact.all.collect {|p| [ p.first_name, p.id ] }) %><br/>
 	<%= f.label :site, "Site" %><br/>
