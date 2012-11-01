@@ -51,5 +51,5 @@ Feature: A user should be able to create, edit, and delete notes from their cont
 		And I am on the show page for "error note"
 		When I click the "Add Note" link
 		And I click the "Create Note" button
-		Then I should be on the new notes page for "error note"
+		Then I should see "Your Note has not been saved."
 			

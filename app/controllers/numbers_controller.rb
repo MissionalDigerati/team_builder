@@ -1,8 +1,12 @@
 class NumbersController < ApplicationController
   
   def new
-    @contact = Contact.find(params[:contact_id])
-    @number = @contact.numbers.build
+    if params[:contact_id] == nil
+      @number = Number.new
+    else
+      @contact = Contact.find(params[:contact_id])
+      @number = @contact.numbers.build
+    end
   end
   
   def create
@@ -25,8 +29,8 @@ class NumbersController < ApplicationController
   end
   
   def update
-    @contact = Contact.find(params[:contact_id])
-    @number = @contact.numbers.find(params[:id])
+    @number = Number.find(params[:id])
+    @contact = Contact.find(@number.contact_id)
     respond_to do |format|
       if @number.update_attributes(params[:number])
         format.html {redirect_to(contact_path(@contact))}

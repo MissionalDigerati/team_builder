@@ -12,13 +12,8 @@ class DonationsController < ApplicationController
   end
   
   def create
-    if params[:contact_id] == nil
-      @donations = Donation.new(params[:donation])
-      @contact = Contact.find(@donations.contact_id)
-    else
-      @contact = Contact.find(params[:donation][:contact_id])
-      @donations = @contact.donations.new(params[:donation])
-    end
+    @contact = Contact.find(params[:donation][:contact_id])
+    @donations = @contact.donations.new(params[:donation])
     respond_to do |format|
       if @donations.save
         format.html {redirect_to(contact_path(@contact))}

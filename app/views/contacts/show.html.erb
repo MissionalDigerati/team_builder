@@ -38,7 +38,7 @@ Basic Info
 	<tr>
 	<td><%= number.phone_type %></td>
 	<td><%= number.number %></td>
-	<td><%= link_to "Edit", edit_number_path(@contact, number) %> | <%= link_to "Delete", number_path(@contact, number), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
+	<td><%= link_to "Edit", edit_number_path(number, contact_id: number.contact_id ) %> | <%= link_to "Delete", number_path(number), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
 	</tr>
 <% end %>
 </table>
@@ -65,7 +65,7 @@ Basic Info
 	<td><%= occasion.month %></td>
 	<td><%= occasion.year %></td>
 	<td><%= occasion.occasion %></td>
-	<td><%= link_to "Edit", edit_occasion_path(@contact, occasion) %> | <%= link_to "Delete", occasion_path(@contact, occasion), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
+	<td><%= link_to "Edit", edit_occasion_path(occasion, contact_id: occasion.contact_id) %> | <%= link_to "Delete", occasion_path(occasion), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
 	</tr>
 <% end %>
 </table>
@@ -138,12 +138,12 @@ Basic Info
 <% @note.each do |note| %>
 	<tr>
 		<td><%= note.note %></td>
-		<td><%= link_to "Edit", edit_note_path(@contact, note)%> | <%= link_to "Delete", note_path(@contact, note), :method => :delete, data: { confirm: 'Are you sure?'} %></td>
+		<td><%= link_to "Edit", edit_note_path(note, contact_id: @contact.id)%> | <%= link_to "Delete", note_path(note, contact_id: @contact.id), :method => :delete, data: { confirm: 'Are you sure?'} %></td>
 	</tr>
 <% end %>
 </table>
 <% end %>
-<%= link_to "Add Note", new_note_path(@contact)%>
+<%= link_to "Add Note", new_note_path(contact_id: @contact.id)%>
 
 <!-- web presence -->
 <br/>

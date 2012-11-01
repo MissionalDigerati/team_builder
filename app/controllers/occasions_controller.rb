@@ -1,8 +1,12 @@
 class OccasionsController < ApplicationController
   
   def new
-    @contact = Contact.find(params[:contact_id])
-    @occasions = @contact.occasions.build
+    if params[:contact_id] == nil
+      @occasions = Occasion.new
+    else
+      @contact = Contact.find(params[:contact_id])
+      @occasions = @contact.occasions.build
+    end
   end
   
   def create
@@ -25,8 +29,8 @@ class OccasionsController < ApplicationController
   end
    
   def update
-    @contact = Contact.find(params[:contact_id])
-    @occasions = @contact.occasions.find(params[:id])
+    @occasions = Occasion.find(params[:id])
+    @contact = Contact.find(@occasions.contact_id)
     respond_to do |format|
       if @occasions.update_attributes(params[:occasion])
         format.html {redirect_to(contact_path(@contact))}

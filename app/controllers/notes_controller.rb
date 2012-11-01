@@ -1,8 +1,12 @@
 class NotesController < ApplicationController
   
   def new
-    @contact = Contact.find(params[:contact_id])
-    @note = @contact.notes.build
+    if params[:contact_id] == nil
+      @note = Note.new
+    else
+      @contact = Contact.find(params[:contact_id])
+      @note = @contact.notes.build
+    end
   end
   
   
@@ -26,8 +30,8 @@ class NotesController < ApplicationController
   end
   
   def update
-    @contact = Contact.find(params[:contact_id])
-    @note = @contact.notes.find(params[:id])
+    @note = Note.find(params[:id])
+    @contact = Contact.find(@note.contact_id)
     respond_to do |format|
       if @note.update_attributes(params[:note])
         format.html{redirect_to(contact_path(@contact))}
