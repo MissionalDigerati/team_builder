@@ -6,56 +6,106 @@
 
 
 <div class="row-fluid">
-	<div class="span12">
-			Basic Info
+	<div class="span3">
+			<h3>Contact Info</h3>
 			</br>
-			<%= @contact.first_name %><br/>
-			<%= @contact.last_name %><br/>
-			<%= @contact.spouse_name %><br/>
-			<%= @contact.email %><br/>
-			<%= @contact.spouse_email %><br/>
-			<%= @contact.tags %><br/>
-			<%= @contact.network %><br/>
-			<%= @contact.address_1 %><br/>
-			<%= @contact.address_2 %><br/>
-			<%= @contact.city %><br/>
-			<%= @contact.state_id %><br/>
-			<%= @contact.zip %><br/>
-			<%= @contact.country_id %><br/>
-			<%= @contact.children %><br/>
-			<%= @contact.news_letter(@contact.receive_newsletter) %><br/>
-			<br/>
-			<br/>
-
-			<!-- phone numbers -->
-
-			<h3>Phone Number(s)</h3>
-			<br/>
-			<% if @number.length > 0 %>
-			<table>
-				<thead>
-					<th>Type</th>
-					<th>Number</th>
-					<th>Action</th>
-				</thead>
-			<% @number.each do |number| %>
+			</br>
+			<table class="table contact table-striped table-bordered">
 				<tr>
-				<td><%= number.phone_type %></td>
-				<td><%= number.number %></td>
-				<td><%= link_to "Edit", edit_number_path(number, contact_id: number.contact_id ) %> | <%= link_to "Delete", number_path(number), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
+					<td>First Name:</td>
+					<td><%= @contact.first_name %></td>
 				</tr>
-			<% end %>
+				<tr>
+					<td>Last Name:</td>
+					<td><%= @contact.last_name %></td>
+				</tr>
+				<tr>
+					<td>Spouse Name:</td>
+					<td><%= @contact.spouse_name %></td>
+				</tr>
+				<tr>
+					<td>Email:</td>
+					<td><%= @contact.email %></td>
+				</tr>
+				<tr>
+					<td>Spouse Email:</td>
+					<td><%= @contact.spouse_email %></td>
+				</tr>
+				<tr>
+					<td>Tags:</td>
+					<td><%= @contact.tags %></td>
+				</tr>
+				<tr>
+					<td>Network:</td>
+					<td><%= @contact.network %></td>
+				</tr>
+				<tr>
+					<td>Address 1:</td>
+					<td><%= @contact.address_1 %></td>
+				</tr>
+				<tr>
+					<td>Address 2:</td>
+					<td><%= @contact.address_2 %></td>
+				</tr>
+				<tr>
+					<td>City:</td>
+					<td><%= @contact.city %></td>
+				</tr>
+				<tr>
+					<td>State:</td>
+					<td><%= @contact.state_id %></td>
+				</tr>
+				<tr>
+					<td>Zip:</td>
+					<td><%= @contact.zip %></td>
+				</tr>
+				<tr>
+					<td>Country:</td>
+					<td><%= @contact.country_id %></td>
+				</tr>
+				<tr>
+					<td>Children:</td>
+					<td><%= @contact.children %></td>
+				</tr>
+				<tr>
+					<td>Receive News Letter?</td>
+					<td><%= @contact.news_letter(@contact.receive_newsletter) %></td>
+				</tr>
 			</table>
-			<% end %>
-			<%= link_to "Add Phone Number", new_number_path(@contact)%>
 			<br/>
 			<br/>
-
+	</div>
+	
+	<div class="span9">
+				<!-- phone numbers -->
+			
+				<h3>Phone Number(s)</h3>
+				<br/>
+				<% if @number.length > 0 %>
+				<table class="table">
+					<thead>
+						<th>Type</th>
+						<th>Number</th>
+						<th>Action</th>
+					</thead>
+				<% @number.each do |number| %>
+					<tr>
+					<td><%= number.phone_type %></td>
+					<td><%= number.number %></td>
+					<td><%= link_to "Edit", edit_number_path(number, contact_id: number.contact_id ) %> | <%= link_to "Delete", number_path(number), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
+					</tr>
+				<% end %>
+				</table>
+				<% end %>
+				<%= link_to "Add Phone Number", new_number_path(@contact)%>
+				<br/>
+				<br/>
+		
 			<!-- special occasion -->
 			<h3>Special Dates</h3>
 			<br/>
 			<% if @occasion.length > 0 %>
-			<table>
+			<table class="table">
 				<thead>
 					<th>Day</th>
 					<th>Month</th>
@@ -77,12 +127,11 @@
 			<br/>
 			<%= link_to "Add Special Date", new_occasion_path(@contact) %>
 
+
 			<!-- donation -->
-			<br/>
-			<br/>
 			<h3>Donations</h3> <br/>
 			<% if @donation.length > 0 %>
-			<table>
+			<table class="table">
 				<thead>
 					<th>Date</th>
 					<th>Amount</th>
@@ -103,13 +152,15 @@
 			<%= link_to "Add Donation", new_donation_path(contact_id: @contact.id) %>
 
 
+		<div class="clear">
+			
+		</div>
+
 			<!-- tasks -->
 
-			<br/>
-			<br/>
 			<h3>Tasks</h3><br/>
 			<% if @task.length > 0 %>
-			<table>
+			<table class="table">
 				<thead>
 					<th>Completed?</th>
 					<th>Task</th>
@@ -137,7 +188,7 @@
 			<br/>
 			<h3>Notes</h3><br/>
 			<% if @note.length > 0 %>
-			<table>
+			<table class="table">
 				<thead>
 					<th>Note</th>
 					<th>Action</th>
@@ -157,7 +208,7 @@
 			<br/>
 			<h3>Web Presence</h3><br/>
 			<% if @presence.length > 0 %>
-			<table>
+			<table class="table">
 				<thead>
 					<th>Site</th>
 					<th>URL</th>
@@ -177,8 +228,8 @@
 			<%= link_to "Add Web Presence", new_presence_path(@contact) %>
 	</div>
 </div>
-
-
+<br/>
+<br/>
 
 
 

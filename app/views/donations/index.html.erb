@@ -5,7 +5,7 @@
 		<%= link_to 'New Donation', new_donation_path, :class => "btn btn-info pull-right" %>
 		<br/>
 		<br/>
-		<table class="table index table-bordered table-hover">
+		<table class="table index table-bordered table-hover table-striped">
 		  <tr>
 		    <th>Name</th>
 				<th>Amount</th>
@@ -22,7 +22,7 @@
 				<td><%= donation.project.capitalize %></td>
 				<td><%= donation.created_at.strftime('%m/%d/%Y') %></td>
 				<td><%= donation.updated_at.strftime('%m/%d/%Y') %></td>
-				<td class="center"><%= link_to 'Edit', edit_donation_path(donation, contact_id: donation.contact_id) %> | <%= link_to 'Destroy', donation, method: :delete, data: { confirm: 'Are you sure?' } %> | <%= link_to 'View Contact', contact_path(donation.contact_id) %></td>
+				<td class="center"><%= link_to 'Edit', edit_donation_path(donation, contact_id: donation.contact_id), :class => "btn btn-success btn-small"  %> <%= link_to 'Destroy', donation, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small"  %> <%= link_to 'View Contact', contact_path(donation.contact_id), :class => "btn btn-info btn-small"  %></td>
 		  </tr>
 		<% end %>
 		</table>

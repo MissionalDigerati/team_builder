@@ -34,11 +34,11 @@
 				<td><%= task.task %></td>
 				<td><%= task.due_date %></td>
 				<td><%= task.category %></td>
-				<td><%= link_to "Edit", edit_task_path(task, contact_id: task.contact_id) %> | <%= link_to "Delete", task_path(task), :method => :delete, data: { confirm: 'Are you sure?'} %> | <%= link_to "#{task.contact.first_name.capitalize}", contact_path(task.contact_id)%></td>
+				<td><%= link_to "Edit", edit_task_path(task, contact_id: task.contact_id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", task_path(task), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> <%= link_to "#{task.contact.first_name.capitalize}", contact_path(task.contact_id), :class => "btn btn-small btn-info" %></td>
 			</tr>
 		<% end %>	
 		</table>
-		<%= link_to "Add Task", new_task_path, :class => "btn btn-info" %> <%= link_to "View All Tasks", tasks_path, :class => "btn btn-info" %>
+		<%= link_to "Add Task", new_task_path, :class => "btn btn-primary" %> <%= link_to "View All Tasks", tasks_path, :class => "btn btn-primary" %>
 	</div>
 
 </div>

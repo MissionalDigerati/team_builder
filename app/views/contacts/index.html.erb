@@ -2,10 +2,10 @@
 	<div class="span12">
 		
 		<h1>All Contacts</h1><br/>
-		<%= link_to 'New Contact', new_contact_path, :class => "btn btn-info pull-right" %>
+		<%= link_to 'New Contact', new_contact_path, :class => "btn btn-primary pull-right" %>
 		<br/>
 		<br/>
-		<table class="table index table-bordered table-hover">
+		<table class="table index table-bordered table-hover table-striped">
 		  <tr>
 			  <th>Image</th>
 		    <th>First Name</th>
@@ -30,7 +30,7 @@
 				<td><%= news_letter(contact.receive_newsletter) %></td>
 				<td><%= contact.created_at.strftime('%m/%d/%Y') %></td>
 				<td><%= contact.updated_at.strftime('%m/%d/%Y') %></td>
-				<td class="center"><%= link_to 'Edit', edit_contact_path(contact) %> | <%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %> | <%= link_to 'Show', contact %></td>
+				<td class="center"><%= link_to 'Edit', edit_contact_path(contact), :class => "btn btn-success btn-small"  %> <%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small"  %> <%= link_to 'Show', contact, :class => "btn btn-info btn-small"  %></td>
 			
 		  </tr>
 		<% end %>
@@ -38,7 +38,7 @@
 
 		<br />
 
-		<%= link_to 'New Contact', new_contact_path, :class => "btn btn-info pull-right" %>
+		<%= link_to 'New Contact', new_contact_path, :class => "btn btn-primary pull-right" %>
 		
 	</div> <!-- span12 -->
 

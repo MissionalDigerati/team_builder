@@ -24,3 +24,14 @@ a.hidden{
 table.index tr{
 	height: 40px;
 }
+.clear{
+	display: block;
+	clear: both;
+	height: 1px;
+}
+.red{
+	background-color: red;
+}
+table.contact td{
+	text-transform:capitalize;
+}

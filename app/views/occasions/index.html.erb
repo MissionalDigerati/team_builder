@@ -5,7 +5,7 @@
 		<%= link_to 'New Special Date', new_occasion_path, :class => "btn btn-info pull-right" %>
 		<br/>
 		<br/>
-		<table class="table index table-bordered table-hover">
+		<table class="table index table-bordered table-hover table-striped">
 		  <tr>
 		    <th>Name</th>
 				<th>Day</th>
@@ -22,7 +22,7 @@
 				<td><%= occasion.month %></td>
 				<td><%= occasion.year %></td>
 				<td><%= occasion.occasion %></td>
-				<td><%= link_to 'Edit', edit_occasion_path(occasion, contact_id: occasion.contact_id) %> | <%= link_to 'Delete', occasion, method: :delete, data: { confirm: 'Are you sure?' } %> | <%= link_to 'View Contact', contact_path(occasion.contact_id) %></td>
+				<td><%= link_to 'Edit <i class="icon-edit icon-white"></i>'.html_safe, edit_occasion_path(occasion, contact_id: occasion.contact_id), :class => "btn btn-success btn-small"  %> <%= link_to 'Delete <i class="icon-trash icon-white"></i>'.html_safe, occasion, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small"  %> <%= link_to 'View Contact <i class="icon-user icon-white"></i>'.html_safe, contact_path(occasion.contact_id), :class => "btn btn-info btn-small"  %></td>
 			</tr>
 		<% end %>
 		</table>
