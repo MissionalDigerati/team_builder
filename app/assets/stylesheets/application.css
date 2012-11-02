@@ -35,3 +35,6 @@ table.index tr{
 table.contact td{
 	text-transform:capitalize;
 }
+.bold{
+	font-weight: bold;
+}

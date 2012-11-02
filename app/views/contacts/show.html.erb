@@ -1,79 +1,84 @@
-<%= link_to 'Home', root_path %>
-</br>
-<%= link_to 'Edit', edit_contact_path(@contact) %> |
-<%= link_to 'Back', contacts_path %>
-</br>
-
 
 <div class="row-fluid">
 	<div class="span3">
 			<h3>Contact Info</h3>
 			</br>
+			<%= link_to 'Edit', edit_contact_path(@contact), :class => "btn btn-small btn-info" %>
+			</br>
 			</br>
 			<table class="table contact table-striped table-bordered">
 				<tr>
-					<td>First Name:</td>
+					<td class="bold">First Name:</td>
 					<td><%= @contact.first_name %></td>
 				</tr>
 				<tr>
-					<td>Last Name:</td>
+					<td class="bold">Last Name:</td>
 					<td><%= @contact.last_name %></td>
 				</tr>
 				<tr>
-					<td>Spouse Name:</td>
+					<td class="bold">Spouse Name:</td>
 					<td><%= @contact.spouse_name %></td>
 				</tr>
 				<tr>
-					<td>Email:</td>
+					<td class="bold">Email:</td>
 					<td><%= @contact.email %></td>
 				</tr>
 				<tr>
-					<td>Spouse Email:</td>
+					<td class="bold">Spouse Email:</td>
 					<td><%= @contact.spouse_email %></td>
 				</tr>
 				<tr>
-					<td>Tags:</td>
+					<td class="bold">Tags:</td>
 					<td><%= @contact.tags %></td>
 				</tr>
 				<tr>
-					<td>Network:</td>
+					<td class="bold">Network:</td>
 					<td><%= @contact.network %></td>
 				</tr>
 				<tr>
-					<td>Address 1:</td>
+					<td class="bold">Address 1:</td>
 					<td><%= @contact.address_1 %></td>
 				</tr>
 				<tr>
-					<td>Address 2:</td>
+					<td class="bold">Address 2:</td>
 					<td><%= @contact.address_2 %></td>
 				</tr>
 				<tr>
-					<td>City:</td>
+					<td class="bold">City:</td>
 					<td><%= @contact.city %></td>
 				</tr>
 				<tr>
-					<td>State:</td>
+					<td class="bold">State:</td>
 					<td><%= @contact.state_id %></td>
 				</tr>
 				<tr>
-					<td>Zip:</td>
+					<td class="bold">Zip:</td>
 					<td><%= @contact.zip %></td>
 				</tr>
 				<tr>
-					<td>Country:</td>
+					<td class="bold">Country:</td>
 					<td><%= @contact.country_id %></td>
 				</tr>
 				<tr>
-					<td>Children:</td>
+					<td class="bold">Children:</td>
 					<td><%= @contact.children %></td>
 				</tr>
 				<tr>
-					<td>Receive News Letter?</td>
+					<td class="bold">Receive News Letter?</td>
 					<td><%= @contact.news_letter(@contact.receive_newsletter) %></td>
+				</tr>
+				<tr>
+					<td class="bold">Created at:</td>
+					<td><%= @contact.created_at.strftime('%d/%m/%Y') %></td>
+				</tr>
+				<tr>
+					<td class="bold">Last Updated:</td>
+					<td><%= @contact.updated_at.strftime('%d/%m/%Y') %></td>
 				</tr>
 			</table>
 			<br/>
 			<br/>
+
 	</div>
 	
 	<div class="span9">
@@ -92,12 +97,12 @@
 					<tr>
 					<td><%= number.phone_type %></td>
 					<td><%= number.number %></td>
-					<td><%= link_to "Edit", edit_number_path(number, contact_id: number.contact_id ) %> | <%= link_to "Delete", number_path(number), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
+					<td><%= link_to "Edit", edit_number_path(number, contact_id: number.contact_id ), :class => "btn btn-small btn-success" %> <%= link_to "Delete", number_path(number), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
 					</tr>
 				<% end %>
 				</table>
 				<% end %>
-				<%= link_to "Add Phone Number", new_number_path(@contact)%>
+				<%= link_to "Add Phone Number", new_number_path(@contact), :class => "btn btn-primary" %>
 				<br/>
 				<br/>
 		
@@ -119,13 +124,13 @@
 				<td><%= occasion.month %></td>
 				<td><%= occasion.year %></td>
 				<td><%= occasion.occasion %></td>
-				<td><%= link_to "Edit", edit_occasion_path(occasion, contact_id: occasion.contact_id) %> | <%= link_to "Delete", occasion_path(occasion), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
+				<td><%= link_to "Edit", edit_occasion_path(occasion, contact_id: occasion.contact_id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", occasion_path(occasion), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
 				</tr>
 			<% end %>
 			</table>
 			<% end %>
 			<br/>
-			<%= link_to "Add Special Date", new_occasion_path(@contact) %>
+			<%= link_to "Add Special Date", new_occasion_path(@contact), :class => "btn btn-primary" %>
 
 
 			<!-- donation -->
@@ -143,13 +148,13 @@
 				<td><%= donation.date %></td>
 				<td><%= donation.amount %></td>
 				<td><%= donation.project %></td>
-				<td><%= link_to "Edit", edit_donation_path(donation, contact_id: donation.contact_id) %> | <%= link_to "Delete", donation_path(donation), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
+				<td><%= link_to "Edit", edit_donation_path(donation, contact_id: donation.contact_id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", donation_path(donation), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
 				</tr>
 			<% end %>
 			</table>
 			<% end %>
 			<br/>
-			<%= link_to "Add Donation", new_donation_path(contact_id: @contact.id) %>
+			<%= link_to "Add Donation", new_donation_path(contact_id: @contact.id), :class => "btn btn-primary" %>
 
 
 		<div class="clear">
@@ -174,13 +179,13 @@
 					<td><%= task.task %></td>
 					<td><%= task.due_date %></td>
 					<td><%= task.category %></td>
-					<td><%= link_to "Edit", edit_task_path(task, contact_id: task.contact_id) %> | <%= link_to "Delete", task_path(task), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
+					<td><%= link_to "Edit", edit_task_path(task, contact_id: task.contact_id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", task_path(task), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
 				</tr>
 			<% end %>
 			</table>
 			<% end %>
 			<br/>
-			<%= link_to "Add Task", new_task_path(contact_id: @contact.id )%>
+			<%= link_to "Add Task", new_task_path(contact_id: @contact.id ), :class => "btn btn-primary"%>
 
 
 			<!-- Notes -->
@@ -196,12 +201,12 @@
 			<% @note.each do |note| %>
 				<tr>
 					<td><%= note.note %></td>
-					<td><%= link_to "Edit", edit_note_path(note, contact_id: @contact.id)%> | <%= link_to "Delete", note_path(note, contact_id: @contact.id), :method => :delete, data: { confirm: 'Are you sure?'} %></td>
+					<td><%= link_to "Edit", edit_note_path(note, contact_id: @contact.id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", note_path(note, contact_id: @contact.id), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %></td>
 				</tr>
 			<% end %>
 			</table>
 			<% end %>
-			<%= link_to "Add Note", new_note_path(contact_id: @contact.id)%>
+			<%= link_to "Add Note", new_note_path(contact_id: @contact.id), :class => "btn btn-primary"%>
 
 			<!-- web presence -->
 			<br/>
@@ -220,12 +225,12 @@
 					<td><%= presence.site %></td>
 					<td><%= presence.url %></td>
 					<td><%= presence.account %></td>
-					<td><%= link_to "Edit", edit_presence_path(presence, contact_id: @contact.id) %> | <%= link_to "Delete", presence_path(presence), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
+					<td><%= link_to "Edit", edit_presence_path(presence, contact_id: @contact.id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", presence_path(presence), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
 				</tr>
 			<% end %>
 			</table>
 			<% end %>
-			<%= link_to "Add Web Presence", new_presence_path(@contact) %>
+			<%= link_to "Add Web Presence", new_presence_path(@contact), :class => "btn btn-primary" %>
 	</div>
 </div>
 <br/>
