@@ -17,3 +17,5 @@ jQuery ->
 		$(this).closest("td").find("a.completed_button").click()
 		
 	$('.dropdown-toggle').dropdown()
+	
+	$(".alert").alert()

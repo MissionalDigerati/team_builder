@@ -3,176 +3,180 @@
 <%= link_to 'Edit', edit_contact_path(@contact) %> |
 <%= link_to 'Back', contacts_path %>
 </br>
-Basic Info
-</br>
-<%= @contact.first_name %><br/>
-<%= @contact.last_name %><br/>
-<%= @contact.spouse_name %><br/>
-<%= @contact.email %><br/>
-<%= @contact.spouse_email %><br/>
-<%= @contact.tags %><br/>
-<%= @contact.network %><br/>
-<%= @contact.address_1 %><br/>
-<%= @contact.address_2 %><br/>
-<%= @contact.city %><br/>
-<%= @contact.state_id %><br/>
-<%= @contact.zip %><br/>
-<%= @contact.country_id %><br/>
-<%= @contact.children %><br/>
-<%= @contact.news_letter(@contact.receive_newsletter) %><br/>
-<br/>
-<br/>
-
-<!-- phone numbers -->
-
-<h3>Phone Number(s)</h3>
-<br/>
-<% if @number.length > 0 %>
-<table>
-	<thead>
-		<th>Type</th>
-		<th>Number</th>
-		<th>Action</th>
-	</thead>
-<% @number.each do |number| %>
-	<tr>
-	<td><%= number.phone_type %></td>
-	<td><%= number.number %></td>
-	<td><%= link_to "Edit", edit_number_path(number, contact_id: number.contact_id ) %> | <%= link_to "Delete", number_path(number), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
-	</tr>
-<% end %>
-</table>
-<% end %>
-<%= link_to "Add Phone Number", new_number_path(@contact)%>
-<br/>
-<br/>
-
-<!-- special occasion -->
-<h3>Special Dates</h3>
-<br/>
-<% if @occasion.length > 0 %>
-<table>
-	<thead>
-		<th>Day</th>
-		<th>Month</th>
-		<th>Year</th>
-		<th>Occasion</th>
-		<th>Action</th>
-	</thead>
-<% @occasion.each do |occasion| %>
-	<tr>
-	<td><%= occasion.day %></td>
-	<td><%= occasion.month %></td>
-	<td><%= occasion.year %></td>
-	<td><%= occasion.occasion %></td>
-	<td><%= link_to "Edit", edit_occasion_path(occasion, contact_id: occasion.contact_id) %> | <%= link_to "Delete", occasion_path(occasion), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
-	</tr>
-<% end %>
-</table>
-<% end %>
-<br/>
-<%= link_to "Add Special Date", new_occasion_path(@contact) %>
-
-<!-- donation -->
-<br/>
-<br/>
-<h3>Donations</h3> <br/>
-<% if @donation.length > 0 %>
-<table>
-	<thead>
-		<th>Date</th>
-		<th>Amount</th>
-		<th>Project</th>
-		<th>Action</th>
-	</thead>
-<% @donation.each do |donation| %>
-	<tr>
-	<td><%= donation.date %></td>
-	<td><%= donation.amount %></td>
-	<td><%= donation.project %></td>
-	<td><%= link_to "Edit", edit_donation_path(donation, contact_id: donation.contact_id) %> | <%= link_to "Delete", donation_path(donation), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
-	</tr>
-<% end %>
-</table>
-<% end %>
-<br/>
-<%= link_to "Add Donation", new_donation_path(contact_id: @contact.id) %>
 
 
-<!-- tasks -->
+<div class="row-fluid">
+	<div class="span12">
+			Basic Info
+			</br>
+			<%= @contact.first_name %><br/>
+			<%= @contact.last_name %><br/>
+			<%= @contact.spouse_name %><br/>
+			<%= @contact.email %><br/>
+			<%= @contact.spouse_email %><br/>
+			<%= @contact.tags %><br/>
+			<%= @contact.network %><br/>
+			<%= @contact.address_1 %><br/>
+			<%= @contact.address_2 %><br/>
+			<%= @contact.city %><br/>
+			<%= @contact.state_id %><br/>
+			<%= @contact.zip %><br/>
+			<%= @contact.country_id %><br/>
+			<%= @contact.children %><br/>
+			<%= @contact.news_letter(@contact.receive_newsletter) %><br/>
+			<br/>
+			<br/>
 
-<br/>
-<br/>
-<h3>Tasks</h3><br/>
-<% if @task.length > 0 %>
-<table>
-	<thead>
-		<th>Completed?</th>
-		<th>Task</th>
-		<th>Due date</th>
-		<th>Category</th>
-		<th>Action</th>		
-	</thead>
-<% @task.each do |task| %>
-	<tr rel="<%= task.id %>" >
-		<td><%= check_box_tag "#{task.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(task), remote: true, :class => "completed_button #{task.id} hidden" %></td>
-		<td><%= task.task %></td>
-		<td><%= task.due_date %></td>
-		<td><%= task.category %></td>
-		<td><%= link_to "Edit", edit_task_path(task, contact_id: task.contact_id) %> | <%= link_to "Delete", task_path(task), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
-	</tr>
-<% end %>
-</table>
-<% end %>
-<br/>
-<%= link_to "Add Task", new_task_path(contact_id: @contact.id )%>
+			<!-- phone numbers -->
+
+			<h3>Phone Number(s)</h3>
+			<br/>
+			<% if @number.length > 0 %>
+			<table>
+				<thead>
+					<th>Type</th>
+					<th>Number</th>
+					<th>Action</th>
+				</thead>
+			<% @number.each do |number| %>
+				<tr>
+				<td><%= number.phone_type %></td>
+				<td><%= number.number %></td>
+				<td><%= link_to "Edit", edit_number_path(number, contact_id: number.contact_id ) %> | <%= link_to "Delete", number_path(number), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
+				</tr>
+			<% end %>
+			</table>
+			<% end %>
+			<%= link_to "Add Phone Number", new_number_path(@contact)%>
+			<br/>
+			<br/>
+
+			<!-- special occasion -->
+			<h3>Special Dates</h3>
+			<br/>
+			<% if @occasion.length > 0 %>
+			<table>
+				<thead>
+					<th>Day</th>
+					<th>Month</th>
+					<th>Year</th>
+					<th>Occasion</th>
+					<th>Action</th>
+				</thead>
+			<% @occasion.each do |occasion| %>
+				<tr>
+				<td><%= occasion.day %></td>
+				<td><%= occasion.month %></td>
+				<td><%= occasion.year %></td>
+				<td><%= occasion.occasion %></td>
+				<td><%= link_to "Edit", edit_occasion_path(occasion, contact_id: occasion.contact_id) %> | <%= link_to "Delete", occasion_path(occasion), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
+				</tr>
+			<% end %>
+			</table>
+			<% end %>
+			<br/>
+			<%= link_to "Add Special Date", new_occasion_path(@contact) %>
+
+			<!-- donation -->
+			<br/>
+			<br/>
+			<h3>Donations</h3> <br/>
+			<% if @donation.length > 0 %>
+			<table>
+				<thead>
+					<th>Date</th>
+					<th>Amount</th>
+					<th>Project</th>
+					<th>Action</th>
+				</thead>
+			<% @donation.each do |donation| %>
+				<tr>
+				<td><%= donation.date %></td>
+				<td><%= donation.amount %></td>
+				<td><%= donation.project %></td>
+				<td><%= link_to "Edit", edit_donation_path(donation, contact_id: donation.contact_id) %> | <%= link_to "Delete", donation_path(donation), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
+				</tr>
+			<% end %>
+			</table>
+			<% end %>
+			<br/>
+			<%= link_to "Add Donation", new_donation_path(contact_id: @contact.id) %>
 
 
-<!-- Notes -->
-<br/>
-<br/>
-<h3>Notes</h3><br/>
-<% if @note.length > 0 %>
-<table>
-	<thead>
-		<th>Note</th>
-		<th>Action</th>
-	</thead>
-<% @note.each do |note| %>
-	<tr>
-		<td><%= note.note %></td>
-		<td><%= link_to "Edit", edit_note_path(note, contact_id: @contact.id)%> | <%= link_to "Delete", note_path(note, contact_id: @contact.id), :method => :delete, data: { confirm: 'Are you sure?'} %></td>
-	</tr>
-<% end %>
-</table>
-<% end %>
-<%= link_to "Add Note", new_note_path(contact_id: @contact.id)%>
+			<!-- tasks -->
 
-<!-- web presence -->
-<br/>
-<br/>
-<h3>Web Presence</h3><br/>
-<% if @presence.length > 0 %>
-<table>
-	<thead>
-		<th>Site</th>
-		<th>URL</th>
-		<th>Account</th>
-		<th>Action</th>
-	</thead>
-<% @presence.each do |presence| %>
-	<tr>
-		<td><%= presence.site %></td>
-		<td><%= presence.url %></td>
-		<td><%= presence.account %></td>
-		<td><%= link_to "Edit", edit_presence_path(presence, contact_id: @contact.id) %> | <%= link_to "Delete", presence_path(presence), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
-	</tr>
-<% end %>
-</table>
-<% end %>
-<%= link_to "Add Web Presence", new_presence_path(@contact) %>
+			<br/>
+			<br/>
+			<h3>Tasks</h3><br/>
+			<% if @task.length > 0 %>
+			<table>
+				<thead>
+					<th>Completed?</th>
+					<th>Task</th>
+					<th>Due date</th>
+					<th>Category</th>
+					<th>Action</th>		
+				</thead>
+			<% @task.each do |task| %>
+				<tr rel="<%= task.id %>" >
+					<td><%= check_box_tag "#{task.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(task), remote: true, :class => "completed_button #{task.id} hidden" %></td>
+					<td><%= task.task %></td>
+					<td><%= task.due_date %></td>
+					<td><%= task.category %></td>
+					<td><%= link_to "Edit", edit_task_path(task, contact_id: task.contact_id) %> | <%= link_to "Delete", task_path(task), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
+				</tr>
+			<% end %>
+			</table>
+			<% end %>
+			<br/>
+			<%= link_to "Add Task", new_task_path(contact_id: @contact.id )%>
 
 
+			<!-- Notes -->
+			<br/>
+			<br/>
+			<h3>Notes</h3><br/>
+			<% if @note.length > 0 %>
+			<table>
+				<thead>
+					<th>Note</th>
+					<th>Action</th>
+				</thead>
+			<% @note.each do |note| %>
+				<tr>
+					<td><%= note.note %></td>
+					<td><%= link_to "Edit", edit_note_path(note, contact_id: @contact.id)%> | <%= link_to "Delete", note_path(note, contact_id: @contact.id), :method => :delete, data: { confirm: 'Are you sure?'} %></td>
+				</tr>
+			<% end %>
+			</table>
+			<% end %>
+			<%= link_to "Add Note", new_note_path(contact_id: @contact.id)%>
+
+			<!-- web presence -->
+			<br/>
+			<br/>
+			<h3>Web Presence</h3><br/>
+			<% if @presence.length > 0 %>
+			<table>
+				<thead>
+					<th>Site</th>
+					<th>URL</th>
+					<th>Account</th>
+					<th>Action</th>
+				</thead>
+			<% @presence.each do |presence| %>
+				<tr>
+					<td><%= presence.site %></td>
+					<td><%= presence.url %></td>
+					<td><%= presence.account %></td>
+					<td><%= link_to "Edit", edit_presence_path(presence, contact_id: @contact.id) %> | <%= link_to "Delete", presence_path(presence), :method => :delete, data: { confirm: 'Are you sure?'} %> </td>
+				</tr>
+			<% end %>
+			</table>
+			<% end %>
+			<%= link_to "Add Web Presence", new_presence_path(@contact) %>
+	</div>
+</div>
 
 
 
