@@ -16,5 +16,9 @@ module ApplicationHelper
        "In Progress"
      end
   end
+  
+  def first_name(arg)
+    arg.contact.first_name.capitalize
+  end
     
 end

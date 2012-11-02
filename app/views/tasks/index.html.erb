@@ -19,7 +19,7 @@
 		<% @task.each do |task| %>
 			<tr rel="<%= task.id %>" >
 				<td><%= check_box_tag "#{task.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(task), remote: true, :class => "completed_button #{task.id} hidden" %>Check to complete</td>
-				<td><%= link_to task.contact.first_name.capitalize, contact_path(task.contact_id) %></td>
+				<td><%= link_to first_name(task), contact_path(task.contact_id) %></td>
 				<td class="task_status"><%= status(task.completed) %></td>
 				<td><%= task.task %></td>
 				<td><%= task.due_date %></td>

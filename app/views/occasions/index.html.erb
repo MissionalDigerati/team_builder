@@ -1,0 +1,38 @@
+<div class="row-fluid">
+	<div class="span12">
+		
+		<h1>All Special Dates</h1><br/>
+		<%= link_to 'New Special Date', new_occasion_path, :class => "btn btn-info pull-right" %>
+		<br/>
+		<br/>
+		<table class="table index table-bordered table-hover">
+		  <tr>
+		    <th>Name</th>
+				<th>Day</th>
+				<th>Month</th>
+				<th>Year</th>
+				<th>Occasion</th>
+		    <th>Action</th>
+		  </tr>
+
+		<% @occasions.each do |occasion| %>
+		  <tr>
+				<td><%= link_to first_name(occasion), contact_path(occasion.contact_id) %></td>
+				<td><%= occasion.day %></td>
+				<td><%= occasion.month %></td>
+				<td><%= occasion.year %></td>
+				<td><%= occasion.occasion %></td>
+				<td><%= link_to 'Edit', edit_occasion_path(occasion, contact_id: occasion.contact_id) %> | <%= link_to 'Delete', occasion, method: :delete, data: { confirm: 'Are you sure?' } %> | <%= link_to 'View Contact', contact_path(occasion.contact_id) %></td>
+			</tr>
+		<% end %>
+		</table>
+
+		<br />
+
+		<%= link_to 'New Special Date', new_occasion_path, :class => "btn btn-info pull-right" %>
+		
+	</div> <!-- span12 -->
+
+</div> <!-- row fluid -->
+
+<!-- <Occasion id: nil, day: nil, month: nil, year: nil, occasion: nil, created_at: nil, updated_at: nil, contact_id: nil>  -->

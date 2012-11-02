@@ -1,5 +1,9 @@
 class OccasionsController < ApplicationController
   
+  def index
+    @occasions = Occasion.all
+  end
+  
   def new
     if params[:contact_id] == nil
       @occasions = Occasion.new
