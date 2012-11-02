@@ -1,0 +1,38 @@
+<div class="row-fluid">
+	<div class="span12">
+		
+		<h1>All Donations</h1><br/>
+		<%= link_to 'New Donation', new_donation_path, :class => "btn btn-info pull-right" %>
+		<br/>
+		<br/>
+		<table class="table index table-bordered table-hover">
+		  <tr>
+		    <th>Name</th>
+				<th>Amount</th>
+				<th>Project</th>
+				<th>Created</th>
+				<th>Updated</th>
+		    <th>Action</th>
+		  </tr>
+
+		<% @donations.each do |donation| %>
+		  <tr>
+				<td><%= link_to donation.contact.first_name.capitalize, contact_path(donation.contact_id) %></td>
+				<td><%= donation.amount %></td>
+				<td><%= donation.project.capitalize %></td>
+				<td><%= donation.created_at.strftime('%m/%d/%Y') %></td>
+				<td><%= donation.updated_at.strftime('%m/%d/%Y') %></td>
+				<td class="center"><%= link_to 'Edit', edit_donation_path(donation, contact_id: donation.contact_id) %> | <%= link_to 'Destroy', donation, method: :delete, data: { confirm: 'Are you sure?' } %> | <%= link_to 'View Contact', contact_path(donation.contact_id) %></td>
+		  </tr>
+		<% end %>
+		</table>
+
+		<br />
+
+		<%= link_to 'New Donation', new_donation_path, :class => "btn btn-info pull-right" %>
+		
+	</div> <!-- span12 -->
+
+</div> <!-- row fluid -->
+
+<!-- <Donation id: nil, contact_id: nil, date: nil, amount: nil, project: nil, created_at: nil, updated_at: nil>  -->

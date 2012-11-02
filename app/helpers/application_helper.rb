@@ -8,5 +8,13 @@ module ApplicationHelper
     end
     link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("/n", "")})
   end
-  
+   
+  def status(status)
+     if status === true
+       "Completed"
+     else
+       "In Progress"
+     end
+  end
+    
 end

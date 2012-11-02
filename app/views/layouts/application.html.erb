@@ -8,9 +8,8 @@
 </head>
 <body>
 	
+	<%= render 'layouts/navigation' %>
 	<div class="container-fluid">
-		
-		<%= render 'layouts/navigation' %>
 		
 			<% if flash[:notice] %>
 				<%= flash[:notice] %>
@@ -21,7 +20,9 @@
 			<% end %>
 		<br/>
 		<%= yield %>
+	
 	</div> <!-- container-fluid -->
-
+<br/>
+<br/>
 </body>
 </html>

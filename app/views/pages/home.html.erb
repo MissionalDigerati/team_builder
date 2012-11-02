@@ -6,15 +6,20 @@
 <br/>
 
 <div class="row-fluid">
+
+	<div class="span3">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	</div>
 	
 	<div class="span9">
 		<h2> 
 			Tasks
 		</h2>
 		
-		<table class="table">
+		<table class="table table-hover table-bordered">
 			<thead>
 				<th>Complete</th>
+				<th>Status</th>
 				<th>Task</th>
 				<th>Due date</th>
 				<th>Category</th>
@@ -23,18 +28,15 @@
 		<% @task.each do |task| %>
 			<tr rel="<%= task.id %>" >
 				<td><%= check_box_tag "#{task.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(task), remote: true, :class => "completed_button #{task.id} hidden" %>Check to complete</td>
+				<td class="task_status"><%= status(task.completed) %></td>
 				<td><%= task.task %></td>
 				<td><%= task.due_date %></td>
 				<td><%= task.category %></td>
-				<td><%= link_to "Edit", edit_task_path(task.contact_id, task) %> | <%= link_to "Delete", task_path(task), :method => :delete, data: { confirm: 'Are you sure?'} %> | <%= link_to "View Contact", contact_path(task.contact_id)%></td>
+				<td><%= link_to "Edit", edit_task_path(task, contact_id: task.contact_id) %> | <%= link_to "Delete", task_path(task), :method => :delete, data: { confirm: 'Are you sure?'} %> | <%= link_to "#{task.contact.first_name.capitalize}", contact_path(task.contact_id)%></td>
 			</tr>
 		<% end %>	
 		</table>
-		<%= link_to "Add Task", new_task_path %>
-	</div>
-
-	<div class="span3">
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		<%= link_to "Add Task", new_task_path, :class => "btn btn-info" %> <%= link_to "View All Tasks", tasks_path, :class => "btn btn-info" %>
 	</div>
 
 </div>

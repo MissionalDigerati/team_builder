@@ -17,3 +17,10 @@ fieldset {
 a.hidden{
 	display: none;
 }
+.checkbox{
+	width: 24px !important;
+	height: 19px;
+}
+table.index tr{
+	height: 40px;
+}

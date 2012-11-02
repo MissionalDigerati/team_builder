@@ -1,0 +1,33 @@
+<div class="row-fluid">
+	<div class="span12">
+		<h2> 
+			Tasks
+		</h2>
+		<%= link_to "Add Task", new_task_path, :class => "btn btn-info pull-right" %>
+		<br/>
+		<br/>
+		<table class="table table-striped table-bordered">
+			<thead>
+				<th>Complete</th>
+				<th>Contact</th>
+				<th>Status</th>
+				<th>Task</th>
+				<th>Due date</th>
+				<th>Category</th>
+				<th>Action</th>		
+			</thead>
+		<% @task.each do |task| %>
+			<tr rel="<%= task.id %>" >
+				<td><%= check_box_tag "#{task.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(task), remote: true, :class => "completed_button #{task.id} hidden" %>Check to complete</td>
+				<td><%= link_to task.contact.first_name.capitalize, contact_path(task.contact_id) %></td>
+				<td class="task_status"><%= status(task.completed) %></td>
+				<td><%= task.task %></td>
+				<td><%= task.due_date %></td>
+				<td><%= task.category %></td>
+				<td><%= link_to "Edit", edit_task_path(task, contact_id: task.contact_id) %> | <%= link_to "Delete", task_path(task), :method => :delete, data: { confirm: 'Are you sure?'} %> | <%= link_to "View Contact", contact_path(task.contact_id)%></td>
+			</tr>
+		<% end %>	
+		</table>
+		<%= link_to "Add Task", new_task_path, :class => "btn btn-info pull-right" %>
+	</div>
+</div>

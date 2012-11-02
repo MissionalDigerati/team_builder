@@ -5,4 +5,5 @@ class Task < ActiveRecord::Base
   
   CATEGORY = ["Call", "Email", "Follow Up", "Lunch", "Meeting", "Money Presentation", "Trip", "Other"]
   
+  
 end

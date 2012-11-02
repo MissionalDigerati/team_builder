@@ -1,5 +1,9 @@
 class DonationsController < ApplicationController
   
+  def index
+    @donations = Donation.all
+  end
+  
   def new
     # @contact = Contact.find(params[:contact_id])
     #     @donations = @contact.donations.build
