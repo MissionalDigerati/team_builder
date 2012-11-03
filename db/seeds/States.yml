@@ -1,0 +1,154 @@
+states:
+ - id: 1
+   state_long: Alabama
+   state_short: AL
+ - id: 2
+   state_long: Alaska
+   state_short: AK
+ - id: 3
+   state_long: Arizona
+   state_short: AZ
+ - id: 4
+   state_long: Arkansas
+   state_short: AR
+ - id: 5
+   state_long: California
+   state_short: CA
+ - id: 6
+   state_long: Colorado
+   state_short: CO
+ - id: 7
+   state_long: Connecticut
+   state_short: CT
+ - id: 8
+   state_long: Delaware
+   state_short: DE
+ - id: 9
+   state_long: District of Columbia
+   state_short: DC
+ - id: 10
+   state_long: Florida
+   state_short: FL
+ - id: 11
+   state_long: Georgia
+   state_short: GA
+ - id: 12
+   state_long: Hawaii
+   state_short: HI
+ - id: 13
+   state_long: Idaho
+   state_short: ID
+ - id: 14
+   state_long: Illinois
+   state_short: IL
+ - id: 15
+   state_long: Indiana
+   state_short: IN
+ - id: 16
+   state_long: Iowa
+   state_short: IA
+ - id: 17
+   state_long: Kansas
+   state_short: KS
+ - id: 18
+   state_long: Kentucky
+   state_short: KY
+ - id: 19
+   state_long: Louisiana
+   state_short: LA
+ - id: 20
+   state_long: Maine
+   state_short: ME
+ - id: 21
+   state_long: Maryland
+   state_short: MD
+ - id: 22
+   state_long: Massachusetts
+   state_short: MA
+ - id: 23
+   state_long: Michigan
+   state_short: MI
+ - id: 24
+   state_long: Minnesota
+   state_short: MN
+ - id: 25
+   state_long: Mississippi
+   state_short: MS
+ - id: 26
+   state_long: Missouri
+   state_short: MO
+ - id: 27
+   state_long: Montana
+   state_short: MT
+ - id: 28
+   state_long: Nebraska
+   state_short: NE
+ - id: 29
+   state_long: Nevada
+   state_short: NV
+ - id: 30
+   state_long: New Hampshire
+   state_short: NH
+ - id: 31
+   state_long: New Jersey
+   state_short: NJ
+ - id: 32
+   state_long: New Mexico
+   state_short: NM
+ - id: 33
+   state_long: New York
+   state_short: NY
+ - id: 34
+   state_long: North Carolina
+   state_short: NC
+ - id: 35
+   state_long: North Dakota
+   state_short: ND
+ - id: 36
+   state_long: Ohio
+   state_short: OH
+ - id: 37
+   state_long: Oklahoma
+   state_short: OK
+ - id: 38
+   state_long: Oregon
+   state_short: OR
+ - id: 39
+   state_long: Pennsylvania
+   state_short: PA
+ - id: 40
+   state_long: Rhode Island
+   state_short: RI
+ - id: 41
+   state_long: South Carolina
+   state_short: SC
+ - id: 42
+   state_long: South Dakota
+   state_short: SD
+ - id: 43
+   state_long: Tennessee
+   state_short: TN
+ - id: 44
+   state_long: Texas
+   state_short: TX
+ - id: 45
+   state_long: Utah
+   state_short: UT
+ - id: 46
+   state_long: Vermont
+   state_short: VT
+ - id: 47
+   state_long: Virginia
+   state_short: VA
+ - id: 48
+   state_long: Washington
+   state_short: WA
+ - id: 49
+   state_long: West Virginia
+   state_short: WV
+ - id: 50
+   state_long: Wisconsin
+   state_short: WI
+ - id: 51
+   state_long: Wyoming
+   state_short: WY
