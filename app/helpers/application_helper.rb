@@ -21,4 +21,15 @@ module ApplicationHelper
     arg.contact.first_name.capitalize
   end
     
+  def edit_button
+    'Edit <i class="icon-edit icon-white"></i>'.html_safe
+  end  
+  
+  def delete_button
+    'Delete <i class="icon-trash icon-white"></i>'.html_safe
+  end
+    
+  def contact_button
+    'View Contact <i class="icon-user icon-white"></i>'.html_safe
+  end
 end

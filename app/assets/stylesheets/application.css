@@ -53,3 +53,9 @@ table.contact td{
 	font-weight: bold;
 	font-size: 18px;
 }
+.text_right{
+	text-align: right !important;
+}
+.text_center{
+	text-align: center !important;
+}

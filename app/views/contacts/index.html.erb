@@ -30,7 +30,7 @@
 				<td><%= news_letter(contact.receive_newsletter) %></td>
 				<td><%= contact.created_at.strftime('%m/%d/%Y') %></td>
 				<td><%= contact.updated_at.strftime('%m/%d/%Y') %></td>
-				<td class="center"><%= link_to 'Edit', edit_contact_path(contact), :class => "btn btn-success btn-small"  %> <%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small"  %> <%= link_to 'Show', contact, :class => "btn btn-info btn-small"  %></td>
+				<td class="text_center"><%= link_to edit_button, edit_contact_path(contact), :class => "btn btn-success btn-small"  %> <%= link_to delete_button, contact, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small"  %> <%= link_to contact_button, contact, :class => "btn btn-info btn-small"  %></td>
 			
 		  </tr>
 		<% end %>
