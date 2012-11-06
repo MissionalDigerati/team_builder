@@ -10,84 +10,84 @@
       </ul>
     </div>
   <% end %>
-	<%= f.label :first_name, "First Name" %><br/>
+	<%= f.label :first_name, "First Name" %>
 	<%= f.text_field :first_name, id: "first_name"  %>
-	<br/>
-	<%= f.label :last_name, "Last Name" %><br/>
+	<br/><br/>
+	<%= f.label :last_name, "Last Name" %>
 	<%= f.text_field :last_name, id: "last_name"  %>
-	<br/>
-	<%= f.label :spouse_name, "Spouse Name" %><br/>
+	<br/><br/>
+	<%= f.label :spouse_name, "Spouse Name" %>
 	<%= f.text_field :spouse_name, id: "spouse_name"  %>
-	<br/>
-	<%= f.label :email, "Email" %><br/>
+	<br/><br/>
+	<%= f.label :email, "Email" %>
 	<%= f.text_field :email, id: "email"  %>
-	<br/>
-	<%= f.label :spouse_email, "Spouse Email" %><br/>
+	<br/><br/>
+	<%= f.label :spouse_email, "Spouse Email" %>
 	<%= f.text_field :spouse_email, id: "spouse_email"  %>
-	<br/>
-	<%= f.label :address_1, "Address 1" %><br/>
+	<br/><br/>
+	<%= f.label :address_1, "Address 1" %>
 	<%= f.text_field :address_1, id: "address_1"  %>
-	<br/>
-	<%= f.label :address_2, "Address 2" %><br/>
+	<br/><br/>
+	<%= f.label :address_2, "Address 2" %>
 	<%= f.text_field :address_2, id: "address_2"  %>
-	<br/>
-	<%= f.label :city, "City" %><br/>
+	<br/><br/>
+	<%= f.label :city, "City" %>
 	<%= f.text_field :city, id: "city"  %>
-	<br/>
-	<%= f.label :state_id, "State id" %><br/>
+	<br/><br/>
+	<%= f.label :state_id, "State id" %>
 	<%= f.select(:state_id, State.all.collect {|s| [s.state_long, s.id]} ) %>
-	<br/>
-	<%= f.label :zip, "Zip" %><br/>
+	<br/><br/>
+	<%= f.label :zip, "Zip" %>
 	<%= f.text_field :zip, id: "zip"  %>
-	<br/>
-	<%= f.label :country_id, "Country id" %><br/>
+	<br/><br/>
+	<%= f.label :country_id, "Country id" %>
 	<%= f.select(:country_id, Country.all.collect {|c| [c.printable_name, c.id]})  %>
-	<br/>
-	<%= f.label :children, "Children" %><br/>
+	<br/><br/>
+	<%= f.label :children, "Children" %>
 	<%= f.text_area :children, id: "Children", :rows => "3"  %>
-	<br/>
-	<%= f.label :preferred_contact, "Preferred Contact" %><br/>
+	<br/><br/>
+	<%= f.label :preferred_contact, "Preferred Contact" %>
 	<%= f.select :preferred_contact, Contact::CONTACTS, id: "preferred_contact"  %>
-	<br/>
-	<%= f.label :network, "Network" %><br/>
+	<br/><br/>
+	<%= f.label :network, "Network" %>
 	<%= f.select :network, Contact::NETWORKS, id: "network"  %>
-	<br/>
-	<%= f.label :tags, "Tags" %><br/>
+	<br/><br/>
+	<%= f.label :tags, "Tags" %>
 	<%= f.text_field :tags, id: "tags"  %>
-	<br/>
-	<%= f.label :receive_newsletter, "Receive Newsletter" %><br/>
+	<br/><br/>
+	<%= f.label :receive_newsletter, "Receive Newsletter" %>
 	<%= f.check_box :receive_newsletter, id: "receive_newsletter"  %>
-	
 	<br/>
-	<br/>
-	<br/>
-	
+
 	<!-- Numbers -->
 	<!-- <Number id: nil, phone_type: nil, number: nil, created_at: nil, updated_at: nil, contact_id: nil>  -->
-		Phone Numbers<br/>
+	<div class="attribute_container pull-right">
+		<span class="attribute_header">Phone Numbers</span><br/><br/>
 	<%= f.fields_for :numbers do |builder| %>
 		<%= render 'contacts/number_fields', f: builder %>
 	<% end %>
 	<%= link_to_add_fields "Add Phone Number", f, :numbers %>
 	
+
+
 	<br/>
 	<br/>
 	<br/>
-	
+
 	<!-- special dates -->
 	<!-- <Occasion id: nil, day: nil, month: nil, year: nil, occasion: nil, created_at: nil, updated_at: nil, contact_id: nil>  -->
-		Special Occasions<br/>
+		<span class="attribute_header">Special Occasions</span><br/><br/>
 	<%= f.fields_for :occasions do |builder| %>
 		<%= render 'contacts/occasion_fields', f: builder %>
 	<% end %>
 	<%= link_to_add_fields "Add Special Occasion", f, :occasions %>
-	
+
 	<br/>
 	<br/>
 	<br/>
 	<!-- <Presence id: nil, contact_id: nil, site: nil, url: nil, account: nil, created_at: nil, updated_at: nil>  -->
-  
-		Web Presence<br/>
+ 
+	<span class="attribute_header">Web Presence</span><br/><br/>
 	<%= f.fields_for :presences do |builder| %>
 		<%= render 'contacts/presence_fields', f: builder %>
 	<% end %>	
@@ -95,15 +95,15 @@
 
 	<br/>
 	<br/>
-	
+	<br/>
+	<br/>
 	<div class="actions">
-    <%= f.submit :id => "create_contact" %>
+    <%= f.submit :id => "create_contact", :class => "btn btn-large btn-success" %>
   </div>
+	
+	</div>
+
 <% end %>
-
-
-
-
 
 
 

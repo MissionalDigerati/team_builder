@@ -1,4 +1,4 @@
-
+<div class="span3 offset3">
 <%= form_for(@contact) do |f| %>
   <% if @contact.errors.any? %>
     <div id="error_explanation">
@@ -11,57 +11,60 @@
       </ul>
     </div>
   <% end %>
-	<%= f.label :first_name, "First Name" %><br/>
-	<%= f.text_field :first_name, id: "first_name"  %>
+	<%= f.label :first_name, "First Name" %>
+	<%= f.text_field :first_name, id: "first_name"  %><br/>
 	<br/>
-	<%= f.label :last_name, "Last Name" %><br/>
-	<%= f.text_field :last_name, id: "last_name"  %>
+	<%= f.label :last_name, "Last Name" %>
+	<%= f.text_field :last_name, id: "last_name"  %><br/>
 	<br/>
-	<%= f.label :spouse_name, "Spouse Name" %><br/>
-	<%= f.text_field :spouse_name, id: "spouse_name"  %>
+	<%= f.label :spouse_name, "Spouse Name" %>
+	<%= f.text_field :spouse_name, id: "spouse_name"  %><br/>
 	<br/>
-	<%= f.label :email, "Email" %><br/>
-	<%= f.text_field :email, id: "email"  %>
+	<%= f.label :email, "Email" %>
+	<%= f.text_field :email, id: "email"  %><br/>
 	<br/>
-	<%= f.label :spouse_email, "Spouse Email" %><br/>
-	<%= f.text_field :spouse_email, id: "spouse_email"  %>
+	<%= f.label :spouse_email, "Spouse Email" %>
+	<%= f.text_field :spouse_email, id: "spouse_email"  %><br/>
 	<br/>
-	<%= f.label :address_1, "Address 1" %><br/>
-	<%= f.text_field :address_1, id: "address_1"  %>
+	<%= f.label :address_1, "Address 1" %>
+	<%= f.text_field :address_1, id: "address_1"  %><br/>
 	<br/>
-	<%= f.label :address_2, "Address 2" %><br/>
-	<%= f.text_field :address_2, id: "address_2"  %>
+	<%= f.label :address_2, "Address 2" %>
+	<%= f.text_field :address_2, id: "address_2"  %><br/>
 	<br/>
-	<%= f.label :city, "City" %><br/>
-	<%= f.text_field :city, id: "city"  %>
+</div>
+<div class="span3 offset1">
+	<%= f.label :city, "City" %>
+	<%= f.text_field :city, id: "city"  %><br/>
 	<br/>
-	<%= f.label :state_id, "State id" %><br/>
-	<%= f.select(:state_id, State.all.collect {|s| [s.state_long, s.id]} ) %>
+	<%= f.label :state_id, "State id" %>
+	<%= f.select(:state_id, State.all.collect {|s| [s.state_long, s.id]} ) %><br/>
 	<br/>
-	<%= f.label :zip, "Zip" %><br/>
-	<%= f.text_field :zip, id: "zip"  %>
+	<%= f.label :zip, "Zip" %>
+	<%= f.text_field :zip, id: "zip"  %><br/>
 	<br/>
-	<%= f.label :country_id, "Country id" %><br/>
-	<%= f.select(:country_id, Country.all.collect {|c| [c.printable_name, c.id]})  %>
+	<%= f.label :country_id, "Country id" %>
+	<%= f.select(:country_id, Country.all.collect {|c| [c.printable_name, c.id]})  %><br/>
 	<br/>
-	<%= f.label :children, "Children" %><br/>
-	<%= f.text_field :children, id: "Children"  %>
+	<%= f.label :children, "Children" %>
+	<%= f.text_field :children, id: "Children"  %><br/>
 	<br/>
-	<%= f.label :preferred_contact, "Preferred Contact" %><br/>
-	<%= f.select :preferred_contact, Contact::CONTACTS, id: "preferred_contact"  %>
+	<%= f.label :preferred_contact, "Preferred Contact" %>
+	<%= f.select :preferred_contact, Contact::CONTACTS, id: "preferred_contact"  %><br/>
 	<br/>
-	<%= f.label :network, "Network" %><br/>
-	<%= f.select :network, Contact::NETWORKS, id: "network"  %>
+	<%= f.label :network, "Network" %>
+	<%= f.select :network, Contact::NETWORKS, id: "network"  %><br/>
 	<br/>
-	<%= f.label :tags, "Tags" %><br/>
-	<%= f.text_field :tags, id: "tags" %>
+	<%= f.label :tags, "Tags" %>
+	<%= f.text_field :tags, id: "tags" %><br/>
 	<br/>
-	<%= f.label :receive_newsletter, "Receive Newsletter" %><br/>
-	<%= f.check_box :receive_newsletter, id: "receive_newsletter"  %>
+	<%= f.label :receive_newsletter, "Receive Newsletter" %>
+	<%= f.check_box :receive_newsletter, id: "receive_newsletter"  %><br/>
 	<br/>
 	
   <div class="actions">
-    <%= f.submit :id => "create_contact" %>
+    <%= f.submit :id => "create_contact", :class => "btn btn-large btn-success" %>
   </div>
 <% end %>
 
+</div>

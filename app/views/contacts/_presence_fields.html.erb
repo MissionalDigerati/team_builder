@@ -1,10 +1,12 @@
-<fieldset>
-	<%= f.label :site, "Site" %><br/>
-	<%= f.select :site, Presence::SITES, {:include_blank => true} %><br/>
-	<%= f.label :url, "URL" %><br/>
-	<%= f.text_field :url %><br/>
-	<%= f.label :account, "Account" %><br/>
-	<%= f.text_field :account %><br/>
+<fieldset class="attributes">
+	<%= f.label :site, "Site" %>
+	<%= f.select :site, Presence::SITES, {:include_blank => true} %><br/><br/>
+	<%= f.label :url, "URL" %>
+	<%= f.text_field :url %><br/><br/>
+	<%= f.label :account, "Account" %>
+	<%= f.text_field :account %><br/><br/>
 	<%= f.hidden_field :_destroy %>
-	<%= link_to "remove", '#', class: "remove_fields" %>
+	<%= link_to "remove", '#', class: "remove_fields btn btn-small btn-info" %>
+	<br/>
+	<br/>
 </fieldset>

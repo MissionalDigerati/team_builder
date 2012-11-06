@@ -41,3 +41,15 @@ table.contact td{
 .text_center{
 	text-align:center;
 }
+.attribute_container{
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+.relative{
+	position: relative;
+}
+.attribute_header{
+	font-weight: bold;
+	font-size: 18px;
+}

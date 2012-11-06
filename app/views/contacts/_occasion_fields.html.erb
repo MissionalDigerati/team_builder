@@ -1,12 +1,14 @@
-<fieldset>
-	<%= f.label :day, "Day" %><br/>
-	<%= f.select :day, Occasion::DAYS, :include_blank => true %><br/>
-	<%= f.label :month, "Month" %><br/>
-	<%= f.select :month, Occasion::MONTHS, :include_blank => true %><br/>
-	<%= f.label :year, "Year" %><br/>
-	<%= f.select :year, Occasion::YEARS, :include_blank => true %><br/>
-	<%= f.label :occasion, "Occasion" %><br/>
+<fieldset class="attributes">
+	<%= f.label :day, "Day" %>
+	<%= f.select :day, Occasion::DAYS, :include_blank => true %><br/><br/>
+	<%= f.label :month, "Month" %>
+	<%= f.select :month, Occasion::MONTHS, :include_blank => true %><br/><br/>
+	<%= f.label :year, "Year" %>
+	<%= f.select :year, Occasion::YEARS, :include_blank => true %><br/><br/>
+	<%= f.label :occasion, "Occasion" %>
 	<%= f.text_field :occasion %><br/>
 	<%= f.hidden_field :_destroy %>
-	<%= link_to "remove", '#', class: "remove_fields" %>
+	<%= link_to "remove", '#', class: "remove_fields btn btn-small btn-info" %>
+	<br/>
+	<br/>
 </fieldset>
