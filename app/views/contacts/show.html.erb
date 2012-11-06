@@ -3,7 +3,7 @@
 	<div class="span3">
 			<h3>Contact Info</h3>
 			</br>
-			<%= link_to 'Edit', edit_contact_path(@contact), :class => "btn btn-small btn-info" %>
+			<%= link_to "Edit #{@contact.first_name.capitalize}", edit_contact_path(@contact), :class => "btn btn btn-info" %>
 			</br>
 			</br>
 			<table class="table contact table-striped table-bordered">
@@ -49,7 +49,7 @@
 				</tr>
 				<tr>
 					<td class="bold">State:</td>
-					<td><%= @contact.state_id %></td>
+					<td><%= @contact.state.state_long %></td>
 				</tr>
 				<tr>
 					<td class="bold">Zip:</td>
@@ -57,14 +57,14 @@
 				</tr>
 				<tr>
 					<td class="bold">Country:</td>
-					<td><%= @contact.country_id %></td>
+					<td><%= @contact.country.printable_name %></td>
 				</tr>
 				<tr>
 					<td class="bold">Children:</td>
 					<td><%= @contact.children %></td>
 				</tr>
 				<tr>
-					<td class="bold">Receive News Letter?</td>
+					<td class="bold">Receive NewsLetter?</td>
 					<td><%= @contact.news_letter(@contact.receive_newsletter) %></td>
 				</tr>
 				<tr>
@@ -86,8 +86,9 @@
 			
 				<h3>Phone Number(s)</h3>
 				<br/>
-				<% if @number.length > 0 %>
-				<table class="table">
+				<%= link_to "Add Phone Number", new_number_path(@contact), :class => "btn btn-primary pull-right" %>
+				<% if @number.present?%>
+				<table class="table table-striped">
 					<thead>
 						<th>Type</th>
 						<th>Number</th>
@@ -102,15 +103,15 @@
 				<% end %>
 				</table>
 				<% end %>
-				<%= link_to "Add Phone Number", new_number_path(@contact), :class => "btn btn-primary" %>
 				<br/>
 				<br/>
 		
 			<!-- special occasion -->
 			<h3>Special Dates</h3>
 			<br/>
-			<% if @occasion.length > 0 %>
-			<table class="table">
+			<%= link_to "Add Special Date", new_occasion_path(@contact), :class => "btn btn-primary pull-right" %>
+			<% if @occasion.present? %>
+			<table class="table table-striped">
 				<thead>
 					<th>Day</th>
 					<th>Month</th>
@@ -130,13 +131,14 @@
 			</table>
 			<% end %>
 			<br/>
-			<%= link_to "Add Special Date", new_occasion_path(@contact), :class => "btn btn-primary" %>
+			<br/>
 
 
 			<!-- donation -->
 			<h3>Donations</h3> <br/>
-			<% if @donation.length > 0 %>
-			<table class="table">
+			<%= link_to "Add Donation", new_donation_path(contact_id: @contact.id), :class => "btn btn-primary pull-right" %>
+			<% if @donation.present? %>
+			<table class="table table-striped">
 				<thead>
 					<th>Date</th>
 					<th>Amount</th>
@@ -154,7 +156,7 @@
 			</table>
 			<% end %>
 			<br/>
-			<%= link_to "Add Donation", new_donation_path(contact_id: @contact.id), :class => "btn btn-primary" %>
+			<br/>
 
 
 		<div class="clear">
@@ -164,8 +166,9 @@
 			<!-- tasks -->
 
 			<h3>Tasks</h3><br/>
-			<% if @task.length > 0 %>
-			<table class="table">
+			<%= link_to "Add Task", new_task_path(contact_id: @contact.id ), :class => "btn btn-primary pull-right"%>
+			<% if @task.present? %>
+			<table class="table table-striped">
 				<thead>
 					<th>Completed?</th>
 					<th>Task</th>
@@ -185,15 +188,16 @@
 			</table>
 			<% end %>
 			<br/>
-			<%= link_to "Add Task", new_task_path(contact_id: @contact.id ), :class => "btn btn-primary"%>
+			<br/>
 
 
 			<!-- Notes -->
 			<br/>
 			<br/>
 			<h3>Notes</h3><br/>
-			<% if @note.length > 0 %>
-			<table class="table">
+			<%= link_to "Add Note", new_note_path(contact_id: @contact.id), :class => "btn btn-primary pull-right" %>
+			<% if @note.present? %>
+			<table class="table table-striped">
 				<thead>
 					<th>Note</th>
 					<th>Action</th>
@@ -206,14 +210,18 @@
 			<% end %>
 			</table>
 			<% end %>
-			<%= link_to "Add Note", new_note_path(contact_id: @contact.id), :class => "btn btn-primary"%>
+			<br/>
+			<br/>
+
+
 
 			<!-- web presence -->
 			<br/>
 			<br/>
 			<h3>Web Presence</h3><br/>
-			<% if @presence.length > 0 %>
-			<table class="table">
+			<%= link_to "Add Web Presence", new_presence_path(@contact), :class => "btn btn-primary pull-right" %>
+			<% if @presence.present? %>
+			<table class="table table-striped">
 				<thead>
 					<th>Site</th>
 					<th>URL</th>
@@ -230,7 +238,8 @@
 			<% end %>
 			</table>
 			<% end %>
-			<%= link_to "Add Web Presence", new_presence_path(@contact), :class => "btn btn-primary" %>
+			<br/>
+			<br/>
 	</div>
 </div>
 <br/>

@@ -4,6 +4,8 @@ class Contact < ActiveRecord::Base
   attr_accessible :numbers_attributes
   attr_accessible :occasions_attributes
   attr_accessible :presences_attributes
+  belongs_to :state
+  belongs_to :country
   has_many :numbers, :dependent => :destroy
   has_many :occasions
   has_many :donations

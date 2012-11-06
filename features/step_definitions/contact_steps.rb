@@ -8,6 +8,7 @@ When /^I fill in "(.*?)" with "(.*?)"$/ do |form_name, form_content|
   fill_in form_name, with: form_content
 end
 When /^I select "(.*?)" from "(.*?)"$/ do |value, dropdown|
+  # save_and_open_page
   select(value, :from => dropdown)
 end
 When /^I check the "(.*?)" checkboxes$/ do |checkbox_id|
