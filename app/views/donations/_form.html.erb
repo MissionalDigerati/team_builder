@@ -1,12 +1,12 @@
 <%= form_for([@donations]) do |f| %>
-	<%= f.label :contact_id, "Contact" %><br/>
-	<%= f.select(:contact_id, Contact.all.collect {|p| [ p.first_name, p.id ] }) %><br/>
-	<%= f.label :date, "Date" %><br/>
-	<%= f.text_field :date %><br/>
-	<%= f.label :amount, "Amount" %><br/>
-	<%= f.text_field :amount %><br/>
-	<%= f.label :project, "Project" %><br/>
-	<%= f.text_field :project %><br/>
+	<%= f.label :contact_id, "Contact" %>
+	<%= f.select(:contact_id, Contact.all.collect {|p| [ p.first_name, p.id ] }) %><br/><br/>
+	<%= f.label :date, "Date" %>
+	<%= f.text_field :date %><br/><br/>
+	<%= f.label :amount, "Amount" %>
+	<%= f.text_field :amount %><br/><br/>
+	<%= f.label :project, "Project" %>
+	<%= f.text_field :project %><br/><br/>
 	
-	<%= f.submit %>
+	<%= f.submit :class => "btn btn-large btn-success pull-right" %>
 <% end %>

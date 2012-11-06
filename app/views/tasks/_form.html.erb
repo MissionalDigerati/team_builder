@@ -1,13 +1,13 @@
 <%= form_for([@task]) do |f| %>
-	<%= f.label :contact_id, "Contact"%><br/>
-	<%= f.select(:contact_id, Contact.all.collect {|p| [ p.first_name, p.id ] }) %><br/>
-	<%= f.label :completed %><br/>
-	<%= f.check_box :completed, :class => "Completed" %><br/>
-	<%= f.label :task, "Task" %><br/>
-	<%= f.text_field :task %><br/>
-	<%= f.label :due_date, "Due Date" %><br/>
-	<%= f.text_field :due_date %><br/>
-	<%= f.label :category, "Category"%><br/>
-	<%= f.select :category, Task::CATEGORY, :include_blank => true %><br/>
-	<%= f.submit %>
+	<%= f.label :contact_id, "Contact"%>
+	<%= f.select(:contact_id, Contact.all.collect {|p| [ p.first_name, p.id ] }) %><br/><br/>
+	<%= f.label :completed %>
+	<%= f.check_box :completed, :class => "Completed" %><br/><br/>
+	<%= f.label :task, "Task" %>
+	<%= f.text_field :task %><br/><br/>
+	<%= f.label :due_date, "Due Date" %>
+	<%= f.text_field :due_date %><br/><br/>
+	<%= f.label :category, "Category"%>
+	<%= f.select :category, Task::CATEGORY, :include_blank => true %><br/><br/>
+	<%= f.submit :class => "btn btn-large btn-success pull-right"%>
 <% end %>

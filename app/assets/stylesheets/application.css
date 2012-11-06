@@ -38,3 +38,6 @@ table.contact td{
 .bold{
 	font-weight: bold;
 }
+.text_center{
+	text-align:center;
+}

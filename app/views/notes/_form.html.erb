@@ -1,7 +1,7 @@
 <%= form_for([@note]) do |f| %>
-		<%= f.label :contact_id, "Contact"%><br/>
-		<%= f.select(:contact_id, Contact.all.collect {|p| [ p.first_name, p.id ] }) %><br/>
-		<%= f.label :note, "Note" %><br/>
-		<%= f.text_area :note, :rows => 5 %><br/>
-		<%= f.submit %><br/>
+		<%= f.label :contact_id, "Contact"%>
+		<%= f.select(:contact_id, Contact.all.collect {|p| [ p.first_name, p.id ] }) %><br/><br/>
+		<%= f.label :note, "Note" %>
+		<%= f.text_area :note, :rows => 5 %><br/><br/>
+		<%= f.submit :class => "btn btn-large btn-success pull-right" %><br/>
 <% end %>
