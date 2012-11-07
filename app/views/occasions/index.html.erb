@@ -4,6 +4,7 @@
 		<h1>All Special Dates</h1><br/>
 		<%= link_to 'New Special Date', new_occasion_path, :class => "btn btn-primary pull-right" %>
 		<br/>
+		<%= paginate @occasions %>
 		<br/>
 		<table class="table index table-bordered table-hover table-striped">
 		  <tr>
@@ -30,6 +31,7 @@
 		<br />
 
 		<%= link_to 'New Special Date', new_occasion_path, :class => "btn btn-primary pull-right" %>
+		<%= paginate @occasions %>
 		
 	</div> <!-- span12 -->
 

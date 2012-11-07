@@ -3,7 +3,7 @@ class ContactsController < ApplicationController
   # GET /contacts.json
   before_filter :sub_contact_info, :only => [:show] 
   def index
-    @contacts = Contact.all
+    @contacts = Contact.order("updated_at DESC").page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

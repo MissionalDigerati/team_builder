@@ -4,6 +4,7 @@
 		<h1>All Contacts</h1><br/>
 		<%= link_to 'New Contact', new_contact_path, :class => "btn btn-primary pull-right" %>
 		<br/>
+		<%= paginate @contacts %>
 		<br/>
 		<table class="table index table-bordered table-hover table-striped">
 		  <tr>
@@ -37,8 +38,8 @@
 		</table>
 
 		<br />
-
 		<%= link_to 'New Contact', new_contact_path, :class => "btn btn-primary pull-right" %>
+		<%= paginate @contacts %>
 		
 	</div> <!-- span12 -->
 

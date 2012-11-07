@@ -34,13 +34,24 @@
 #                publish: true)
 # end
 
-99.times do |x|
-  first_name = "first_name #{n+1}"
-  last_name = "last_name #{n+1}"
-  email = "contact#{n+1}@testemail.com"
-  Contact.create!(first_name: first_name, last_name: last_name, spouse_name: "filler", email: email, state_id: 5, country_id: 465, reveive_newsletter: true, believer: true)
-end
+# script for creating contacts
+# 99.times do |x|
+#   first_name = "first_name #{x+1}"
+#   last_name = "last_name #{x+1}"
+#   email = "contact#{x+1}@testemail.com"
+#   Contact.create!(first_name: first_name, last_name: last_name, spouse_name: "filler", email: email, state_id: 5, country_id: 465, receive_newsletter: true, believer: true)
+# end
+# 
+# 50.times do |x|
+#   # Occasion.create!(contact_id: 3, day: 1, month: "May", year: 2012, occasion: "birthday")
+#   # Number.create!(contact_id: 3, phone_type: "mobile", number: "#{x+1}")
+#   # Donation.create!(contact_id: 3, date: "1/1/1111", amount: "#{x+1}", project: "team builder")
+#   Task.create!(contact_id: 3, completed: false, task: "task #{x+1}", due_date: "1/2/3000", category: "Call")
+# end
 
+#<Task id: nil, contact_id: nil, completed: false, task: nil, due_date: nil, category: nil, created_at: nil, updated_at: nil> 
+
+#<Occasion id: nil, day: nil, month: nil, year: nil, occasion: nil, created_at: nil, updated_at: nil, contact_id: nil>
 
 #<Contact id: nil, first_name: nil, last_name: nil, spouse_name: nil, email: nil, spouse_email: nil, tags: nil, network: nil, 
 # address_1: nil, address_2: nil, city: nil, state_id: nil, zip: nil, country_id: nil, receive_newsletter: false, children: nil, 

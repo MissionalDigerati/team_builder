@@ -1,7 +1,7 @@
 class OccasionsController < ApplicationController
   
   def index
-    @occasions = Occasion.all
+    @occasions = Occasion.order("updated_at DESC").page(params[:page])
   end
   
   def new

@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   
   
   def index
-    @task = Task.all
+    @task = Task.order("completed ASC").page(params[:page])
   end
   
   def new

@@ -1,7 +1,7 @@
 class DonationsController < ApplicationController
   
   def index
-    @donations = Donation.all
+    @donations = Donation.order("updated_at DESC").page(params[:page])
   end
   
   def new

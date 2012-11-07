@@ -4,10 +4,12 @@
 		<h1>All Donations</h1><br/>
 		<%= link_to 'New Donation', new_donation_path, :class => "btn btn-primary pull-right" %>
 		<br/>
+		<%= paginate @donations %>
 		<br/>
 		<table class="table index table-bordered table-hover table-striped">
 		  <tr>
 		    <th>Name</th>
+				<th>Date</th>
 				<th>Amount</th>
 				<th>Project</th>
 				<th>Created</th>
@@ -18,6 +20,7 @@
 		<% @donations.each do |donation| %>
 		  <tr>
 				<td><%= link_to first_name(donation), contact_path(donation.contact_id) %></td>
+				<td><%= donation.date %></td>
 				<td><%= donation.amount %></td>
 				<td><%= donation.project.capitalize %></td>
 				<td><%= donation.created_at.strftime('%d/%m/%Y') %></td>
@@ -30,7 +33,7 @@
 		<br />
 
 		<%= link_to 'New Donation', new_donation_path, :class => "btn btn-primary pull-right" %>
-		
+		<%= paginate @donations %>
 	</div> <!-- span12 -->
 
 </div> <!-- row fluid -->

@@ -59,3 +59,12 @@ table.contact td{
 .text_center{
 	text-align: center !important;
 }
+.pagination span{
+	border: none !important;
+}
+.pagination a{
+	border: none !important;
+}
+
+
+
