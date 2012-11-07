@@ -16,6 +16,8 @@ jQuery ->
 	$(".checkbox").click ->
 		$(this).closest("td").find("a.completed_button").click()
 		
+	$("td.believer:contains(\"No\")").parent("tr").addClass "warning"
+		
 	$('.dropdown-toggle').dropdown()
 	
 	$(".alert").alert()

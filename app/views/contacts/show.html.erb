@@ -75,6 +75,10 @@
 					<td class="bold">Last Updated:</td>
 					<td><%= @contact.updated_at.strftime('%d/%m/%Y') %></td>
 				</tr>
+				<tr>
+					<td class="bold">Believer:</td>
+					<td class="believer"><%= @contact.news_letter(@contact.believer) %></td>
+				</tr>
 			</table>
 			<br/>
 			<br/>

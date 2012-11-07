@@ -1,5 +1,6 @@
 class Contact < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :spouse_name, :email, :spouse_email, :tags, :network, :address_1, :address_2, :city, :state_id, :zip, :country_id, :receive_newsletter, :children, :preferred_contact
+  attr_accessible :first_name, :last_name, :spouse_name, :email, :spouse_email, :tags, :network, :address_1, :address_2, :city, 
+  :state_id, :zip, :country_id, :receive_newsletter, :children, :preferred_contact, :believer
   #number
   attr_accessible :numbers_attributes
   attr_accessible :occasions_attributes
