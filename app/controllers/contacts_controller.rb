@@ -97,12 +97,10 @@ class ContactsController < ApplicationController
       @presence = @contact.presences.where(:contact_id == @contact)
     end
     
-    def sort_column
-      Contact.column_names.include?(params[:direction]) ? params[:sort] : "updated_at"
-    end
-
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
-    end
-    
+  protected
+  
+  def sort_column
+    Contact.column_names.include?(params[:sort]) ? params[:sort] : "updated_at"
+  end
+  
 end

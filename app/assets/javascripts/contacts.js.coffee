@@ -21,3 +21,5 @@ jQuery ->
 	$('.dropdown-toggle').dropdown()
 	
 	$(".alert").alert()
+	
+	$("a.asc").parent("th").addClass "current asc"

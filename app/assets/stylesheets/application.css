@@ -65,6 +65,18 @@ table.contact td{
 .pagination a{
 	border: none !important;
 }
+.current {
+  padding-right: 12px;
+  background-repeat: no-repeat !important;
+  background-position: right center !important;
+}
 
+.asc {
+  background-image: url(/images/up_arrow.gif) !important;
+}
+
+a .desc {
+  background-image: url(/images/down_arrow.gif);
+}
 
 

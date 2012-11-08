@@ -67,5 +67,6 @@ module ApplicationHelper
     number_to_currency(number, :precision => 2)
   end
   
+  
 end
 

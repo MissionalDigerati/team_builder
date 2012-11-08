@@ -35,8 +35,6 @@ class Contact < ActiveRecord::Base
     end
   end
   
-
-  
 end
 #<Contact id: nil, first_name: nil, last_name: nil, spouse_name: nil, 
 # email: nil, spouse_email: nil, tags: nil, network: nil, address_1: nil, 
