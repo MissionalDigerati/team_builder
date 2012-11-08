@@ -50,15 +50,16 @@ module ApplicationHelper
     
   def donation_this_month    
     current_month = Time.now.month
+    current_year = Time.now.year
     # Donation.sum(:amount, Donation.where(:donation_date == current_month))
-    donation_month = Donation.where("strftime('%m', donation_date) + 0 = ?", current_month)
+    donation_month = Donation.where("strftime('%m', donation_date) + 0 = ? AND strftime('%Y', donation_date)     = ?", current_month, current_year.to_s)
     donation_month_sum = currency(donation_month.sum(:amount))
   end
   
   def donation_this_year
     current_year = Time.now.year
     # Donation.sum(:amount, Donation.where(:donation_date == current_month))
-    donation_year = Donation.where("strftime('%Y', donation_date)     = ?", current_year)
+    donation_year = Donation.where("strftime('%Y', donation_date)     = ?", current_year.to_s)
     donation_year_sum = currency(donation_year.sum(:amount))
   end
   
