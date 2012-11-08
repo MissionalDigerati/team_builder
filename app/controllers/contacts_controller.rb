@@ -1,9 +1,10 @@
 class ContactsController < ApplicationController
+  helper_method :sort_column, :sort_direction
   # GET /contacts
   # GET /contacts.json
   before_filter :sub_contact_info, :only => [:show] 
   def index
-    @contacts = Contact.order("updated_at DESC").page(params[:page])
+    @contacts = Contact.order(sort_column + " " + sort_direction).page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -96,6 +97,12 @@ class ContactsController < ApplicationController
       @presence = @contact.presences.where(:contact_id == @contact)
     end
     
-    
+    def sort_column
+      Contact.column_names.include?(params[:direction]) ? params[:sort] : "updated_at"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
+    end
     
 end

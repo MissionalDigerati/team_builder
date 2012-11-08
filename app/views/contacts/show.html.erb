@@ -151,8 +151,8 @@
 				</thead>
 			<% @donation.each do |donation| %>
 				<tr>
-				<td><%= donation.date %></td>
-				<td><%= donation.amount %></td>
+				<td><%= donation.donation_date %></td>
+				<td><%= currency(donation.amount) %></td>
 				<td><%= donation.project %></td>
 				<td><%= link_to "Edit", edit_donation_path(donation, contact_id: donation.contact_id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", donation_path(donation), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
 				</tr>

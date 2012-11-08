@@ -1,5 +1,25 @@
 <div class="row-fluid">
-	<div class="span12">
+	<div class="span3">
+		<h1>Donation Summary</h1>
+		<br/>
+		<br/>
+		<span class="attribute_header">Donations this month:</span>
+		<br/>
+		<%= donation_this_month %>
+		<br/>
+		<span class="attribute_header">Donations this year:</span>
+		<br/>
+		<%= donation_this_year %>
+		<br/>
+		<span class="attribute_header">Donations all time:</span>
+		<br/>
+		<%= donations_all_time %>
+		<br/>
+		
+		
+	</div>
+	
+	<div class="span9">
 		
 		<h1>All Donations</h1><br/>
 		<%= link_to 'New Donation', new_donation_path, :class => "btn btn-primary pull-right" %>
@@ -20,8 +40,8 @@
 		<% @donations.each do |donation| %>
 		  <tr>
 				<td><%= link_to first_name(donation), contact_path(donation.contact_id) %></td>
-				<td><%= donation.date %></td>
-				<td><%= donation.amount %></td>
+				<td><%= donation.donation_date %></td>
+				<td><%= currency(donation.amount) %></td>
 				<td><%= donation.project.capitalize %></td>
 				<td><%= donation.created_at.strftime('%d/%m/%Y') %></td>
 				<td><%= donation.updated_at.strftime('%d/%m/%Y') %></td>

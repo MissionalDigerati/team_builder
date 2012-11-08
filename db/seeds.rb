@@ -42,12 +42,13 @@
 #   Contact.create!(first_name: first_name, last_name: last_name, spouse_name: "filler", email: email, state_id: 5, country_id: 465, receive_newsletter: true, believer: true)
 # end
 # 
-# 50.times do |x|
-#   # Occasion.create!(contact_id: 3, day: 1, month: "May", year: 2012, occasion: "birthday")
-#   # Number.create!(contact_id: 3, phone_type: "mobile", number: "#{x+1}")
-#   # Donation.create!(contact_id: 3, date: "1/1/1111", amount: "#{x+1}", project: "team builder")
-#   Task.create!(contact_id: 3, completed: false, task: "task #{x+1}", due_date: "1/2/3000", category: "Call")
-# end
+# Donation.delete_all
+10.times do |x|
+  # Occasion.create!(contact_id: 3, day: 1, month: "May", year: 2012, occasion: "birthday")
+  # Number.create!(contact_id: 3, phone_type: "mobile", number: "#{x+1}")
+  Donation.create!(contact_id: 3, date: "1/12/2013", amount: "#{x+20}", project: "team builder")
+  # Task.create!(contact_id: 3, completed: false, task: "task #{x+1}", due_date: "1/2/3000", category: "Call")
+end
 
 #<Task id: nil, contact_id: nil, completed: false, task: nil, due_date: nil, category: nil, created_at: nil, updated_at: nil> 
 

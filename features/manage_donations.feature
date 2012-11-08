@@ -37,13 +37,13 @@ Feature: A user should be able to create, edit, and delete donations from their 
 		And I should see "the tardis"
 		When I click on the "Edit" link for "the tardis"
 		And I fill in "Date" with "1/1/01"
-		And I fill in "Amount" with "1000.00"
+		And I fill in "Amount" with "1000"
 		And I fill in "Project" with "nothing"
 		And I click the "Update Donation" button	
 		Then I should see "Your Donation has been updated!"
 		And I should not see "the tardis"	
 		And I should see "nothing"
-		And I should see "1000.00"
+		And I should see "$1,000.00"
 		
 	Scenario: A user should be delete donations
 		Given There is a contact "delete donations contact" and they have a donation "tba"
