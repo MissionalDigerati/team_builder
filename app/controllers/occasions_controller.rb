@@ -1,7 +1,9 @@
 class OccasionsController < ApplicationController
+  helper_method :sort_column, :sort_direction
   
   def index
-    @occasions = Occasion.order("updated_at DESC").page(params[:page])
+    # @occasions = Occasion.order("updated_at DESC").page(params[:page])
+    @occasions = Occasion.order(sort_column + " " + sort_direction).page(params[:page])
   end
   
   def new
@@ -54,6 +56,12 @@ class OccasionsController < ApplicationController
        format.html { redirect_to :back }
        flash[:notice] = "Your Occasion has been deleted."
      end
+   end
+   
+   protected
+   
+   def sort_column
+     Occasion.column_names.include?(params[:sort]) ? params[:sort] : "updated_at"
    end
   
 end

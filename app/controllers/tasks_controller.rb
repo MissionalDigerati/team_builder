@@ -1,8 +1,8 @@
 class TasksController < ApplicationController
-  
+  helper_method :sort_column, :sort_direction
   
   def index
-    @task = Task.order("completed ASC").page(params[:page])
+    @task = Task.order(sort_column + " " + sort_direction).page(params[:page])
   end
   
   def new
@@ -65,6 +65,12 @@ class TasksController < ApplicationController
         format.js
       end
     end
+  end
+  
+  protected
+  
+  def sort_column
+    Task.column_names.include?(params[:sort]) ? params[:sort] : "due_date"
   end
   
 end

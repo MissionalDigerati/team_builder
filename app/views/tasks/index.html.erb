@@ -9,10 +9,10 @@
 			<thead>
 				<th>Complete</th>
 				<th>Contact</th>
-				<th>Status</th>
-				<th>Task</th>
-				<th>Due date</th>
-				<th>Category</th>
+				<th><%= sortable "completed", "Status" %></th>
+				<th><%= sortable "task" %></th>
+				<th><%= sortable "due_date" %></th>
+				<th><%= sortable "category" %></th>
 				<th>Action</th>		
 			</thead>
 		<% @task.each do |task| %>

@@ -9,10 +9,11 @@
 		<table class="table index table-bordered table-hover table-striped">
 		  <tr>
 		    <th>Name</th>
-				<th>Day</th>
-				<th>Month</th>
-				<th>Year</th>
-				<th>Occasion</th>
+				<th><%= sortable "day" %></th>
+				<th><%= sortable "month" %></th>
+				<th><%= sortable "year" %></th>
+				<th>Date</th>
+				<th><%= sortable "occasion" %></th>
 		    <th>Action</th>
 		  </tr>
 
@@ -22,6 +23,7 @@
 				<td><%= occasion.day %></td>
 				<td><%= occasion.month %></td>
 				<td><%= occasion.year %></td>
+				<td><%= Occasion.special_date(occasion.day, occasion.month, occasion.year) %></td>
 				<td><%= occasion.occasion %></td>
 				<td class="text_center"><%= link_to edit_button, edit_occasion_path(occasion, contact_id: occasion.contact_id), :class => "btn btn-success btn-small"  %> <%= link_to delete_button, occasion, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small"  %> <%= link_to contact_button, contact_path(occasion.contact_id), :class => "btn btn-info btn-small"  %></td>
 			</tr>

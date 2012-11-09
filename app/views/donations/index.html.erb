@@ -1,21 +1,19 @@
 <div class="row-fluid">
 	<div class="span3">
 		
-		<h1>Donation Summary</h1>
+		<h3>Donation Summary</h3>
+		<span class="attribute_header">This month:</span>
 		<br/>
+		<%= currency(Donation.this_month_sum) %>
 		<br/>
-		<span class="attribute_header">Donations this month:</span>
-		<br/>
-		<%= donation_this_month %>
-		<br/>
-		<span class="attribute_header">Donations this year:</span>
+		<span class="attribute_header">This year:</span>
 		<br/>
 		<%= donation_this_year %>
 		<br/>
-		<span class="attribute_header">Donations all time:</span>
+		<span class="attribute_header">All time:</span>
 		<br/>
 		<%= donations_all_time %>
-		<br/>	
+		<br/>
 		
 	</div>
 	
@@ -30,11 +28,11 @@
 		  <tr>
 		    <!-- <th>Name</th> -->
 				<th>First Name</th>
-				<th>Date</th>
-				<th>Amount</th>
-				<th>Project</th>
-				<th>Created</th>
-				<th>Updated</th>
+				<th><%= sortable "donation_date", "Date" %></th>
+				<th><%= sortable "amount" %></th>
+				<th><%= sortable "project" %></th>
+				<th><%= sortable "created_at", "Created" %></th>
+				<th><%= sortable "updated_at", "Updated" %></th>
 		    <th>Action</th>
 		  </tr>
 

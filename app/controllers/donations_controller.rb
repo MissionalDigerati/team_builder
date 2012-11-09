@@ -1,7 +1,8 @@
 class DonationsController < ApplicationController
-  
+  helper_method :sort_column, :sort_direction
   def index
-    @donations = Donation.order("updated_at DESC").page(params[:page])
+    # @donations = Donation.order("updated_at DESC").page(params[:page])
+    @donations = Donation.order(sort_column + " " + sort_direction).page(params[:page])
   end
   
   def new
@@ -56,6 +57,12 @@ class DonationsController < ApplicationController
        flash[:notice] = "Your Donation has been deleted."
      end
    end
+  
+  protected
+  
+  def sort_column
+    Donation.column_names.include?(params[:sort]) ? params[:sort] : "updated_at"
+  end
   
 end
 

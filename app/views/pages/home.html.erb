@@ -10,19 +10,19 @@
 	<div class="span3">
 		<h3>Contacts Summary</h3>
 		<h3>Donation Summary</h3>
+		<span class="attribute_header">This month:</span>
 		<br/>
-		<span class="attribute_header">Donations this month:</span>
+		<%= currency(Donation.this_month_sum) %>
 		<br/>
-		<%= donation_this_month %>
-		<br/>
-		<span class="attribute_header">Donations this year:</span>
+		<span class="attribute_header">This year:</span>
 		<br/>
 		<%= donation_this_year %>
 		<br/>
-		<span class="attribute_header">Donations all time:</span>
+		<span class="attribute_header">All time:</span>
 		<br/>
 		<%= donations_all_time %>
 		<br/>
+		<%= link_to "View all Donations", donations_path, :class => "btn btn-warning" %>
 	</div>
 	
 	<div class="span9">

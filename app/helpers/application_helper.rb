@@ -47,14 +47,6 @@ module ApplicationHelper
   
   # These queries for finding by month and year will need to be changed depending on the database used, here I use sqlite 
   # http://stackoverflow.com/questions/9624601/activerecord-find-by-year-day-or-month-on-a-date-field
-    
-  def donation_this_month    
-    current_month = Time.now.month
-    current_year = Time.now.year
-    # Donation.sum(:amount, Donation.where(:donation_date == current_month))
-    donation_month = Donation.where("strftime('%m', donation_date) + 0 = ? AND strftime('%Y', donation_date)     = ?", current_month, current_year.to_s)
-    donation_month_sum = currency(donation_month.sum(:amount))
-  end
   
   def donation_this_year
     current_year = Time.now.year
@@ -66,7 +58,7 @@ module ApplicationHelper
   def currency(number)
     number_to_currency(number, :precision => 2)
   end
-  
+
   
 end
 
