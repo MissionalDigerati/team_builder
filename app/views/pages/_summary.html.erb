@@ -1,0 +1,51 @@
+<h3>Contacts Summary</h3>
+<h3>Donation Summary</h3>
+<span class="attribute_header">This month:</span>
+<br/>
+<%= currency(Donation.this_month_sum) %>
+<br/>
+<span class="attribute_header">This year:</span>
+<br/>
+<%= donation_this_year %>
+<br/>
+<span class="attribute_header">All time:</span>
+<br/>
+<%= donations_all_time %>
+<br/>
+<%= link_to "View all Donations", donations_path, :class => "btn btn-warning" %>
+<br/>
+<h3>Tasks summary</h3>
+<span class="attribute_header">Number of incomplete tasks:</span><br/>
+<%= Task.incomplete_tasks %><br/>
+<br/>
+<% if @tasks_within_week_range.present? %>
+	<span class="attribute_header">Remaining tasks this week:</span></br>
+	<table class="table">
+		<% @tasks_within_week_range.each do |weekly_tasks| %>
+			<tr>
+				<td><%= link_to first_name(weekly_tasks), contact_path(weekly_tasks.contact_id) %></td>
+				<td><%= weekly_tasks.task %></td>
+				<td><%= weekly_tasks.due_date %></td>
+				<td><%= link_to "View", contact_path(weekly_tasks.contact_id), :class => "btn btn-small btn-info" %></td>
+			</tr>
+		<% end %>
+	</table>
+<% end %>
+
+<br/>
+
+<% if @tasks_this_month.present? %>
+	<span class="attribute_header">Remaining tasks this month:</span></br>
+	<table class="table">
+	<% @tasks_this_month.each do |monthly_tasks| %>
+		<tr>
+			<td><%= link_to first_name(monthly_tasks), contact_path(monthly_tasks.contact_id) %></td>
+			<td><%= monthly_tasks.task %></td>
+			<td><%= monthly_tasks.due_date %></td>
+			<td><%= link_to "View", contact_path(monthly_tasks.contact_id), :class => "btn btn-small btn-info" %></td>
+		</tr>
+	<% end %>
+	</table>
+<% end %>
+<%= link_to "View all Tasks", tasks_path, :class => "btn btn-warning" %>
+<br/>

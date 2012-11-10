@@ -13,7 +13,7 @@ Feature: A user should be able to create tasks for a user, edit, update, and cre
 		Then I should see "Your Task has been saved!"
 		And I should be on the show page for "Matt Smith"
 		And I should see "Get to the tardis"
-		And I should see "1/2/201121"
+		And I should see "201121-02-01"
 		
 	Scenario: A user should be able to edit a task that already exists.
 		Given There is a contact "edit task" and they have a task "build a fort"
@@ -26,7 +26,7 @@ Feature: A user should be able to create tasks for a user, edit, update, and cre
 		Then I should see "Your Task has been updated!"
 		And I should be on the show page for "edit task"
 		And I should see "destroy a fort"
-		And I should see "1/2/201121"
+		And I should see "201121-02-01"
 		And I should not see "build a fort"
 		
 	Scenario: A user should be able to delete a task that already exists	
