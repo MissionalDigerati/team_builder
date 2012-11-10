@@ -23,6 +23,11 @@
 		<%= donations_all_time %>
 		<br/>
 		<%= link_to "View all Donations", donations_path, :class => "btn btn-warning" %>
+		<br/>
+		
+		<h3>Tasks</h3>
+		<span class="attribute_header">Number of incomplete tasks:</span><br/>
+		<%= Task.incomplete_tasks %>
 	</div>
 	
 	<div class="span9">

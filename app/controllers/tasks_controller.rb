@@ -70,7 +70,11 @@ class TasksController < ApplicationController
   protected
   
   def sort_column
-    Task.column_names.include?(params[:sort]) ? params[:sort] : "due_date"
+    Task.column_names.include?(params[:sort]) ? params[:sort] : "completed"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
   
 end

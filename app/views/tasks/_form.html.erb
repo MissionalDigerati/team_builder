@@ -6,7 +6,7 @@
 	<%= f.label :task, "Task" %>
 	<%= f.text_field :task %><br/><br/>
 	<%= f.label :due_date, "Due Date" %>
-	<%= f.text_field :due_date %><br/><br/>
+	<%= f.text_field :due_date, :class => "due_date_field" %><br/><br/>
 	<%= f.label :category, "Category"%>
 	<%= f.select :category, Task::CATEGORY, :include_blank => true %><br/><br/>
 	<%= f.submit :class => "btn btn-large btn-success pull-right"%>
