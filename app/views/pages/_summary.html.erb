@@ -19,7 +19,7 @@
 <%= Task.incomplete_tasks %><br/>
 <br/>
 <% if @tasks_within_week_range.present? %>
-	<span class="attribute_header">Remaining tasks this week:</span></br>
+	<span class="attribute_header">Remaining tasks (7 days):</span></br>
 	<table class="table">
 		<% @tasks_within_week_range.each do |weekly_tasks| %>
 			<tr>
@@ -35,7 +35,7 @@
 <br/>
 
 <% if @tasks_this_month.present? %>
-	<span class="attribute_header">Remaining tasks this month:</span></br>
+	<span class="attribute_header">Remaining tasks (4 weeks):</span></br>
 	<table class="table">
 	<% @tasks_this_month.each do |monthly_tasks| %>
 		<tr>

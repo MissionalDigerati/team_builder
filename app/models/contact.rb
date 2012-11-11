@@ -35,6 +35,18 @@ class Contact < ActiveRecord::Base
     end
   end
   
+  def self.non_believers
+    Contact.where("believer = ?", false).length
+  end
+  
+  def self.contact_count
+    Contact.all.length
+  end
+  
+  def self.donated_contacts
+    Contact.Donation.length
+  end
+  
 end
 #<Contact id: nil, first_name: nil, last_name: nil, spouse_name: nil, 
 # email: nil, spouse_email: nil, tags: nil, network: nil, address_1: nil, 

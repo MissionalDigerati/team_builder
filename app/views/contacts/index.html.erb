@@ -1,5 +1,28 @@
 <div class="row-fluid">
-	<div class="span12">
+	
+	<div class="span3">
+		<h3>Contact's Summary</h3>
+		Total number of contacts: <br/>
+		<%= Contact.contact_count %><br/>
+		Number of Non-Believers: <br/>
+		<%= Contact.non_believers %><br/>
+		Number of contacts that have donated: <br/>
+		<%= Contact.non_believers %><br/>
+		<br/>
+		<% if @new_contacts.present? %>
+			Recent contacts (4 weeks)<br/>
+			<table class="table">
+				<% @new_contacts.each do |new_contact| %>
+				<tr>
+					<td><%= full_name(new_contact) %></td>
+					<td><%= link_to "View", contact_path(new_contact), :class => "btn btn-info btn-small" %></td>
+				</tr>
+				<% end %>
+			</table>
+		<% end %>
+	</div>
+
+	<div class="span9">
 		
 		<h1>All Contacts</h1><br/>
 		<%= link_to 'New Contact', new_contact_path, :class => "btn btn-primary pull-right" %>

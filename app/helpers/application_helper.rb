@@ -20,6 +20,10 @@ module ApplicationHelper
   def first_name(arg)
     arg.contact.first_name.capitalize
   end
+  
+  def full_name(arg)
+    arg.first_name + " " + arg.last_name.titleize
+  end
     
   def edit_button
     'Edit <i class="icon-edit icon-white"></i>'.html_safe
