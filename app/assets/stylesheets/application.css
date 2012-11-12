@@ -79,5 +79,9 @@ table.contact td{
 a .desc {
   background-image: url(/images/down_arrow.gif);
 }
-
+.hr{
+	background : #b3b3b3;
+	width : 100%;
+	height : 1px;
+}
 

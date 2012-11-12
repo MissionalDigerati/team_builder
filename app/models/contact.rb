@@ -47,6 +47,14 @@ class Contact < ActiveRecord::Base
     Contact.Donation.length
   end
   
+  def self.contacts_in_last_month
+    Contact.find(:all, :conditions => ["created_at between ? and ?", 4.weeks.ago.to_date, Time.now.to_date]).length
+  end
+  
+  def self.contacts_in_last_year
+    Contact.find(:all, :conditions => ["created_at between ? and ?", 1.years.ago.to_date, Time.now.to_date]).length
+  end
+  
 end
 #<Contact id: nil, first_name: nil, last_name: nil, spouse_name: nil, 
 # email: nil, spouse_email: nil, tags: nil, network: nil, address_1: nil, 

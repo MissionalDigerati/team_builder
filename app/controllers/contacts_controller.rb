@@ -3,9 +3,13 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   before_filter :sub_contact_info, :only => [:show] 
+  
+  #
+  #passes sortable info the the main contact table on the contact index page. 
+  # Also passes all the new contacts from the past week in the instance variable @new_contacts
   def index
     @contacts = Contact.order(sort_column + " " + sort_direction).page(params[:page])
-    @new_contacts = Contact.find(:all, :conditions => ["created_at between ? and ?", 4.weeks.ago.to_date, Time.now.to_date])
+    @new_contacts = Contact.find(:all, :conditions => ["created_at between ? and ?", 1.weeks.ago.to_date, Time.now.to_date])
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @contacts }

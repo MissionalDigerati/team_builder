@@ -2,19 +2,23 @@
 	
 	<div class="span3">
 		<h3>Contact's Summary</h3>
-		Total number of contacts: <br/>
+		<strong>Total number of contacts:</strong> <br/>
 		<%= Contact.contact_count %><br/>
-		Number of Non-Believers: <br/>
+		<strong>Number of Non-Believers:</strong> <br/>
 		<%= Contact.non_believers %><br/>
-		Number of contacts that have donated: <br/>
+		<strong>Number of new contacts (last 4 weeks):</strong><br/>
+		<%= Contact.contacts_in_last_month %><br/>
+		<strong>Number of new contacts (last year):</strong><br/>
+		<%= Contact.contacts_in_last_year %><br/>
+		<strong>Number of contacts that have donated:</strong> <br/>
 		<%= Contact.non_believers %><br/>
 		<br/>
 		<% if @new_contacts.present? %>
-			Recent contacts (4 weeks)<br/>
+			<strong>Recent contacts (past week):</strong><br/>
 			<table class="table">
 				<% @new_contacts.each do |new_contact| %>
 				<tr>
-					<td><%= full_name(new_contact) %></td>
+					<td><%= link_to full_name(new_contact), contact_path(new_contact) %></td>
 					<td><%= link_to "View", contact_path(new_contact), :class => "btn btn-info btn-small" %></td>
 				</tr>
 				<% end %>
