@@ -19,7 +19,7 @@
 				<% @new_contacts.each do |new_contact| %>
 				<tr>
 					<td><%= link_to full_name(new_contact), contact_path(new_contact) %></td>
-					<td><%= link_to "View", contact_path(new_contact), :class => "btn btn-info btn-small" %></td>
+					<td><%= link_to "View", contact_path(new_contact), :class => "btn btn-info btn-small pull-right" %></td>
 				</tr>
 				<% end %>
 			</table>

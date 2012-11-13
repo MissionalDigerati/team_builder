@@ -28,13 +28,23 @@ class ApplicationController < ActionController::Base
     today = Time.now.to_date
     next_week = 1.weeks.from_now.to_date
     next_4_weeks = 4.weeks.from_now.to_date
-    @tasks_within_week_range = Task.find(:all, :conditions => ["due_date between ? and ? AND completed = ?", today, next_week, false])
-    @tasks_this_month = Task.find(:all, :conditions => ["due_date between ? and ? AND completed = ?", today, next_4_weeks, false])
+    @tasks_within_week_range = Task.find(:all, :order => "due_date ASC", :conditions => ["due_date between ? and ? AND completed = ?", today, next_week, false])
+    @tasks_this_month = Task.find(:all, :order => "due_date ASC", :conditions => ["due_date between ? and ? AND completed = ?", today, next_4_weeks, false])
+    @tasks_overdue = Task.find(:all, :order => "due_date ASC", :conditions => ["due_date < ? AND completed = ?", today, false])
+    puts @tasks_overdue
   end
   
   def occasion_summary
-    @occasions_today = Occasion.find(:all, :conditions => ["day = ? AND month = ?", day, month])
-    @occasions_week = Occasion.find(:all, :conditions => ["due_date between ? and ? AND completed = ?", today, next_4_weeks, false])
+    task_day_strftime = DATE_DAY_STRFTIME.gsub(/COLUMN/, "special_date") 
+    task_month_strftime = DATE_MONTH_STRFTIME.gsub(/COLUMN/, "special_date") 
+    task_year_strftime = DATE_YEAR_STRFTIME.gsub(/COLUMN/, "special_date")
+    day = Time.now.day
+    month = Time.now.month
+    year = Time.now.year.to_s
+    @occasions_today = Occasion.where(["#{task_day_strftime} + 0 = ? AND #{task_month_strftime} + 0 = ?", day, month])
+    @occasions_week = Occasion.find(:all, :conditions => ["#{task_day_strftime} + 0 between ? and ? AND #{task_month_strftime} + 0 = ?", day + 1, day + 5, month])
+    @occasions_month = Occasion.where("#{task_month_strftime} + 0 = ? AND #{task_day_strftime} + 0 > ?", month, day)
+    # @occasions_week = Occasion.find(:all, :conditions => ["due_date between ? and ? AND completed = ?", today, next_4_weeks, false])
   end
   
 end

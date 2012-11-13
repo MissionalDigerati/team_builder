@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   helper_method :sort_column, :sort_direction
+  before_filter :task_summary, :only => [:index]
   
   def index
     @task = Task.order(sort_column + " " + sort_direction).page(params[:page])

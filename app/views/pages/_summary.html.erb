@@ -17,6 +17,22 @@
 <span class="attribute_header">Number of incomplete tasks:</span><br/>
 <%= Task.incomplete_tasks %><br/>
 <br/>
+
+<% if @tasks_overdue.present? %>
+	<span class="attribute_header">Overdue tasks:</span></br>
+	<table class="table">
+		<% @tasks_overdue.each do |overdue| %>
+			<tr>
+				<td><%= link_to first_name(overdue), contact_path(overdue.contact_id) %></td>
+				<td><%= overdue.task %></td>
+				<td><%= overdue.due_date.strftime('%m/%d/%Y') %></td>
+				<td><%= link_to "View", contact_path(overdue.contact_id), :class => "btn btn-small btn-info pull-right" %></td>
+			</tr>
+		<% end %>
+	</table>
+<% end %>
+
+
 <% if @tasks_within_week_range.present? %>
 	<span class="attribute_header">Remaining tasks (1 week):</span></br>
 	<table class="table">
@@ -24,8 +40,8 @@
 			<tr>
 				<td><%= link_to first_name(weekly_tasks), contact_path(weekly_tasks.contact_id) %></td>
 				<td><%= weekly_tasks.task %></td>
-				<td><%= weekly_tasks.due_date %></td>
-				<td><%= link_to "View", contact_path(weekly_tasks.contact_id), :class => "btn btn-small btn-info" %></td>
+				<td><%= weekly_tasks.due_date.strftime('%m/%d/%Y') %></td>
+				<td><%= link_to "View", contact_path(weekly_tasks.contact_id), :class => "btn btn-small btn-info pull-right" %></td>
 			</tr>
 		<% end %>
 	</table>
@@ -40,8 +56,8 @@
 		<tr>
 			<td><%= link_to first_name(monthly_tasks), contact_path(monthly_tasks.contact_id) %></td>
 			<td><%= monthly_tasks.task %></td>
-			<td><%= monthly_tasks.due_date %></td>
-			<td><%= link_to "View", contact_path(monthly_tasks.contact_id), :class => "btn btn-small btn-info" %></td>
+			<td><%= monthly_tasks.due_date.strftime('%m/%d/%Y') %></td>
+			<td><%= link_to "View", contact_path(monthly_tasks.contact_id), :class => "btn btn-small btn-info pull-right" %></td>
 		</tr>
 	<% end %>
 	</table>
@@ -50,3 +66,46 @@
 <br/>
 
 <hr class="hr"></hr>
+
+<br/>
+
+<h3>Special Date Summary</h3>
+<% if @occasions_today.present? %>
+	<strong>Special dates (today):</strong><br/>
+	<table class="table">
+	<% @occasions_today.each do |today| %>
+		<tr>
+			<td><%= link_to first_name(today), contact_path(today.contact_id)%></td>
+			<td><%= today.occasion %></td>
+			<td><%= link_to "View", contact_path(today.contact_id), :class => "btn btn-info btn-small pull-right" %></td>
+		</tr>
+	<% end %>
+	</table>
+<% end %>
+
+<% if @occasions_week.present? %>
+	<strong>Upcoming special dates (This Week):</strong><br/>
+	<table class="table">
+	<% @occasions_week.each do |week| %>
+		<tr>
+			<td><%= link_to first_name(week), contact_path(week.contact_id)%></td>
+			<td><%= week.occasion %></td>
+			<td><%= link_to "View", contact_path(week.contact_id), :class => "btn btn-info btn-small pull-right" %></td>
+		</tr>
+	<% end %>
+	</table>
+<% end %>
+
+<% if @occasions_month.present? %>
+	<strong>Upcoming special dates (This Month):</strong><br/>
+	<table class="table">
+	<% @occasions_month.each do |month| %>
+		<tr>
+			<td><%= link_to first_name(month), contact_path(month.contact_id)%></td>
+			<td><%= month.occasion %></td>
+			<td><%= link_to "View", contact_path(month.contact_id), :class => "btn btn-info btn-small pull-right" %></td>
+		</tr>
+	<% end %>
+	</table>
+<% end %>
+<%= link_to "View all Special Dates", occasions_path, :class => "btn btn-warning" %>
