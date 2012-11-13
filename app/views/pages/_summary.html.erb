@@ -22,7 +22,8 @@
 	<span class="attribute_header">Overdue tasks:</span></br>
 	<table class="table">
 		<% @tasks_overdue.each do |overdue| %>
-			<tr>
+			<tr rel="<%= overdue.id %>" >
+				<td><%= check_box_tag "#{overdue.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(overdue), remote: true, :class => "completed_button #{overdue.id} hidden" %></td>
 				<td><%= link_to first_name(overdue), contact_path(overdue.contact_id) %></td>
 				<td><%= overdue.task %></td>
 				<td><%= overdue.due_date.strftime('%m/%d/%Y') %></td>
@@ -37,7 +38,8 @@
 	<span class="attribute_header">Remaining tasks (1 week):</span></br>
 	<table class="table">
 		<% @tasks_within_week_range.each do |weekly_tasks| %>
-			<tr>
+			<tr rel="<%= weekly_tasks.id %>" >
+				<td><%= check_box_tag "#{weekly_tasks.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(weekly_tasks), remote: true, :class => "completed_button #{weekly_tasks.id} hidden" %></td>
 				<td><%= link_to first_name(weekly_tasks), contact_path(weekly_tasks.contact_id) %></td>
 				<td><%= weekly_tasks.task %></td>
 				<td><%= weekly_tasks.due_date.strftime('%m/%d/%Y') %></td>
@@ -53,7 +55,8 @@
 	<span class="attribute_header">Remaining tasks (4 weeks):</span></br>
 	<table class="table">
 	<% @tasks_this_month.each do |monthly_tasks| %>
-		<tr>
+		<tr rel="<%= monthly_tasks.id %>" >
+			<td><%= check_box_tag "#{monthly_tasks.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(monthly_tasks), remote: true, :class => "completed_button #{monthly_tasks.id} hidden" %></td>
 			<td><%= link_to first_name(monthly_tasks), contact_path(monthly_tasks.contact_id) %></td>
 			<td><%= monthly_tasks.task %></td>
 			<td><%= monthly_tasks.due_date.strftime('%m/%d/%Y') %></td>
@@ -71,7 +74,7 @@
 
 <h3>Special Date Summary</h3>
 <% if @occasions_today.present? %>
-	<strong>Special dates (today):</strong><br/>
+	<strong><%= "Special dates (today #{Time.now.to_date.strftime('%m/%d/%Y')}):" %></strong><br/>
 	<table class="table">
 	<% @occasions_today.each do |today| %>
 		<tr>
@@ -90,6 +93,7 @@
 		<tr>
 			<td><%= link_to first_name(week), contact_path(week.contact_id)%></td>
 			<td><%= week.occasion %></td>
+			<td><%= week.special_date.strftime('%m/%d/%Y') %></td>
 			<td><%= link_to "View", contact_path(week.contact_id), :class => "btn btn-info btn-small pull-right" %></td>
 		</tr>
 	<% end %>
@@ -103,6 +107,7 @@
 		<tr>
 			<td><%= link_to first_name(month), contact_path(month.contact_id)%></td>
 			<td><%= month.occasion %></td>
+			<td><%= month.special_date.strftime('%m/%d/%Y') %></td>
 			<td><%= link_to "View", contact_path(month.contact_id), :class => "btn btn-info btn-small pull-right" %></td>
 		</tr>
 	<% end %>

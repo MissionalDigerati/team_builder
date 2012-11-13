@@ -1,11 +1,14 @@
 <div class="row-fluid">
 	
 	<div class="span3">
+		<h3>Tasks Summary</h3>
+		<br/>
 		<% if @tasks_overdue.present? %>
 			<span class="attribute_header">Overdue tasks:</span></br>
 			<table class="table">
 				<% @tasks_overdue.each do |overdue| %>
-					<tr>
+					<tr rel="<%= overdue.id %>" >
+						<td><%= check_box_tag "#{overdue.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(overdue), remote: true, :class => "completed_button #{overdue.id} hidden" %></td>
 						<td><%= link_to first_name(overdue), contact_path(overdue.contact_id) %></td>
 						<td><%= overdue.task %></td>
 						<td><%= overdue.due_date.strftime('%m/%d/%Y') %></td>
@@ -20,7 +23,8 @@
 			<span class="attribute_header">Remaining tasks (1 week):</span></br>
 			<table class="table">
 				<% @tasks_within_week_range.each do |weekly_tasks| %>
-					<tr>
+					<tr rel="<%= weekly_tasks.id %>" >
+						<td><%= check_box_tag "#{weekly_tasks.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(weekly_tasks), remote: true, :class => "completed_button #{weekly_tasks.id} hidden" %></td>
 						<td><%= link_to first_name(weekly_tasks), contact_path(weekly_tasks.contact_id) %></td>
 						<td><%= weekly_tasks.task %></td>
 						<td><%= weekly_tasks.due_date.strftime('%m/%d/%Y') %></td>
@@ -36,7 +40,8 @@
 			<span class="attribute_header">Remaining tasks (4 weeks):</span></br>
 			<table class="table">
 			<% @tasks_this_month.each do |monthly_tasks| %>
-				<tr>
+				<tr rel="<%= monthly_tasks.id %>" >
+					<td><%= check_box_tag "#{monthly_tasks.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(monthly_tasks), remote: true, :class => "completed_button #{monthly_tasks.id} hidden" %></td>
 					<td><%= link_to first_name(monthly_tasks), contact_path(monthly_tasks.contact_id) %></td>
 					<td><%= monthly_tasks.task %></td>
 					<td><%= monthly_tasks.due_date.strftime('%m/%d/%Y') %></td>

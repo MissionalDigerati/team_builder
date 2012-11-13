@@ -1,9 +1,10 @@
 <div class="row-fluid">
 	
 	<div class="span3">
-		<h3>Special Date Summary</h3>
+		<h3>Special Dates Summary</h3>
+		<br/>
 		<% if @occasions_today.present? %>
-			<strong>Special dates (today):</strong><br/>
+			<strong><%= "Special dates (today #{Time.now.to_date.strftime('%m/%d/%Y')}):" %></strong><br/>
 			<table class="table">
 			<% @occasions_today.each do |today| %>
 				<tr>
@@ -14,7 +15,7 @@
 			<% end %>
 			</table>
 		<% end %>
-		
+
 		<% if @occasions_week.present? %>
 			<strong>Upcoming special dates (This Week):</strong><br/>
 			<table class="table">
@@ -22,12 +23,13 @@
 				<tr>
 					<td><%= link_to first_name(week), contact_path(week.contact_id)%></td>
 					<td><%= week.occasion %></td>
+					<td><%= week.special_date.strftime('%m/%d/%Y') %></td>
 					<td><%= link_to "View", contact_path(week.contact_id), :class => "btn btn-info btn-small pull-right" %></td>
 				</tr>
 			<% end %>
 			</table>
 		<% end %>
-		
+
 		<% if @occasions_month.present? %>
 			<strong>Upcoming special dates (This Month):</strong><br/>
 			<table class="table">
@@ -35,6 +37,7 @@
 				<tr>
 					<td><%= link_to first_name(month), contact_path(month.contact_id)%></td>
 					<td><%= month.occasion %></td>
+					<td><%= month.special_date.strftime('%m/%d/%Y') %></td>
 					<td><%= link_to "View", contact_path(month.contact_id), :class => "btn btn-info btn-small pull-right" %></td>
 				</tr>
 			<% end %>
