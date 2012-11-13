@@ -1,7 +1,6 @@
 class Occasion < ActiveRecord::Base
   belongs_to :contact
-  attr_accessible :day, :month, :year, :occasion, :contact_id
-  # validates :day, :month, :occasion, :contact_id, :presence => true
+  attr_accessible :occasion, :contact_id, :special_date
   
   year = Time.new.year
   

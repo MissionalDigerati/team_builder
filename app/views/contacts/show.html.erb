@@ -117,18 +117,16 @@
 			<% if @occasion.present? %>
 			<table class="table table-striped">
 				<thead>
-					<th>Day</th>
-					<th>Month</th>
-					<th>Year</th>
+					<th>Date (mm/dd/yyyy)</th>
 					<th>Occasion</th>
+					<th>Crated at</th>
 					<th>Action</th>
 				</thead>
 			<% @occasion.each do |occasion| %>
 				<tr>
-				<td><%= occasion.day %></td>
-				<td><%= occasion.month %></td>
-				<td><%= occasion.year %></td>
+				<td><%= occasion.special_date.strftime('%m/%d/%Y') %></td>
 				<td><%= occasion.occasion %></td>
+				<td><%= occasion.created_at.to_date.strftime('%m/%d/%Y') %></td>
 				<td><%= link_to "Edit", edit_occasion_path(occasion, contact_id: occasion.contact_id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", occasion_path(occasion), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
 				</tr>
 			<% end %>

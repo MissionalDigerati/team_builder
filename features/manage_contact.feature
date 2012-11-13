@@ -44,9 +44,7 @@ Feature: A user manages their contacts
 		And I check the "receive_newsletter" checkboxes
 		And I select "Home" from "Phone Type"
 		And I fill in "Phone Number" with "7777777"
-		And I select "Jan" from "Month"
-		And I select "1" from "Day"
-		And I select "2012" from "Year"
+		And I fill in "contact_occasions_attributes_0_special_date" with "01-11-2012"
 		And I fill in "Occasion" with "new years"
 		And I select "Facebook" from "Site"
 		And I fill in "URL" with "www.facebook.com"

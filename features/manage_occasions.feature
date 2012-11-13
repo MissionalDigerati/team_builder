@@ -6,29 +6,27 @@ Feature: A user should be able to manage their occasions that belong to users
 		Given there is a contact "The Doctor"
 		And I am on the show page for "The Doctor"
 		When I click the "Add Special Date" link
-		And I select "Jan" from "Month"
-		And I select "12" from "Day"
-		And I select "2012" from "Year"
+		And I fill in "occasion_special_date" with "19-11-2012"
 		And I fill in "Occasion" with "birthday"
 		And I click the "Create Occasion" button
 		Then I should see "Your Occasion has been saved!"
 		And I should be on the doctor's show page
 		And I should see "birthday"
+		And I should see "11/19/2012"
 		
 	Scenario: A user should be able to edit special dates that belong to their contacts.
 		Given There is a contact "edit occasions" and they have an occasion "birthday"
 		And I am on the show page for "edit occasions"
 		And I should see "birthday"
 		When I click on the "Edit" link for "birthday"
-		And I select "Jan" from "Month"
-		And I select "12" from "Day"
-		And I select "2012" from "Year"
+		And I fill in "occasion_special_date" with "3-11-2012"
 		And I fill in "Occasion" with "halloween"
 		And I click the "Update Occasion" button
 		Then I should see "Your Occasion has ben updated."
 		And I should be on the show page for "edit occasions"
 		And I should not see "birthday"
 		And I should see "halloween"
+		And I should see "11/03/2012"
 		
 	Scenario: A user should be able to delete special dates that belong to their contacts.
 		Given There is a contact "delete occasions" and they have an occasion "holiday"
@@ -44,15 +42,13 @@ Feature: A user should be able to manage their occasions that belong to users
 		And I am on the show page for "cup"
 		When I click the "Add Special Date" link
 		And I select "mug" from "Contact"
-		And I select "Feb" from "Month"
-		And I select "2" from "Day"
-		And I select "2012" from "Year"
+		And I fill in "occasion_special_date" with "2-11-2012"
 		And I fill in "Occasion" with "party"
 		And I click the "Create Occasion" button
 		Then I should see "Your Occasion has been saved!"
 		And I should be on the show page for "mug"
 		And I should see "party"
-		And I should see "2012"
+		And I should see "11/02/2012"
 		Then I am on the show page for "cup"
 		And I should not see "party"	
 		

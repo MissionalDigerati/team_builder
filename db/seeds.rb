@@ -43,10 +43,11 @@
 # end
 # 
 # Donation.delete_all
-10.times do |x|
-  # Occasion.create!(contact_id: 3, day: 1, month: "May", year: 2012, occasion: "birthday")
+
+5.times do |x|
+  Occasion.create!(contact_id: 3, occasion: "birthday", special_date: "2007-11-12")
   # Number.create!(contact_id: 3, phone_type: "mobile", number: "#{x+1}")
-  Donation.create!(contact_id: 3, date: "1/12/2013", amount: "#{x+20}", project: "team builder")
+  # Donation.create!(contact_id: 3, date: "1/12/2013", amount: "#{x+20}", project: "team builder")
   # Task.create!(contact_id: 3, completed: false, task: "task #{x+1}", due_date: "1/2/3000", category: "Call")
 end
 

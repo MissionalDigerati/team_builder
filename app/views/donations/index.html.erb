@@ -1,4 +1,5 @@
 <div class="row-fluid">
+	
 	<div class="span3">
 		
 		<h3>Donation Summary</h3>
@@ -24,7 +25,7 @@
 		  <tr>
 		    <!-- <th>Name</th> -->
 				<th>First Name</th>
-				<th><%= sortable "donation_date", "Date" %></th>
+				<th><%= sortable "donation_date", "Date (mm/dd/yyyy)" %></th>
 				<th><%= sortable "amount" %></th>
 				<th><%= sortable "project" %></th>
 				<th><%= sortable "created_at", "Created" %></th>
@@ -35,7 +36,7 @@
 		<% @donations.each do |donation| %>
 		  <tr>
 				<td><%= link_to first_name(donation), contact_path(donation.contact_id) %></td>
-				<td><%= donation.donation_date %></td>
+				<td><%= donation.donation_date.strftime('%m/%d/%Y') %></td>
 				<td><%= currency(donation.amount) %></td>
 				<td><%= donation.project.capitalize %></td>
 				<td><%= donation.created_at.strftime('%d/%m/%Y') %></td>

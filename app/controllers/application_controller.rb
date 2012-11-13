@@ -32,5 +32,9 @@ class ApplicationController < ActionController::Base
     @tasks_this_month = Task.find(:all, :conditions => ["due_date between ? and ? AND completed = ?", today, next_4_weeks, false])
   end
   
+  def occasion_summary
+    @occasions_today = Occasion.find(:all, :conditions => ["day = ? AND month = ?", day, month])
+    @occasions_week = Occasion.find(:all, :conditions => ["due_date between ? and ? AND completed = ?", today, next_4_weeks, false])
+  end
   
 end

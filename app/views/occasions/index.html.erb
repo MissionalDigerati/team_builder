@@ -1,5 +1,24 @@
 <div class="row-fluid">
-	<div class="span12">
+	
+	<div class="span3">
+		<h3>Special Date Summary</h3>
+		<% if @occasions_today.present? %>
+			<strong>Special dates (today):</strong><br/>
+			<table class="table">
+			<% @occasions_today.each do |today| %>
+				<tr>
+					<td><%= link_to first_name(today), contact_path(today.contact_id)%></td>
+					<td><%= today.occasion %></td>
+					<td><%= link_to "View", contact_path(today.contact_id), :class => "btn btn-info btn-small" %></td>
+				</tr>
+			<% end %>
+			</table>
+		<% end %>
+		<strong>Upcoming special dates (This Week):</strong><br/>
+		<strong>Upcoming special dates (This Month):</strong><br/>
+	</div>
+	
+	<div class="span9">
 		
 		<h1>All Special Dates</h1><br/>
 		<%= link_to 'New Special Date', new_occasion_path, :class => "btn btn-primary pull-right" %>
@@ -9,22 +28,18 @@
 		<table class="table index table-bordered table-hover table-striped">
 		  <tr>
 		    <th>Name</th>
-				<th><%= sortable "day" %></th>
-				<th><%= sortable "month" %></th>
-				<th><%= sortable "year" %></th>
-				<th>Date</th>
 				<th><%= sortable "occasion" %></th>
+				<th><%= sortable "special_date", "Date (mm/dd/yyyy)" %></th>
+				<th><%= sortable "created_at" %></th>
 		    <th>Action</th>
 		  </tr>
 
 		<% @occasions.each do |occasion| %>
 		  <tr>
 				<td><%= link_to first_name(occasion), contact_path(occasion.contact_id) %></td>
-				<td><%= occasion.day %></td>
-				<td><%= occasion.month %></td>
-				<td><%= occasion.year %></td>
-				<td><%= Occasion.special_date(occasion.day, occasion.month, occasion.year) %></td>
 				<td><%= occasion.occasion %></td>
+				<td><%= occasion.special_date.strftime('%m/%d/%Y') %></td>
+				<td><%= occasion.created_at.strftime('%m/%d/%Y') %></td>
 				<td class="text_center"><%= link_to edit_button, edit_occasion_path(occasion, contact_id: occasion.contact_id), :class => "btn btn-success btn-small"  %> <%= link_to delete_button, occasion, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small"  %> <%= link_to contact_button, contact_path(occasion.contact_id), :class => "btn btn-info btn-small"  %></td>
 			</tr>
 		<% end %>

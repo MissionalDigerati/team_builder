@@ -1,14 +1,10 @@
 <%= form_for([@occasions]) do |f| %>
 		<%= f.label :contact_id, "Contact" %>
 		<%= f.select(:contact_id, Contact.all.collect {|p| [ p.first_name, p.id ] }) %><br/><br/>
-		<%= f.label :day, "Day"%>
-		<%= f.select :day, Occasion::DAYS, :include_blank => true, :required => true %><br/><br/>
-		<%= f.label :month, "Month"%>
-		<%= f.select :month, Occasion::MONTHS, :include_blank => true %><br/><br/>
-		<%= f.label :year, "Year"%>
-		<%= f.select :year, Occasion::YEARS, :include_blank => true %><br/><br/>
 		<%= f.label :occasion, "Occasion"%>
 		<%= f.text_field :occasion, :required => true %><br/><br/>
+		<%= f.label :special_date, "Date" %>
+		<%= f.text_field :special_date, :required => true, :class => "due_date_field" %>
 		<%= f.submit :class => "btn btn-large btn-success pull-right" %>
 <% end %>
 

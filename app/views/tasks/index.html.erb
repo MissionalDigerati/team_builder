@@ -1,5 +1,10 @@
 <div class="row-fluid">
-	<div class="span12">
+	
+	<div class="span3">
+		
+	</div>
+	
+	<div class="span9">
 		<h1>All Tasks</h1><br/>
 		<%= link_to "Add Task", new_task_path, :class => "btn btn-primary pull-right" %>
 		<br/>
@@ -11,7 +16,7 @@
 				<th>Contact</th>
 				<th><%= sortable "completed", "Status" %></th>
 				<th><%= sortable "task" %></th>
-				<th><%= sortable "due_date" %></th>
+				<th><%= sortable "due_date", "Date (mm/dd/yyyy)" %></th>
 				<th><%= sortable "category" %></th>
 				<th>Action</th>		
 			</thead>
@@ -21,7 +26,7 @@
 				<td><%= link_to first_name(task), contact_path(task.contact_id) %></td>
 				<td class="task_status"><%= status(task.completed) %></td>
 				<td><%= task.task %></td>
-				<td><%= task.due_date %></td>
+				<td><%= task.due_date.strftime('%m/%d/%Y') %></td>
 				<td><%= task.category %></td>
 				<td class="text_center"><%= link_to edit_button, edit_task_path(task, contact_id: task.contact_id), :class => "btn btn-success btn-small" %> <%= link_to delete_button, task_path(task), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-danger btn-small" %> <%= link_to contact_button, contact_path(task.contact_id), :class => "btn btn-small btn-info" %></td>
 			</tr>
