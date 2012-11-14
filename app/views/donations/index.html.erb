@@ -10,7 +10,9 @@
 		<strong>Amount donated (all time):</strong><br/>
 		<%= donations_all_time %><br/>
 		<strong>Average Donation (all time):</strong><br/>
-		<%= currency(Donation.average_donation) %>
+		<%= currency(Donation.average_donation) %><br/>
+		<strong>Number of contacts that have donated:</strong><br/>
+		<%= Contact.donated_contacts %><br/>
 		
 	</div>
 	

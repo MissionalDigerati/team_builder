@@ -12,6 +12,9 @@
  *= require_tree .
  *= require jquery.ui.all
  */
+.navbar-inner{
+	border-radius: 0px !important;
+}
 fieldset {
     border: 0;
 }
