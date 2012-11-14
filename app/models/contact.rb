@@ -44,7 +44,7 @@ class Contact < ActiveRecord::Base
   end
   
   def self.donated_contacts
-    Contact.Donation.length
+    Contact.where("donations_count > ?", 0).length
   end
   
   def self.contacts_in_last_month
@@ -54,6 +54,7 @@ class Contact < ActiveRecord::Base
   def self.contacts_in_last_year
     Contact.find(:all, :conditions => ["created_at between ? and ?", 1.years.ago.to_date, Time.now.to_date]).length
   end
+
   
 end
 #<Contact id: nil, first_name: nil, last_name: nil, spouse_name: nil, 

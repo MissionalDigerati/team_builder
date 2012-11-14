@@ -1,11 +1,11 @@
 <fieldset class="attributes">
-	<%= f.label :contact_id, "Contact" %>
-	<%= f.select(:contact_id, Contact.all.collect {|p| [ p.first_name, p.id ] }) %><br/><br/>
 	<%= f.label :occasion, "Occasion"%>
 	<%= f.text_field :occasion, :required => true %><br/><br/>
 	<%= f.label :special_date, "Date" %>
 	<%= f.text_field :special_date, :required => true, :class => "due_date_field" %>
 	<%= f.hidden_field :_destroy %>
+	<br/>
+	<br/>
 	<%= link_to "remove", '#', class: "remove_fields btn btn-small btn-info" %>
 	<br/>
 	<br/>

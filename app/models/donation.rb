@@ -1,9 +1,7 @@
 class Donation < ActiveRecord::Base
-  belongs_to :contact
+  belongs_to :contact, :counter_cache => true
   attr_accessible :date, :amount, :project, :contact_id, :donation_date
-  
   validates :amount, :project, :contact_id, :presence => true
-
   
   def self.this_month_sum
     month_strftime = DATE_MONTH_STRFTIME.gsub(/COLUMN/, "donation_date") 
