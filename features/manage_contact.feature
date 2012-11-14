@@ -19,7 +19,6 @@ Feature: A user manages their contacts
 		And I fill in "Children" with "none"		
 		And I select "Email" from "contact_preferred_contact"
 		And I select "Roommates" from "contact_network"
-		And I fill in "tags" with "none"
 		And I check the "receive_newsletter" checkboxes
 		And I click the "create_contact" button
 		Then I should see "Contact was successfully created."
@@ -40,7 +39,6 @@ Feature: A user manages their contacts
 		And I fill in "Children" with "none"		
 		And I select "Email" from "contact_preferred_contact"
 		And I select "Roommates" from "contact_network"
-		And I fill in "tags" with "none"
 		And I check the "receive_newsletter" checkboxes
 		And I select "Home" from "Phone Type"
 		And I fill in "Phone Number" with "7777777"

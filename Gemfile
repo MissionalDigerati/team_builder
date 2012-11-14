@@ -18,6 +18,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
   gem 'kaminari'
+  gem 'acts-as-taggable-on'
 end
 
 gem 'jquery-rails'
