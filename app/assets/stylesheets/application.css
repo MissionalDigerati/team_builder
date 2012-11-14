@@ -38,6 +38,7 @@ table.index tr{
 }
 table.contact td{
 	text-transform:capitalize;
+	width: 50%;
 }
 .bold{
 	font-weight: bold;
@@ -74,7 +75,9 @@ table.contact td{
   background-repeat: no-repeat !important;
   background-position: right center !important;
 }
-
+a.white_link{
+	color: white;
+}
 .asc {
   background-image: url(/images/up_arrow.gif) !important;
 }

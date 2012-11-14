@@ -7,6 +7,7 @@ TeamBuilder::Application.routes.draw do
   resources :notes
   resources :presences
   match 'tasks/completed/:id' => 'tasks#completed', method: :get, as: :complete_task
+  get 'tags/:tag', to: 'contacts#index', as: :tag
     
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -2,8 +2,8 @@ class Contact < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :spouse_name, :email, :spouse_email, :network, :address_1, :address_2, :city, 
   :state_id, :zip, :country_id, :receive_newsletter, :children, :preferred_contact, :believer
   #number
-  # attr_accessible :tag_list #acts as taggable gem
-  #   acts_as_taggable
+  attr_accessible :tag_list #acts as taggable gem
+  acts_as_taggable
   attr_accessible :numbers_attributes
   attr_accessible :occasions_attributes
   attr_accessible :presences_attributes

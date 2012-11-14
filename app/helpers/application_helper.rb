@@ -8,6 +8,14 @@ module ApplicationHelper
     end
     link_to(name, '#', class: "add_fields btn btn-small btn-warning", data: {id: id, fields: fields.gsub("/n", "")})
   end
+  
+  def tag_param
+    if request.params["tag"].present?
+      text = "Searching by tag: #{request.params["tag"].titleize}" 
+      link_to text, "", :class => "label label-important"
+    else
+    end
+  end
    
   def status(status)
      if status === true

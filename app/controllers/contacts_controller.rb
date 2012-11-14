@@ -8,7 +8,12 @@ class ContactsController < ApplicationController
   #passes sortable info the the main contact table on the contact index page. 
   # Also passes all the new contacts from the past week in the instance variable @new_contacts
   def index
-    @contacts = Contact.order(sort_column + " " + sort_direction).page(params[:page])
+    if params[:tag]
+      @contacts = Contact.tagged_with(params[:tag]).page(params[:page])
+    else
+      @contacts = Contact.order(sort_column + " " + sort_direction).page(params[:page])
+    end
+    
     @new_contacts = Contact.find(:all, :conditions => ["created_at between ? and ?", 1.weeks.ago.to_date, Time.now.to_date])
     respond_to do |format|
       format.html # index.html.erb

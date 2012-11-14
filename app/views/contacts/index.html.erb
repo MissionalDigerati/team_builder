@@ -1,6 +1,6 @@
 <div class="row-fluid">
 	
-	<div class="span3">
+	<div class="span3">			
 		<h3>Contact's Summary</h3>
 		<strong>Total number of contacts:</strong> <br/>
 		<%= Contact.contact_count %><br/>
@@ -28,14 +28,15 @@
 
 	<div class="span9">
 		
-		<h1>All Contacts</h1><br/>
+		<h1><%= link_to "All Contacts", contacts_path %></h1><br/>
+		<%= tag_param %>
 		<%= link_to 'New Contact', new_contact_path, :class => "btn btn-primary pull-right" %>
 		<br/>
 		<%= paginate @contacts %>
 		<br/>
 		<table class="table index table-bordered table-hover table-striped">
 		  <tr>
-			  <th>Image</th>
+			  <th>Tags</th>
 		    <th><%= sortable "first_name" %></th>
 				<th><%= sortable "last_name" %></th>
 				<th><%= sortable "spouse_name" %></th>
@@ -49,7 +50,8 @@
 
 		<% @contacts.each do |contact| %>
 		  <tr>
-				<td></td>
+			
+				<td><% if contact.tag_list.first.present? %><%= link_to contact.tag_list.first, tag_path(contact.tag_list.first), :class => "label label-important" %><% end %></td>
 				<td><%= link_to contact.first_name.capitalize, contact %></td>
 		    <td><%= contact.last_name.capitalize %></td>
 				<td><%= contact.spouse_name.capitalize %></td>
