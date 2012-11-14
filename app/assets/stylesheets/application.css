@@ -93,4 +93,14 @@ a .desc {
 table.uniform th{
 	width: 20%;
 }
-
+.tag_container{
+	margin-bottom: 0px !important;
+	margin-top: 0px !important;
+}
+.nav-pills > li {
+float: none !important;
+}
+.nav-pills > li > a {
+	padding-top: 3px !important;
+	padding-bottom: 0px !important;
+}
