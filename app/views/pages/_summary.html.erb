@@ -1,4 +1,20 @@
+
+<h3>Contact's Summary</h3>
+<strong>Total number of contacts:</strong> <br/>
+<%= Contact.contact_count %><br/>
+<strong>Number of Non-Believers:</strong> <br/>
+<%= Contact.non_believers %><br/>
+<strong>Number of new contacts (last 4 weeks):</strong><br/>
+<%= Contact.contacts_in_last_month %><br/>
+<strong>Number of new contacts (last year):</strong><br/>
+<%= Contact.contacts_in_last_year %><br/>
+<strong>Number of contacts that have donated:</strong> <br/>
+<%= Contact.non_believers %><br/>
+<br/>
+<%= link_to "View all Contacts", contacts_path, :class => "btn btn-warning" %>
 <hr class="hr"></hr>
+
+
 <h3>Donation Summary</h3>
 <strong>Amount donated (this month):</strong><br/>
 <%= currency(Donation.this_month_sum) %><br/>
@@ -9,68 +25,10 @@
 <strong>Average Donation (all time):</strong><br/>
 <%= currency(Donation.average_donation) %>
 <br/>
+<br/>
 <%= link_to "View all Donations", donations_path, :class => "btn btn-warning" %>
 
 <hr class="hr"></hr>
-
-<h3>Tasks summary</h3>
-<span class="attribute_header">Number of incomplete tasks:</span><br/>
-<%= Task.incomplete_tasks %><br/>
-<br/>
-
-<% if @tasks_overdue.present? %>
-	<span class="attribute_header">Overdue tasks:</span></br>
-	<table class="table">
-		<% @tasks_overdue.each do |overdue| %>
-			<tr rel="<%= overdue.id %>" >
-				<td><%= check_box_tag "#{overdue.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(overdue), remote: true, :class => "completed_button #{overdue.id} hidden" %></td>
-				<td><%= link_to first_name(overdue), contact_path(overdue.contact_id) %></td>
-				<td><%= overdue.task %></td>
-				<td><%= overdue.due_date.strftime('%m/%d/%Y') %></td>
-				<td><%= link_to "View", contact_path(overdue.contact_id), :class => "btn btn-small btn-info pull-right" %></td>
-			</tr>
-		<% end %>
-	</table>
-<% end %>
-
-
-<% if @tasks_within_week_range.present? %>
-	<span class="attribute_header">Remaining tasks (1 week):</span></br>
-	<table class="table">
-		<% @tasks_within_week_range.each do |weekly_tasks| %>
-			<tr rel="<%= weekly_tasks.id %>" >
-				<td><%= check_box_tag "#{weekly_tasks.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(weekly_tasks), remote: true, :class => "completed_button #{weekly_tasks.id} hidden" %></td>
-				<td><%= link_to first_name(weekly_tasks), contact_path(weekly_tasks.contact_id) %></td>
-				<td><%= weekly_tasks.task %></td>
-				<td><%= weekly_tasks.due_date.strftime('%m/%d/%Y') %></td>
-				<td><%= link_to "View", contact_path(weekly_tasks.contact_id), :class => "btn btn-small btn-info pull-right" %></td>
-			</tr>
-		<% end %>
-	</table>
-<% end %>
-
-<br/>
-
-<% if @tasks_this_month.present? %>
-	<span class="attribute_header">Remaining tasks (4 weeks):</span></br>
-	<table class="table">
-	<% @tasks_this_month.each do |monthly_tasks| %>
-		<tr rel="<%= monthly_tasks.id %>" >
-			<td><%= check_box_tag "#{monthly_tasks.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(monthly_tasks), remote: true, :class => "completed_button #{monthly_tasks.id} hidden" %></td>
-			<td><%= link_to first_name(monthly_tasks), contact_path(monthly_tasks.contact_id) %></td>
-			<td><%= monthly_tasks.task %></td>
-			<td><%= monthly_tasks.due_date.strftime('%m/%d/%Y') %></td>
-			<td><%= link_to "View", contact_path(monthly_tasks.contact_id), :class => "btn btn-small btn-info pull-right" %></td>
-		</tr>
-	<% end %>
-	</table>
-<% end %>
-<%= link_to "View all Tasks", tasks_path, :class => "btn btn-warning" %>
-<br/>
-
-<hr class="hr"></hr>
-
-<br/>
 
 <h3>Special Date Summary</h3>
 <% if @occasions_today.present? %>
