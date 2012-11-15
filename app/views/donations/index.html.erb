@@ -1,6 +1,6 @@
 <div class="row-fluid">
 	
-	<div class="span3">
+	<div class="span3 beige round">
 		
 		<h3>Donation Summary</h3>
 		<strong>Amount donated (this month):</strong><br/>
@@ -16,13 +16,12 @@
 		
 	</div>
 	
-	<div class="span9">
+	<div class="span9 table_container">
 		
-		<h1>All Donations</h1><br/>
+		<h1><%= link_to "All Donations", donations_path %></h1><br/>
+		<%= paginate @donations, :theme => 'twitter-bootstrap' %>
 		<%= link_to 'New Donation', new_donation_path, :class => "btn btn-primary pull-right" %>
-		<br/>
-		<%= paginate @donations %>
-		<br/>
+		<br/><br/>
 		<table class="table index table-bordered table-hover table-striped">
 		  <tr>
 		    <!-- <th>Name</th> -->
@@ -51,7 +50,7 @@
 		<br />
 
 		<%= link_to 'New Donation', new_donation_path, :class => "btn btn-primary pull-right" %>
-		<%= paginate @donations %>
+		<%= paginate @donations, :theme => 'twitter-bootstrap' %>
 	</div> <!-- span12 -->
 
 </div> <!-- row fluid -->

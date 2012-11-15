@@ -12,7 +12,7 @@
 <br/>
 <% if @new_contacts.present? %>
 	<strong>Recent contacts (past week):</strong><br/>
-	<table class="table">
+	<table class="table round">
 		<% @new_contacts.each do |new_contact| %>
 		<tr>
 			<td><%= link_to full_name(new_contact), contact_path(new_contact) %></td>

@@ -1,10 +1,9 @@
 
 <div class="row-fluid">
-	<div class="span3">
-			<h3>Contact Info</h3>
+	<div class="span3 beige round">
+			<h3 class="pull-left">Contact Info</h3>
 			</br>
-			<%= link_to "Edit #{@contact.first_name.capitalize}", edit_contact_path(@contact), :class => "btn btn btn-info" %>
-			</br>
+			<%= link_to "Edit #{@contact.first_name.capitalize}", edit_contact_path(@contact), :class => "btn btn btn-info pull-right" %>
 			</br>
 			<table class="table contact table-striped table-bordered">
 				<tr>
@@ -88,24 +87,27 @@
 
 	</div>
 	
-	<div class="span9">
+	
+	
+	<div class="span9 table_container">
 				<!-- phone numbers -->
 			
 				<h3>Phone Number(s)</h3>
 				<br/>
 				<%= link_to "Add Phone Number", new_number_path(@contact), :class => "btn btn-primary pull-right" %>
+				<div class="clear"></div>
 				<% if @number.present?%>
-				<table class="table table-striped">
+				<table class="table table-striped phone_number">
 					<thead>
 						<th>Type</th>
 						<th>Number</th>
-						<th>Action</th>
+						<th class="text_right">Action</th>
 					</thead>
 				<% @number.each do |number| %>
 					<tr>
-					<td><%= number.phone_type %></td>
-					<td><%= number.number %></td>
-					<td><%= link_to "Edit", edit_number_path(number, contact_id: number.contact_id ), :class => "btn btn-small btn-success" %> <%= link_to "Delete", number_path(number), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
+					<td class="normal"><%= number.phone_type %></td>
+					<td class="normal"><%= number.number %></td>
+					<td class="text_right"><%= link_to "Edit", edit_number_path(number, contact_id: number.contact_id ), :class => "btn btn-small btn-success" %> <%= link_to "Delete", number_path(number), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
 					</tr>
 				<% end %>
 				</table>
@@ -117,20 +119,21 @@
 			<h3>Special Dates</h3>
 			<br/>
 			<%= link_to "Add Special Date", new_occasion_path(@contact), :class => "btn btn-primary pull-right" %>
+			<div class="clear"></div>
 			<% if @occasion.present? %>
-			<table class="table table-striped">
+			<table class="table table-striped occasions">
 				<thead>
 					<th>Date (mm/dd/yyyy)</th>
 					<th>Occasion</th>
 					<th>Crated at</th>
-					<th>Action</th>
+					<th class="text_right">Action</th>
 				</thead>
 			<% @occasion.each do |occasion| %>
 				<tr>
-				<td><%= occasion.special_date.strftime('%m/%d/%Y') %></td>
-				<td><%= occasion.occasion %></td>
-				<td><%= occasion.created_at.to_date.strftime('%m/%d/%Y') %></td>
-				<td><%= link_to "Edit", edit_occasion_path(occasion, contact_id: occasion.contact_id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", occasion_path(occasion), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
+				<td class="normal"><%= occasion.special_date.strftime('%m/%d/%Y') %></td>
+				<td class="normal"><%= occasion.occasion %></td>
+				<td class="normal"><%= occasion.created_at.to_date.strftime('%m/%d/%Y') %></td>
+				<td class="text_right"><%= link_to "Edit", edit_occasion_path(occasion, contact_id: occasion.contact_id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", occasion_path(occasion), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
 				</tr>
 			<% end %>
 			</table>
@@ -142,20 +145,21 @@
 			<!-- donation -->
 			<h3>Donations</h3> <br/>
 			<%= link_to "Add Donation", new_donation_path(contact_id: @contact.id), :class => "btn btn-primary pull-right" %>
+			<div class="clear"></div>
 			<% if @donation.present? %>
-			<table class="table table-striped">
+			<table class="table table-striped donations">
 				<thead>
 					<th>Date</th>
 					<th>Amount</th>
 					<th>Project</th>
-					<th>Action</th>
+					<th class="text_right">Action</th>
 				</thead>
 			<% @donation.each do |donation| %>
 				<tr>
-				<td><%= donation.donation_date %></td>
-				<td><%= currency(donation.amount) %></td>
-				<td><%= donation.project %></td>
-				<td><%= link_to "Edit", edit_donation_path(donation, contact_id: donation.contact_id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", donation_path(donation), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
+				<td class="normal"><%= donation.donation_date %></td>
+				<td class="normal"><%= currency(donation.amount) %></td>
+				<td class="normal"><%= donation.project %></td>
+				<td class="text_right"><%= link_to "Edit", edit_donation_path(donation, contact_id: donation.contact_id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", donation_path(donation), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
 				</tr>
 			<% end %>
 			</table>
@@ -172,22 +176,23 @@
 
 			<h3>Tasks</h3><br/>
 			<%= link_to "Add Task", new_task_path(contact_id: @contact.id ), :class => "btn btn-primary pull-right"%>
+			<div class="clear"></div>
 			<% if @task.present? %>
-			<table class="table table-striped">
+			<table class="table table-striped tasks">
 				<thead>
 					<th>Completed?</th>
 					<th>Task</th>
 					<th>Due date</th>
 					<th>Category</th>
-					<th>Action</th>		
+					<th class="text_right">Action</th>		
 				</thead>
 			<% @task.each do |task| %>
 				<tr rel="<%= task.id %>" >
-					<td><%= check_box_tag "#{task.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(task), remote: true, :class => "completed_button #{task.id} hidden" %></td>
-					<td><%= task.task %></td>
-					<td><%= task.due_date %></td>
-					<td><%= task.category %></td>
-					<td><%= link_to "Edit", edit_task_path(task, contact_id: task.contact_id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", task_path(task), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
+					<td class="normal"><%= check_box_tag "#{task.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(task), remote: true, :class => "completed_button #{task.id} hidden" %></td>
+					<td class="normal"><%= task.task %></td>
+					<td class="normal"><%= task.due_date %></td>
+					<td class="normal"><%= task.category %></td>
+					<td class="text_right"><%= link_to "Edit", edit_task_path(task, contact_id: task.contact_id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", task_path(task), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
 				</tr>
 			<% end %>
 			</table>
@@ -201,16 +206,17 @@
 			<br/>
 			<h3>Notes</h3><br/>
 			<%= link_to "Add Note", new_note_path(contact_id: @contact.id), :class => "btn btn-primary pull-right" %>
+			<div class="clear"></div>
 			<% if @note.present? %>
 			<table class="table table-striped">
 				<thead>
 					<th>Note</th>
-					<th>Action</th>
+					<th class="text_right">Action</th>
 				</thead>
 			<% @note.each do |note| %>
 				<tr>
 					<td><%= note.note %></td>
-					<td><%= link_to "Edit", edit_note_path(note, contact_id: @contact.id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", note_path(note, contact_id: @contact.id), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %></td>
+					<td class="text_right"><%= link_to "Edit", edit_note_path(note, contact_id: @contact.id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", note_path(note, contact_id: @contact.id), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %></td>
 				</tr>
 			<% end %>
 			</table>
@@ -224,21 +230,22 @@
 			<br/>
 			<br/>
 			<h3>Web Presence</h3><br/>
-			<%= link_to "Add Web Presence", new_presence_path(@contact), :class => "btn btn-primary pull-right" %>
+			<%= link_to "Add Web Presence", new_presence_path(@contact), :class => "btn btn-primary pull-right presence" %>
+			<div class="clear"></div>
 			<% if @presence.present? %>
-			<table class="table table-striped">
+			<table class="table table-striped presence">
 				<thead>
 					<th>Site</th>
 					<th>URL</th>
 					<th>Account</th>
-					<th>Action</th>
+					<th class="text_right">Action</th>
 				</thead>
 			<% @presence.each do |presence| %>
 				<tr>
-					<td><%= presence.site %></td>
-					<td><%= presence.url %></td>
-					<td><%= presence.account %></td>
-					<td><%= link_to "Edit", edit_presence_path(presence, contact_id: @contact.id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", presence_path(presence), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
+					<td class="normal"><%= presence.site %></td>
+					<td class="normal"><%= presence.url %></td>
+					<td class="normal"><%= presence.account %></td>
+					<td class="text_right"><%= link_to "Edit", edit_presence_path(presence, contact_id: @contact.id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", presence_path(presence), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
 				</tr>
 			<% end %>
 			</table>

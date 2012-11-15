@@ -1,11 +1,11 @@
 <div class="row-fluid">
 	
-	<div class="span3">
+	<div class="span3 beige round">
 		<h3>Special Dates Summary</h3>
 		<br/>
 		<% if @occasions_today.present? %>
 			<strong><%= "Special dates (today #{Time.now.to_date.strftime('%m/%d/%Y')}):" %></strong><br/>
-			<table class="table">
+			<table class="table round">
 			<% @occasions_today.each do |today| %>
 				<tr>
 					<td><%= link_to first_name(today), contact_path(today.contact_id)%></td>
@@ -14,11 +14,12 @@
 				</tr>
 			<% end %>
 			</table>
+			<br/>
 		<% end %>
-
+		
 		<% if @occasions_week.present? %>
 			<strong>Upcoming special dates (This Week):</strong><br/>
-			<table class="table">
+			<table class="table round">
 			<% @occasions_week.each do |week| %>
 				<tr>
 					<td><%= link_to first_name(week), contact_path(week.contact_id)%></td>
@@ -28,11 +29,12 @@
 				</tr>
 			<% end %>
 			</table>
+			<br/>
 		<% end %>
 
 		<% if @occasions_month.present? %>
 			<strong>Upcoming special dates (This Month):</strong><br/>
-			<table class="table">
+			<table class="table round">
 			<% @occasions_month.each do |month| %>
 				<tr>
 					<td><%= link_to first_name(month), contact_path(month.contact_id)%></td>
@@ -42,17 +44,17 @@
 				</tr>
 			<% end %>
 			</table>
+			<br/>
 		<% end %>
 		
 	</div>
 	
-	<div class="span9">
+	<div class="span9 table_container">
 		
 		<h1>All Special Dates</h1><br/>
+		<%= paginate @occasions, :theme => 'twitter-bootstrap' %>
 		<%= link_to 'New Special Date', new_occasion_path, :class => "btn btn-primary pull-right" %>
-		<br/>
-		<%= paginate @occasions %>
-		<br/>
+		<br/><br/>
 		<table class="table index table-bordered table-hover table-striped">
 		  <tr>
 		    <th>Name</th>
@@ -76,7 +78,7 @@
 		<br />
 
 		<%= link_to 'New Special Date', new_occasion_path, :class => "btn btn-primary pull-right" %>
-		<%= paginate @occasions %>
+		<%= paginate @occasions, :theme => 'twitter-bootstrap' %>
 		
 	</div> <!-- span12 -->
 

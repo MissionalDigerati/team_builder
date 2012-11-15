@@ -8,7 +8,7 @@
 		
 		<h1><%= link_to "All Contacts", contacts_path %></h1><br/>
 		<%= tag_param %>
-		<%= paginate @contacts %>
+		<%= paginate @contacts, :theme => 'twitter-bootstrap' %>
 		<%= link_to 'New Contact', new_contact_path, :class => "btn btn-primary pull-right" %>
 		<br/><br/>
 		<table class="table index table-bordered table-hover table-striped">
@@ -61,7 +61,7 @@
 
 		<br />
 		<%= link_to 'New Contact', new_contact_path, :class => "btn btn-primary pull-right" %>
-		<%= paginate @contacts %>
+		<%= paginate @contacts, :theme => 'twitter-bootstrap' %>
 		
 	</div> <!-- span12 -->
 

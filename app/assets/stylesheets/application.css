@@ -76,14 +76,18 @@ table.contact td{
 .text_center{
 	text-align: center !important;
 }
-.pagination span{
+
+
+/*.pagination span{
 	border: none !important;
 }
 .pagination a{
 	border: none !important;
-}
+}*/
+
+
 .current {
-  padding-right: 12px;
+ /* padding-right: 12px !important;*/
   background-repeat: no-repeat !important;
   background-position: right center !important;
 }

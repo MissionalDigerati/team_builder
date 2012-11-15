@@ -25,5 +25,31 @@
 }
 .pagination a, .pagination span{
 	color: #911F1F;
-	background-color: transparent;
 }
+table.phone_number{
+	.normal{
+		width: 42%;
+	}
+}
+table.occasions, table.donations, table.presence{
+	.normal{
+		width: 28%;
+	}
+}
+table.tasks{
+	.normal{
+		width: 20%;
+	}
+}
+// .pagination span{
+// 	padding: 0 6px !important;
+// }
+// .pagination{
+// 	.current{
+// 		padding: 0px 19px !important;
+// 		border-left-width: 1px !important ;
+// 	}
+// }
+// .page .current li:first-child span {
+// 	
+// }
