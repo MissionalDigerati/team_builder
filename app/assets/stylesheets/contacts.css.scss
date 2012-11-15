@@ -11,3 +11,19 @@
 .form_container{
 
 }
+.beige{
+	background-color: #F2E1AC !important;
+	padding: 1%;
+}
+.round{
+	@include border-radius(5px);
+}
+.table_container{
+	@include border-radius(5px);
+	padding: 1%;
+	background-color: white;
+}
+.pagination a, .pagination span{
+	color: #911F1F;
+	background-color: transparent;
+}

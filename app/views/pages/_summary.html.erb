@@ -11,7 +11,7 @@
 <strong>Number of contacts that have donated:</strong> <br/>
 <%= Contact.donated_contacts %><br/>
 <br/>
-<%= link_to "View all Contacts", contacts_path, :class => "btn btn-warning" %>
+<%= link_to "View all Contacts", contacts_path, :class => "btn btn-danger" %>
 <hr class="hr"></hr>
 
 
@@ -26,14 +26,14 @@
 <%= currency(Donation.average_donation) %>
 <br/>
 <br/>
-<%= link_to "View all Donations", donations_path, :class => "btn btn-warning" %>
+<%= link_to "View all Donations", donations_path, :class => "btn btn-danger" %>
 
 <hr class="hr"></hr>
 
 <h3>Special Date Summary</h3>
 <% if @occasions_today.present? %>
 	<strong><%= "Special dates (today #{Time.now.to_date.strftime('%m/%d/%Y')}):" %></strong><br/>
-	<table class="table">
+	<table class="table round bottom">
 	<% @occasions_today.each do |today| %>
 		<tr>
 			<td><%= link_to first_name(today), contact_path(today.contact_id)%></td>
@@ -44,9 +44,11 @@
 	</table>
 <% end %>
 
+<br/>
+
 <% if @occasions_week.present? %>
 	<strong>Upcoming special dates (This Week):</strong><br/>
-	<table class="table">
+	<table class="table round bottom">
 	<% @occasions_week.each do |week| %>
 		<tr>
 			<td><%= link_to first_name(week), contact_path(week.contact_id)%></td>
@@ -58,9 +60,11 @@
 	</table>
 <% end %>
 
+<br/>
+
 <% if @occasions_month.present? %>
 	<strong>Upcoming special dates (This Month):</strong><br/>
-	<table class="table">
+	<table class="table round bottom">
 	<% @occasions_month.each do |month| %>
 		<tr>
 			<td><%= link_to first_name(month), contact_path(month.contact_id)%></td>
@@ -71,4 +75,7 @@
 	<% end %>
 	</table>
 <% end %>
-<%= link_to "View all Special Dates", occasions_path, :class => "btn btn-warning" %>
+
+<br/>
+
+<%= link_to "View all Special Dates", occasions_path, :class => "btn btn-danger" %>

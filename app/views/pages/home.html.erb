@@ -1,6 +1,6 @@
 <div class="row-fluid">
 
-	<div class="span3">
+	<div class="span3 beige round">
 		<h2>Home page</h2>
 		<%= link_to "All Contacts", contacts_path%><br/>
 		<%= link_to "Create New Contact", new_contact_path %>
@@ -21,73 +21,78 @@
 		<br/>
 		<br/>
 		<% if @tasks_overdue.present? %>
-			<span class="attribute_header">Overdue tasks:</span></br>
-			<table class="table table-hover uniform">
+			<div class="table_container">
+				<span class="attribute_header">Overdue tasks:</span></br>
+				<table class="table table-hover uniform">
+						<th></th>
+						<th>Contact Name</th>
+						<th>Task</th>
+						<th>Due Date</th>
+						<th class="text_right">View</th>
+					<% @tasks_overdue.each do |overdue| %>
+						<tr rel="<%= overdue.id %>" >
+							<td><%= check_box_tag "#{overdue.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(overdue), remote: true, :class => "completed_button #{overdue.id} hidden" %></td>
+							<td><%= link_to first_name(overdue), contact_path(overdue.contact_id) %></td>
+							<td><%= overdue.task %></td>
+							<td><%= overdue.due_date.strftime('%m/%d/%Y') %></td>
+							<td><%= link_to "View", contact_path(overdue.contact_id), :class => "btn btn-small btn-info pull-right" %></td>
+						</tr>
+					<% end %>
+				</table>
+			</div>	
+		<% end %>
+		
+<br/>
+
+		<% if @tasks_within_week_range.present? %>
+			<div class="table_container">
+				<span class="attribute_header">Remaining tasks (1 week):</span></br>
+				<table class="table table-hover uniform">
 					<th></th>
 					<th>Contact Name</th>
 					<th>Task</th>
 					<th>Due Date</th>
 					<th class="text_right">View</th>
-				<% @tasks_overdue.each do |overdue| %>
-					<tr rel="<%= overdue.id %>" >
-						<td><%= check_box_tag "#{overdue.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(overdue), remote: true, :class => "completed_button #{overdue.id} hidden" %></td>
-						<td><%= link_to first_name(overdue), contact_path(overdue.contact_id) %></td>
-						<td><%= overdue.task %></td>
-						<td><%= overdue.due_date.strftime('%m/%d/%Y') %></td>
-						<td><%= link_to "View", contact_path(overdue.contact_id), :class => "btn btn-small btn-info pull-right" %></td>
-					</tr>
-				<% end %>
-			</table>
-		<% end %>
-
-
-		<% if @tasks_within_week_range.present? %>
-			<span class="attribute_header">Remaining tasks (1 week):</span></br>
-			<table class="table table-hover uniform">
-				<th></th>
-				<th>Contact Name</th>
-				<th>Task</th>
-				<th>Due Date</th>
-				<th class="text_right">View</th>
-				<% @tasks_within_week_range.each do |weekly_tasks| %>
-					<tr rel="<%= weekly_tasks.id %>" >
-						<td><%= check_box_tag "#{weekly_tasks.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(weekly_tasks), remote: true, :class => "completed_button #{weekly_tasks.id} hidden" %></td>
-						<td><%= link_to first_name(weekly_tasks), contact_path(weekly_tasks.contact_id) %></td>
-						<td><%= weekly_tasks.task %></td>
-						<td><%= weekly_tasks.due_date.strftime('%m/%d/%Y') %></td>
-						<td><%= link_to "View", contact_path(weekly_tasks.contact_id), :class => "btn btn-small btn-info pull-right" %></td>
-					</tr>
-				<% end %>
-			</table>
+					<% @tasks_within_week_range.each do |weekly_tasks| %>
+						<tr rel="<%= weekly_tasks.id %>" >
+							<td><%= check_box_tag "#{weekly_tasks.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(weekly_tasks), remote: true, :class => "completed_button #{weekly_tasks.id} hidden" %></td>
+							<td><%= link_to first_name(weekly_tasks), contact_path(weekly_tasks.contact_id) %></td>
+							<td><%= weekly_tasks.task %></td>
+							<td><%= weekly_tasks.due_date.strftime('%m/%d/%Y') %></td>
+							<td><%= link_to "View", contact_path(weekly_tasks.contact_id), :class => "btn btn-small btn-info pull-right" %></td>
+						</tr>
+					<% end %>
+				</table>
+			</div>
 		<% end %>
 
 		<br/>
 
 		<% if @tasks_this_month.present? %>
-			<span class="attribute_header">Remaining tasks (4 weeks):</span></br>
-			<table class="table table-hover uniform">
-				<th></th>
-				<th>Contact Name</th>
-				<th>Task</th>
-				<th>Due Date</th>
-				<th class="text_right">View</th>
-			<% @tasks_this_month.each do |monthly_tasks| %>
-				<tr rel="<%= monthly_tasks.id %>" >
-					<td><%= check_box_tag "#{monthly_tasks.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(monthly_tasks), remote: true, :class => "completed_button #{monthly_tasks.id} hidden" %></td>
-					<td><%= link_to first_name(monthly_tasks), contact_path(monthly_tasks.contact_id) %></td>
-					<td><%= monthly_tasks.task %></td>
-					<td><%= monthly_tasks.due_date.strftime('%m/%d/%Y') %></td>
-					<td><%= link_to "View", contact_path(monthly_tasks.contact_id), :class => "btn btn-small btn-info pull-right" %></td>
-				</tr>
-			<% end %>
-			</table>
+			<div class="table_container">
+				<span class="attribute_header">Remaining tasks (4 weeks):</span></br>
+				<table class="table table-hover uniform">
+					<th></th>
+					<th>Contact Name</th>
+					<th>Task</th>
+					<th>Due Date</th>
+					<th class="text_right">View</th>
+				<% @tasks_this_month.each do |monthly_tasks| %>
+					<tr rel="<%= monthly_tasks.id %>" >
+						<td><%= check_box_tag "#{monthly_tasks.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(monthly_tasks), remote: true, :class => "completed_button #{monthly_tasks.id} hidden" %></td>
+						<td><%= link_to first_name(monthly_tasks), contact_path(monthly_tasks.contact_id) %></td>
+						<td><%= monthly_tasks.task %></td>
+						<td><%= monthly_tasks.due_date.strftime('%m/%d/%Y') %></td>
+						<td><%= link_to "View", contact_path(monthly_tasks.contact_id), :class => "btn btn-small btn-info pull-right" %></td>
+					</tr>
+				<% end %>
+				</table>
+			</div>
 		<% end %>
 		
 <!-- task summary -->
 		
-		
-		
-		
+		<br/>
 		
 		<table class="table table-hover table-bordered">
 			<thead>
@@ -111,6 +116,7 @@
 			</tr>
 		<% end %>	
 		</table>
+		<br/>
 		<%= link_to "Add Task", new_task_path, :class => "btn btn-primary" %> <%= link_to "View All Tasks", tasks_path, :class => "btn btn-primary" %>
 	</div>
 

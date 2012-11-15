@@ -12,6 +12,18 @@
  *= require_tree .
  *= require jquery.ui.all
  */
+body{
+	background-color: #63A69F !important;
+}
+table{
+	background-color: white !important;
+}
+.table{
+	margin-bottom: 0px !important;
+}
+/*table.bottom{
+	margin-bottom: 20px !important;
+}*/
 .navbar-inner{
 	border-radius: 0px !important;
 }
@@ -86,7 +98,7 @@ a .desc {
   background-image: url(/images/down_arrow.gif);
 }
 .hr{
-	background : #b3b3b3;
+	background : #63A69F;
 	width : 100%;
 	height : 1px;
 }
@@ -104,3 +116,4 @@ float: none !important;
 	padding-top: 3px !important;
 	padding-bottom: 0px !important;
 }
+
