@@ -59,9 +59,6 @@ table.contact td{
 	text-align:center;
 }
 .attribute_container{
-	position: absolute;
-	top: 0px;
-	right: 0px;
 }
 .relative{
 	position: relative;

@@ -10,61 +10,66 @@
       </ul>
     </div>
   <% end %>
-	<%= f.label :first_name, "First Name" %>
-	<%= f.text_field :first_name, id: "first_name"  %>
-	<br/><br/>
-	<%= f.label :last_name, "Last Name" %>
-	<%= f.text_field :last_name, id: "last_name"  %>
-	<br/><br/>
-	<%= f.label :spouse_name, "Spouse Name" %>
-	<%= f.text_field :spouse_name, id: "spouse_name"  %>
-	<br/><br/>
-	<%= f.label :email, "Email" %>
-	<%= f.text_field :email, id: "email"  %>
-	<br/><br/>
-	<%= f.label :spouse_email, "Spouse Email" %>
-	<%= f.text_field :spouse_email, id: "spouse_email"  %>
-	<br/><br/>
-	<%= f.label :address_1, "Address 1" %>
-	<%= f.text_field :address_1, id: "address_1"  %>
-	<br/><br/>
-	<%= f.label :address_2, "Address 2" %>
-	<%= f.text_field :address_2, id: "address_2"  %>
-	<br/><br/>
-	<%= f.label :city, "City" %>
-	<%= f.text_field :city, id: "city"  %>
-	<br/><br/>
-	<%= f.label :state_id, "State id" %>
-	<%= f.select(:state_id, State.all.collect {|s| [s.state_long, s.id]} ) %>
-	<br/><br/>
-	<%= f.label :zip, "Zip" %>
-	<%= f.text_field :zip, id: "zip"  %>
-	<br/><br/>
-	<%= f.label :country_id, "Country id" %>
-	<%= f.select(:country_id, Country.all.collect {|c| [c.printable_name, c.id]})  %>
-	<br/><br/>
-	<%= f.label :children, "Children" %>
-	<%= f.text_area :children, id: "Children", :rows => "3"  %>
-	<br/><br/>
-	<%= f.label :preferred_contact, "Preferred Contact" %>
-	<%= f.select :preferred_contact, Contact::CONTACTS, id: "preferred_contact"  %>
-	<br/><br/>
-	<%= f.label :network, "Network" %>
-	<%= f.select :network, Contact::NETWORKS, id: "network"  %>
-	<br/><br/>
-	<%= f.label :tag_list, "Tags (separated by commas)" %>
-	<%= f.text_field :tag_list %>
-	<br/><br/>
-	<%= f.label :receive_newsletter, "Receive Newsletter" %>
-	<%= f.check_box :receive_newsletter, id: "receive_newsletter"  %>
-	<br/><br/>
-	<%= f.label :believer, "Believer?" %>
-	<%= f.check_box :believer, id: "believer"  %>
-	<br/>
+	<div class="span2 offset3">
+		<%= f.label :first_name, "First Name" %>
+		<%= f.text_field :first_name, id: "first_name"  %>
+		<br/><br/>
+		<%= f.label :last_name, "Last Name" %>
+		<%= f.text_field :last_name, id: "last_name"  %>
+		<br/><br/>
+		<%= f.label :spouse_name, "Spouse Name" %>
+		<%= f.text_field :spouse_name, id: "spouse_name"  %>
+		<br/><br/>
+		<%= f.label :email, "Email" %>
+		<%= f.text_field :email, id: "email"  %>
+		<br/><br/>
+		<%= f.label :spouse_email, "Spouse Email" %>
+		<%= f.text_field :spouse_email, id: "spouse_email"  %>
+		<br/><br/>
+		<%= f.label :address_1, "Address 1" %>
+		<%= f.text_field :address_1, id: "address_1"  %>
+		<br/><br/>
+		<%= f.label :address_2, "Address 2" %>
+		<%= f.text_field :address_2, id: "address_2"  %>
+		<br/><br/>
+		<%= f.label :city, "City" %>
+		<%= f.text_field :city, id: "city"  %>
+		<br/><br/>
+		<%= f.label :state_id, "State id" %>
+		<%= f.select(:state_id, State.all.collect {|s| [s.state_long, s.id]} ) %>
+		<br/><br/>
+		<%= f.label :zip, "Zip" %>
+		<%= f.text_field :zip, id: "zip"  %>
+		<br/><br/>
+		<%= f.label :country_id, "Country id" %>
+		<%= f.select(:country_id, Country.all.collect {|c| [c.printable_name, c.id]})  %>
+		<br/><br/>
+		<%= f.label :children, "Children" %>
+		<%= f.text_area :children, id: "Children", :rows => "3"  %>
+		<br/><br/>
+		<%= f.label :preferred_contact, "Preferred Contact" %>
+		<%= f.select :preferred_contact, Contact::CONTACTS, id: "preferred_contact"  %>
+		<br/><br/>
+		<%= f.label :network, "Network" %>
+		<%= f.select :network, Contact::NETWORKS, id: "network"  %>
+		<br/><br/>
+		<%= f.label :tag_list, "Tags (separated by commas)" %>
+		<%= f.text_field :tag_list %>
+		<br/><br/>
+		<%= f.label :receive_newsletter, "Receive Newsletter" %>
+		<%= f.check_box :receive_newsletter, id: "receive_newsletter"  %>
+		<br/><br/>
+		<%= f.label :believer, "Believer?" %>
+		<%= f.check_box :believer, id: "believer"  %>
+		<br/>
+	</div>
 
+	
+	
+<div class="span2 offset2">
 	<!-- Numbers -->
 	<!-- <Number id: nil, phone_type: nil, number: nil, created_at: nil, updated_at: nil, contact_id: nil>  -->
-	<div class="attribute_container pull-right">
+	<div class="attribute_container">
 		<span class="attribute_header">Phone Numbers</span><br/><br/>
 	<%= f.fields_for :numbers do |builder| %>
 		<%= render 'contacts/number_fields', f: builder %>
@@ -95,7 +100,7 @@
 		<%= render 'contacts/presence_fields', f: builder %>
 	<% end %>	
 	<%= link_to_add_fields "Add Web Presence", f, :presences %>
-
+	
 	<br/>
 	<br/>
 	<br/>
@@ -103,11 +108,15 @@
 	<div class="actions">
     <%= f.submit :id => "create_contact", :class => "btn btn-large btn-success" %>
   </div>
+
+
+</div>
+	
 	
 	</div>
 
 <% end %>
-
+<div class="clear"></div>
 
 
 
