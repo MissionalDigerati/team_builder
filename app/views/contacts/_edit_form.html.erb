@@ -1,3 +1,4 @@
+<br/><br/>
 <div class="span3 offset3">
 <%= form_for(@contact) do |f| %>
   <% if @contact.errors.any? %>
@@ -33,6 +34,8 @@
 	<%= f.text_field :address_2, id: "address_2"  %><br/>
 	<br/>
 </div>
+
+
 <div class="span3 offset1">
 	<%= f.label :city, "City" %>
 	<%= f.text_field :city, id: "city"  %><br/>
@@ -70,5 +73,6 @@
     <%= f.submit :id => "create_contact", :class => "btn btn-large btn-success" %>
   </div>
 <% end %>
-
+<br/><br/>
 </div>
+<div class="clear"></div>

@@ -1,14 +1,17 @@
-<%= form_for([@presence]) do |f| %>
-	<%= f.label :contact_id, "Contact" %>
-	<%= f.select(:contact_id, Contact.all.collect {|p| [ p.first_name, p.id ] }) %><br/><br/>
-	<%= f.label :site, "Site" %>
-	<%= f.select :site, Presence::SITES, {:include_blank => true} %><br/><br/>
-	<%= f.label :url, "URL" %>
-	<%= f.text_field :url, :required => true %><br/><br/>
-	<%= f.label :account, "Account" %>
-	<%= f.text_field :account, :required => true %><br/><br/>
-	<%= f.submit :class => "btn btn-large btn-success pull-right" %>
-<% end %>
-
-
+<div class="span2 offset5">
+	<br/><br/>
+	<%= form_for([@presence]) do |f| %>
+		<%= f.label :contact_id, "Contact" %>
+		<%= f.select(:contact_id, Contact.all.collect {|p| [ p.first_name, p.id ] }) %><br/><br/>
+		<%= f.label :site, "Site" %>
+		<%= f.select :site, Presence::SITES, {:include_blank => true} %><br/><br/>
+		<%= f.label :url, "URL" %>
+		<%= f.text_field :url, :required => true %><br/><br/>
+		<%= f.label :account, "Account" %>
+		<%= f.text_field :account, :required => true %><br/><br/>
+		<%= f.submit :class => "btn btn-large btn-success pull-right" %>
+	<% end %>
+	<br/><br/>
+</div>
+<div class="clear"></div>
 <!-- <Presence id: nil, contact_id: nil, site: nil, url: nil, account: nil, created_at: nil, updated_at: nil>  -->
