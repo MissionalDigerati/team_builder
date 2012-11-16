@@ -1,12 +1,20 @@
-<%= form_for([@donations]) do |f| %>
-	<%= f.label :contact_id, "Contact" %>
-	<%= f.select(:contact_id, Contact.all.collect {|p| [ p.first_name, p.id ] }) %><br/><br/>
-	<%= f.label :donation_date, "Date" %>
-	<%= f.date_select :donation_date, :class => "date_select" %><br/><br/>
-	<%= f.label :amount, "Amount" %>
-	<%= f.text_field :amount %><br/><br/>
-	<%= f.label :project, "Project" %>
-	<%= f.text_field :project %><br/><br/>
+
+<div class="span2 offset5">
+	<br/><br/>
+		<%= form_for([@donations]) do |f| %>
+			<%= f.label :contact_id, "Contact" %>
+			<%= f.select(:contact_id, Contact.all.collect {|p| [ p.first_name, p.id ] }) %><br/><br/>
+			<%= f.label :donation_date, "Date" %>
+			<%= f.date_select :donation_date, :class => "date_select" %><br/><br/>
+			<%= f.label :amount, "Amount" %>
+			<%= f.text_field :amount %><br/><br/>
+			<%= f.label :project, "Project" %>
+			<%= f.text_field :project %><br/><br/>
 	
-	<%= f.submit :class => "btn btn-large btn-success pull-right" %>
-<% end %>
+			<%= f.submit :class => "btn btn-large btn-success pull-right" %>
+
+		<% end %>
+	<br/><br/>
+</div>
+
+<div class="clear"></div>

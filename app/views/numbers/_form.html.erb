@@ -1,12 +1,17 @@
-<br/>
-<br/>
-<%= form_for([@number]) do |f| %>
-	<%= f.label :contact_id, "Contact" %>
-	<%= f.select(:contact_id, Contact.all.collect {|p| [ p.first_name, p.id ] }, { :required => true }) %><br/><br/>
-	<%= f.label :phone_type, "Type" %>
-	<%= f.select :phone_type, Number::TYPES, :required => true %><br/><br/>
-	<%= f.label :number, "Phone Number" %>
-	<%= f.text_field :number, :required => true %><br/>
-	<br/>
-	<%= f.submit :class => "btn btn-large pull-right btn-success" %>
-<% end %>
+<div class="span2 offset5">
+	<br/><br/>
+		<%= form_for([@number]) do |f| %>
+			<%= f.label :contact_id, "Contact" %>
+			<%= f.select(:contact_id, Contact.all.collect {|p| [ p.first_name, p.id ] }, { :required => true }) %><br/><br/>
+			<%= f.label :phone_type, "Type" %>
+			<%= f.select :phone_type, Number::TYPES, :required => true %><br/><br/>
+			<%= f.label :number, "Phone Number" %>
+			<%= f.text_field :number, :required => true %><br/>
+			<br/>
+			<%= f.submit :class => "btn btn-large pull-right btn-success" %>
+		<% end %>
+	<br/><br/>	
+</div>
+
+
+<div class="clear"></div>
