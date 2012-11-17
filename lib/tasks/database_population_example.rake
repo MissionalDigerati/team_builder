@@ -29,7 +29,7 @@ namespace :db do
       contact.created_at = 2.weeks.ago..Time.now
       contact.believer = [true, false]
       contact.donations_count = 3
-    
+      # contact.tags.name = "tags"
       
       Donation.populate 3 do |donation|
         donation.contact_id = contact.id
