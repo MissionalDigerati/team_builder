@@ -149,14 +149,14 @@
 			<% if @donation.present? %>
 			<table class="table table-striped donations">
 				<thead>
-					<th>Date</th>
+					<th>Date (mm/dd/yyyy)</th>
 					<th>Amount</th>
 					<th>Project</th>
 					<th class="text_right">Action</th>
 				</thead>
 			<% @donation.each do |donation| %>
 				<tr>
-				<td class="normal"><%= donation.donation_date %></td>
+				<td class="normal"><%= donation.donation_date.strftime('%m/%d/%Y') %></td>
 				<td class="normal"><%= currency(donation.amount) %></td>
 				<td class="normal"><%= donation.project %></td>
 				<td class="text_right"><%= link_to "Edit", edit_donation_path(donation, contact_id: donation.contact_id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", donation_path(donation), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
@@ -182,7 +182,7 @@
 				<thead>
 					<th>Completed?</th>
 					<th>Task</th>
-					<th>Due date</th>
+					<th>Due date (mm/dd/yyyy)</th>
 					<th>Category</th>
 					<th class="text_right">Action</th>		
 				</thead>
@@ -190,7 +190,7 @@
 				<tr rel="<%= task.id %>" >
 					<td class="normal"><%= check_box_tag "#{task.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(task), remote: true, :class => "completed_button #{task.id} hidden" %></td>
 					<td class="normal"><%= task.task %></td>
-					<td class="normal"><%= task.due_date %></td>
+					<td class="normal"><%= task.due_date.strftime('%m/%d/%Y') %></td>
 					<td class="normal"><%= task.category %></td>
 					<td class="text_right"><%= link_to "Edit", edit_task_path(task, contact_id: task.contact_id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", task_path(task), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
 				</tr>

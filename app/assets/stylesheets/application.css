@@ -48,9 +48,12 @@ table.index tr{
 .red{
 	background-color: red;
 }
+table.contact{
+	width: 342px !important;
+}
 table.contact td{
 	text-transform:capitalize;
-	width: 50%;
+	width: 50% !important;
 }
 .bold{
 	font-weight: bold;

@@ -30,6 +30,8 @@ group :test, :development do
   gem "factory_girl_rails"
   gem 'sqlite3'
   gem 'launchy'
+  gem 'populator'
+  gem 'faker'
 end
 
 group :test do

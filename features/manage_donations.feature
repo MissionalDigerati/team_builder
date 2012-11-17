@@ -7,7 +7,6 @@ Feature: A user should be able to create, edit, and delete donations from their 
 		Given there is a contact "The Doctor"
 		And I am on the show page for "The Doctor"
 		When I click the "Add Donation" link
-		# And I fill in "Date" with "1/1/2012"
 		And I select "2012" from "donation_donation_date_1i"
 		And I select "November" from "donation_donation_date_2i"
 		And I select "10" from "donation_donation_date_3i"
@@ -17,7 +16,7 @@ Feature: A user should be able to create, edit, and delete donations from their 
 		Then I should see "Your Donation has been saved!"
 		And I should be on the doctor's show page
 		And I should see "Team builder"
-		And I should see "2012-11-10"
+		And I should see "11/10/2012"
 		
 	# This ensures that the user can add a donation to any contact regardless of what user's id created the donations form. 
 	Scenario: A user should be able to add a donation for a contact through another contact
@@ -34,10 +33,10 @@ Feature: A user should be able to create, edit, and delete donations from their 
 		Then I should see "Your Donation has been saved!"
 		And I should be on the show page for "scotty"
 		And I should see "Starship enterprise"
-		And I should see "2012-12-25"
+		And I should see "12/25/2012"
 		Then I am on the show page for "sulu"
 		And I should not see "Starship enterprise"
-		And I should not see "2012-12-25"
+		And I should not see "12/25/2012"
 		
 	Scenario: A user should be able to edit donations
 		Given There is a contact "edit donations contact" and they have a donation "the tardis"
@@ -54,7 +53,7 @@ Feature: A user should be able to create, edit, and delete donations from their 
 		And I should not see "the tardis"	
 		And I should see "nothing"
 		And I should see "$1,000.00"
-		And I should see "2011-12-25"
+		And I should see "12/25/2011"
 		
 	Scenario: A user should be delete donations
 		Given There is a contact "delete donations contact" and they have a donation "tba"
