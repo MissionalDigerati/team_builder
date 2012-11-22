@@ -9,8 +9,10 @@
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
+/db/seeds/fat_free.yml
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
 .rvmrc
+
