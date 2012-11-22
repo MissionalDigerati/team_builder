@@ -7,7 +7,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-SCRIPT FOR CREATING DATA FOR STATES AND COUNTRIES
+# SCRIPT FOR CREATING DATA FOR STATES AND COUNTRIES
 State.destroy_all
 Country.destroy_all
 

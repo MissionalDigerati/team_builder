@@ -152,3 +152,6 @@ states:
  - id: 51
    state_long: Wyoming
    state_short: WY
+ - id: 52
+   state_long: No State
+   state_short: NS
