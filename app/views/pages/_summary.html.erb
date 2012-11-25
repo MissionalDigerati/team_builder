@@ -23,8 +23,9 @@
 <strong>Amount donated (all time):</strong><br/>
 <%= donations_all_time %><br/>
 <strong>Average Donation (all time):</strong><br/>
-<%= currency(Donation.average_donation) %>
-<br/>
+<%= currency(Donation.average_donation) %><br/>
+<%= link_to "View all Donations this month", donations_path(:month => Time.now.month, :year => Time.now.year) %><br/>
+<%= link_to "View all Donations this year", donations_path(:year => Time.now.year) %><br/>
 <br/>
 <%= link_to "View all Donations", donations_path, :class => "btn btn-danger" %>
 

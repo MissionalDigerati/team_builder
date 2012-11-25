@@ -1,8 +1,16 @@
 class DonationsController < ApplicationController
   helper_method :sort_column, :sort_direction
   def index
-    # @donations = Donation.order("updated_at DESC").page(params[:page])
-    @donations = Donation.order(sort_column + " " + sort_direction).page(params[:page])
+    donation_year = DATE_YEAR_STRFTIME.gsub(/COLUMN/, "donation_date")
+    donation_month = DATE_MONTH_STRFTIME.gsub(/COLUMN/, "donation_date")
+    if params[:year]
+      @donations = Donation.where(["#{donation_year} = ?",params[:year]]).page(params[:page]).order("donation_date")
+    elsif params[:month] && params[:year]
+      @donations = Donation.where(["#{donation_month} + 0 = ? AND #{donation_year} = ?", params[:month], params[:year]]).page(params[:page]).order("donation_date")
+    else
+      @donations = Donation.order(sort_column + " " + sort_direction).page(params[:page])
+    end
+    
   end
   
   def new

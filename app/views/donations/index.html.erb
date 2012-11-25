@@ -13,7 +13,8 @@
 		<%= currency(Donation.average_donation) %><br/>
 		<strong>Number of contacts that have donated:</strong><br/>
 		<%= Contact.donated_contacts %><br/>
-		
+		<%= link_to "View all Donations this month", donations_path(:month => Time.now.month, :year => Time.now.year) %><br/>
+		<%= link_to "View all Donations this year", donations_path(:year => Time.now.year) %><br/>
 	</div>
 	
 	<div class="span9 table_container">
@@ -40,8 +41,8 @@
 				<td><%= donation.donation_date.strftime('%m/%d/%Y') %></td>
 				<td><%= currency(donation.amount) %></td>
 				<td><%= donation.project.capitalize %></td>
-				<td><%= donation.created_at.strftime('%d/%m/%Y') %></td>
-				<td><%= donation.updated_at.strftime('%d/%m/%Y') %></td>
+				<td><%= donation.created_at.strftime('%m/%d/%Y') %></td>
+				<td><%= donation.updated_at.strftime('%m/%d/%Y') %></td>
 				<td class="text_center"><%= link_to edit_button, edit_donation_path(donation, contact_id: donation.contact_id), :class => "btn btn-success btn-small"  %> <%= link_to delete_button, donation, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small"  %> <%= link_to contact_button, contact_path(donation.contact_id), :class => "btn btn-info btn-small"  %></td>
 		  </tr>
 		<% end %>
