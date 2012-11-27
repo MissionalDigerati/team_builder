@@ -53,6 +53,29 @@ Feature: A user manages their contacts
 		And I should see "new years"
 		And I should see "Facebook"
 		
+	Scenario: Contacts should be searchable by tags
+		Given there is a contact named "Amy" with tag friend
+		And I am on the home page
+		And I click the "Create New Contact" link
+		When I fill in "first_name" with "Starbucks"
+		And I fill in "email" with "Starbucks@coffee.com"
+		And I fill in "contact_tag_list" with "friend, coffee"
+		And I click the "create_contact" button
+		Then I should see "Contact was successfully created."
+		When I click the "coffee" link
+		Then I should see "Searching by tag: Coffee"
+		And I should see "Starbucks"
+		And I should not see "Amy"
+		When I click the "friend" link
+		Then I should see "Starbucks"
+		And I should see "Searching by tag: Friend"
+		And I should see "Amy"
+		When I click the "doctor" link
+		And I should see "Searching by tag: Doctor"
+		And I should see "Amy"
+		And I should not see "Starbucks"
+		
+		
 		# 
 		# <Contact id: nil, first_name: nil, last_name: nil, spouse_name: nil, 
 		# email: nil, spouse_email: nil, tags: nil, network: nil, address_1: nil, 

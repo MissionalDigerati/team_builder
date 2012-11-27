@@ -20,7 +20,6 @@
 				<th><%= sortable "believer" %></th>
 				<th><%= sortable "preferred_contact" %></th>
 				<th><%= sortable "receive_newsletter", "Newsletter" %></th>
-				<th><%= sortable "created_at" %></th>
 		    <th>Action</th>
 		  </tr>
 
@@ -52,7 +51,7 @@
 				<td class="believer"><%= contact.news_letter(contact.believer) %></td>
 				<td><%= contact.preferred_contact %></td>
 				<td><%= news_letter(contact.receive_newsletter) %></td>
-				<td><%= contact.created_at.strftime('%m/%d/%Y') %></td>
+				
 				<td class="text_center"><%= link_to edit_button, edit_contact_path(contact), :class => "btn btn-success btn-small"  %> <%= link_to delete_button, contact, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small"  %> <%= link_to contact_button, contact, :class => "btn btn-info btn-small"  %></td>
 			
 		  </tr>

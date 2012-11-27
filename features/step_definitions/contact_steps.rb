@@ -22,5 +22,7 @@ Then /^I should be on the doctor's show page$/ do
   thedoctor = Contact.where(first_name: "The Doctor").first
   page.current_path.should == contact_path(thedoctor)
 end
-
+Given /^there is a contact named "(.*?)" with tag friend$/ do |name|
+  FactoryGirl.create(:contact, first_name: name, last_name: "unknown", spouse_name: "none", email: "amypond@fakeemail.com", state_id: 1, country_id: 1, tag_list: "friend, doctor")
+end
 # adding phone numbers

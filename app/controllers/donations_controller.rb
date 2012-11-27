@@ -3,19 +3,16 @@ class DonationsController < ApplicationController
   def index
     donation_year = DATE_YEAR_STRFTIME.gsub(/COLUMN/, "donation_date")
     donation_month = DATE_MONTH_STRFTIME.gsub(/COLUMN/, "donation_date")
-    if params[:year]
-      @donations = Donation.where(["#{donation_year} = ?",params[:year]]).page(params[:page]).order("donation_date")
-    elsif params[:month] && params[:year]
+    if params[:month] && params[:year]
       @donations = Donation.where(["#{donation_month} + 0 = ? AND #{donation_year} = ?", params[:month], params[:year]]).page(params[:page]).order("donation_date")
+    elsif params[:year]
+      @donations = Donation.where(["#{donation_year} = ?",params[:year]]).page(params[:page]).order("donation_date")
     else
       @donations = Donation.order(sort_column + " " + sort_direction).page(params[:page])
     end
-    
   end
   
   def new
-    # @contact = Contact.find(params[:contact_id])
-    #     @donations = @contact.donations.build
     if params[:contact_id] == nil
       @donations = Donation.new
     else

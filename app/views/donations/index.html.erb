@@ -15,6 +15,13 @@
 		<%= Contact.donated_contacts %><br/>
 		<%= link_to "View all Donations this month", donations_path(:month => Time.now.month, :year => Time.now.year) %><br/>
 		<%= link_to "View all Donations this year", donations_path(:year => Time.now.year) %><br/>
+		<!-- <%= form_tag("",:method=>:get) do %>
+				<%= label :year, "Year (YYYY)" %>
+				<%= text_field_tag(:year, value = nil, options = {:class=>"span3 pull-left"})%>
+				<%= select_tag(:month, Donation.month_hash, { :class => 'span3 pull-left' })%>
+				<%= submit_tag "go!", :class => "btn btn-success btn-small" %>
+				<% end %> -->
+		
 	</div>
 	
 	<div class="span9 table_container">
