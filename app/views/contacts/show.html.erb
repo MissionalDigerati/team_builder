@@ -60,7 +60,7 @@
 				</tr>
 				<tr>
 					<td class="bold">Receive NewsLetter?</td>
-					<td><%= @contact.news_letter(@contact.receive_newsletter) %></td>
+					<td><%= yes_or_no(@contact.receive_newsletter) %></td>
 				</tr>
 				<tr>
 					<td class="bold">Created at:</td>
@@ -72,7 +72,7 @@
 				</tr>
 				<tr>
 					<td class="bold">Believer:</td>
-					<td class="believer"><%= @contact.news_letter(@contact.believer) %></td>
+					<td class="believer"><%= yes_or_no(@contact.believer) %></td>
 				</tr>
 				<tr>
 					<td class="bold">Tags:</td>

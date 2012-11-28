@@ -9,6 +9,10 @@ module ApplicationHelper
     link_to(name, '#', class: "add_fields btn btn-small btn-danger", data: {id: id, fields: fields.gsub("/n", "")})
   end
   
+  def yes_or_no(attribute)
+    attribute === true ? "Yes" : "No"
+  end
+  
   def tag_param
     if request.params["tag"].present?
       text = "Searching by tag: #{request.params["tag"].titleize}" 

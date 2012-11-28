@@ -1,12 +1,4 @@
 class Contact < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :spouse_name, :email, :spouse_email, :network, :address_1, :address_2, :city, 
-  :state_id, :zip, :country_id, :receive_newsletter, :children, :preferred_contact, :believer
-  #number
-  attr_accessible :tag_list #acts as taggable gem
-  acts_as_taggable
-  attr_accessible :numbers_attributes
-  attr_accessible :occasions_attributes
-  attr_accessible :presences_attributes
   belongs_to :state
   belongs_to :country
   has_many :numbers, :dependent => :destroy
@@ -15,11 +7,17 @@ class Contact < ActiveRecord::Base
   has_many :tasks
   has_many :notes, :dependent => :destroy
   has_many :presences
-  validates :first_name, :email, :presence => true
+  attr_accessible :tag_list #acts as taggable gem
+  acts_as_taggable
+  attr_accessible :numbers_attributes
+  attr_accessible :occasions_attributes
+  attr_accessible :presences_attributes
+  attr_accessible :first_name, :last_name, :spouse_name, :email, :spouse_email, :network, :address_1, :address_2, :city, 
+  :state_id, :zip, :country_id, :receive_newsletter, :children, :preferred_contact, :believer
   accepts_nested_attributes_for :numbers, :reject_if => lambda { |a| a[:number].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :occasions, :reject_if => lambda { |a| a[:occasion].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :presences, :reject_if => lambda { |a| a[:url].blank? }, :allow_destroy => true
-  
+  validates :first_name, :email, :presence => true
   
   NETWORKS = ['Please Choose', '168 Film Festival', 'AACF - Cal Poly Pomona', 'Bible Study Fellowship', 'Cal Poly Pomona', 
   'Calvary Chapel', 'Co-Worker', "Dillions International", 'Extended Faimly', 'First Church of God - Pomona', 'Friends of Friends',
@@ -29,13 +27,6 @@ class Contact < ActiveRecord::Base
   
   CONTACTS = ['Please Choose','Email', 'Letter', 'Twitter', 'Facebook', 'Call', 'In Person', 'Skype', 'FaceTime', 'Other']
 
-  def news_letter(arg)
-    if arg === true
-      "Yes"
-    else
-      "No"
-    end
-  end
   
   def self.non_believers
     Contact.where("believer = ?", false).length
