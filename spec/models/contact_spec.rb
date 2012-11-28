@@ -48,8 +48,5 @@ describe Contact do
       FactoryGirl.create(:defaulted_contact, :created_at => 1.year.ago.to_date)
       Contact.contacts_in_last_year.should == 1
     end
-    
   end
-  
 end
-  

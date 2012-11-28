@@ -3,4 +3,10 @@
 FactoryGirl.define do
   factory :number do
   end
+  
+  factory :defaulted_number, :parent => :number do
+    number "1232123212"
+    phone_type "Mobile"
+    contact_id 0
+  end
 end
