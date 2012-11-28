@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Task do
-  context "methods" do
+  context "incomplete_tasks method" do
     it "should return the correct number of incomplete tasks" do
       FactoryGirl.create(:defaulted_task, :completed => false, :task => "task1")
       FactoryGirl.create(:defaulted_task, :completed => false, :task => "task2")
