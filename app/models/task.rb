@@ -6,8 +6,7 @@ class Task < ActiveRecord::Base
   CATEGORY = ["Call", "Email", "Follow Up", "Lunch", "Meeting", "Money Presentation", "Trip", "Other"]
   
   def self.incomplete_tasks
-    tasks = Task.where(:completed => false)
-    tasks.length
+    Task.where(:completed => false).length
   end
   
 end

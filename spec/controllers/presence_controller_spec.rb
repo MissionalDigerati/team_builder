@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe PresenceController do
+describe PresencesController do
 
 end
