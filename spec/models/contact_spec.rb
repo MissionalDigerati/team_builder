@@ -16,10 +16,7 @@ describe Contact do
   end
   
   context "methods" do
-    it "should return No if user does not accept newsletter" do
-      contact = FactoryGirl.build(:defaulted_contact, :receive_newsletter => false)
-      contact.news_letter(contact.receive_newsletter).should == "No"
-    end
+    
   end
   
 end
