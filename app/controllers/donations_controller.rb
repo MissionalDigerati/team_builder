@@ -30,7 +30,7 @@ class DonationsController < ApplicationController
         flash[:notice] = "Your Donation has been saved!"
       else
         format.html {render action: "new"}
-        flash[:notice] = "Your Donation has not been saved"
+        flash[:notice] = @donations.errors.empty? ? "Your Donation has not been saved" : "Your Donation has not been saved because: " + @donations.errors.full_messages.to_sentence
       end
     end
   end
@@ -49,7 +49,7 @@ class DonationsController < ApplicationController
         flash[:notice] = "Your Donation has been updated!"
       else
         format.html {render action: "edit"}
-        flash[:notice] = "Your Donation has not been updated"
+        flash[:notice] = @donations.errors.empty? ? "Your Donation has not been updated" : "Your Donation has not been updated because: " + @donations.errors.full_messages.to_sentence
       end
     end
   end

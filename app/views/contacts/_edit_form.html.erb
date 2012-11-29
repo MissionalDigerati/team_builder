@@ -1,17 +1,6 @@
 <br/><br/>
 <div class="span3 offset3">
 <%= form_for(@contact) do |f| %>
-  <% if @contact.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
-
-      <ul>
-      <% @contact.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 	<%= f.label :first_name, "First Name" %>
 	<%= f.text_field :first_name, id: "first_name"  %><br/>
 	<br/>

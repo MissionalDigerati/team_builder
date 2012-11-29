@@ -60,7 +60,7 @@ class ContactsController < ApplicationController
         format.json { render json: @contact, status: :created, location: @contact }
       else
         format.html { render action: "new" }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
+        flash[:notice] = @contact.errors.empty? ? "Your Contact has not been saved" : "Your Contact has not been saved because: " + @contact.errors.full_messages.to_sentence
       end
     end
   end
@@ -76,7 +76,7 @@ class ContactsController < ApplicationController
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
+        flash[:notice] = @contact.errors.empty? ? "Your Contact has not been updated" : "Your Contact has not been updated because: " + @contact.errors.full_messages.to_sentence
       end
     end
   end
