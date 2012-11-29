@@ -19,7 +19,7 @@ class NotesController < ApplicationController
         flash[:notice] = "Your Note has been saved!"
       else
         format.html {redirect_to :back}
-        flash[:notice] = "Your Note has not been saved."
+        flash[:notice] = @note.errors.empty? ? "Your Note has not been saved" : "Your Note has not been saved because: " + @note.errors.full_messages.to_sentence
       end
     end
   end
@@ -38,7 +38,7 @@ class NotesController < ApplicationController
         flash[:notice] = "Your Note has been updated!"
       else
         format.html{redirect_to :back}
-        flash[:notice] = "Your Note has not been updated."
+        flash[:notice] = @note.errors.empty? ? "Your Note has not been updated" : "Your Note has not been updated because: " + @note.errors.full_messages.to_sentence
       end
     end
   end

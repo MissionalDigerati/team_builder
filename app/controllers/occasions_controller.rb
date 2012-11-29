@@ -25,7 +25,7 @@ class OccasionsController < ApplicationController
         flash[:notice] = "Your Occasion has been saved!"
       else
         format.html {render action: "new"}
-        flash[:notice] = "Your Occasion has not been saved"
+        flash[:notice] = @occasions.errors.empty? ? "Your Occasion has not been saved" : "Your Occasion has not been saved because: " + @occasions.errors.full_messages.to_sentence
       end
     end
   end
@@ -44,7 +44,7 @@ class OccasionsController < ApplicationController
         flash[:notice] = "Your Occasion has ben updated."
       else
         format.html {render action: "edit"}
-        flash[:notice] = "Your Occasion could not be saved."
+        flash[:notice] = @occasions.errors.empty? ? "Your Occasion has not been saved" : "Your Occasion has not been saved because: " + @occasions.errors.full_messages.to_sentence
       end
     end
   end

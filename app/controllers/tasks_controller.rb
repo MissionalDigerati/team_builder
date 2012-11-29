@@ -24,7 +24,7 @@ class TasksController < ApplicationController
         flash[:notice] = "Your Task has been saved!"
       else
         format.html {redirect_to :action => "new"}
-        flash[:notice] = "Your Task has not been saved!"
+        flash[:notice] = @task.errors.empty? ? "Your Task has not been saved" : "Your Task has not been saved because: " + @task.errors.full_messages.to_sentence
       end
     end
   end
@@ -43,7 +43,7 @@ class TasksController < ApplicationController
         flash[:notice] = "Your Task has been updated!"
       else
         format.html {redirect_to action: "edit"}
-        flash[:notice] = "Your Task has not been updated."
+        flash[:notice] = @task.errors.empty? ? "Your Task has not been saved" : "Your Task has not been saved because: " + @task.errors.full_messages.to_sentence
       end
     end
   end

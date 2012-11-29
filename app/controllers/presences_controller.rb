@@ -18,7 +18,7 @@ class PresencesController < ApplicationController
         flash[:notice] = "Your Web Presence has been saved!"
       else
         format.html{redirect_to :back}
-        flash[:notice] = "Your web presence has not been saved."
+        flash[:notice] = @presence.errors.empty? ? "Your Web Presence has not been saved" : "Your Web Presence has not been saved because: " + @presence.errors.full_messages.to_sentence
       end
     end
   end
@@ -37,7 +37,7 @@ class PresencesController < ApplicationController
         flash[:notice] = "Your Web Presence has been updated!"
       else
         format.html {redirect_to :back}
-        flash[:notice] = "Your web presence has not been updated."
+        flash[:notice] = @presence.errors.empty? ? "Your Web Presence has not been saved" : "Your Web Presence has not been saved because: " + @presence.errors.full_messages.to_sentence
       end
     end
   end

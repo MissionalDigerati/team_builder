@@ -18,7 +18,7 @@ class NumbersController < ApplicationController
         flash[:notice] = "Your number has been saved!"
       else
         format.html {render action: "new"}
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
+        flash[:notice] = @number.errors.empty? ? "Your Phone Number has not been saved" : "Your Phone Number has not been saved because: " + @number.errors.full_messages.to_sentence
       end
     end
   end
@@ -37,7 +37,7 @@ class NumbersController < ApplicationController
         flash[:notice] = "Your phone number has been updated."
       else
         format.html {render action: "edit"}
-        flash[:notice] = "Your phone number was not updated."
+        flash[:notice] = @number.errors.empty? ? "Your Phone Number has not been saved" : "Your Phone Number has not been saved because: " + @number.errors.full_messages.to_sentence
       end
     end
   end
