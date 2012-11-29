@@ -11,29 +11,29 @@ Feature: A user should be able to edit and create phone numbers for their contac
 		And I click the "Create Number" button
 		Then I should see "Your number has been saved!"
 		And I should be on the doctor's show page
-		And I should see "14082182617"
+		And I should see "1(408) 218 2617"
 	
 	Scenario: A user should be able to edit an existing phone number
 		Given There is a contact "Kirk" and they have a phone number "1231231234"
 		And I am on the show page for "Kirk"
-		And I should see "1231231234"
-		When I click on the "Edit" link for "1231231234"
+		And I should see "(123) 123 1234"
+		When I click on the "Edit" link for "(123) 123 1234"
 		And I select "Home" from "number_phone_type"
 		And I fill in "number_number" with "9999999999"
 		And I click the "Update Number" button
 		Then I should see "Your phone number has been updated."
-		And I should see "9999999999"
-		And I should not see "1231231234"
+		And I should see "(999) 999 9999"
+		And I should not see "(123) 123 1234"
 		
 	Scenario: A user should be able to delete an existing phone number	
 		Given There is a contact "delete phone test" and they have a phone number "1111111111"
 		And I am on the show page for "delete phone test"
-		And I should see "1111111111"
-		When I click on the "Delete" link for "1111111111"
+		And I should see "(111) 111 1111"
+		When I click on the "Delete" link for "(111) 111 1111"
 		# And I confirm popup, not sure why this is working without confirming the pop up, however it is. 
 		Then I should see "Your phone number has been deleted."
 		And I am on the show page for "delete phone test"
-		And I should not see "1111111111"
+		And I should not see "(111) 111 1111"
 	
 	Scenario: A user should be able to add a phone number for a contact through another contact
 		Given given there are contacts "iphone" and "android"
@@ -45,8 +45,8 @@ Feature: A user should be able to edit and create phone numbers for their contac
 		And I click the "Create Number" button
 		Then I should see "Your number has been saved!"
 		And I should be on the show page for "android"
-		And I should see "2312321232"
+		And I should see "(231) 232 1232"
 		And I should see "Mobile"
 		Then I am on the show page for "iphone"
-		And I should not see "2312321232"	
+		And I should not see "(231) 232 1232"	
 		And I should not see "Mobile"		

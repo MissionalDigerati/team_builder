@@ -106,7 +106,7 @@
 				<% @number.each do |number| %>
 					<tr>
 					<td class="normal"><%= number.phone_type %></td>
-					<td class="normal"><%= number.number %></td>
+					<td class="normal"><%= number_to_phone(number.number, :area_code => true, :delimiter => " ") %></td>
 					<td class="text_right"><%= link_to "Edit", edit_number_path(number, contact_id: number.contact_id ), :class => "btn btn-small btn-success" %> <%= link_to "Delete", number_path(number), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
 					</tr>
 				<% end %>

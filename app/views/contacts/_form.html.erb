@@ -38,10 +38,10 @@
 		<%= f.text_area :children, id: "Children", :rows => "3"  %>
 		<br/><br/>
 		<%= f.label :preferred_contact, "Preferred Contact" %>
-		<%= f.select :preferred_contact, Contact::CONTACTS, id: "preferred_contact"  %>
+		<%= f.select :preferred_contact, Contact::CONTACTS, id: "preferred_contact", :include_blank => true  %>
 		<br/><br/>
 		<%= f.label :network, "Network" %>
-		<%= f.select :network, Contact::NETWORKS, id: "network"  %>
+		<%= f.select :network, Contact::NETWORKS, id: "network", :include_blank => true  %>
 		<br/><br/>
 		<%= f.label :tag_list, "Tags (separated by commas)" %>
 		<%= f.text_field :tag_list %>
