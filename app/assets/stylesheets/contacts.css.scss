@@ -26,12 +26,12 @@
 .pagination a, .pagination span{
 	color: #911F1F;
 }
-table.phone_number{
+table.phone_number, table.occasions, table.notes{
 	.normal{
 		width: 42%;
 	}
 }
-table.occasions, table.donations, table.presence{
+table.donations, table.presence{
 	.normal{
 		width: 28%;
 	}
