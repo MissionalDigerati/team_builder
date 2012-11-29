@@ -9,10 +9,6 @@ module ApplicationHelper
     link_to(name, '#', class: "add_fields btn btn-small btn-danger", data: {id: id, fields: fields.gsub("/n", "")})
   end
   
-  def yes_or_no(attribute)
-    attribute === true ? "Yes" : "No"
-  end
-  
   def tag_param
     if request.params["tag"].present?
       text = "Searching by tag: #{request.params["tag"].titleize}" 
@@ -22,19 +18,15 @@ module ApplicationHelper
   end
    
   def status(status)
-     if status === true
-       "Completed"
-     else
-       "In Progress"
-     end
+     status === true ? "Completed" : "In Progress"
   end
   
-  def first_name(arg)
-    arg.contact.first_name.capitalize
+  def first_name(instance)
+    instance.contact.first_name.capitalize
   end
   
-  def full_name(arg)
-    arg.first_name + " " + arg.last_name.titleize
+  def full_name(instance)
+    instance.first_name + " " + arg.last_name.titleize
   end
     
   def edit_button
@@ -56,25 +48,21 @@ module ApplicationHelper
     link_to title, {:sort => column, :direction => direction}, {:class => css_class}
   end
   
+  def currency(number)
+    number_to_currency(number, :precision => 2)
+  end
+  
   def donations_all_time
     total_donations = Donation.sum(:amount)
-    number_to_currency(total_donations, :precision => 2)
+    currency(total_donations)
   end
   
   # These queries for finding by month and year will need to be changed depending on the database used, here I use sqlite 
   # http://stackoverflow.com/questions/9624601/activerecord-find-by-year-day-or-month-on-a-date-field
   
   def donation_this_year
-    current_year = Time.now.year
-    # Donation.sum(:amount, Donation.where(:donation_date == current_month))
-    donation_year = Donation.where("strftime('%Y', donation_date)     = ?", current_year.to_s)
-    donation_year_sum = currency(donation_year.sum(:amount))
+    donation_year = Donation.where("strftime('%Y', donation_date) = ?", Time.now.year.to_s)
+    currency(donation_year.sum(:amount))
   end
-  
-  def currency(number)
-    number_to_currency(number, :precision => 2)
-  end
-
   
 end
-
