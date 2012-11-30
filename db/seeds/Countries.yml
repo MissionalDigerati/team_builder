@@ -1433,3 +1433,9 @@ countries:
    printable_name: Zimbabwe
    iso3: ZWE
    numcode: 716
+ - id: 240
+   iso: NC
+   name: NO COUNTRY
+   printable_name: No Country
+   iso3: NC
+   numcode: 999   

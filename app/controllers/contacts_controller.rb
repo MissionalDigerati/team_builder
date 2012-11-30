@@ -33,7 +33,7 @@ class ContactsController < ApplicationController
   # GET /contacts/new
   # GET /contacts/new.json
   def new
-    @contact = Contact.new(:state_id => 5, :country_id => 465)
+    @contact = Contact.new(:state_id => 5, :country_id => 226)
     @contact.numbers.build
     @contact.occasions.build
     @contact.presences.build

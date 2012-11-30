@@ -23,7 +23,7 @@ namespace :db do
       contact.city = Faker::Address.city
       contact.state_id = 5
       contact.zip = Faker::Address.zip_code
-      contact.country_id = 465
+      contact.country_id = 226
       contact.receive_newsletter = [true, false]
       contact.preferred_contact = ['Please Choose','Email', 'Letter', 'Twitter', 'Facebook', 'Call', 'In Person', 'Skype', 'FaceTime', 'Other']
       contact.created_at = 2.weeks.ago..Time.now
