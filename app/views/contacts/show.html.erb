@@ -98,7 +98,7 @@
 			
 				<h3>Phone Number(s)</h3>
 				<br/>
-				<%= link_to "Add Phone Number", new_number_path(@contact), :class => "btn btn-primary pull-right" %>
+				<%= link_to "Add Phone Number", new_number_path(contact_id: @contact.id), :class => "btn btn-primary pull-right" %>
 				<div class="clear"></div>
 				<% if @number.present?%>
 				<table class="table table-striped phone_number">
@@ -122,7 +122,7 @@
 			<!-- special occasion -->
 			<h3>Special Dates</h3>
 			<br/>
-			<%= link_to "Add Special Date", new_occasion_path(@contact), :class => "btn btn-primary pull-right" %>
+			<%= link_to "Add Special Date", new_occasion_path(contact_id: @contact.id), :class => "btn btn-primary pull-right" %>
 			<div class="clear"></div>
 			<% if @occasion.present? %>
 			<table class="table table-striped occasions">
