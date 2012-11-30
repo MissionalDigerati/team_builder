@@ -247,7 +247,7 @@
 			<% @presence.each do |presence| %>
 				<tr>
 					<td class="normal"><%= presence.site %></td>
-					<td class="normal"><%= presence.url %></td>
+					<td class="normal"><%= link_to "#{presence.url}", presence.url%></td>
 					<td class="normal"><%= presence.account %></td>
 					<td class="text_right"><%= link_to "Edit", edit_presence_path(presence, contact_id: @contact.id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", presence_path(presence), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
 				</tr>
