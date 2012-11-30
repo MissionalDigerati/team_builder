@@ -1,36 +1,3 @@
-
-<h3>Contact's Summary</h3>
-<strong>Total number of contacts:</strong> <br/>
-<%= Contact.contact_count %><br/>
-<strong>Number of Non-Believers:</strong> <br/>
-<%= Contact.non_believers %><br/>
-<strong>Number of new contacts (last 4 weeks):</strong><br/>
-<%= Contact.contacts_in_last_month %><br/>
-<strong>Number of new contacts (last year):</strong><br/>
-<%= Contact.contacts_in_last_year %><br/>
-<strong>Number of contacts that have donated:</strong> <br/>
-<%= Contact.donated_contacts %><br/>
-<br/>
-<%= link_to "View all Contacts", contacts_path, :class => "btn btn-danger" %>
-<hr class="hr"></hr>
-
-
-<h3>Donation Summary</h3>
-<strong>Amount donated (this month):</strong><br/>
-<%= currency(Donation.this_month_sum) %><br/>
-<strong>Amount donated (this year):</strong><br/>
-<%= donation_this_year %><br/>
-<strong>Amount donated (all time):</strong><br/>
-<%= donations_all_time %><br/>
-<strong>Average Donation (all time):</strong><br/>
-<%= currency(Donation.average_donation) %><br/>
-<%= link_to "View all Donations this month", donations_path(:month => Time.now.month, :year => Time.now.year) %><br/>
-<%= link_to "View all Donations this year", donations_path(:year => Time.now.year) %><br/>
-<br/>
-<%= link_to "View all Donations", donations_path, :class => "btn btn-danger" %>
-
-<hr class="hr"></hr>
-
 <h3>Special Date Summary</h3>
 <% if @occasions_today.present? %>
 	<strong><%= "Special dates (today #{Time.now.to_date.strftime('%m/%d/%Y')}):" %></strong><br/>
@@ -77,6 +44,35 @@
 	</table>
 <% end %>
 
-<br/>
-
 <%= link_to "View all Special Dates", occasions_path, :class => "btn btn-danger" %>
+<hr class="hr"></hr>
+
+<h3>Contact's Summary</h3>
+<strong>Total number of contacts:</strong> <br/>
+<%= Contact.contact_count %><br/>
+<strong>Number of Non-Believers:</strong> <br/>
+<%= Contact.non_believers %><br/>
+<strong>Number of new contacts (last 4 weeks):</strong><br/>
+<%= Contact.contacts_in_last_month %><br/>
+<strong>Number of new contacts (last year):</strong><br/>
+<%= Contact.contacts_in_last_year %><br/>
+<strong>Number of contacts that have donated:</strong> <br/>
+<%= Contact.donated_contacts %><br/>
+<br/>
+<%= link_to "View all Contacts", contacts_path, :class => "btn btn-danger" %>
+<hr class="hr"></hr>
+
+
+<h3>Donation Summary</h3>
+<strong>Amount donated (this month):</strong><br/>
+<%= currency(Donation.this_month_sum) %><br/>
+<strong>Amount donated (this year):</strong><br/>
+<%= donation_this_year %><br/>
+<strong>Amount donated (all time):</strong><br/>
+<%= donations_all_time %><br/>
+<strong>Average Donation (all time):</strong><br/>
+<%= currency(Donation.average_donation) %><br/>
+<%= link_to "View all Donations this month", donations_path(:month => Time.now.month, :year => Time.now.year) %><br/>
+<%= link_to "View all Donations this year", donations_path(:year => Time.now.year) %><br/>
+<br/>
+<%= link_to "View all Donations", donations_path, :class => "btn btn-danger" %>
