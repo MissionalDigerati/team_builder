@@ -109,11 +109,11 @@ class ContactsController < ApplicationController
   protected
   
   def sort_column
-    Contact.column_names.include?(params[:sort]) ? params[:sort] : "updated_at"
+    Contact.column_names.include?(params[:sort]) ? params[:sort] : "last_name, first_name"
   end
   
   def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
   
 end

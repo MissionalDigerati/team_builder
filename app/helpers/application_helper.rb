@@ -26,7 +26,7 @@ module ApplicationHelper
   end
   
   def full_name(instance)
-    instance.first_name + " " + arg.last_name.titleize
+    instance.first_name + " " + instance.last_name.titleize
   end
     
   def edit_button

@@ -9,11 +9,11 @@ namespace :db do
     [Contact, Donation, Note, Number, Occasion, Presence, Task].each(&:delete_all)
     
     Contact.populate 40 do |contact|
-      contact.first_name = Faker::Name.name
-      contact.last_name = Faker::Name.name
-      contact.spouse_name = Faker::Name.name
-      contact.email = Faker::Internet.email
-      contact.spouse_email = Faker::Internet.email
+      contact.first_name = Faker::Name.first_name
+      contact.last_name = Faker::Name.last_name
+      contact.spouse_name = Faker::Name.first_name
+      contact.email = Faker::Name.first_name + "@example.com"
+      contact.spouse_email = Faker::Name.first_name + "@example.com"
       contact.network = ['Please Choose', '168 Film Festival', 'AACF - Cal Poly Pomona', 'Bible Study Fellowship', 'Cal Poly Pomona', 
       'Calvary Chapel', 'Co-Worker', "Dillions International", 'Extended Faimly', 'First Church of God - Pomona', 'Friends of Friends',
       'Grace Brethen', 'Hesperia High School', 'Immediate Family', 'SIS: Ping Core', 'Missional Digerati Referrals', 'Mobile Ministry Forum',
