@@ -18,6 +18,7 @@ class Contact < ActiveRecord::Base
   accepts_nested_attributes_for :occasions, :reject_if => lambda { |a| a[:occasion].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :presences, :reject_if => lambda { |a| a[:url].blank? }, :allow_destroy => true
   validates :first_name, :last_name, :email, :presence => true
+  before_save :capitalize_name
   
   NETWORKS = ['168 Film Festival', 'AACF - Cal Poly Pomona', 'Bible Study Fellowship', 'Cal Poly Pomona', 
   'Calvary Chapel', 'Co-Worker', "Dillions International", 'Extended Faimly', 'First Church of God - Pomona', 'Friends of Friends',
@@ -46,5 +47,14 @@ class Contact < ActiveRecord::Base
   
   def self.contacts_in_last_year
     Contact.find(:all, :conditions => ["created_at between ? and ?", 1.years.ago.to_date, Time.now.to_date]).length
+  end
+  
+  def full_name
+    self.first_name + " " + self.last_name
+  end
+  
+  def capitalize_name
+    self.first_name = self.first_name.slice(0,1).capitalize + self.first_name.slice(1..-1).to_s
+    self.last_name = self.last_name.slice(0,1).capitalize + self.last_name.slice(1..-1).to_s
   end
 end
