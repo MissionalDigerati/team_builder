@@ -21,6 +21,12 @@ module ApplicationHelper
      status === true ? "Completed" : "In Progress"
   end
   
+  def form_select
+    if Contact.all.collect.present?
+      Contact.all.collect {|p| [ p.last_name + ', ' + p.first_name, p.id ] }
+    end
+  end
+  
   def first_name(instance)
     instance.contact.first_name.capitalize
   end

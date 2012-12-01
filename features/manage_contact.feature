@@ -58,6 +58,7 @@ Feature: A user manages their contacts
 		And I am on the home page
 		And I click the "Create New Contact" link
 		When I fill in "first_name" with "Starbucks"
+		And I fill in "last_name" with "Cafe"
 		And I fill in "email" with "Starbucks@coffee.com"
 		And I fill in "contact_tag_list" with "friend, coffee"
 		And I click the "create_contact" button

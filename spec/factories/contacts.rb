@@ -4,7 +4,8 @@ FactoryGirl.define do
   end
   
   factory :defaulted_contact, :parent => :contact do
-    first_name "Fred"
+    first_name "Rory"
+    last_name "Williams"
     email "fred@fakeemail.com"
   end
    

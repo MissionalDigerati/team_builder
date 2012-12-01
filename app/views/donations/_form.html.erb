@@ -3,7 +3,7 @@
 	<br/><br/>
 		<%= form_for([@donations]) do |f| %>
 			<%= f.label :contact_id, "Contact" %>
-			<%= f.select(:contact_id, Contact.all.collect {|p| [ p.first_name, p.id ] }) %><br/><br/>
+			<%= f.select(:contact_id, form_select) %><br/><br/>
 			<%= f.label :donation_date, "Date" %>
 			<%= f.date_select :donation_date, :class => "date_select" %><br/><br/>
 			<%= f.label :amount, "Amount" %>
