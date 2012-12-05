@@ -10,6 +10,7 @@
 					<li><%= link_to "Tasks", tasks_path %> </li>
 					<li><%= link_to "Special Dates", occasions_path %> </li>
 				</ul>
+					
 				
 				<ul class="nav pull-right">
 					<li class="dropdown">
@@ -29,6 +30,14 @@
 							<li class="divider"></li>
 							<li><%= link_to "Add Web Presence", new_presence_path %></li>
 					   </ul>
+					</li>
+				</ul>
+				
+				<ul class="nav pull-right">
+					<li>
+						<%= form_tag contacts_path, :method => 'get' do%>
+							<%= text_field_tag :search, nil, :placeholder => (params[:search].present? ? params[:search] : "Search Contacts"), :class => "navbar-search" %>
+						<% end %>
 					</li>
 				</ul>
 			

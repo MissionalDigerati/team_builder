@@ -10,6 +10,8 @@ class ContactsController < ApplicationController
   def index
     if params[:tag]
       @contacts = Contact.tagged_with(params[:tag]).page(params[:page])
+    elsif params[:search].present?
+      @contacts = Contact.where("first_name like ?", params[:search]).page(params[:page])
     else
       @contacts = Contact.order(sort_column + " " + sort_direction).page(params[:page])
     end
