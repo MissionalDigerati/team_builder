@@ -31,6 +31,10 @@ module ApplicationHelper
     instance.contact.first_name.capitalize
   end
   
+  def summary_name_helper(instance)
+    instance.contact.last_name.capitalize + ', ' + instance.contact.first_name.first.capitalize
+  end
+  
   def full_name(instance)
     instance.first_name + " " + instance.last_name.titleize
   end

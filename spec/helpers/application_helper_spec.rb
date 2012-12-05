@@ -54,5 +54,11 @@ describe ApplicationHelper do
       contact_button.should == "View Contact <i class=\"icon-user icon-white\"></i>"
     end
     
+    it "should return the last name of the instance followed by a comma, followed by the first letter of the first name, all names are titalized." do
+      ron = FactoryGirl.create(:defaulted_contact, :first_name => "ron", :last_name => "Weasley")
+      donation = FactoryGirl.create(:defaulted_donation, :contact_id => ron)
+      summary_name_helper(donation).should == "Weasley, R"
+    end
+    
   end
 end

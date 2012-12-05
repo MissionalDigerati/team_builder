@@ -4,7 +4,7 @@
 	<table class="table round bottom">
 	<% @occasions_today.each do |today| %>
 		<tr>
-			<td><%= link_to first_name(today), contact_path(today.contact_id)%></td>
+			<td><%= link_to summary_name_helper(today), contact_path(today.contact_id)%></td>
 			<td><%= today.occasion %></td>
 			<td><%= link_to "View", contact_path(today.contact_id), :class => "btn btn-info btn-small pull-right" %></td>
 		</tr>
@@ -19,7 +19,7 @@
 	<table class="table round bottom">
 	<% @occasions_week.each do |week| %>
 		<tr>
-			<td><%= link_to first_name(week), contact_path(week.contact_id)%></td>
+			<td><%= link_to summary_name_helper(week), contact_path(week.contact_id)%></td>
 			<td><%= week.occasion %></td>
 			<td><%= week.special_date.strftime('%m/%d') %></td>
 			<td><%= link_to "View", contact_path(week.contact_id), :class => "btn btn-info btn-small pull-right" %></td>
@@ -35,7 +35,7 @@
 	<table class="table round bottom">
 	<% @occasions_month.each do |month| %>
 		<tr>
-			<td><%= link_to first_name(month), contact_path(month.contact_id)%></td>
+			<td><%= link_to summary_name_helper(month), contact_path(month.contact_id)%></td>
 			<td><%= month.occasion %></td>
 			<td><%= month.special_date.strftime('%m/%d') %></td>
 			<td><%= link_to "View", contact_path(month.contact_id), :class => "btn btn-info btn-small pull-right" %></td>
