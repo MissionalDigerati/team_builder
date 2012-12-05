@@ -24,7 +24,7 @@
 				<tr>
 					<td><%= link_to first_name(week), contact_path(week.contact_id)%></td>
 					<td><%= week.occasion %></td>
-					<td><%= week.special_date.strftime('%m/%d/%Y') %></td>
+					<td><%= week.special_date.strftime('%m/%d') %></td>
 					<td><%= link_to "View", contact_path(week.contact_id), :class => "btn btn-info btn-small pull-right" %></td>
 				</tr>
 			<% end %>
@@ -39,7 +39,7 @@
 				<tr>
 					<td><%= link_to first_name(month), contact_path(month.contact_id)%></td>
 					<td><%= month.occasion %></td>
-					<td><%= month.special_date.strftime('%m/%d/%Y') %></td>
+					<td><%= month.special_date.strftime('%m/%d') %></td>
 					<td><%= link_to "View", contact_path(month.contact_id), :class => "btn btn-info btn-small pull-right" %></td>
 				</tr>
 			<% end %>

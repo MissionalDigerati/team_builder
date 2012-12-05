@@ -42,9 +42,8 @@ class ApplicationController < ActionController::Base
     month = Time.now.month
     year = Time.now.year.to_s
     @occasions_today = Occasion.where(["#{task_day_strftime} + 0 = ? AND #{task_month_strftime} + 0 = ?", day, month])
-    @occasions_week = Occasion.find(:all, :conditions => ["#{task_day_strftime} + 0 between ? and ? AND #{task_month_strftime} + 0 = ?", day + 1, day + 5, month])
-    @occasions_month = Occasion.where("#{task_month_strftime} + 0 = ? AND #{task_day_strftime} + 0 > ?", month, day)
-    # @occasions_week = Occasion.find(:all, :conditions => ["due_date between ? and ? AND completed = ?", today, next_4_weeks, false])
+    @occasions_week = Occasion.find(:all, :conditions => ["#{task_day_strftime} + 0 between ? and ? AND #{task_month_strftime} + 0 = ?", day + 1, day + 5, month], :order => "special_date")
+    @occasions_month = Occasion.where("#{task_month_strftime} + 0 = ? AND #{task_day_strftime} + 0 > ?", month, day).order("special_date")
   end
   
 end
