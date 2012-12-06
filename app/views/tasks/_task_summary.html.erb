@@ -6,9 +6,9 @@
 		<% @tasks_overdue.each do |overdue| %>
 			<tr rel="<%= overdue.id %>" >
 				<td><%= check_box_tag "#{overdue.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(overdue), remote: true, :class => "completed_button #{overdue.id} hidden" %></td>
-				<td><%= link_to first_name(overdue), contact_path(overdue.contact_id) %></td>
+				<td><%= link_to summary_name_helper(overdue), contact_path(overdue.contact_id) %></td>
 				<td><%= overdue.task %></td>
-				<td><%= overdue.due_date.strftime('%m/%d/%Y') %></td>
+				<td><%= overdue.due_date.strftime('%m/%d') %></td>
 				<td><%= link_to "View", contact_path(overdue.contact_id), :class => "btn btn-small btn-info pull-right" %></td>
 			</tr>
 		<% end %>
@@ -23,7 +23,7 @@
 		<% @tasks_within_week_range.each do |weekly_tasks| %>
 			<tr rel="<%= weekly_tasks.id %>" >
 				<td><%= check_box_tag "#{weekly_tasks.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(weekly_tasks), remote: true, :class => "completed_button #{weekly_tasks.id} hidden" %></td>
-				<td><%= link_to first_name(weekly_tasks), contact_path(weekly_tasks.contact_id) %></td>
+				<td><%= link_to summary_name_helper(weekly_tasks), contact_path(weekly_tasks.contact_id) %></td>
 				<td><%= weekly_tasks.task %></td>
 				<td><%= weekly_tasks.due_date.strftime('%m/%d') %></td>
 				<td><%= link_to "View", contact_path(weekly_tasks.contact_id), :class => "btn btn-small btn-info pull-right" %></td>
@@ -40,7 +40,7 @@
 	<% @tasks_this_month.each do |monthly_tasks| %>
 		<tr rel="<%= monthly_tasks.id %>" >
 			<td><%= check_box_tag "#{monthly_tasks.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(monthly_tasks), remote: true, :class => "completed_button #{monthly_tasks.id} hidden" %></td>
-			<td><%= link_to first_name(monthly_tasks), contact_path(monthly_tasks.contact_id) %></td>
+			<td><%= link_to summary_name_helper(monthly_tasks), contact_path(monthly_tasks.contact_id) %></td>
 			<td><%= monthly_tasks.task %></td>
 			<td><%= monthly_tasks.due_date.strftime('%m/%d') %></td>
 			<td><%= link_to "View", contact_path(monthly_tasks.contact_id), :class => "btn btn-small btn-info pull-right" %></td>

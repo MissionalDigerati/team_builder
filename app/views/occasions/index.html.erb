@@ -66,7 +66,7 @@
 
 		<% @occasions.each do |occasion| %>
 		  <tr>
-				<td><%= link_to first_name(occasion), contact_path(occasion.contact_id) %></td>
+				<td><%= link_to occasion.contact.fullname.titleize, contact_path(occasion.contact_id) %></td>
 				<td><%= occasion.occasion %></td>
 				<td><%= occasion.special_date.strftime('%m/%d/%Y') %></td>
 				<td><%= occasion.created_at.strftime('%m/%d/%Y') %></td>

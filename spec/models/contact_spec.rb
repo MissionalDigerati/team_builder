@@ -52,5 +52,10 @@ describe Contact do
       FactoryGirl.create(:defaulted_contact, :created_at => 1.year.ago.to_date)
       Contact.contacts_in_last_year.should == 1
     end
+    
+    it 'should return the full name of the corresponding contact' do
+      wilson = FactoryGirl.create(:defaulted_contact, :first_name => "Mister", :last_name => "Wilson")
+      wilson.fullname.should == "Mister Wilson"
+    end
   end
 end

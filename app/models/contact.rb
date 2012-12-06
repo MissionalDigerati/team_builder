@@ -27,6 +27,9 @@ class Contact < ActiveRecord::Base
   
   CONTACTS = ['Email', 'Letter', 'Twitter', 'Facebook', 'Call', 'In Person', 'Skype', 'FaceTime', 'Other']
 
+  def fullname
+    "#{first_name} #{last_name}"
+  end
   
   def self.non_believers
     Contact.where("believer = ?", false).length
