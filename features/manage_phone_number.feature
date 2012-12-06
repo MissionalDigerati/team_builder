@@ -26,27 +26,27 @@ Feature: A user should be able to edit and create phone numbers for their contac
 		And I should not see "(123) 123 1234"
 		
 	Scenario: A user should be able to delete an existing phone number	
-		Given There is a contact "delete phone test" and they have a phone number "1111111111"
-		And I am on the show page for "delete phone test"
+		Given There is a contact "Delete phone test" and they have a phone number "1111111111"
+		And I am on the show page for "Delete phone test"
 		And I should see "(111) 111 1111"
 		When I click on the "Delete" link for "(111) 111 1111"
 		# And I confirm popup, not sure why this is working without confirming the pop up, however it is. 
 		Then I should see "Your phone number has been deleted."
-		And I am on the show page for "delete phone test"
+		And I am on the show page for "Delete phone test"
 		And I should not see "(111) 111 1111"
 	
 	Scenario: A user should be able to add a phone number for a contact through another contact
 		Given given there are contacts "iphone" and "android"
-		And I am on the show page for "iphone"
+		And I am on the show page for "Iphone"
 		When I click the "Add Phone Number" link
-		And I select "android" from "Contact"
+		And I select "Android" from "Contact"
 		And I select "Mobile" from "number_phone_type"
 		And I fill in "number_number" with "2312321232"
 		And I click the "Create Number" button
 		Then I should see "Your number has been saved!"
-		And I should be on the show page for "android"
+		And I should be on the show page for "Android"
 		And I should see "(231) 232 1232"
 		And I should see "Mobile"
-		Then I am on the show page for "iphone"
+		Then I am on the show page for "Iphone"
 		And I should not see "(231) 232 1232"	
 		And I should not see "Mobile"		
