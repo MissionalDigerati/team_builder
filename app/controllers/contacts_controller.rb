@@ -12,7 +12,8 @@ class ContactsController < ApplicationController
       @contacts = Contact.tagged_with(params[:tag]).page(params[:page])
     elsif params[:search].present? && params[:search].first == "#"
       params[:search][0] = ''
-      @contacts = Contact.tagged_with(params[:search]).page(params[:page])
+      params[:tag] = params[:search]
+      @contacts = Contact.tagged_with(params[:tag]).page(params[:page])
     elsif params[:search].present?
       @contacts = Contact.where("first_name like ? or last_name like ?", params[:search], params[:search]).page(params[:page])
     else
