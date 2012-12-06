@@ -12,10 +12,12 @@ module ApplicationHelper
   def tag_param
     if request.params["tag"].present?
       text = "Searching by tag: #{request.params["tag"].titleize}" 
+      link_to text, "", :class => "label label-important"
     elsif request.params["search"].present?
       text = "Searching for: #{request.params["search"].titleize}" 
-    end
       link_to text, "", :class => "label label-important"
+    end
+      
   end
    
   def status(status)
