@@ -29,6 +29,9 @@ Then /^I should be on the show page for "(.*?)"$/ do |user_name|
   user = Contact.where(first_name: user_name).first
   current_path.should == contact_path(user)
 end
+Then /^I should be on the contact index page$/ do
+  current_path.should == contacts_path
+end
 
  # <!-- => #<Contact id: nil, first_name: nil, last_name: nil, spouse_name: nil, email: nil, 
  # spouse_email: nil, tags: nil, network: nil, address_1: nil, address_2: nil, city: nil, 

@@ -76,6 +76,18 @@ Feature: A user manages their contacts
 		And I should see "Amy"
 		And I should not see "Starbucks"
 		
+	# Scenario: You should be searchable
+	# 		Given given there are contacts "sulu" and "scotty"
+	# 		And I am on the home page
+	# 		When I fill in "search" with "sulu"
+	# 		And I click the "search_submit" button
+	# 		Then I should be on the contact index page
+	# 		And I should see "Sulu"
+	# 		And I should not see "Scotty"
+	# 		When I fill in "search" with "scotty"
+	# 		Then I should be on the contact index page
+	# 		And I should see "Scotty"
+	# 		And I should not see "Sulu"
 		
 		# 
 		# <Contact id: nil, first_name: nil, last_name: nil, spouse_name: nil, 
