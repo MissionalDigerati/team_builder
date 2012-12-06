@@ -41,19 +41,19 @@ Feature: A user should be able to create, edit, and delete web presences from th
 		
 	Scenario: A user should be able to add web presence for a contact through another contact
 		Given given there are contacts "cow" and "chicken"
-		And I am on the show page for "Cow"
+		And I am on the show page for "cow"
 		When I click the "Add Web Presence" link
-		And I select "Chicken" from "Contact"
+		And I select "chicken" from "Contact"
 		And I select "Twitter" from "Site"
 		And I fill in "URL" with "www.twitter.com"
 		And I fill in "Account" with "testing filler"
 		And I click the "Create Presence" button
 		Then I should see "Your Web Presence has been saved!"
-		And I should be on the show page for "Chicken"
+		And I should be on the show page for "chicken"
 		And I should see "Twitter"
 		And I should see "www.twitter.com"
 		And I should see "testing filler"
-		Then I am on the show page for "Cow"
+		Then I am on the show page for "cow"
 		And I should not see "Twitter"
 		And I should not see "www.twitter.com"
 		And I should not see "testing filler"

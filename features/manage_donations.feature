@@ -21,9 +21,9 @@ Feature: A user should be able to create, edit, and delete donations from their 
 	# This ensures that the user can add a donation to any contact regardless of what user's id created the donations form. 
 	Scenario: A user should be able to add a donation for a contact through another contact
 		Given given there are contacts "sulu" and "scotty"
-		And I am on the show page for "Sulu"
+		And I am on the show page for "sulu"
 		When I click the "Add Donation" link
-		And I select "Scotty" from "Contact"
+		And I select "scotty" from "Contact"
 		And I select "2012" from "donation_donation_date_1i"
 		And I select "December" from "donation_donation_date_2i"
 		And I select "25" from "donation_donation_date_3i"
@@ -31,10 +31,10 @@ Feature: A user should be able to create, edit, and delete donations from their 
 		And I fill in "Project" with "Starship enterprise"
 		And I click the "Create Donation" button
 		Then I should see "Your Donation has been saved!"
-		And I should be on the show page for "Scotty"
+		And I should be on the show page for "scotty"
 		And I should see "Starship enterprise"
 		And I should see "12/25/2012"
-		Then I am on the show page for "Sulu"
+		Then I am on the show page for "sulu"
 		And I should not see "Starship enterprise"
 		And I should not see "12/25/2012"
 		

@@ -35,15 +35,15 @@ Feature: A user should be able to create, edit, and delete notes from their cont
 		
 	Scenario: A user should be able to add a note for a contact through another contact
 		Given given there are contacts "cheese" and "cake"
-		And I am on the show page for "Cheese"
+		And I am on the show page for "cheese"
 		When I click the "Add Note" link
-		And I select "Cake" from "Contact"
+		And I select "cake" from "Contact"
 		And I fill in "Note" with "pumpkin pie is better than cheesecake"
 		And I click the "Create Note" button
 		Then I should see "Your Note has been saved!"
-		And I should be on the show page for "Cake"
+		And I should be on the show page for "cake"
 		And I should see "pumpkin pie is better than cheesecake"
-		Then I am on the show page for "Cheese"
+		Then I am on the show page for "cheese"
 		And I should not see "pumpkin pie is better than cheesecake"
 		
 	Scenario: A user should not be able to create a note without all necessary info. 

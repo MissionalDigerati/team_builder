@@ -40,17 +40,17 @@ Feature: A user should be able to create tasks for a user, edit, update, and cre
 
 	Scenario: A user should be able to add a task for a contact through another contact
 		Given given there are contacts "rose" and "martha"
-		And I am on the show page for "Rose"
+		And I am on the show page for "rose"
 		When I click the "Add Task" link
-		And I select "Martha" from "Contact"
+		And I select "martha" from "Contact"
 		And I fill in "Task" with "destroy tardis"
 		And I fill in "Due Date" with "1/2/201121"
 		And I select "Lunch" from "Category"
 		And I click the "Create Task" button
 		Then I should see "Your Task has been saved!"
-		And I should be on the show page for "Martha"
+		And I should be on the show page for "martha"
 		And I should see "destroy tardis"
-		Then I am on the show page for "Rose"
+		Then I am on the show page for "rose"
 		And I should not see "destroy tardis"
 		
 	Scenario: A user should be able to mark a task as completed	

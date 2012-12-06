@@ -39,17 +39,17 @@ Feature: A user should be able to manage their occasions that belong to users
 		
 	Scenario: A user should be able to add a special date for a contact through another contact
 		Given given there are contacts "cup" and "mug"
-		And I am on the show page for "Cup"
+		And I am on the show page for "cup"
 		When I click the "Add Special Date" link
-		And I select "Mug" from "Contact"
+		And I select "mug" from "Contact"
 		And I fill in "occasion_special_date" with "2-11-2012"
 		And I fill in "Occasion" with "party"
 		And I click the "Create Occasion" button
 		Then I should see "Your Occasion has been saved!"
-		And I should be on the show page for "Mug"
+		And I should be on the show page for "mug"
 		And I should see "party"
 		And I should see "11/02/2012"
-		Then I am on the show page for "Cup"
+		Then I am on the show page for "cup"
 		And I should not see "party"	
 		
 		
