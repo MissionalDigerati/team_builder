@@ -33,11 +33,15 @@
 					</li>
 				</ul>
 				
+
 				<ul class="nav pull-right">
 					<li>
 						<%= form_tag contacts_path, :method => 'get' do%>
-							<%= text_field_tag :search, nil, :placeholder => (params[:search].present? ? params[:search] : "Search Contacts"), :class => "navbar-search" %>
+							<%= text_field_tag :search, nil, :placeholder => (params[:search].present? ? params[:search] : "Search Contacts"), :class => "navbar-search search-query", :rel=>"tooltip", :title=>"Use this search bar to search through your contacts by name. Prefix your search query with # to search by tags.<br/><br/>Press enter to search" %>
 						<% end %>
+					</li>
+					<li>
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 					</li>
 				</ul>
 			

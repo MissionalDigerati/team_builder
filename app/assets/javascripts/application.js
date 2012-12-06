@@ -16,4 +16,5 @@
 // Loads all Bootstrap javascripts
 //= require bootstrap
 //= require bootstrap-dropdown
+//= require_self
 //= require_tree .

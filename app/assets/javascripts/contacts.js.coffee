@@ -23,3 +23,9 @@ jQuery ->
 	$(".alert").alert()
 	
 	$("a.asc").parent("th").addClass "current asc"
+	
+	$("#search").tooltip
+	  selector: ""
+	  placement: "bottom"
+	  trigger: "focus"
+		
