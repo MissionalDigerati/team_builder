@@ -42,4 +42,10 @@ namespace :db do
 		end
 	end
 	
+	desc "Adds the Fat Free data for spouses"
+  task :ff_spouse_populate => :environment do
+		ff_database = YAML.load_file(File.join(Rails.root.to_s, "config", "db_fat_free.yml"))['fatfree']
+		puts ff_database
+	end
+	
 end
