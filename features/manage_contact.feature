@@ -76,6 +76,23 @@ Feature: A user manages their contacts
 		And I should see "Amy"
 		And I should not see "Starbucks"
 	
+  Scenario: tags should be searchable via searchbar when query is prefixed with #
+  	Given there is a contact named "bill" with tag friend
+  	And there is a contact named "ted" with tag friend
+  	And I am on the home page
+  	When I fill in "search" with "#friend"
+  	And I click the "search_submit" button
+  	Then I should be on the contact index page
+  	And I should see "Bill"
+		And I should see "Ted"
+  	And I should see "Searching by tag: Friend"
+  	When I fill in "search" with "#enemy"
+  	And I click the "search_submit" button
+  	Then I should be on the contact index page
+  	And I should see "Searching by tag: Enemy"	
+		And I should not see "Bill"
+		And I should not see "Ted"
+	
 	Scenario: contacts should be searchable via searchbar
 		Given there is a contact named "River" with tag friend
 		And there is a contact "who"
