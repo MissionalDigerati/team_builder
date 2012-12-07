@@ -2,7 +2,7 @@
 	<br/><br/>
 		<%= form_for([@number]) do |f| %>
 			<%= f.label :contact_id, "Contact" %>
-			<%= f.select(:contact_id, Contact.all.collect {|p| [ p.first_name, p.id ] }, { :required => true }) %><br/><br/>
+			<%= f.select(:contact_id, form_select) %><br/><br/>
 			<%= f.label :phone_type, "Type" %>
 			<%= f.select :phone_type, Number::TYPES, :required => true %><br/><br/>
 			<%= f.label :number, "Phone Number" %>

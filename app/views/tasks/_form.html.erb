@@ -2,7 +2,7 @@
 	<br/><br/>
 		<%= form_for([@task]) do |f| %>
 			<%= f.label :contact_id, "Contact"%>
-			<%= f.select(:contact_id, Contact.all.collect {|p| [ p.first_name, p.id ] }) %><br/><br/>
+			<%= f.select(:contact_id, form_select) %><br/><br/>
 			<%= f.label :task, "Task" %>
 			<%= f.text_field :task %><br/><br/>
 			<%= f.label :due_date, "Due Date" %>

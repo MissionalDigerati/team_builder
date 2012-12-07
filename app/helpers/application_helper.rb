@@ -17,7 +17,6 @@ module ApplicationHelper
       text = "Searching for: #{request.params["search"].titleize}" 
       link_to text, "", :class => "label label-important"
     end
-      
   end
    
   def status(status)
