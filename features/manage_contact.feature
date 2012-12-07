@@ -4,7 +4,7 @@ Feature: A user manages their contacts
 	
 	Scenario: A user should be able to add a contact
 		Given I am on the home page
-		And I click the "Create New Contact" link
+		And I click the "Add Contact" link
 		Then I should be on the add contact page
 		When I fill in "first_name" with "Steve"
 		And I fill in "last_name" with "Balmer"
@@ -25,7 +25,7 @@ Feature: A user manages their contacts
 		
 	Scenario: A user should be able to create a contact phone numbers, web presence, and special dates on the same form. 	
 		Given I am on the home page
-		And I click the "Create New Contact" link
+		And I click the "Add Contact" link
 		Then I should be on the add contact page
 		When I fill in "first_name" with "Jeff"
 		And I fill in "last_name" with "Bridges"
@@ -56,7 +56,7 @@ Feature: A user manages their contacts
 	Scenario: Contacts should be searchable by tags
 		Given there is a contact named "Amy" with tag friend
 		And I am on the home page
-		And I click the "Create New Contact" link
+		And I click the "Add Contact" link
 		When I fill in "first_name" with "Starbucks"
 		And I fill in "last_name" with "Cafe"
 		And I fill in "email" with "Starbucks@coffee.com"
@@ -75,19 +75,22 @@ Feature: A user manages their contacts
 		And I should see "Searching by tag: Doctor"
 		And I should see "Amy"
 		And I should not see "Starbucks"
-		
-	# Scenario: You should be searchable
-	# 		Given given there are contacts "sulu" and "scotty"
-	# 		And I am on the home page
-	# 		When I fill in "search" with "sulu"
-	# 		And I click the "search_submit" button
-	# 		Then I should be on the contact index page
-	# 		And I should see "Sulu"
-	# 		And I should not see "Scotty"
-	# 		When I fill in "search" with "scotty"
-	# 		Then I should be on the contact index page
-	# 		And I should see "Scotty"
-	# 		And I should not see "Sulu"
+	
+	Scenario: contacts should be searchable via searchbar
+		Given there is a contact named "River" with tag friend
+		And there is a contact "who"
+		And I am on the home page
+		When I fill in "search" with "river"
+		And I click the "search_submit" button
+		Then I should be on the contact index page
+		And I should see "River"
+		And I should see "Searching for: River"
+		And I should not see "Who"
+		When I fill in "search" with "who"
+		And I click the "search_submit" button
+		Then I should be on the contact index page
+		And I should see "Who"
+		And I should see "Searching for: Who"
 		
 		# 
 		# <Contact id: nil, first_name: nil, last_name: nil, spouse_name: nil, 

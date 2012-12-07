@@ -22,8 +22,8 @@ When /^I confirm popup$/ do
   page.driver.browser.switch_to.alert.accept
 end
 Given /^given there are contacts "(.*?)" and "(.*?)"$/ do |first_user, second_user|
-  FactoryGirl.create(:contact, first_name: first_user, last_name: first_user + "ddd", email: first_user + "@fakeemail.com", state_id: 1, country_id: 1)
-  FactoryGirl.create(:contact, first_name: second_user, last_name: first_user + "ddd", email: second_user + "@fakeemail.com", state_id: 1, country_id: 1)
+  FactoryGirl.create(:contact, first_name: first_user, last_name: "first_user", email: first_user + "@fakeemail.com", state_id: 1, country_id: 1)
+  FactoryGirl.create(:contact, first_name: second_user, last_name: "second_user", email: second_user + "@fakeemail.com", state_id: 1, country_id: 1)
 end
 Then /^I should be on the show page for "(.*?)"$/ do |user_name|
   user = Contact.where(first_name: user_name).first
@@ -32,7 +32,9 @@ end
 Then /^I should be on the contact index page$/ do
   current_path.should == contacts_path
 end
-
+When /^I submit the form "(.*?)"$/ do |element|
+  page.execute_script("$('#search').submit()")
+end
  # <!-- => #<Contact id: nil, first_name: nil, last_name: nil, spouse_name: nil, email: nil, 
  # spouse_email: nil, tags: nil, network: nil, address_1: nil, address_2: nil, city: nil, 
  # state_id: nil, zip: nil, country_id: nil, receive_newsletter: false, children: nil, 
