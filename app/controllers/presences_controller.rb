@@ -50,5 +50,4 @@ class PresencesController < ApplicationController
       flash[:notice] = "Your Web Presence has been deleted!"
     end
   end
-  
 end

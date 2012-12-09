@@ -7,6 +7,7 @@ class ContactsController < ApplicationController
   #
   #passes sortable info the the main contact table on the contact index page. 
   # Also passes all the new contacts from the past week in the instance variable @new_contacts
+  # the tag and search param are passed if searching with the search bar or by tags, it filters the contacts according to the search. 
   def index
     if params[:tag]
       @contacts = Contact.tagged_with(params[:tag]).page(params[:page])
@@ -113,7 +114,6 @@ class ContactsController < ApplicationController
     end
     
   protected
-  
   def sort_column
     Contact.column_names.include?(params[:sort]) ? params[:sort] : "last_name, first_name"
   end
@@ -121,5 +121,4 @@ class ContactsController < ApplicationController
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
-  
 end
