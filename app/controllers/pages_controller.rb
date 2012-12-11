@@ -5,4 +5,8 @@ class PagesController < ApplicationController
   def home
     @task = Task.where(:completed => false).limit(10)
   end
+  
+  def archive
+    
+  end
 end

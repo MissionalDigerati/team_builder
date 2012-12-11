@@ -20,6 +20,7 @@ group :assets do
   gem 'kaminari'
   gem 'acts-as-taggable-on'
   gem 'bootstrap-kaminari-views'
+  gem 'rails-backup-migrate'
 end
 
 gem 'jquery-rails'
