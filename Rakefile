@@ -5,3 +5,4 @@
 require File.expand_path('../config/application', __FILE__)
 
 TeamBuilder::Application.load_tasks
+require 'rails-backup-migrate'
