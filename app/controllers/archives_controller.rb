@@ -1,4 +1,5 @@
 class ArchivesController < ApplicationController
+  before_filter :occasion_summary, :only => [:index]
   def index
     @archives = Archive.all
   end

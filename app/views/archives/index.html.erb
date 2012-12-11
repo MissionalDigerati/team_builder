@@ -1,7 +1,9 @@
-INDEX PAGE
 <div class="row-fluid">
-	<div class="span3">
+	<div class="span3 beige round">
+		<%= render "pages/summary" %>
 	</div>
+	
+	
 	<div class="span9 table_container">
 		<br/>
 		<%= link_to "Create Backup", archives_path, :method => "post", :class => "btn btn-large btn-info pull-right", :confirm => "The amount of time this process will take is contingent on the amount of data you have stored. Please note that this can take several minutes to complete." %>
