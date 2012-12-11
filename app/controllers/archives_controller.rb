@@ -10,7 +10,7 @@ class ArchivesController < ApplicationController
 
     respond_to do |format|
       if @archive.save
-        format.html { redirect_to archives_path, notice: 'Archive was sucessfully created.' }
+        format.html { redirect_to archives_path, notice: 'Archive was successfully created.' }
       else
         format.html { render action: "index" }
         flash[:notice] = @archive.errors.empty? ? "Your Archive has not been saved" : "Your Archive has not been saved because: " + @archive.errors.full_messages.to_sentence
