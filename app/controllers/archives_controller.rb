@@ -16,6 +16,7 @@ class ArchivesController < ApplicationController
         flash[:notice] = @archive.errors.empty? ? "Your Archive has not been saved" : "Your Archive has not been saved because: " + @archive.errors.full_messages.to_sentence
       end
     end
-    %x[rake site:backup[../team_builder/backups/"#{name}".tgz]]
+    path = Rails.root.join('backups', "#{name}.tgz")
+    %x[rake site:backup["#{path}"]]
   end 
 end
