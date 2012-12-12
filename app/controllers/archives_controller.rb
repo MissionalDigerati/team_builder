@@ -19,4 +19,15 @@ class ArchivesController < ApplicationController
     path = Rails.root.join('backups', "#{name}.tgz")
     %x[rake site:backup["#{path}"]]
   end 
+  
+  def destroy
+    @archive = Archive.find(params[:id])
+    @archive.destroy
+    respond_to do |format|
+      format.html { redirect_to :back }
+      flash[:notice] = "Your archive has been deleted."
+    end
+    file = Rails.root.join('backups', "#{@archive.filename}").delete
+  end
+  
 end

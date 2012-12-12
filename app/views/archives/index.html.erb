@@ -12,11 +12,13 @@
 			<tr>
 				<td>File Name</td>
 				<td>Created</td>
+				<td>Action</td>
 			</tr>
 		<% @archives.each do |archive| %>
 			<tr>
 				<td><%= archive.filename %></td>
 				<td><%= archive.created_at.strftime('%m/%d/%Y') %></td>
+				<td><%= link_to delete_button, archive, method: :delete, data: { confirm: 'Are you sure? Please note this will also delete the backup file in the backup directory.' }, :class => "btn btn-danger btn-small" %></td>
 			</tr>
 		<% end %>
 		</table>
