@@ -3,7 +3,6 @@
 		<%= render "pages/summary" %>
 	</div>
 	
-	
 	<div class="span9 table_container">
 		<br/>
 		<%= link_to "Create Backup", archives_path, :method => "post", :class => "btn btn-primary pull-right", :confirm => "The amount of time this process will take is contingent on the amount of data you have stored. Please note that this can take several minutes to complete." %>
@@ -18,7 +17,7 @@
 			<tr>
 				<td><%= archive.filename %></td>
 				<td><%= archive.created_at.strftime('%m/%d/%Y') %></td>
-				<td><%= link_to delete_button, archive, method: :delete, data: { confirm: 'Are you sure? Please note this will also delete the backup file in the backup directory.' }, :class => "btn btn-danger btn-small" %></td>
+				<td class="text_center"><%= link_to delete_button, archive, method: :delete, data: { confirm: 'Are you sure? Please note this will also delete the backup file in the backup directory.' }, :class => "btn btn-danger btn-small" %> <%= link_to "Download <i class='icon-download icon-white'></i>".html_safe, download_archive_path(archive), :class => "btn btn-success btn-small" %></td>
 			</tr>
 		<% end %>
 		</table>

@@ -76,5 +76,5 @@ module ApplicationHelper
     donation_year = Donation.where("strftime('%Y', donation_date) = ?", Time.now.year.to_s)
     currency(donation_year.sum(:amount))
   end
-  
+
 end

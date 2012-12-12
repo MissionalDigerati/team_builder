@@ -30,4 +30,14 @@ class ArchivesController < ApplicationController
     file = Rails.root.join('backups', "#{@archive.filename}").delete
   end
   
+  def download
+    @file = Archive.find(params[:id]).filename
+    path = Rails.root.join('backups', @file)
+    if FileTest.exists?(path) 
+      send_file path 
+    else
+      redirect_to :back
+      flash[:notice] = "Unable to locate file."
+    end
+  end
 end
