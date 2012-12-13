@@ -2,6 +2,7 @@ Feature: A user should be able to back up their database through the app.
 	As a user with several contacts,
 	I should be able to back them up to a yml file. 
 	
+	@archive
 	Scenario: A user should be able to back up their data
 		Given there is a contact "Sponge bob"
 		And I am on the show page for "Sponge bob"
