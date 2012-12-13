@@ -5,7 +5,7 @@ class ArchivesController < ApplicationController
   end
   
   def create
-    name = Time.now.to_i
+    name = Archive::file_name
     @archive = Archive.new(:filename => "#{name}.tgz")
 
     respond_to do |format|
@@ -23,11 +23,14 @@ class ArchivesController < ApplicationController
   def destroy
     @archive = Archive.find(params[:id])
     @archive.destroy
-    respond_to do |format|
-      format.html { redirect_to :back }
-      flash[:notice] = "Your archive has been deleted."
+    file = Rails.root.join('backups', "#{@archive.filename}")
+    if FileTest.exists?(file)
+      file.delete
+      flash[:notice] = "File and record has been deleted."
+    else
+      flash[:notice] = "Unable to locate file, however it's record has beed deleted."
     end
-    file = Rails.root.join('backups', "#{@archive.filename}").delete
+    redirect_to :back
   end
   
   def download

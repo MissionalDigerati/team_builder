@@ -4,3 +4,7 @@ Before do
   Country.create(name: "United States", printable_name: "United States")
   Country.create(name: "CHINA", printable_name: "China")
 end
+
+After('@archive') do
+  FileUtils.rm Dir.glob(Rails.root.join('backups', '*.tgz'))
+end
