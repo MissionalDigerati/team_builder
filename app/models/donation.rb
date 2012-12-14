@@ -19,9 +19,4 @@ class Donation < ActiveRecord::Base
   def self.average_donation
     Donation.where("amount > ?", 1).average(:amount).to_f
   end
-  
-  # private
-  #    def strip_amount
-  #      self.amount.gsub(/[^\d\.]/, '').to_f if self.amount.is_a?(String)
-  #    end
 end

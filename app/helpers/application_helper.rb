@@ -1,5 +1,6 @@
 module ApplicationHelper
   
+  #This adds extra fields as needed on the new contact form. 
   def link_to_add_fields(name, f, association)
     new_object = f.object.send(association).klass.new
     id = new_object.object_id
@@ -9,6 +10,7 @@ module ApplicationHelper
     link_to(name, '#', class: "add_fields btn btn-small btn-danger", data: {id: id, fields: fields.gsub("/n", "")})
   end
   
+  #this displays the pill on stating what you're searching by on when filtering contacts by search or by tags.
   def tag_param
     if request.params["tag"].present?
       text = "Searching by tag: #{request.params["tag"].titleize}" 
@@ -23,6 +25,7 @@ module ApplicationHelper
      status === true ? "Completed" : "In Progress"
   end
   
+  #Creates a collection of the first and last names of users on the drop down lists when creating anything other than a contact.
   def form_select
     if Contact.all.collect.present?
       Contact.all.collect {|p| [ p.last_name + ', ' + p.first_name, p.id ] }
@@ -40,7 +43,8 @@ module ApplicationHelper
   def full_name(instance)
     instance.first_name + " " + instance.last_name.titleize
   end
-    
+  
+  #shortcuts for buttons with white icons used throughout the app
   def edit_button
     'Edit <i class="icon-edit icon-white"></i>'.html_safe
   end  
