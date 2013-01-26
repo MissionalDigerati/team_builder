@@ -63,6 +63,10 @@
 					<td><%= @contact.receive_newsletter.yes_or_no %></td>
 				</tr>
 				<tr>
+					<td class="bold">Presented Vision?</td>
+					<td><%= @contact.presented_vision.yes_or_no %></td>
+				</tr>
+				<tr>
 					<td class="bold">Created at:</td>
 					<td><%= @contact.created_at.strftime('%m/%d/%Y') %></td>
 				</tr>

@@ -13,6 +13,7 @@
 		<br/><br/>
 		<table class="table index table-bordered table-hover table-striped">
 		  <tr>
+		    <th>&nbsp;</th>
 			  <th>Tags</th>
 				<th><%= sortable "last_name" %></th>
 		    <th><%= sortable "first_name" %></th>
@@ -25,7 +26,9 @@
 
 		<% @contacts.each do |contact| %>
 		  <tr>
-			
+			  <td>
+			    <%= image_tag('presented_vision.png', title: "Presented Vision", alt: "Presented Vision") if contact.presented_vision %>
+			  </td>
 				<td>
 					<% if contact.tag_list.present? %>
 					<ul class="nav nav-pills tag_container">
