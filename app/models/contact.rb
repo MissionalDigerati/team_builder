@@ -42,6 +42,10 @@ class Contact < ActiveRecord::Base
   def self.donated_contacts
     Contact.where("donations_count > ?", 0).length
   end
+
+	def self.who_saw_presentation
+    Contact.where("presented_vision = ?", true).length
+  end
   
   def self.contacts_in_last_month
     Contact.find(:all, :conditions => ["created_at between ? and ?", 4.weeks.ago.to_date, Time.now.to_date]).length
