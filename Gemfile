@@ -17,10 +17,6 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'kaminari'
-  gem 'acts-as-taggable-on'
-  gem 'bootstrap-kaminari-views'
-  gem 'rails-backup-migrate'
 end
 
 gem 'jquery-rails'
@@ -38,18 +34,8 @@ end
 group :test do
   gem "cucumber-rails"
 end
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
+gem 'kaminari'
+gem 'acts-as-taggable-on'
+gem 'bootstrap-kaminari-views'
+gem 'rails-backup-migrate'
+gem 'quiet_assets'

@@ -49,15 +49,17 @@
 <hr class="hr"></hr>
 
 <h3>Contact's Summary</h3>
-<strong>Total number of contacts:</strong> <br/>
+<strong>Total:</strong> 
 <%= Contact.contact_count %><br/>
-<strong>Number of Non-Believers:</strong> <br/>
+<strong>Non-Believers:</strong> 
 <%= Contact.non_believers %><br/>
-<strong>Number of new contacts (last 4 weeks):</strong><br/>
+<strong>New Contacts (last 4 weeks):</strong> 
 <%= Contact.contacts_in_last_month %><br/>
-<strong>Number of new contacts (last year):</strong><br/>
+<strong>New contacts (last year):</strong> 
 <%= Contact.contacts_in_last_year %><br/>
-<strong>Number of contacts that have donated:</strong> <br/>
+<strong>Saw the Presentation:</strong> 
+<%= Contact.who_saw_presentation %><br/>
+<strong>Donated:</strong> 
 <%= Contact.donated_contacts %><br/>
 <br/>
 <%= link_to "View all Contacts", contacts_path, :class => "btn btn-danger" %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121211040459) do
+ActiveRecord::Schema.define(:version => 20130126192706) do
 
   create_table "archives", :force => true do |t|
     t.string   "filename"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20121211040459) do
     t.boolean  "believer"
     t.integer  "donations_count",    :default => 0
     t.boolean  "spouse_believer"
+    t.boolean  "presented_vision",   :default => false
   end
 
   create_table "countries", :force => true do |t|
