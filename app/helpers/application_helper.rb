@@ -27,8 +27,8 @@ module ApplicationHelper
   
   #Creates a collection of the first and last names of users on the drop down lists when creating anything other than a contact.
   def form_select
-    if Contact.all.collect.present?
-      Contact.all.collect {|p| [ p.last_name + ', ' + p.first_name, p.id ] }
+    if Contact.order("last_name ASC, first_name ASC").collect.present?
+      Contact.order("last_name ASC, first_name ASC").collect {|p| [ p.last_name + ', ' + p.first_name, p.id ] }
     end
   end
   

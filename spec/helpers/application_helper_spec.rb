@@ -16,10 +16,11 @@ describe ApplicationHelper do
       status(false).should == "In Progress"
     end
     
-    it "should return an array, containting and array of contacts names and id's for forms. Last name, first name, then id" do
+    it "should return an array, containting and array of contacts names and id's for forms. Last name, first name, then id, in alphabetical order by last name then first name" do
       FactoryGirl.create(:defaulted_contact)
       FactoryGirl.create(:defaulted_contact, :first_name => "Fred")
-      form_select.should == [["Williams, Rory", 1], ["Williams, Fred", 2]]
+      FactoryGirl.create(:defaulted_contact, :first_name => "Abacabb", :last_name => "Zeffer")
+      form_select.should == [["Williams, Fred", 2], ["Williams, Rory", 1], ["Zeffer, Abacabb", 3]]
     end
     
     it "should return the first name of contact to which an attribute belongs to, capitalized" do
