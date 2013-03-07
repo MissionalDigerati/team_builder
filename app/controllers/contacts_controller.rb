@@ -105,12 +105,7 @@ class ContactsController < ApplicationController
   
     def sub_contact_info
       @contact = Contact.find(params[:id])
-      @number = @contact.numbers
-      @occasion = @contact.occasions
-      @donation = @contact.donations
       @task = @contact.tasks.where(:completed => false )
-      @note = @contact.notes
-      @presence = @contact.presences
     end
     
   protected

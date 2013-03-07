@@ -104,14 +104,14 @@
 				<br/>
 				<%= link_to "Add Phone Number", new_number_path(contact_id: @contact.id), :class => "btn btn-primary pull-right" %>
 				<div class="clear"></div>
-				<% if @number.present?%>
+				<% if @contact.numbers.present?%>
 				<table class="table table-striped phone_number">
 					<thead>
 						<th>Type</th>
 						<th>Number</th>
 						<th class="text_right">Action</th>
 					</thead>
-				<% @number.each do |number| %>
+				<% @contact.numbers.each do |number| %>
 					<tr>
 					<td class="normal"><%= number.phone_type %></td>
 					<td class="normal"><%= number_to_phone(number.number, :area_code => true, :delimiter => " ") %></td>
@@ -128,14 +128,14 @@
 			<br/>
 			<%= link_to "Add Special Date", new_occasion_path(contact_id: @contact.id), :class => "btn btn-primary pull-right" %>
 			<div class="clear"></div>
-			<% if @occasion.present? %>
+			<% if @contact.occasions.present? %>
 			<table class="table table-striped occasions">
 				<thead>
 					<th class="normal">Date (mm/dd/yyyy)</th>
 					<th class="normal">Occasion</th>
 					<th class="text_right">Action</th>
 				</thead>
-			<% @occasion.each do |occasion| %>
+			<% @contact.occasions.each do |occasion| %>
 				<tr>
 				<td class="normal"><%= occasion.special_date.strftime('%m/%d/%Y') %></td>
 				<td class="normal"><%= occasion.occasion %></td>
@@ -152,7 +152,7 @@
 			<h3>Donations</h3> <br/>
 			<%= link_to "Add Donation", new_donation_path(contact_id: @contact.id), :class => "btn btn-primary pull-right" %>
 			<div class="clear"></div>
-			<% if @donation.present? %>
+			<% if @contact.donations.present? %>
 			<table class="table table-striped donations">
 				<thead>
 					<th>Date (mm/dd/yyyy)</th>
@@ -160,7 +160,7 @@
 					<th>Project</th>
 					<th class="text_right">Action</th>
 				</thead>
-			<% @donation.each do |donation| %>
+			<% @contact.donations.each do |donation| %>
 				<tr>
 				<td class="normal"><%= donation.donation_date.strftime('%m/%d/%Y') %></td>
 				<td class="normal"><%= currency(donation.amount) %></td>
@@ -213,14 +213,14 @@
 			<h3>Notes</h3><br/>
 			<%= link_to "Add Note", new_note_path(contact_id: @contact.id), :class => "btn btn-primary pull-right" %>
 			<div class="clear"></div>
-			<% if @note.present? %>
+			<% if @contact.notes.present? %>
 			<table class="table table-striped notes">
 				<thead>
 					<th class="normal">Note</th>
 					<th class="normal">Created at</th>
 					<th class="text_right">Action</th>
 				</thead>
-			<% @note.each do |note| %>
+			<% @contact.notes.each do |note| %>
 				<tr>
 					<td><%= note.note %></td>
 					<td><%= note.created_at.strftime('%m/%d/%Y') %></td>
@@ -240,7 +240,7 @@
 			<h3>Web Presence</h3><br/>
 			<%= link_to "Add Web Presence", new_presence_path(@contact), :class => "btn btn-primary pull-right presence" %>
 			<div class="clear"></div>
-			<% if @presence.present? %>
+			<% if @contact.presences.present? %>
 			<table class="table table-striped presence">
 				<thead>
 					<th>Site</th>
@@ -248,7 +248,7 @@
 					<th>Account</th>
 					<th class="text_right">Action</th>
 				</thead>
-			<% @presence.each do |presence| %>
+			<% @contact.presences.each do |presence| %>
 				<tr>
 					<td class="normal"><%= presence.site %></td>
 					<td class="normal"><%= link_to "#{presence.url}", presence.url%></td>
