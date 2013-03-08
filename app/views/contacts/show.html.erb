@@ -149,7 +149,7 @@
 
 
 			<!-- donation -->
-			<h3>Donations</h3> <br/>
+			<h3>Donations</h3> <%= user_donation_amount(@contact.donations)%><br/>
 			<%= link_to "Add Donation", new_donation_path(contact_id: @contact.id), :class => "btn btn-primary pull-right" %>
 			<div class="clear"></div>
 			<% if @contact.donations.present? %>
@@ -213,14 +213,14 @@
 			<h3>Notes</h3><br/>
 			<%= link_to "Add Note", new_note_path(contact_id: @contact.id), :class => "btn btn-primary pull-right" %>
 			<div class="clear"></div>
-			<% if @contact.notes.present? %>
+			<% if @notes.present? %>
 			<table class="table table-striped notes">
 				<thead>
 					<th class="normal">Note</th>
 					<th class="normal">Created at</th>
 					<th class="text_right">Action</th>
 				</thead>
-			<% @contact.notes.each do |note| %>
+			<% @notes.each do |note| %>
 				<tr>
 					<td><%= note.note %></td>
 					<td><%= note.created_at.strftime('%m/%d/%Y') %></td>

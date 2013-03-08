@@ -18,3 +18,11 @@
 //= require bootstrap-dropdown
 //= require_self
 //= require_tree .
+
+$(document).ready(function(){
+
+	$('#date_select').datepicker({
+		dateFormat: "dd-mm-yy"
+	});
+	
+});

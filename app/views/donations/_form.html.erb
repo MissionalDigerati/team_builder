@@ -5,7 +5,7 @@
 			<%= f.label :contact_id, "Contact" %>
 			<%= f.select(:contact_id, form_select) %><br/><br/>
 			<%= f.label :donation_date, "Date" %>
-			<%= f.date_select :donation_date, :class => "date_select" %><br/><br/>
+			<%= f.text_field :donation_date, :id => "date_select" %><br/><br/>
 			<%= f.label :amount, "Amount" %>
 			<%= f.text_field :amount %><br/><br/>
 			<%= f.label :project, "Project" %>
