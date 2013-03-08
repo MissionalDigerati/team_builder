@@ -58,5 +58,27 @@ describe Contact do
       wilson = FactoryGirl.create(:defaulted_contact, :first_name => "Mister", :last_name => "Wilson")
       wilson.fullname.should == "Mister Wilson"
     end
+
+    it "should return searches by programming language tag or by search depending on what arguments are provided" do
+      user_with_tag = FactoryGirl.create(:defaulted_contact, tag_list: "doctor")
+      user_without_tag = FactoryGirl.create(:defaulted_contact, first_name: "Fred")
+
+      tag_query = Contact.contact_index("doctor", nil)
+      tag_query.length.should == 1
+      tag_query.first.should == user_with_tag
+
+      search = Contact.contact_index(nil, "Fred")
+      search.length.should == 1
+      search.first.should == user_without_tag 
+    end
+
+    it "should only search by tags" do |variable|
+      user_with_tag = FactoryGirl.create(:defaulted_contact, tag_list: "fred")
+      user_without_tag = FactoryGirl.create(:defaulted_contact, first_name: "fred")
+      search = Contact.tag_search("fred")
+      search.length.should == 1
+      search.first.should == user_with_tag
+    end
+
   end
 end

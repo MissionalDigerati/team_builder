@@ -9,14 +9,11 @@ class ContactsController < ApplicationController
   # Also passes all the new contacts from the past week in the instance variable @new_contacts
   # the tag and search param are passed if searching with the search bar or by tags, it filters the contacts according to the search. 
   def index
-    if params[:tag]
-      @contacts = Contact.tagged_with(params[:tag]).page(params[:page])
-    elsif params[:search].present? && params[:search].first == "#"
-      params[:search][0] = ''
-      params[:tag] = params[:search]
-      @contacts = Contact.tagged_with(params[:tag]).page(params[:page])
-    elsif params[:search].present?
-      @contacts = Contact.where("first_name like ? or last_name like ?", params[:search], params[:search]).page(params[:page])
+    if params[:search].present? && params[:search].first == "#"
+      params[:tag] = params[:search].to_s
+      @contacts = Contact.tag_search(params[:tag]).page(params[:page])
+    elsif params[:search] || params[:tag]
+      @contacts = Contact.contact_index(params[:tag], params[:search]).page(params[:page])
     else
       @contacts = Contact.order(sort_column + " " + sort_direction).page(params[:page])
     end
