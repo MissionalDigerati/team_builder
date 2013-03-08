@@ -20,9 +20,11 @@ Feature: A user should be able to edit and create phone numbers for their contac
 		When I click on the "Edit" link for "(123) 123 1234"
 		And I select "Home" from "number_phone_type"
 		And I fill in "number_number" with "9999999999"
+		And I fill in "Note" with "call this number"
 		And I click the "Update Number" button
 		Then I should see "Your phone number has been updated."
 		And I should see "(999) 999 9999"
+		And I should see "call this number"
 		And I should not see "(123) 123 1234"
 		
 	Scenario: A user should be able to delete an existing phone number	
