@@ -3,11 +3,6 @@ require 'spec_helper'
 describe ApplicationHelper do
   context "methods" do
     
-    it "should return a link to add fields through js on new contact form"
-    
-    it "should return a tag if indexing contact by tag" 
-      
-    
     it "should return completed if true" do
       status(true).should == "Completed"
     end
@@ -25,7 +20,7 @@ describe ApplicationHelper do
     
     it "should return the first name of contact to which an attribute belongs to, capitalized" do
       fred = FactoryGirl.create(:defaulted_contact, :first_name => "fred")
-      occasion = FactoryGirl.create(:defaulted_occasion, :contact_id => fred)
+      occasion = FactoryGirl.create(:defaulted_occasion, :contact_id => fred.id)
       first_name(occasion).should == "Fred"
     end
     
@@ -57,7 +52,7 @@ describe ApplicationHelper do
     
     it "should return the last name of the instance followed by a comma, followed by the first letter of the first name, all names are titalized." do
       ron = FactoryGirl.create(:defaulted_contact, :first_name => "ron", :last_name => "Weasley")
-      donation = FactoryGirl.create(:defaulted_donation, :contact_id => ron)
+      donation = FactoryGirl.create(:defaulted_donation, :contact_id => ron.id)
       summary_name_helper(donation).should == "Weasley, R"
     end
     
