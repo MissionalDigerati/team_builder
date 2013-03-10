@@ -6,6 +6,12 @@
 			<%= link_to "Edit #{@contact.first_name.capitalize}", edit_contact_path(@contact), :class => "btn btn btn-info pull-right" %>
 			</br>
 			<table class="table contact table-striped table-bordered">
+				<% if @contact.avatar.url.present? %>
+					<tr>
+						<td class="bold">Image:</td>
+						<td><%= image_tag @contact.avatar.url(:thumb) %></td>
+					</tr>
+				<% end %>
 				<tr>
 					<td class="bold">First Name:</td>
 					<td><%= @contact.first_name %></td>

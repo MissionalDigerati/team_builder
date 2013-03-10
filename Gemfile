@@ -34,6 +34,8 @@ end
 group :test do
   gem 'cucumber-rails', :require => false
 end
+
+gem 'paperclip'
 gem 'kaminari'
 gem 'acts-as-taggable-on'
 gem 'bootstrap-kaminari-views'

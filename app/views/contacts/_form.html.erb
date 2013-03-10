@@ -1,6 +1,8 @@
 <%= form_for(@contact) do |f| %>
 
 	<div class="span2 offset3">
+		<%= f.file_field :avatar %>
+		<br/><br/>
 		<%= f.label :first_name, "First Name" %>
 		<%= f.text_field :first_name, id: "first_name"  %>
 		<br/><br/>

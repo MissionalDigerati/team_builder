@@ -46,6 +46,10 @@ GEM
       xpath (~> 0.1.4)
     childprocess (0.3.6)
       ffi (~> 1.0, >= 1.0.6)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.1)
+      climate_control (>= 0.0.3, < 1.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -101,6 +105,12 @@ GEM
     mime-types (1.21)
     multi_json (1.6.1)
     nokogiri (1.5.5)
+    paperclip (3.4.1)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.0)
+      mime-types
     polyglot (0.3.3)
     populator (1.0.0)
     quiet_assets (1.0.1)
@@ -190,6 +200,7 @@ DEPENDENCIES
   jquery-ui-rails
   kaminari
   launchy
+  paperclip
   populator
   quiet_assets
   rails (= 3.2.12)
