@@ -1,0 +1,7 @@
+$('table#donations tbody').append('<%= escape_javascript render(@donations) %>');
+<% if (@donations.current_page < @donations.num_pages) %> 
+  $('.pagination').replaceWith('<%= escape_javascript paginate(@donations, :theme => "twitter-bootstrap") %>');
+<% else %>
+  $('.pagination').remove();
+<% end %>
+<% sleep 1 %>

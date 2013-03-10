@@ -1,0 +1,7 @@
+$('table#contacts tbody').append('<%= escape_javascript render(@contacts) %>');
+<% if (@contacts.current_page < @contacts.num_pages) %> 
+  $('.pagination').replaceWith('<%= escape_javascript paginate(@contacts, :theme => "twitter-bootstrap") %>');
+<% else %>
+  $('.pagination').remove();
+<% end %>
+<% sleep 1 %>

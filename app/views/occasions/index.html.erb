@@ -52,10 +52,9 @@
 	<div class="span9 table_container">
 		
 		<h1>All Special Dates</h1><br/>
-		<%= paginate @occasions, :theme => 'twitter-bootstrap' %>
 		<%= link_to 'New Special Date', new_occasion_path, :class => "btn btn-primary pull-right" %>
 		<br/><br/>
-		<table class="table index table-bordered table-hover table-striped">
+		<table class="table index table-bordered table-hover table-striped", id="occasions">
 		  <tr>
 		    <th>Name</th>
 				<th><%= sortable "occasion" %></th>
@@ -64,15 +63,7 @@
 		    <th>Action</th>
 		  </tr>
 
-		<% @occasions.each do |occasion| %>
-		  <tr>
-				<td><%= link_to occasion.contact.fullname.titleize, contact_path(occasion.contact_id) %></td>
-				<td><%= occasion.occasion %></td>
-				<td><%= occasion.special_date.strftime('%m/%d/%Y') %></td>
-				<td><%= occasion.created_at.strftime('%m/%d/%Y') %></td>
-				<td class="text_center"><%= link_to edit_button, edit_occasion_path(occasion, contact_id: occasion.contact_id), :class => "btn btn-success btn-small"  %> <%= link_to delete_button, occasion, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small"  %> <%= link_to contact_button, contact_path(occasion.contact_id), :class => "btn btn-info btn-small"  %></td>
-			</tr>
-		<% end %>
+			<%= render @occasions %>
 		</table>
 
 		<br />

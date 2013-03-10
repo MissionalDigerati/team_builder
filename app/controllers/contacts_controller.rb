@@ -20,6 +20,7 @@ class ContactsController < ApplicationController
     
     @new_contacts = Contact.find(:all, :conditions => ["created_at between ? and ?", 1.weeks.ago.to_date, Time.now.to_date])
     respond_to do |format|
+      format.js
       format.html # index.html.erb
       format.json { render json: @contacts }
     end

@@ -37,5 +37,11 @@ jQuery ->
 	  placement: "bottom"
 	  trigger: "focus"
 
-	
+	if $('.pagination').length
+		$(window).scroll ->
+			url = $('.pagination .next_page a').attr('href')
+			if url && $(window).scrollTop() > $(document).height() - $(window).height() - 50
+				$('.pagination').html('<img src="/assets/ajax-loader.gif" />')
+				$.getScript(url)
+		$(window).scroll()	
 	

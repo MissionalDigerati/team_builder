@@ -8,10 +8,9 @@
 		
 		<h1><%= link_to "All Contacts", contacts_path %></h1><br/>
 		<%= tag_param %>
-		<%= paginate @contacts, :theme => 'twitter-bootstrap' %>
 		<%= link_to 'New Contact', new_contact_path, :class => "btn btn-primary pull-right" %>
 		<br/><br/>
-		<table class="table index table-bordered table-hover table-striped">
+		<table class="table index table-bordered table-hover table-striped", id="contacts">
 		  <tr>
 		    <th><%= sortable "presented_vision", "Presented?" %></th>
 			  <th>Tags</th>
@@ -24,41 +23,8 @@
 		    <th>Action</th>
 		  </tr>
 
-		<% @contacts.each do |contact| %>
-		  <tr>
-			  <td class="text_center">
-			    <%= image_tag('presented_vision.png', title: "Presented Vision", alt: "Presented Vision") if contact.presented_vision %>
-			  </td>
-				<td>
-					<% if contact.tag_list.present? %>
-					<ul class="nav nav-pills tag_container">
-					  <li class="dropdown">
-					    <a class="dropdown-toggle"
-					       data-toggle="dropdown" href="#">
-					        tags
-					        <b class="caret"></b>
-					      </a>
-					    <ul class="dropdown-menu">
-					      <% contact.tag_list.each do |tag| %>
-									<li><%= link_to tag, tag_path(tag) %></li>
-								<% end %>
-					    </ul>
-					  </li>
-					</ul>
-						<!-- <%= link_to contact.tag_list.first, tag_path(contact.tag_list.first), :class => "label label-important" %> -->
-					<% end %>
-				</td>
-				<td><%= link_to contact.last_name.capitalize, contact %></td>
-				<td><%= link_to contact.first_name.capitalize, contact %></td>
-				<td><%= contact.spouse_name.capitalize %></td>
-				<td class="believer"><%= contact.believer.yes_or_no %></td>
-				<td><%= contact.preferred_contact %></td>
-				<td><%= contact.receive_newsletter.yes_or_no %></td>
-				
-				<td class="text_center"><%= link_to edit_button, edit_contact_path(contact), :class => "btn btn-success btn-small"  %> <%= link_to delete_button, contact, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small"  %> <%= link_to contact_button, contact, :class => "btn btn-info btn-small"  %></td>
-			
-		  </tr>
-		<% end %>
+			<%= render @contacts%>
+
 		</table>
 
 		<br />
