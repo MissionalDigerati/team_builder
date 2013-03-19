@@ -1,4 +1,9 @@
 <tr>
+			  <td class="text_center avatar_index">
+			  	<% if contact.avatar.url.present? %>
+					<%= image_tag contact.avatar.url(:thumb) %>
+				<% end %>
+			  </td>
 			  <td class="text_center">
 			    <%= image_tag('presented_vision.png', title: "Presented Vision", alt: "Presented Vision") if contact.presented_vision %>
 			  </td>
@@ -26,7 +31,6 @@
 				<td><%= contact.spouse_name.capitalize %></td>
 				<td class="believer"><%= contact.believer.yes_or_no %></td>
 				<td><%= contact.preferred_contact %></td>
-				<td><%= contact.receive_newsletter.yes_or_no %></td>
 				
 				<td class="text_center"><%= link_to edit_button, edit_contact_path(contact), :class => "btn btn-success btn-small"  %> <%= link_to delete_button, contact, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small"  %> <%= link_to contact_button, contact, :class => "btn btn-info btn-small"  %></td>
 			
