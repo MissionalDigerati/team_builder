@@ -8,7 +8,7 @@
 			<table class="table contact table-striped table-bordered">
 				<% if @contact.avatar.url.present? %>
 					<tr>
-						<td colspan="2" class="text_center"><%= image_tag @contact.avatar.url(:thumb) %></td>
+						<td colspan="2" class="text_center"><%= image_tag @contact.avatar.url(:medium) %></td>
 					</tr>
 				<% end %>
 				<tr>
