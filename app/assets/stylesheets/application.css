@@ -59,6 +59,9 @@ table.contact td{
 .text_center{
 	text-align:center;
 }
+.italic {
+	font-style: italic;
+}
 .attribute_container{
 }
 .relative{

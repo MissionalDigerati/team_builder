@@ -20,6 +20,21 @@ describe Contact do
   end
   
   context "methods" do
+
+    context ".family_name" do
+
+      it "should only return the fullname if no spouse" do
+        contact = FactoryGirl.create(:defaulted_contact, :first_name => "Woody", :last_name => "Harrison", :spouse_name => "")
+        contact.family_name.should eq("Woody Harrison")
+      end
+
+      it "should return the husband & wife full name if spouse" do
+        contact = FactoryGirl.create(:defaulted_contact, :first_name => "Bobby", :last_name => "Smith", :spouse_name => "Sue")
+        contact.family_name.should eq("Bobby & Sue Smith")
+      end
+
+    end
+
     it "should return number of non believers" do
       FactoryGirl.create(:defaulted_contact, :believer => false)
       FactoryGirl.create(:defaulted_contact, :believer => false)

@@ -8,30 +8,27 @@
 			<table class="table contact table-striped table-bordered">
 				<% if @contact.avatar.url.present? %>
 					<tr>
-						<td class="bold">Image:</td>
-						<td><%= image_tag @contact.avatar.url(:thumb) %></td>
+						<td colspan="2" class="text_center"><%= image_tag @contact.avatar.url(:thumb) %></td>
 					</tr>
 				<% end %>
 				<tr>
-					<td class="bold">First Name:</td>
-					<td><%= @contact.first_name %></td>
-				</tr>
-				<tr>
-					<td class="bold">Last Name:</td>
-					<td><%= @contact.last_name %></td>
-				</tr>
-				<tr>
-					<td class="bold">Spouse Name:</td>
-					<td><%= @contact.spouse_name %></td>
+					<td colspan="2" class="text_center">
+						<span class="bold"><%= @contact.family_name %></span>
+						<% unless @contact.children.blank? %>
+							<br><span class="italic"><%= @contact.children %></span>
+						<% end %>
+					</td>
 				</tr>
 				<tr>
 					<td class="bold">Email:</td>
 					<td><%= mail_to @contact.email %></td>
 				</tr>
-				<tr>
-					<td class="bold">Spouse Email:</td>
-					<td><%= mail_to @contact.spouse_email %></td>
-				</tr>
+				<% unless @contact.spouse_name.blank? %>
+					<tr>
+						<td class="bold">Spouse Email:</td>
+						<td><%= mail_to @contact.spouse_email %></td>
+					</tr>
+				<% end %>
 				<tr>
 					<td class="bold">Network:</td>
 					<td><%= @contact.network %></td>
@@ -61,10 +58,6 @@
 					<td><%= @contact.country.printable_name %></td>
 				</tr>
 				<tr>
-					<td class="bold">Children:</td>
-					<td><%= @contact.children %></td>
-				</tr>
-				<tr>
 					<td class="bold">Receive NewsLetter?</td>
 					<td><%= @contact.receive_newsletter.yes_or_no %></td>
 				</tr>
@@ -84,13 +77,14 @@
 					<td class="bold">Believer:</td>
 					<td class="believer"><%= @contact.believer.yes_or_no %></td>
 				</tr>
+				<% unless @contact.spouse_name.blank? %>
+					<tr>
+						<td class="bold">Spouse Believer:</td>
+						<td class="believer"><%= @contact.spouse_believer.yes_or_no %></td>
+					</tr>
+				<% end %>
 				<tr>
-					<td class="bold">Spouse Believer:</td>
-					<td class="believer"><%= @contact.spouse_believer.yes_or_no %></td>
-				</tr>
-				<tr>
-					<td class="bold">Tags:</td>
-					<td><% @contact.tag_list.each do |tag| %>
+					<td colspan="2"><% @contact.tag_list.each do |tag| %>
 						<span class="label label-important"><%= link_to tag, tag_path(tag), :class => "white_link" %></span>
 					<% end %>
 					</td>

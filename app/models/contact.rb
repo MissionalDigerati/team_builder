@@ -23,7 +23,7 @@ class Contact < ActiveRecord::Base
   
   validates :first_name, :last_name, :email, :presence => true
 
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "115x115>" }, :default_url => "/images/:style/missing.png"
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "115x115>" }, :default_url => "/images/missing/:style/missing.png"
   
   NETWORKS = ['168 Film Festival', 'AACF - Cal Poly Pomona', 'Bible Study Fellowship', 'Cal Poly Pomona', 
   'Calvary Chapel', 'Co-Worker', "Dillions International", 'Extended Faimly', 'First Church of God - Pomona', 'Friends of Friends',
@@ -35,6 +35,10 @@ class Contact < ActiveRecord::Base
 
   def fullname
     "#{first_name} #{last_name}"
+  end
+
+  def family_name
+    self.spouse_name.blank? ? self.fullname : "#{self.first_name} & #{self.spouse_name} #{self.last_name}"
   end
   
   def self.non_believers
