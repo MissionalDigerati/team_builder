@@ -29,6 +29,7 @@ group :test, :development do
   gem 'launchy'
   gem 'populator'
   gem 'faker'
+  gem 'spreadsheet'
 end
 
 group :test do
