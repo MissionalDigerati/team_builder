@@ -9,6 +9,8 @@ class Contact < ActiveRecord::Base
   has_many :notes, :dependent => :destroy
   has_many :presences
 
+  has_one :support_state
+
   attr_accessible :tag_list #acts as taggable gem
   acts_as_taggable
   attr_accessible :numbers_attributes
