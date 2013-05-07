@@ -16,12 +16,14 @@ class Contact < ActiveRecord::Base
   attr_accessible :numbers_attributes
   attr_accessible :occasions_attributes
   attr_accessible :presences_attributes
+  attr_accessible :support_state_attributes
   attr_accessible :first_name, :last_name, :spouse_name, :email, :spouse_email, :network, :address_1, :address_2, :city, 
   :state_id, :zip, :country_id, :receive_newsletter, :children, :preferred_contact, :believer, :spouse_believer, :presented_vision, :avatar
   
   accepts_nested_attributes_for :numbers, :reject_if => lambda { |a| a[:number].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :occasions, :reject_if => lambda { |a| a[:occasion].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :presences, :reject_if => lambda { |a| a[:url].blank? }, :allow_destroy => true
+  accepts_nested_attributes_for :support_state
   
   validates :first_name, :last_name, :email, :presence => true
 

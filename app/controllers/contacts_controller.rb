@@ -42,6 +42,7 @@ class ContactsController < ApplicationController
     @contact.numbers.build
     @contact.occasions.build
     @contact.presences.build
+    @contact.build_support_state
     
     respond_to do |format|
       format.html # new.html.erb
