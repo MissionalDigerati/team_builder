@@ -1,0 +1,25 @@
+<% if @contact.support_state.present? %>
+<%= @contact.support_state.initial %>
+<%= @contact.support_state.letter_sent %>
+<%= @contact.support_state.contacting %>
+<%= @contact.support_state.seen_presentation %>
+<%= @contact.support_state.following_up %>
+<%= @contact.support_state.responding_on %>
+<%= @contact.support_state.one_time_gift %>
+<%= @contact.support_state.monthly_gift %>
+<%= @contact.support_state.not_giving %>
+<%= @contact.support_state.no_response %>
+<%= @contact.support_state.presented_on.strftime('%m/%d/%Y') if @contact.support_state.presented_on.present? %>
+<%= @contact.support_state.letter_sent_on.strftime('%m/%d/%Y') if @contact.support_state.letter_sent_on.present? %>
+
+
+  <div class="btn-group">
+    <button class="btn btn-success">Left</button>
+    <button class="btn">Middle</button>
+    <button class="btn">Right</button>
+  </div>
+
+  <%= link_to "Edit Donation Status", edit_contact_support_state_path(@contact, @contact.support_state) %>
+<% else %>
+	<%= link_to "Create Donation Status", new_contact_support_state_path(@contact) %>
+<% end %>

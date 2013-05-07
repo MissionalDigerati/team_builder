@@ -1,5 +1,7 @@
 TeamBuilder::Application.routes.draw do
-  resources :contacts
+  resources :contacts do
+    resources :support_states
+  end
   resources :numbers
   resources :occasions
   resources :donations
