@@ -1,6 +1,10 @@
 TeamBuilder::Application.routes.draw do
   resources :contacts do
-    resources :support_states
+    resources :support_states do
+      member do
+        post :quick_edit
+      end
+    end
   end
   resources :numbers
   resources :occasions

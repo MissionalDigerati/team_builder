@@ -64,25 +64,25 @@
 		<%= f.fields_for :support_state do |builder| %>
 			Contact Status
 			<%= builder.label :initial %>
-			<%= builder.check_box :initial %>
+			<%= builder.check_box :initial, class: "state" %>
 			<%= builder.label :letter_sent %>
-			<%= builder.check_box :letter_sent %>
+			<%= builder.check_box :letter_sent, class: "state" %>
 			<%= builder.label :contacting %>
-			<%= builder.check_box :contacting %>
+			<%= builder.check_box :contacting, class: "state" %>
 			<%= builder.label :seen_presentation %>
-			<%= builder.check_box :seen_presentation %>
+			<%= builder.check_box :seen_presentation, class: "state" %>
 			<%= builder.label :following_up %>
-			<%= builder.check_box :following_up %>
+			<%= builder.check_box :following_up, class: "state" %>
 			<%= builder.label :responding_on %>
-			<%= builder.check_box :responding_on %>
+			<%= builder.check_box :responding_on, class: "state" %>
 			<%= builder.label :one_time_gift %>
-			<%= builder.check_box :one_time_gift %>
+			<%= builder.check_box :one_time_gift, class: "state" %>
 			<%= builder.label :monthly_gift %>
-			<%= builder.check_box :monthly_gift %>
+			<%= builder.check_box :monthly_gift, class: "state" %>
 			<%= builder.label :not_giving %>
-			<%= builder.check_box :not_giving %>
+			<%= builder.check_box :not_giving, class: "state" %>
 			<%= builder.label :no_response %>
-			<%= builder.check_box :no_response %>
+			<%= builder.check_box :no_response, class: "state" %>
 			<%= builder.label :letter_sent_on %>
 			<%= builder.text_field :letter_sent_on, :class => "due_date_field" %>
 			<%= builder.label :presented_on %>
