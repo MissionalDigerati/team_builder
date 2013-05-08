@@ -24,5 +24,11 @@ $(document).ready(function(){
 	$('#date_select').datepicker({
 		dateFormat: "dd-mm-yy"
 	});
+
+	$('input.state').click(function(event){
+		$(this).prevAll().attr('checked', 'checked');
+		$(this).nextAll().removeAttr('checked');
+		// $("input.state[rel"id"]").attr('checked','checked');
+	});
 	
 });

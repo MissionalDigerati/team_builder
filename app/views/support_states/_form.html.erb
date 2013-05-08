@@ -1,25 +1,25 @@
 
 <%= form_for([@contact, @support_state]) do |f| %>
 	<%= f.label :initial %>
-	<%= f.check_box :initial %>
+	<%= f.check_box :initial, class: "state" %>
 	<%= f.label :letter_sent %>
-	<%= f.check_box :letter_sent %>
+	<%= f.check_box :letter_sent, class: "state" %>
 	<%= f.label :contacting %>
-	<%= f.check_box :contacting %>
+	<%= f.check_box :contacting, class: "state" %>
 	<%= f.label :seen_presentation %>
-	<%= f.check_box :seen_presentation %>
+	<%= f.check_box :seen_presentation, class: "state" %>
 	<%= f.label :following_up %>
-	<%= f.check_box :following_up %>
+	<%= f.check_box :following_up, class: "state" %>
 	<%= f.label :responding_on %>
-	<%= f.check_box :responding_on %>
+	<%= f.check_box :responding_on, class: "state" %>
 	<%= f.label :one_time_gift %>
-	<%= f.check_box :one_time_gift %>
+	<%= f.check_box :one_time_gift, class: "state" %>
 	<%= f.label :monthly_gift %>
-	<%= f.check_box :monthly_gift %>
+	<%= f.check_box :monthly_gift, class: "state" %>
 	<%= f.label :not_giving %>
-	<%= f.check_box :not_giving %>
+	<%= f.check_box :not_giving, class: "state" %>
 	<%= f.label :no_response %>
-	<%= f.check_box :no_response %>
+	<%= f.check_box :no_response, class: "state" %>
 	<%= f.label :letter_sent_on %>
 	<%= f.text_field :letter_sent_on, :class => "due_date_field" %>
 	<%= f.label :presented_on %>
