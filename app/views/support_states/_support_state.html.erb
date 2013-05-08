@@ -1,22 +1,19 @@
 <% if @contact.support_state.present? %>
-<%= @contact.support_state.initial %>
-<%= @contact.support_state.letter_sent %>
-<%= @contact.support_state.contacting %>
-<%= @contact.support_state.seen_presentation %>
-<%= @contact.support_state.following_up %>
-<%= @contact.support_state.responding_on %>
-<%= @contact.support_state.one_time_gift %>
-<%= @contact.support_state.monthly_gift %>
-<%= @contact.support_state.not_giving %>
-<%= @contact.support_state.no_response %>
+
 <%= @contact.support_state.presented_on.strftime('%m/%d/%Y') if @contact.support_state.presented_on.present? %>
 <%= @contact.support_state.letter_sent_on.strftime('%m/%d/%Y') if @contact.support_state.letter_sent_on.present? %>
 
 
   <div class="btn-group">
-    <button class="btn btn-success">Left</button>
-    <button class="btn">Middle</button>
-    <button class="btn">Right</button>
+  	<%= link_to "Initial", root_path, class: "btn #{@contact.support_state.initial}" %>
+  	<%= link_to "Letter Sent", root_path, class: "btn #{@contact.support_state.letter_sent}" %>
+   	<%= link_to "Contacting", root_path, class: "btn #{@contact.support_state.contacting}" %>
+   	<%= link_to "Seen Presentation", root_path, class: "btn #{@contact.support_state.seen_presentation}" %>
+   	<%= link_to "Following Up", root_path, class: "btn #{@contact.support_state.following_up}" %>
+   	<%= link_to "One Time Gift", root_path, class: "btn #{@contact.support_state.one_time_gift}" %>
+   	<%= link_to "Monthly Gift", root_path, class: "btn #{@contact.support_state.monthly_gift}" %>
+   	<%= link_to "Not Giving", root_path, class: "btn #{@contact.support_state.not_giving}" %>
+   	<%= link_to "No Response", root_path, class: "btn #{@contact.support_state.no_response}" %>
   </div>
 
   <%= link_to "Edit Donation Status", edit_contact_support_state_path(@contact, @contact.support_state) %>

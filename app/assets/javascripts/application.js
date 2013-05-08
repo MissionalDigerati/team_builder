@@ -28,7 +28,6 @@ $(document).ready(function(){
 	$('input.state').click(function(event){
 		$(this).prevAll().attr('checked', 'checked');
 		$(this).nextAll().removeAttr('checked');
-		// $("input.state[rel"id"]").attr('checked','checked');
 	});
 	
 });
