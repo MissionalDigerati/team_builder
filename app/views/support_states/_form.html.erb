@@ -10,8 +10,6 @@
 	<%= f.check_box :seen_presentation, class: "state" %>
 	<%= f.label :following_up %>
 	<%= f.check_box :following_up, class: "state" %>
-	<%= f.label :responding_on %>
-	<%= f.check_box :responding_on, class: "state" %>
 	<%= f.label :one_time_gift %>
 	<%= f.check_box :one_time_gift, class: "state" %>
 	<%= f.label :monthly_gift %>
@@ -24,5 +22,7 @@
 	<%= f.text_field :letter_sent_on, :class => "due_date_field" %>
 	<%= f.label :presented_on %>
 	<%= f.text_field :presented_on, :class => "due_date_field" %>
+	<%= f.label :responding_on %>
+	<%= f.text_field :responding_on, :class => "due_date_field" %>
 	<%= f.submit %>
 <% end %>

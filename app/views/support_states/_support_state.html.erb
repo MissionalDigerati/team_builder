@@ -5,7 +5,7 @@
 
 
   <div class="btn-group">
-  	<%= link_to "Initial", quick_edit_contact_support_state_path(@contact, @contact.support_state, current_state: "initial"), class: "btn #{@contact.support_state.initial}" %>
+  	<%= link_to "Initial", quick_edit_contact_support_state_path(@contact, @contact.support_state, current_state: "initial"), class: "btn #{@contact.support_state.initial}", method: :post %>
   	<%= link_to "Letter Sent", quick_edit_contact_support_state_path(@contact, @contact.support_state), class: "btn #{@contact.support_state.letter_sent}" %>
    	<%= link_to "Contacting", quick_edit_contact_support_state_path(@contact, @contact.support_state), class: "btn #{@contact.support_state.contacting}" %>
    	<%= link_to "Seen Presentation", quick_edit_contact_support_state_path(@contact, @contact.support_state), class: "btn #{@contact.support_state.seen_presentation}" %>

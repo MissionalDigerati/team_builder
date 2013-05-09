@@ -39,6 +39,7 @@ class SupportStatesController < ApplicationController
 	end
 
 	def quick_edit
-		SupportState.state_edit_delegation(params[:client_id], params[:id], params[:current_state])
+		SupportState.state_edit_delegation(params[:id], params[:current_state])
+		redirect_to contact_path(params[:contact_id])
 	end
 end

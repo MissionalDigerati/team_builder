@@ -73,8 +73,6 @@
 			<%= builder.check_box :seen_presentation, class: "state" %>
 			<%= builder.label :following_up %>
 			<%= builder.check_box :following_up, class: "state" %>
-			<%= builder.label :responding_on %>
-			<%= builder.check_box :responding_on, class: "state" %>
 			<%= builder.label :one_time_gift %>
 			<%= builder.check_box :one_time_gift, class: "state" %>
 			<%= builder.label :monthly_gift %>
@@ -87,6 +85,8 @@
 			<%= builder.text_field :letter_sent_on, :class => "due_date_field" %>
 			<%= builder.label :presented_on %>
 			<%= builder.text_field :presented_on, :class => "due_date_field" %>
+			<%= builder.label :responding_on %>
+			<%= builder.text_field :responding_on, :class => "due_date_field" %>
 		<% end %>
 	</div>
 
