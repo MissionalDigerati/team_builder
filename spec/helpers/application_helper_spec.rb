@@ -55,6 +55,12 @@ describe ApplicationHelper do
       donation = FactoryGirl.create(:defaulted_donation, :contact_id => ron.id)
       summary_name_helper(donation).should == "Weasley, R"
     end
+
+    it "should return a button with method post for the quick editing of a support state when the method name is suppied" do
+      contact = FactoryGirl.create(:defaulted_contact)
+      state = FactoryGirl.create(:defaulted_support_state, contact_id: contact.id)
+      state_quick_edit(contact, state, "initial", true).should == "<a href=\"/contacts/1/support_states/1/quick_edit?current_state=initial\" class=\"btn true\" data-method=\"post\" rel=\"nofollow\">Initial</a>"
+    end
     
   end
 end
