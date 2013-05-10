@@ -81,4 +81,8 @@ module ApplicationHelper
     currency(donation_year.sum(:amount))
   end
 
+  def state_quick_edit(method_name, current_state)
+    link_to method_name.titleize, quick_edit_contact_support_state_path(@contact, @contact.support_state, current_state: method_name), class: "btn #{current_state}", method: :post
+  end
+
 end

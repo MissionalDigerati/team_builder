@@ -5,15 +5,21 @@
 
 
   <div class="btn-group">
-  	<%= link_to "Initial", quick_edit_contact_support_state_path(@contact, @contact.support_state, current_state: "initial"), class: "btn #{@contact.support_state.initial}", method: :post %>
-  	<%= link_to "Letter Sent", quick_edit_contact_support_state_path(@contact, @contact.support_state, current_state: "letter_sent"), class: "btn #{@contact.support_state.letter_sent}", method: :post %>
-   	<%= link_to "Contacting", quick_edit_contact_support_state_path(@contact, @contact.support_state), class: "btn #{@contact.support_state.contacting}", method: :post %>
-   	<%= link_to "Seen Presentation", quick_edit_contact_support_state_path(@contact, @contact.support_state), class: "btn #{@contact.support_state.seen_presentation}", method: :post %>
-   	<%= link_to "Following Up", quick_edit_contact_support_state_path(@contact, @contact.support_state), class: "btn #{@contact.support_state.following_up}", method: :post %>
-   	<%= link_to "One Time Gift", quick_edit_contact_support_state_path(@contact, @contact.support_state), class: "btn #{@contact.support_state.one_time_gift}", method: :post %>
-   	<%= link_to "Monthly Gift", quick_edit_contact_support_state_path(@contact, @contact.support_state), class: "btn #{@contact.support_state.monthly_gift}", method: :post %>
-   	<%= link_to "Not Giving", quick_edit_contact_support_state_path(@contact, @contact.support_state), class: "btn #{@contact.support_state.not_giving}", method: :post %>
-   	<%= link_to "No Response", quick_edit_contact_support_state_path(@contact, @contact.support_state), class: "btn #{@contact.support_state.no_response}", method: :post %>
+    <%= state_quick_edit("initial", @contact.support_state.initial) %>
+    <%= state_quick_edit("letter_sent", @contact.support_state.letter_sent) %>
+    <%= state_quick_edit("contacting", @contact.support_state.contacting) %>
+    <%= state_quick_edit("seen_presentation", @contact.support_state.seen_presentation) %>
+    <%= state_quick_edit("following_up", @contact.support_state.following_up) %>
+    <%= state_quick_edit("one_time_gift", @contact.support_state.one_time_gift) %>
+    <%= state_quick_edit("monthly_gift", @contact.support_state.monthly_gift) %>
+    <%= state_quick_edit("not_giving", @contact.support_state.not_giving) %>
+    <%= state_quick_edit("no_response", @contact.support_state.no_response) %>
+  </div>
+  
+  <br/>
+
+  <div class="btn-group">
+    
   </div>
 
   <%= link_to "Edit Donation Status", edit_contact_support_state_path(@contact, @contact.support_state) %>
