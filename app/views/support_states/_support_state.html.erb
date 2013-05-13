@@ -1,8 +1,5 @@
 <% if @contact.support_state.present? %>
 
-<%= @contact.support_state.presented_on.strftime('%m/%d/%Y') if @contact.support_state.presented_on.present? %>
-<%= @contact.support_state.letter_sent_on.strftime('%m/%d/%Y') if @contact.support_state.letter_sent_on.present? %>
-
 
   <div class="btn-group">
     <%= state_quick_edit(@contact, @contact.support_state, "initial", @contact.support_state.initial) %>
@@ -15,6 +12,9 @@
     <%= state_quick_edit(@contact, @contact.support_state, "one_time_gift", @contact.support_state.one_time_gift) %>
     <%= state_quick_edit(@contact, @contact.support_state, "monthly_gift", @contact.support_state.monthly_gift) %>
   </div>
+  <%= "Letter sent on: #{@contact.support_state.letter_sent_on.strftime('%m/%d/%Y')}" if @contact.support_state.letter_sent_on.present? %> 
+  <%= "Presented on: #{@contact.support_state.presented_on.strftime('%m/%d/%Y')}" if @contact.support_state.presented_on.present? %>
+  
 
   <br/>
 
