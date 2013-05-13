@@ -5,8 +5,7 @@ class SupportState < ActiveRecord::Base
   attr_accessible :contact_id, :initial, :letter_sent, :letter_sent_on, :contacting, :seen_presentation, :presented_on, 
   :following_up, :responding_on, :one_time_gift, :monthly_gift, :not_giving, :no_response
 
-  def self.state_edit_delegation(state_id, params)
-  	state = self.find(state_id)
+  def self.state_edit_delegation(state, params)
   	if params == "initial"
   		self.initial_state(state)
     elsif params == "letter_sent"

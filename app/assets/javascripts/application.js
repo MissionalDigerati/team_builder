@@ -26,7 +26,7 @@ $(document).ready(function(){
 	});
 
 	$('input.state').click(function(event){
-		$(this).prevAll().attr('checked', 'checked');
+		$(this).prevAll().removeAttr('checked');
 		$(this).nextAll().removeAttr('checked');
 	});
 	

@@ -2,26 +2,37 @@
 <%= form_for([@contact, @support_state]) do |f| %>
 	<%= f.label :initial %>
 	<%= f.check_box :initial, class: "state" %>
+	<br/><br/>
 	<%= f.label :letter_sent %>
 	<%= f.check_box :letter_sent, class: "state" %>
+	<br/><br/>
 	<%= f.label :contacting %>
 	<%= f.check_box :contacting, class: "state" %>
+	<br/><br/>
 	<%= f.label :seen_presentation %>
 	<%= f.check_box :seen_presentation, class: "state" %>
+	<br/><br/>
 	<%= f.label :following_up %>
 	<%= f.check_box :following_up, class: "state" %>
-	<%= f.label :one_time_gift %>
-	<%= f.check_box :one_time_gift, class: "state" %>
-	<%= f.label :monthly_gift %>
-	<%= f.check_box :monthly_gift, class: "state" %>
-	<%= f.label :not_giving %>
-	<%= f.check_box :not_giving, class: "state" %>
+	<br/><br/>
 	<%= f.label :no_response %>
 	<%= f.check_box :no_response, class: "state" %>
+	<br/><br/>
+	<%= f.label :not_giving %>
+	<%= f.check_box :not_giving, class: "state" %>
+	<br/><br/>
+	<%= f.label :one_time_gift %>
+	<%= f.check_box :one_time_gift, class: "state" %>
+	<br/><br/>
+	<%= f.label :monthly_gift %>
+	<%= f.check_box :monthly_gift, class: "state" %>
+	<br/><br/>
 	<%= f.label :letter_sent_on %>
 	<%= f.text_field :letter_sent_on, :class => "due_date_field" %>
+	<br/><br/>
 	<%= f.label :presented_on %>
 	<%= f.text_field :presented_on, :class => "due_date_field" %>
+	<br/><br/>
 	<%= f.label :responding_on %>
 	<%= f.text_field :responding_on, :class => "due_date_field" %>
 	<%= f.submit %>

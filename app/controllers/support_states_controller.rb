@@ -39,7 +39,9 @@ class SupportStatesController < ApplicationController
 	end
 
 	def quick_edit
-		SupportState.state_edit_delegation(params[:id], params[:current_state])
+		@state = SupportState.find(params[:id])
+		SupportState.state_edit_delegation(@state, params[:current_state])
 		redirect_to contact_path(params[:contact_id])
+		flash[:notice] = "Support state has been updated to #{params[:current_state].titleize}."
 	end
 end
