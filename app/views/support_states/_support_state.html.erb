@@ -24,5 +24,5 @@
 
   <%= link_to "Edit Donation Status", edit_contact_support_state_path(@contact, @contact.support_state) %>
 <% else %>
-	<%= link_to "Create Donation Status", new_contact_support_state_path(@contact) %>
+	<%= link_to "Create Donation Status", new_contact_support_state_path(@contact), class: "create_donation_status" %>
 <% end %>
