@@ -1,5 +1,13 @@
 <center>
-<%= render "support_states/support_state", locals: @contact %>
+
+<% if @contact.support_state.present? %>
+	<div class="support_state_buttons">
+		<%= render "support_states/support_state" %>
+	</div>
+<% else %>
+	<%= link_to "Create Donation Status", new_contact_support_state_path(@contact), class: "create_donation_status" %>
+<% end %>
+
 </center>
 
 

@@ -29,6 +29,7 @@ class ContactsController < ApplicationController
   # GET /contacts/1
   # GET /contacts/1.json
   def show
+    @state = @contact.support_state
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @contact }

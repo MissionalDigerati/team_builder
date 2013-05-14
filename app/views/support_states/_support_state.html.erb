@@ -1,28 +1,18 @@
-<% if @contact.support_state.present? %>
 
 
   <div class="btn-group">
-    <%= state_quick_edit(@contact, @contact.support_state, "initial", @contact.support_state.initial) %>
-    <%= state_quick_edit(@contact, @contact.support_state, "letter_sent", @contact.support_state.letter_sent) %>
-    <%= state_quick_edit(@contact, @contact.support_state, "contacting", @contact.support_state.contacting) %>
-    <%= state_quick_edit(@contact, @contact.support_state, "seen_presentation", @contact.support_state.seen_presentation) %>
-    <%= state_quick_edit(@contact, @contact.support_state, "following_up", @contact.support_state.following_up) %>
-    <%= state_quick_edit(@contact, @contact.support_state, "no_response", @contact.support_state.no_response) %>
-    <%= state_quick_edit(@contact, @contact.support_state, "not_giving", @contact.support_state.not_giving) %>
-    <%= state_quick_edit(@contact, @contact.support_state, "one_time_gift", @contact.support_state.one_time_gift) %>
-    <%= state_quick_edit(@contact, @contact.support_state, "monthly_gift", @contact.support_state.monthly_gift) %>
+    <%= state_quick_edit(@contact, @state, "initial", @state.initial) %>
+    <%= state_quick_edit(@contact, @state, "letter_sent", @state.letter_sent) %>
+    <%= state_quick_edit(@contact, @state, "contacting", @state.contacting) %>
+    <%= state_quick_edit(@contact, @state, "seen_presentation", @state.seen_presentation) %>
+    <%= state_quick_edit(@contact, @state, "following_up", @state.following_up) %>
+    <%= state_quick_edit(@contact, @state, "no_response", @state.no_response) %>
+    <%= state_quick_edit(@contact, @state, "not_giving", @state.not_giving) %>
+    <%= state_quick_edit(@contact, @state, "one_time_gift", @state.one_time_gift) %>
+    <%= state_quick_edit(@contact, @state, "monthly_gift", @state.monthly_gift) %>
   </div>
-  <%= "Letter sent on: #{@contact.support_state.letter_sent_on.strftime('%m/%d/%Y')}" if @contact.support_state.letter_sent_on.present? %> 
-  <%= "Presented on: #{@contact.support_state.presented_on.strftime('%m/%d/%Y')}" if @contact.support_state.presented_on.present? %>
+  <%= "Letter sent on: #{@contact.support_state.letter_sent_on.strftime('%m/%d/%Y')}" if @state.letter_sent_on.present? %> 
+  <%= "Presented on: #{@contact.support_state.presented_on.strftime('%m/%d/%Y')}" if @state.presented_on.present? %>
   
 
-  <br/>
-
-  <div class="btn-group">
-    
-  </div>
-
-  <%= link_to "Edit Donation Status", edit_contact_support_state_path(@contact, @contact.support_state) %>
-<% else %>
-	<%= link_to "Create Donation Status", new_contact_support_state_path(@contact), class: "create_donation_status" %>
-<% end %>
+  <%= link_to "Edit Donation Status", edit_contact_support_state_path(@contact, @state) %>
