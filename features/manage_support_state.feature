@@ -4,7 +4,8 @@ Feature: A user should be able to create, edit, and delete web presences from th
 	
 	@javascript
 	Scenario: A user should be able to manage their contacts 
-		Given there is a contact "support state buttons" with a support state
+		Given I am on the home page
+		And there is a contact "support state buttons" with a support state
 		And I am on the show page for "support state buttons"
 		When I click the "Initial" link
 		Then I should see "Support state has been updated to Initial."
