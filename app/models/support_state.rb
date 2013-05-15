@@ -6,7 +6,7 @@ class SupportState < ActiveRecord::Base
   :following_up, :responding_on, :one_time_gift, :monthly_gift, :not_giving, :no_response
 
   def self.state_edit_delegation(state, params)
-    if self.respond_to?(params) 
+    if self.respond_to?(params) && POSSIBLE_STATES.include?(params)
       self.send(params, state)
     else
       return
@@ -57,5 +57,9 @@ class SupportState < ActiveRecord::Base
     state.update_attributes(initial: false, letter_sent: false, contacting: false, seen_presentation: false, following_up: false,
     one_time_gift: false, monthly_gift: false, not_giving: false, no_response: true, responding_on: nil)
   end
+
+private
+  
+  POSSIBLE_STATES = ["initial_state", "letter_sent", "contacting", "seen_presentation", "following_up", "one_time_gift", "monthly_gift", "not_giving", "no_response"]
 
 end
