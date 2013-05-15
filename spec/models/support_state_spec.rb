@@ -81,7 +81,7 @@ describe SupportState do
       state = FactoryGirl.create(:defaulted_support_state, contact_id: contact.id)
 
       SupportState.stub(:initial_state).and_return("initial_state")
-      SupportState.state_edit_delegation(state.id, "initial").should == "initial_state"
+      SupportState.state_edit_delegation(state.id, "initial_state").should == "initial_state"
 
       SupportState.stub(:letter_sent).and_return("letter_sent")
       SupportState.state_edit_delegation(state.id, "letter_sent").should == "letter_sent"

@@ -6,24 +6,8 @@ class SupportState < ActiveRecord::Base
   :following_up, :responding_on, :one_time_gift, :monthly_gift, :not_giving, :no_response
 
   def self.state_edit_delegation(state, params)
-  	if params == "initial"
-  		self.initial_state(state)
-    elsif params == "letter_sent"
-      self.letter_sent(state)
-    elsif params == "contacting"
-      self.contacting(state)
-    elsif params == "seen_presentation"
-      self.seen_presentation(state)
-    elsif params == "following_up"
-      self.following_up(state)
-    elsif params == "one_time_gift"
-      self.one_time_gift(state)
-    elsif params == "monthly_gift"
-      self.monthly_gift(state)
-    elsif params == "not_giving"
-      self.not_giving(state)
-    elsif params == "no_response"
-      self.no_response(state)
+    if self.respond_to?(params) 
+      self.send(params, state)
     else
       return
   	end
