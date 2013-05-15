@@ -1,1 +1,2 @@
-$(".support_state_buttons").html("escape_javascript(<%= render 'support_states/support_state' %>)");
+$(".support_state_buttons").html("<%= escape_javascript(render partial: "support_states/support_state") %>");
+$(".support_state_message").html("<%= escape_javascript(@message) %>");

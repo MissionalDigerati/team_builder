@@ -2,6 +2,7 @@ Feature: A user should be able to create, edit, and delete web presences from th
 	As a user 
 	I should be able to update contacts support statvia their contact page for through forms. 
 	
+	@javascript
 	Scenario: A user should be able to manage their contacts 
 		Given there is a contact "support state buttons" with a support state
 		And I am on the show page for "support state buttons"

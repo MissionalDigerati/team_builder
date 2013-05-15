@@ -2,7 +2,7 @@ TeamBuilder::Application.routes.draw do
   resources :contacts do
     resources :support_states do
       member do
-        post :quick_edit
+        put :quick_edit
       end
     end
   end

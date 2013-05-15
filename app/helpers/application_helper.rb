@@ -82,7 +82,7 @@ module ApplicationHelper
   end
 
   def state_quick_edit(contact, support_state, method_name, current_state)
-    link_to method_name.titleize, quick_edit_contact_support_state_path(contact, support_state, current_state: method_name), class: "btn #{current_state}", method: :post
+    link_to method_name.titleize, quick_edit_contact_support_state_path(contact, support_state, current_state: method_name), class: "btn #{current_state}", method: :put, remote: :true
   end
 
 end
