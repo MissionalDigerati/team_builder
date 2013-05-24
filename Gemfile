@@ -5,7 +5,7 @@ gem 'rails', '3.2.12'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-
+gem 'selenium-webdriver'
 # Gems used only for assets and not required
 # in production environments by default.
 gem 'coffee-rails', '~> 3.2.1'

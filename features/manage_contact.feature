@@ -4,7 +4,7 @@ Feature: A user manages their contacts
 	
 	Scenario: A user should be able to add a contact
 		Given I am on the home page
-		And I click the "Add Contact" link
+		And I click the "New Contact" link
 		Then I should be on the add contact page
 		When I fill in "first_name" with "Steve"
 		And I fill in "last_name" with "Balmer"
@@ -25,7 +25,7 @@ Feature: A user manages their contacts
 		
 	Scenario: A user should be able to create a contact phone numbers, web presence, and special dates on the same form. 	
 		Given I am on the home page
-		And I click the "Add Contact" link
+		And I click the "New Contact" link
 		Then I should be on the add contact page
 		When I fill in "first_name" with "Jeff"
 		And I fill in "last_name" with "Bridges"
@@ -56,7 +56,7 @@ Feature: A user manages their contacts
 	Scenario: Contacts should be searchable by tags
 		Given there is a contact named "Amy" with tag friend
 		And I am on the home page
-		And I click the "Add Contact" link
+		And I click the "New Contact" link
 		When I fill in "first_name" with "Starbucks"
 		And I fill in "last_name" with "Cafe"
 		And I fill in "email" with "Starbucks@coffee.com"
