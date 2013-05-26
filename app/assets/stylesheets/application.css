@@ -13,15 +13,15 @@
  *= require jquery.ui.all
  *= reqire_twitter/bootstrap
  */
-body{
+/*body{
 	background-color: #63A69F !important;
-}
-table{
+}*/
+/*table{
 	background-color: white !important;
 }
 .table{
 	margin-bottom: 0px !important;
-}
+}*/
 /*table.bottom{
 	margin-bottom: 20px !important;
 }*/
@@ -166,7 +166,7 @@ body{
 	line-height: 22px;
 	color: #666;
 	border-top: 3px solid #eee;
-	background:#343434 url("../img/back.png") repeat;  
+	background:#343434 url("/assets/back.png") repeat;  
 	padding-top: 37px;
 	-webkit-font-smoothing: antialiased;
 }

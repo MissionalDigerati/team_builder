@@ -15,6 +15,7 @@
 					<a class="close" data-dismiss="alert" href="#">&times;</a>
 					<%= flash[:notice] %>
 				</div>
+				<br/>
 			<% end %>
 	
 			<% if flash[:alert] %>
@@ -22,8 +23,12 @@
 					<a class="close" data-dismiss="alert" href="#">&times;</a>
 					<%= flash[:alert] %>
 				</div>
+				<br/>
 			<% end %>
-		<br/>
+			
+			<%= render 'layouts/header' %>
+	<br/>
+	<div class="container-fluid">
 		<%= yield %>
 	
 	</div> <!-- container-fluid -->

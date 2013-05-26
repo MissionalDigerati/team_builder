@@ -6,7 +6,6 @@
         <span>Menu</span>
       </a>
       <!-- Site name for smallar screens -->
-      <a href="/" class="brand hidden-desktop">TeamBuilder</a>
 
       <!-- Navigation starts -->
       <div class="nav-collapse collapse">        
@@ -27,14 +26,24 @@
         <ul class="nav pull-right">
           <li class="dropdown pull-right">            
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-              <i class="icon-user"></i> Admin <b class="caret"></b>              
+              <i class="icon-plus ico-white"></i> Add <b class="caret"></b>              
             </a>
             
             <!-- Dropdown menu -->
             <ul class="dropdown-menu">
-              <li><a href="#"><i class="icon-user"></i> Profile</a></li>
-              <li><a href="#"><i class="icon-cogs"></i> Settings</a></li>
-              <li><a href="login.html"><i class="icon-off"></i> Logout</a></li>
+            	<li><%= link_to "New Contact", new_contact_path %> </li>
+				<li class="divider"></li>
+				<li><%= link_to "New Donation", new_donation_path %></li>
+				<li class="divider"></li>
+				<li><%= link_to "New Note", new_note_path %></li>
+				<li class="divider"></li>
+				<li><%= link_to "New Special Date", new_occasion_path %></li>
+				<li class="divider"></li>
+				<li><%= link_to "New Phone Number", new_number_path %></li>
+				<li class="divider"></li>
+				<li><%= link_to "New Task", new_task_path %></li>
+				<li class="divider"></li>
+				<li><%= link_to "New Web Presence", new_presence_path %></li>
             </ul>
           </li>
           
