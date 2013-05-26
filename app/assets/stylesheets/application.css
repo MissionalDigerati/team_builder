@@ -652,7 +652,7 @@ text-decoration:none;
 header{
 	border-top: 1px solid #ccc;
 	padding: 15px 0px 15px 0px;
-	background: #fafafa url("../img/cream.png") repeat;
+	background: #fafafa url("/assets/cream.png") repeat;
 	border-bottom: 1px solid #ddd;
 }
 
@@ -894,7 +894,7 @@ header .header-data .hdata em{
   border: 0px;
 }
 
-.sidebar #nav li ul { display: none; background: #efefef url("../img/cream.png") repeat; }
+.sidebar #nav li ul { display: none; background: #efefef url("/assets/cream.png") repeat; }
 
 .sidebar #nav li ul li a { 
   display: block; 
@@ -919,7 +919,7 @@ header .header-data .hdata em{
 	margin-left: 230px;
 	margin-right: 0px;
 	width: auto;
-	background:#eee url("../img/main-back.png") repeat;
+	background:#eee url("/assets/main-back.png") repeat;
 	border-left: 1px solid #ccc;
 	z-index: 50;
 	min-height: 400px;
@@ -1014,7 +1014,7 @@ header .header-data .hdata em{
   border-radius: 3px;
   margin-top: 10px;
   margin-bottom: 20px; 
-  background: #fafafa url('../img/cream.png') repeat;
+  background: #fafafa url('/assets/cream.png') repeat;
 }
 
 .widget p{
@@ -1062,7 +1062,7 @@ header .header-data .hdata em{
 }
 
 .widget.wblack{
-  background: #fafafa url('../img/black.png') repeat;
+  background: #fafafa url('/assets/black.png') repeat;
   color: #ddd;
   border: 1px solid #222;
 }
@@ -1284,12 +1284,12 @@ header .header-data .hdata em{
 
 .widget.wblack .nav-tabs > li.active a {
     color: #fff;
-    background: #333 url('../img/back.png');
+    background: #333 url('/assets/back.png');
     border-bottom: 0px;
 }
 
 .widget.wblack .nav-tabs > li.active a:hover {
-    background: #333 url('../img/back.png');            
+    background: #333 url('/assets/back.png');            
     border-bottom: 0px; 
 }
 
@@ -1367,7 +1367,7 @@ header .header-data .hdata em{
   background: -ms-linear-gradient(top, #f8f8f8, #f2f2f2);
   background: -o-linear-gradient(top, #f8f8f8, #f2f2f2);
   background: linear-gradient(top, #f8f8f8, #f2f2f2);	
-  background: #f8f8f8 url("../img/cream.png") repeat;
+  background: #f8f8f8 url("/assets/cream.png") repeat;
   text-shadow:0px 1px #fff;
   border: 1px solid #ccc;
   box-shadow: inset 0px 0px 3px #fff;

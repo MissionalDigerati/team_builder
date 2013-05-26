@@ -1,0 +1,15 @@
+<div class="sidebar">
+    <div class="sidebar-dropdown"><a href="#">Navigation</a></div>
+
+    <!--- Sidebar navigation -->
+    <!-- If the main navigation has sub navigation, then add the class "has_sub" to "li" of main navigation. -->
+    <ul id="nav">
+      <!-- Main menu with font awesome icon -->
+      <li><%= link_to "Dashboard", root_path %> </li>
+      <li><%= link_to "Contacts", contacts_path %> </li>
+      <li><%= link_to "Donations", donations_path %> </li>
+      <li><%= link_to "Tasks", tasks_path %> </li>
+      <li><%= link_to "Special Dates", occasions_path %> </li>
+      <li><%= link_to "Backup", archives_path %> </li>
+    </ul>
+</div>
