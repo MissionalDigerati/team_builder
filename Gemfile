@@ -9,6 +9,7 @@ gem 'selenium-webdriver'
 # Gems used only for assets and not required
 # in production environments by default.
 gem 'coffee-rails', '~> 3.2.1'
+gem 'font-awesome-rails'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'bootstrap-sass'

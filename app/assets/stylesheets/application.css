@@ -11,6 +11,7 @@
  *= require_self
  *= require_tree .
  *= require jquery.ui.all
+ *= require font-awesome
  *= reqire_twitter/bootstrap
  */
 /*body{
@@ -25,6 +26,10 @@
 /*table.bottom{
 	margin-bottom: 20px !important;
 }*/
+.sidebar #nav i{
+	font-size: 20px;
+	margin-right: 5px;
+}
 .navbar-inner{
 	border-radius: 0px !important;
 }
@@ -829,17 +834,6 @@ header .header-data .hdata em{
   z-index: 60;
 }
 
-.sidebar #nav li i{
-	margin-right: 5px;
-	background: #eee;
-	color:#888;
-	width: 28px;
-	height: 28px;
-	line-height: 28px;
-	text-align: center;
-	border-radius: 40px;
-	border: 1px solid #ccc;
-}
 
 .sidebar  #nav li span i{
 	margin: 0px;
