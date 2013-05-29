@@ -1,40 +1,57 @@
-<div class="row-fluid">
+<% content_for :header do %>
+<h2 class="pull-left"><i class="icon-tasks"></i> Tasks</h2>
+
+    <!-- Breadcrumb -->
+    <div class="bread-crumb pull-right">
+      <%= link_to "Dashboard", root_path, class: "bread-crumb" %>
+      <span class="divider">/</span> 
+      <%= link_to "Tasks", tasks_path, class: "bread-current" %>
+    </div>
+<% end %>
+
+<% content_for :stats do %>
+
+<div class="matter">
+
+<% end %>
 	
-	<div class="span3 beige round">
-		<%= render "tasks/task_summary" %>
-	</div>
-	
-	<div class="span9 table_container">
-		<h1>All Tasks</h1><br/>
-		<%= paginate @task, :theme => 'twitter-bootstrap' %>
+<div class="container-fluid">
+	<div class="row-fluid">
+	<div class="span12">
 		<%= link_to "Add Task", new_task_path, :class => "btn btn-primary pull-right" %>
-		<br/><br/>
-		<table class="table table-striped table-bordered">
-			<thead>
-				<th>Complete</th>
-				<th>Contact</th>
-				<th><%= sortable "completed", "Status" %></th>
-				<th><%= sortable "task" %></th>
-				<th><%= sortable "due_date", "Date (mm/dd/yyyy)" %></th>
-				<th><%= sortable "category" %></th>
-				<th>Action</th>		
-			</thead>
-		<% @task.each do |task| %>
-			<tr rel="<%= task.id %>" >
-				<td><%= check_box_tag "#{task.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(task), remote: true, :class => "completed_button #{task.id} hidden" %>Check to complete</td>
-				<td><%= link_to task.contact.fullname.titleize, contact_path(task.contact_id) %></td>
-				<td class="task_status"><%= status(task.completed) %></td>
-				<td><%= task.task %></td>
-				<td><%= task.due_date.strftime('%m/%d/%Y') %></td>
-				<td><%= task.category %></td>
-				<td class="text_center"><%= link_to edit_button, edit_task_path(task, contact_id: task.contact_id), :class => "btn btn-success btn-small" %> <%= link_to delete_button, task_path(task), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-danger btn-small" %> <%= link_to contact_button, contact_path(task.contact_id), :class => "btn btn-small btn-info" %></td>
-			</tr>
-		<% end %>	
-		</table>
-		
+		<div class="clear"></div>
+		<div class="widget">
+
+			<div class="widget-head">
+				<div class="pull-left">
+					New Contacts
+				</div>
+				<div class="widget-icons pull-right">
+					<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+				</div>
+				<div class="clearfix"></div>
+			</div>
+
+			<table class="table index table-bordered table-hover table-striped", id="tasks">
+				<thead>
+					<th>Complete</th>
+					<th>Contact</th>
+					<th><%= sortable "completed", "Status" %></th>
+					<th><%= sortable "task" %></th>
+					<th><%= sortable "due_date", "Date (mm/dd/yyyy)" %></th>
+					<th><%= sortable "category" %></th>
+					<th>Action</th>		
+				</thead>
+				<%= render @task %>
+			</table>
+		</div><!-- widget -->
 		<br/>
 		
 		<%= link_to "Add Task", new_task_path, :class => "btn btn-primary pull-right" %>
 		<%= paginate @task, :theme => 'twitter-bootstrap' %>
 	</div>
+	<div class="clear"></div>
 </div>
+</div>
+
+</div><!-- matter -->
