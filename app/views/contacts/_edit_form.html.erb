@@ -1,5 +1,6 @@
 <br/><br/>
-<div class="span3 offset3">
+<div class="span3 visible-desktop"></div>
+<div class="span3">
 <%= form_for(@contact) do |f| %>
 	<%= f.file_field :avatar %>
 	<br/><br/>
@@ -26,8 +27,8 @@
 	<br/>
 </div>
 
-
-<div class="span3 offset1">
+<div class="span3 visible-desktop"></div>
+<div class="span3">
 	<%= f.label :city, "City" %>
 	<%= f.text_field :city, id: "city"  %><br/>
 	<br/>
