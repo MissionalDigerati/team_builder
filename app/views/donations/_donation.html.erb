@@ -2,8 +2,8 @@
 		<td><%= link_to donation.contact.fullname.titleize, contact_path(donation.contact_id) %></td>
 		<td><%= donation.donation_date.strftime('%m/%d/%Y') %></td>
 		<td><%= currency(donation.amount) %></td>
-		<td class="hidden-tablet hidden-phone"><%= donation.project.capitalize %></td>
-		<td class="hidden-tablet hidden-phone"><%= donation.created_at.strftime('%m/%d/%Y') %></td>
-		<td class="hidden-tablet hidden-phone"><%= donation.updated_at.strftime('%m/%d/%Y') %></td>
+		<td><%= donation.project.capitalize %></td>
+		<td><%= donation.created_at.strftime('%m/%d/%Y') %></td>
+		<td><%= donation.updated_at.strftime('%m/%d/%Y') %></td>
 		<td class="text_center"><%= link_to edit_button, edit_donation_path(donation, contact_id: donation.contact_id), :class => "btn btn-success btn-small"  %> <%= link_to delete_button, donation, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small"  %> <%= link_to contact_button, contact_path(donation.contact_id), :class => "btn btn-info btn-small"  %></td>
   </tr>

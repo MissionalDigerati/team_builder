@@ -90,7 +90,10 @@ table.contact td{
 .pagination a{
 	border: none !important;
 }*/
-
+.center_div{
+	margin:0 auto !important;
+	float:none !important;
+}
 
 .current {
  /* padding-right: 12px !important;*/
