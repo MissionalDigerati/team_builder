@@ -25,6 +25,10 @@ $(document).ready(function(){
 		dateFormat: "dd-mm-yy"
 	});
 
+	$('.date_select').datepicker({
+		dateFormat: "dd-mm-yy"
+	});
+
 	$('input.state').click(function(event){
 		$(this).prevAll().removeAttr('checked');
 		$(this).nextAll().removeAttr('checked');

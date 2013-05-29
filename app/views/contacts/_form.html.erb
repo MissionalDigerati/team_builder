@@ -1,6 +1,6 @@
 <%= form_for(@contact) do |f| %>
-
-	<div class="span2 offset3">
+	<div class="span3 visible-desktop"></div>
+	<div class="span3">
 		<%= f.file_field :avatar %>
 		<br/><br/>
 		<%= f.label :first_name, "First Name" %>
@@ -82,17 +82,17 @@
 			<%= builder.label :monthly_gift %>
 			<%= builder.check_box :monthly_gift, class: "state" %>
 			<%= builder.label :letter_sent_on %>
-			<%= builder.text_field :letter_sent_on, :class => "due_date_field" %>
+			<%= builder.text_field :letter_sent_on, :class => "due_date_field date_select" %>
 			<%= builder.label :presented_on %>
-			<%= builder.text_field :presented_on, :class => "due_date_field" %>
+			<%= builder.text_field :presented_on, :class => "due_date_field date_select" %>
 			<%= builder.label :responding_on %>
-			<%= builder.text_field :responding_on, :class => "due_date_field" %>
+			<%= builder.text_field :responding_on, :class => "due_date_field date_select" %>
 		<% end %>
 	</div>
 
 	
-	
-<div class="span2 offset2">
+<div class="span3 visible-desktop"></div>
+<div class="span3">
 	<!-- Numbers -->
 	<!-- <Number id: nil, phone_type: nil, number: nil, created_at: nil, updated_at: nil, contact_id: nil>  -->
 	<div class="attribute_container">
