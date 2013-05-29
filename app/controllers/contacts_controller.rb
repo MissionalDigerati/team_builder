@@ -18,7 +18,7 @@ class ContactsController < ApplicationController
       @contacts = Contact.order(sort_column + " " + sort_direction).page(params[:page])
     end
     
-    @new_contacts = Contact.find(:all, :conditions => ["created_at between ? and ?", 1.weeks.ago.to_date, Time.now.to_date])
+    @new_contacts = Contact.find(:all, :conditions => ["created_at between ? and ?", 1.weeks.ago, Time.now])
     respond_to do |format|
       format.js
       format.html # index.html.erb
