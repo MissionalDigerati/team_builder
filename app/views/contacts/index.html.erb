@@ -3,9 +3,9 @@
 
     <!-- Breadcrumb -->
     <div class="bread-crumb pull-right">
-      <a href="/" class="bread-current">Dashboard</a>
+      <%= link_to "Dashboard", root_path, class: "bread-crumb" %>
       <span class="divider">/</span> 
-      <a href="#" class="bread-current">Contacts</a>
+      <%= link_to "Contacts", contacts_path, class: "bread-current" %>
     </div>
 <% end %>
 
