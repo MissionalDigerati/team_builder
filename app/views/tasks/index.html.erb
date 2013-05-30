@@ -36,19 +36,20 @@
 				</div>
 				<div class="clearfix"></div>
 			</div>
-
-			<table class="table index table-bordered table-hover table-striped", id="tasks">
-				<thead>
-					<th>Complete</th>
-					<th>Contact</th>
-					<th><%= sortable "completed", "Status" %></th>
-					<th><%= sortable "task" %></th>
-					<th><%= sortable "due_date", "Date (mm/dd/yyyy)" %></th>
-					<th><%= sortable "category" %></th>
-					<th>Action</th>		
-				</thead>
-				<%= render @task %>
-			</table>
+			<div class="widget-content">
+				<table class="table index table-bordered table-hover table-striped", id="tasks">
+					<thead>
+						<th>Complete</th>
+						<th>Contact</th>
+						<th><%= sortable "completed", "Status" %></th>
+						<th><%= sortable "task" %></th>
+						<th><%= sortable "due_date", "Date (mm/dd/yyyy)" %></th>
+						<th><%= sortable "category" %></th>
+						<th>Action</th>
+					</thead>
+					<%= render @task %>
+				</table>
+			</div>
 		</div><!-- widget -->
 		<br/>
 		
