@@ -1,16 +1,20 @@
-<h2 class="text_center">Edit Web Presence</h2>
+<% content_for :header do %>
+<h2 class="pull-left"><i class="icon-facebook-sign"></i> Edit Web Presence</h2>
 
-<div class="row-fluid">
+    <!-- Breadcrumb -->
+    <div class="bread-crumb pull-right">
+      <%= link_to "Dashboard", root_path, class: "bread-crumb" %>
+      <span class="divider">/</span> 
+      <%= link_to "Contacts", '#', class: "bread-crumb" %>
+      <span class="divider">/</span> 
+      <%= link_to "Edit Note", '#', class: "bread-current" %>
+    </div>
+<% end %>
 
-	<br/>
-
-	<div class="clear">
+<% content_for :stats do %>
+<div class="matter">
+<% end %>
+	<div class="container-fluid">
+		<%= render 'presences/form' %>
 	</div>
-
-	<div class="table_container beige">
-			<%= render "presences/form" %>
-	</div>
-
-	<br/>
-
-</div>
+</div> <!-- matter -->

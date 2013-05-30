@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130310014527) do
+ActiveRecord::Schema.define(:version => 20130506205447) do
 
   create_table "archives", :force => true do |t|
     t.string   "filename"
@@ -105,6 +105,24 @@ ActiveRecord::Schema.define(:version => 20130310014527) do
     t.string   "state_short"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "support_states", :force => true do |t|
+    t.integer  "contact_id"
+    t.boolean  "initial",           :default => true
+    t.boolean  "letter_sent",       :default => false
+    t.date     "letter_sent_on"
+    t.boolean  "contacting",        :default => false
+    t.boolean  "seen_presentation", :default => false
+    t.date     "presented_on"
+    t.boolean  "following_up",      :default => false
+    t.date     "responding_on"
+    t.boolean  "one_time_gift",     :default => false
+    t.boolean  "monthly_gift",      :default => false
+    t.boolean  "not_giving",        :default => false
+    t.boolean  "no_response",       :default => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
   end
 
   create_table "taggings", :force => true do |t|

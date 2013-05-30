@@ -7,7 +7,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	
 	<%= render 'layouts/navigation' %>
 	<div class="container-fluid">
 		
@@ -16,6 +15,7 @@
 					<a class="close" data-dismiss="alert" href="#">&times;</a>
 					<%= flash[:notice] %>
 				</div>
+				<br/>
 			<% end %>
 	
 			<% if flash[:alert] %>
@@ -23,17 +23,22 @@
 					<a class="close" data-dismiss="alert" href="#">&times;</a>
 					<%= flash[:alert] %>
 				</div>
+				<br/>
 			<% end %>
-		<br/>
-		<%= yield %>
-	
-	</div> <!-- container-fluid -->
-<br/>
-<br/>
-<br/>
-<br/>
-<div class="text_right">Built by <a href="https://github.com/naysayer">Naysayer</a> for  <a href="http://missionaldigerati.org/">Missional Digerati</a> . &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div>
-<br/>
-<br/>
+	</div> <!-- container-fluid -->		
+	<%= render 'layouts/header' %>
+	<%= render 'layouts/sidebar' %>
+	<%= render 'layouts/mainbar' %>
+	<%= yield %>
+	<footer>
+	  <div class="container-fluid">
+	    <div class="row-fluid">
+	      <div class="span12">
+	            <div class="left">Built by <a href="https://github.com/naysayer">Naysayer</a> for  
+	            <a href="http://missionaldigerati.org/">Missional Digerati</a> . &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </div>
+	      </div>
+	    </div>
+	  </div>
+	</footer>
 </body>
 </html>

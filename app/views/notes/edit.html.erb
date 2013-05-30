@@ -1,16 +1,20 @@
-<h2 class="text_center">Edit Note</h2>
+<% content_for :header do %>
+<h2 class="pull-left"><i class="icon-paper-clip"></i> Edit Note</h2>
 
-<div class="row-fluid">
+    <!-- Breadcrumb -->
+    <div class="bread-crumb pull-right">
+      <%= link_to "Dashboard", root_path, class: "bread-crumb" %>
+      <span class="divider">/</span> 
+      <%= link_to "Contacts", '#', class: "bread-crumb" %>
+      <span class="divider">/</span> 
+      <%= link_to "New Note", '#', class: "bread-current" %>
+    </div>
+<% end %>
 
-	<br/>
-
-	<div class="clear">
+<% content_for :stats do %>
+<div class="matter">
+<% end %>
+	<div class="container-fluid">
+		<%= render 'notes/form' %>
 	</div>
-
-	<div class="table_container beige">
-			<%= render "notes/form" %>
-	</div>
-
-	<br/>
-
-</div>
+</div> <!-- matter -->

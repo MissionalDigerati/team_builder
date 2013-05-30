@@ -1,13 +1,20 @@
-<h2 class="text_center">Edit Contact</h2>
+<% content_for :header do %>
+<h2 class="pull-left"><i class="icon-group"></i> Edit Contact: <%= @contact.fullname.present? ? @contact.fullname : "" %></h2>
 
-<div class="row-fluid">
-	
-	<div class="table_container beige">
+    <!-- Breadcrumb -->
+    <div class="bread-crumb pull-right">
+      <%= link_to "Dashboard", root_path, class: "bread-crumb" %>
+      <span class="divider">/</span> 
+      <%= link_to "Contacts", contacts_path, class: "bread-crumb" %>
+      <span class="divider">/</span> 
+      <%= link_to "Edit Contact", edit_contact_path(@contact), class: "bread-current" %>
+    </div>
+<% end %>
+
+<% content_for :stats do %>
+<div class="matter">
+<% end %>
+	<div class="container-fluid">
 		<%= render 'edit_form' %>
 	</div>
-
-	<div class="clear"></div>
-	<!-- <%= link_to 'Show', @contact, :class => "pull-right" %>
-	<%= link_to 'Back', contacts_path, :class => "pull-right"%>
-	 -->
-</div>
+</div> <!-- matter -->

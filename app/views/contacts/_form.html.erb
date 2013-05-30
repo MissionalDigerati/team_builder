@@ -1,6 +1,6 @@
 <%= form_for(@contact) do |f| %>
-
-	<div class="span2 offset3">
+	<div class="span3 visible-desktop"></div>
+	<div class="span3">
 		<%= f.file_field :avatar %>
 		<br/><br/>
 		<%= f.label :first_name, "First Name" %>
@@ -59,12 +59,40 @@
 		<br/><br/>
 		<%= f.label :spouse_believer, "Spouse Believer?" %>
 		<%= f.check_box :spouse_believer, id: "Spouse Believer"  %>
-		<br/>
+		<br/><br/>
+
+		<%= f.fields_for :support_state do |builder| %>
+			Contact Status
+			<%= builder.label :initial %>
+			<%= builder.check_box :initial, class: "state" %>
+			<%= builder.label :letter_sent %>
+			<%= builder.check_box :letter_sent, class: "state" %>
+			<%= builder.label :contacting %>
+			<%= builder.check_box :contacting, class: "state" %>
+			<%= builder.label :seen_presentation %>
+			<%= builder.check_box :seen_presentation, class: "state" %>
+			<%= builder.label :following_up %>
+			<%= builder.check_box :following_up, class: "state" %>
+			<%= builder.label :no_response %>
+			<%= builder.check_box :no_response, class: "state" %>
+			<%= builder.label :not_giving %>
+			<%= builder.check_box :not_giving, class: "state" %>
+			<%= builder.label :one_time_gift %>
+			<%= builder.check_box :one_time_gift, class: "state" %>
+			<%= builder.label :monthly_gift %>
+			<%= builder.check_box :monthly_gift, class: "state" %>
+			<%= builder.label :letter_sent_on %>
+			<%= builder.text_field :letter_sent_on, :class => "due_date_field date_select" %>
+			<%= builder.label :presented_on %>
+			<%= builder.text_field :presented_on, :class => "due_date_field date_select" %>
+			<%= builder.label :responding_on %>
+			<%= builder.text_field :responding_on, :class => "due_date_field date_select" %>
+		<% end %>
 	</div>
 
 	
-	
-<div class="span2 offset2">
+<div class="span3 visible-desktop"></div>
+<div class="span3">
 	<!-- Numbers -->
 	<!-- <Number id: nil, phone_type: nil, number: nil, created_at: nil, updated_at: nil, contact_id: nil>  -->
 	<div class="attribute_container">

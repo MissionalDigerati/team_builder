@@ -1,0 +1,42 @@
+<header>
+    <div class="container-fluid">
+      <div class="row-fluid">
+
+        <!-- Logo section -->
+        <div class="span4">
+          <!-- Logo. -->
+          <div class="logo">
+            <h1><a href="/">Team<span class="bold">Builder</span></a></h1>
+            <p class="meta">A tool for tracking your support</p>
+          </div>
+          <!-- Logo ends -->
+        </div>
+
+        <!-- Button section -->
+        <div class="span4">
+
+          <!-- Buttons -->
+          <ul class="nav nav-pills">
+
+            <!-- Comment button with number of latest comments count -->
+            <li class="dropdown dropdown-big">
+              <%= link_to "<i class='icon-group'></i> Contacts <span class='badge badge-info'> #{number_of_contacts}</span>".html_safe, contacts_path %>
+            </li>
+
+            <li class="dropdown dropdown-big">
+              <%= link_to "<i class='icon-tasks'></i> Overdue Tasks <span class='badge badge-warning'> #{number_of_overdue_tasks}</span>".html_safe, tasks_path %>
+            </li>
+
+            <li class="dropdown dropdown-big">
+              <%= link_to "<i class='icon-calendar'></i> Special Dates Today <span class='badge badge-success'> #{occasions_today}</span>".html_safe, contacts_path %>
+            </li>
+
+          </ul>
+
+        </div>
+
+        <!-- Data section -->
+
+      </div>
+    </div>
+  </header>

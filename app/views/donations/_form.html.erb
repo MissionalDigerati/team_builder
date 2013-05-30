@@ -1,20 +1,18 @@
 
-<div class="span2 offset5">
-	<br/><br/>
-		<%= form_for([@donations]) do |f| %>
-			<%= f.label :contact_id, "Contact" %>
-			<%= f.select(:contact_id, form_select) %><br/><br/>
-			<%= f.label :donation_date, "Date" %>
-			<%= f.text_field :donation_date, :id => "date_select" %><br/><br/>
-			<%= f.label :amount, "Amount" %>
-			<%= f.text_field :amount %><br/><br/>
-			<%= f.label :project, "Project" %>
-			<%= f.text_field :project %><br/><br/>
+<div class="span2 center_div">
+	<%= form_for([@donations]) do |f| %>
+		<%= f.label :contact_id, "Contact" %>
+		<%= f.select(:contact_id, form_select) %><br/><br/>
+		<%= f.label :donation_date, "Date" %>
+		<%= f.text_field :donation_date, :id => "date_select" %><br/><br/>
+		<%= f.label :amount, "Amount" %>
+		<%= f.text_field :amount %><br/><br/>
+		<%= f.label :project, "Project" %>
+		<%= f.text_field :project %><br/><br/>
 	
-			<%= f.submit :class => "btn btn-large btn-success pull-right" %>
+		<%= f.submit :class => "btn btn-large btn-success pull-right" %>
 
-		<% end %>
-	<br/><br/>
+	<% end %>
+	<br/><br/><br/><br/>
 </div>
-
 <div class="clear"></div>

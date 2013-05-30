@@ -1,55 +1,102 @@
-<div class="row-fluid">
-	
-	<div class="span3 beige round">
-		
-		<h3>Donation Summary</h3>
-		<strong>Amount donated (this month):</strong><br/>
-		<%= currency(Donation.this_month_sum) %><br/>
-		<strong>Amount donated (this year):</strong><br/>
-		<%= donation_this_year %><br/>
-		<strong>Amount donated (all time):</strong><br/>
-		<%= donations_all_time %><br/>
-		<strong>Average Donation (all time):</strong><br/>
-		<%= currency(Donation.average_donation) %><br/>
-		<strong>Number of contacts that have donated:</strong><br/>
-		<%= Contact.donated_contacts %><br/>
-		<%= link_to "View all Donations this month", donations_path(:month => Time.now.month, :year => Time.now.year) %><br/>
-		<%= link_to "View all Donations this year", donations_path(:year => Time.now.year) %><br/>
-		<!-- <%= form_tag("",:method=>:get) do %>
-				<%= label :year, "Year (YYYY)" %>
-				<%= text_field_tag(:year, value = nil, options = {:class=>"span3 pull-left"})%>
-				<%= select_tag(:month, Donation.month_hash, { :class => 'span3 pull-left' })%>
-				<%= submit_tag "go!", :class => "btn btn-success btn-small" %>
-				<% end %> -->
-		
-	</div>
-	
-	<div class="span9 table_container">
-		
-		<h1><%= link_to "All Donations", donations_path %></h1><br/>
-		<%= link_to 'New Donation', new_donation_path, :class => "btn btn-primary pull-right" %>
-		<br/><br/>
-		<table class="table index table-bordered table-hover table-striped", id="donations">
-		  <tr>
-		    <!-- <th>Name</th> -->
-				<th>Name</th>
-				<th><%= sortable "donation_date", "Date (mm/dd/yyyy)" %></th>
-				<th><%= sortable "amount" %></th>
-				<th><%= sortable "project" %></th>
-				<th><%= sortable "created_at", "Created" %></th>
-				<th><%= sortable "updated_at", "Updated" %></th>
-		    <th>Action</th>
-		  </tr>
+<% content_for :header do %>
+<h2 class="pull-left"><i class="icon-money"></i> Donations</h2>
 
-			<%= render @donations %>
-		</table>
+    <!-- Breadcrumb -->
+    <div class="bread-crumb pull-right">
+      <%= link_to "Dashboard", root_path, class: "bread-crumb" %>
+      <span class="divider">/</span> 
+      <%= link_to "Donations", donations_path, class: "bread-current" %>
+    </div>
+<% end %>
 
-		<br />
+<% content_for :stats do %>
 
-		<%= link_to 'New Donation', new_donation_path, :class => "btn btn-primary pull-right" %>
-		<%= paginate @donations, :theme => 'twitter-bootstrap' %>
-	</div> <!-- span12 -->
+<div class="matter">
+  <div class="container-fluid">
+    <!-- Today status. jQuery Sparkline plugin used. -->
+    <div class="row-fluid">
+      <div class="span12"> 
+        <!-- List starts -->
+        <ul class="today-datas">
+          <!-- List #1 -->
+          <li>
+            <!-- Graph -->
+            <div class="datas-text">Amount donated (this month):<br/><%= currency(Donation.this_month_sum) %></div>
+          </li>
+          <li>
+            <div class="datas-text">Amount donated (this year):<br/><%= donation_this_year %></div>
+          </li>
+          <li>
+            <div class="datas-text">Amount donated (all time):<br/><%= donations_all_time %></div>
+          </li>
+          <li>
+            <div class="datas-text">Average Donation (all time):<br/><%= currency(Donation.average_donation) %></div>
+          </li> 
+          <li>
+            <div class="datas-text">Number of contacts that have donated:<br/><%= Contact.donated_contacts %></div>
+          </li>
+          <li>
+            <div class="datas-text">
+            	<%= link_to "View all Donations this month", donations_path(:month => Time.now.month, :year => Time.now.year) %><br/>
+				<%= link_to "View all Donations this year", donations_path(:year => Time.now.year) %><br/>
+            </div>
+          </li>                                                                                                                
+        </ul> 
+      </div>
+    </div>
+  </div>
+<% end %>
 
-</div> <!-- row fluid -->
 
-<!-- <Donation id: nil, contact_id: nil, date: nil, amount: nil, project: nil, created_at: nil, updated_at: nil>  -->
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span12">
+
+
+				<div class="pull-right">
+
+				</div>
+				<div class="clear"></div>
+
+			<%= tag_param %>
+		    <% if @donations.present? %>
+		    <%= link_to 'New Donation', new_donation_path, :class => "btn btn-primary pull-right" %>
+		    <br/><br/>
+			    <div class="widget">
+			      <!-- Widget head -->
+			    	<div class="widget-head">
+			        <div class="pull-left">Donations</div>
+			        <div class="widget-icons pull-right">
+			          <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+			        </div>  
+			        <div class="clearfix"></div>
+			      </div>              
+			
+			      <!-- Widget content -->
+			      <div class="widget-content">
+			      	<table class="table index table-bordered table-hover table-striped", id="donations">
+			      		<tr>
+			      	    	<th>Name</th>
+							<th><%= sortable "donation_date", "Date (mm/dd/yyyy)" %></th>
+							<th><%= sortable "amount" %></th>
+							<th><%= sortable "project" %></th>
+							<th><%= sortable "created_at", "Created" %></th>
+							<th><%= sortable "updated_at", "Updated" %></th>
+		    				<th>Action</th>
+			      	  	</tr>
+
+			      		<%= render @donations %>
+			      	</table>
+						<div class="widget-foot">
+	                  	</div>
+			      </div>
+			    </div>
+		    <% end %>
+		    <%= link_to 'New Donation', new_donation_path, :class => "btn btn-primary pull-right" %>
+		    <%= paginate @donations, :theme => 'twitter-bootstrap' %>
+		    <br/><br/>
+		  </div>
+		</div>
+	</div> <!-- container-fluid end -->
+</div> <!-- div class mattter ends -->
+

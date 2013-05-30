@@ -18,7 +18,7 @@ class ContactsController < ApplicationController
       @contacts = Contact.order(sort_column + " " + sort_direction).page(params[:page])
     end
     
-    @new_contacts = Contact.find(:all, :conditions => ["created_at between ? and ?", 1.weeks.ago.to_date, Time.now.to_date])
+    @new_contacts = Contact.find(:all, :conditions => ["created_at between ? and ?", 1.weeks.ago, Time.now])
     respond_to do |format|
       format.js
       format.html # index.html.erb
@@ -29,6 +29,7 @@ class ContactsController < ApplicationController
   # GET /contacts/1
   # GET /contacts/1.json
   def show
+    @state = @contact.support_state
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @contact }
@@ -42,6 +43,7 @@ class ContactsController < ApplicationController
     @contact.numbers.build
     @contact.occasions.build
     @contact.presences.build
+    @contact.build_support_state
     
     respond_to do |format|
       format.html # new.html.erb
