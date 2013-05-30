@@ -19,4 +19,4 @@
 <%= "Letter sent on: #{@contact.support_state.letter_sent_on.strftime('%m/%d/%Y')}" if @state.letter_sent_on.present? %> 
 <%= "Presented on: #{@contact.support_state.presented_on.strftime('%m/%d/%Y')}" if @state.presented_on.present? %>
 
-<%= link_to "Edit Donation Status", edit_contact_support_state_path(@contact, @state) %>
+<%= link_to "Edit Donation Status", edit_contact_support_state_path(@contact, @state), class: "btn btn-small btn-info" %>
