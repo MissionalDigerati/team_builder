@@ -85,4 +85,20 @@ module ApplicationHelper
     link_to method_name.titleize, quick_edit_contact_support_state_path(contact, support_state, current_state: method_name), class: "btn #{current_state}", method: :put, remote: :true
   end
 
+  def number_of_contacts
+    Contact.all.length.present? ? Contact.all.length : "0"
+  end
+
+  def number_of_overdue_tasks
+    tasks_overdue = Task.find(:all, :order => "due_date ASC", :conditions => ["due_date < ? AND completed = ?", Time.now.to_date, false]).length
+    tasks_overdue.present? ? tasks_overdue : "0"
+  end
+
+  def occasions_today
+    task_day_strftime = DATE_DAY_STRFTIME.gsub(/COLUMN/, "special_date") 
+    task_month_strftime = DATE_MONTH_STRFTIME.gsub(/COLUMN/, "special_date") 
+    occasions_today = Occasion.where(["#{task_day_strftime} + 0 = ? AND #{task_month_strftime} + 0 = ?", Time.now.day, Time.now.month]).length
+    occasions_today.present? ? occasions_today : "0"
+  end
+
 end

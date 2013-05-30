@@ -61,6 +61,24 @@ describe ApplicationHelper do
       state = FactoryGirl.create(:defaulted_support_state, contact_id: contact.id)
       state_quick_edit(contact, state, "initial", true).should == "<a href=\"/contacts/1/support_states/1/quick_edit?current_state=initial\" class=\"btn true\" data-method=\"put\" data-remote=\"true\" rel=\"nofollow\">Initial</a>"
     end
+
+    it "should return the number of contacts, if nil then it will return 0" do
+      number_of_contacts.should == 0
+      contact = FactoryGirl.create(:defaulted_contact)
+      number_of_contacts.should == 1
+    end
+
+    it "should return the number of overdue tasks" do
+      number_of_overdue_tasks.should == 0
+      FactoryGirl.create(:defaulted_task, completed: false, due_date: 1.weeks.ago.to_date)
+      number_of_overdue_tasks.should == 1
+    end
+
+    it "return the number of special dates occuring today" do
+      occasions_today.should == 0
+      FactoryGirl.create(:defaulted_occasion, special_date: Time.now.to_date)
+      occasions_today.should == 1
+    end
     
   end
 end
