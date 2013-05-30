@@ -1,17 +1,20 @@
-	
-<h2 class="text_center">Add Phone Number</h2>
+<% content_for :header do %>
+<h2 class="pull-left"><i class="icon-phone"></i> New Phone Number</h2>
 
-<div class="row-fluid">
-	
-	<br/>
-	
-	<div class="clear">
+    <!-- Breadcrumb -->
+    <div class="bread-crumb pull-right">
+      <%= link_to "Dashboard", root_path, class: "bread-crumb" %>
+      <span class="divider">/</span> 
+      <%= link_to "Contacts", '#', class: "bread-crumb" %>
+      <span class="divider">/</span> 
+      <%= link_to "New Phone Number", '#', class: "bread-current" %>
+    </div>
+<% end %>
+
+<% content_for :stats do %>
+<div class="matter">
+<% end %>
+	<div class="container-fluid">
+		<%= render 'numbers/form' %>
 	</div>
-	
-	<div class="table_container beige">
-			<%= render "numbers/form" %>
-	</div>
-	
-	<br/>
-	
-</div>
+</div> <!-- matter -->

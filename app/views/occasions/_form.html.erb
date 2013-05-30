@@ -1,16 +1,15 @@
 
-<div class="span2 offset5">
-	<br/><br/>
+<div class="span2 center_div">
 		<%= form_for([@occasions]) do |f| %>
 				<%= f.label :contact_id, "Contact" %>
 				<%= f.select(:contact_id, form_select) %><br/><br/>
 				<%= f.label :occasion, "Occasion"%>
 				<%= f.text_field :occasion, :required => true %><br/><br/>
 				<%= f.label :special_date, "Date" %>
-				<%= f.text_field :special_date, :required => true, :class => "due_date_field" %>
+				<%= f.text_field :special_date, :required => true, :class => "date_select" %>
 				<%= f.submit :class => "btn btn-large btn-success pull-right" %>
 		<% end %>
-	<br/><br/>
+	<br/><br/><br/><br/>
 </div>
 
 <div class="clear"></div>

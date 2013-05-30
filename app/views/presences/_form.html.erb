@@ -1,5 +1,4 @@
-<div class="span2 offset5">
-	<br/><br/>
+<div class="span2 center_div">
 	<%= form_for([@presence]) do |f| %>
 		<%= f.label :contact_id, "Contact" %>
 		<%= f.select(:contact_id, form_select) %><br/><br/>
@@ -11,7 +10,7 @@
 		<%= f.text_field :account, :required => true %><br/><br/>
 		<%= f.submit :class => "btn btn-large btn-success pull-right" %>
 	<% end %>
-	<br/><br/>
+	<br/><br/><br/><br/>
 </div>
 <div class="clear"></div>
 <!-- <Presence id: nil, contact_id: nil, site: nil, url: nil, account: nil, created_at: nil, updated_at: nil>  -->

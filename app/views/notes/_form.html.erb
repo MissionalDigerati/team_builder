@@ -1,5 +1,4 @@
-<div class="span2 offset5">
-	<br/><br/>
+<div class="span2 center_div">
 		<%= form_for([@note]) do |f| %>
 				<%= f.label :contact_id, "Contact"%>
 				<%= f.select(:contact_id, form_select) %><br/><br/>
@@ -7,6 +6,6 @@
 				<%= f.text_area :note, :rows => 10 %><br/><br/>
 				<%= f.submit :class => "btn btn-large btn-success pull-right" %><br/>
 		<% end %>
-		<br/><br/>
+		<br/><br/><br/><br/>
 </div>
 <div class="clear"></div>
