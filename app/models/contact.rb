@@ -38,7 +38,8 @@ class Contact < ActiveRecord::Base
   CONTACTS = ['Email', 'Letter', 'Twitter', 'Facebook', 'Call', 'In Person', 'Skype', 'FaceTime', 'Other']
 
   def fullname
-    "#{first_name} #{last_name}"
+    fullname = "#{first_name} #{last_name}"
+    fullname.present? ? fullname : ""
   end
 
   def family_name
