@@ -1,7 +1,20 @@
-<div class="table_container beige">
-	<h2 class="text_center">Create Support Status</h2>
-<div class="span2 offset5">
-	<%= render "support_states/form" %>
-</div>
-<div class="clear"></div>
-</div>
+<% content_for :header do %>
+<h2 class="pull-left"><i class="icon-leaf"></i> New Support State</h2>
+
+    <!-- Breadcrumb -->
+    <div class="bread-crumb pull-right">
+      <%= link_to "Dashboard", root_path, class: "bread-crumb" %>
+      <span class="divider">/</span> 
+      <%= link_to "Contact", contact_path(@contact), class: "bread-crumb" %>
+      <span class="divider">/</span> 
+      <%= link_to "Support State", "#", class: "bread-current" %>
+    </div>
+<% end %>
+
+<% content_for :stats do %>
+<div class="matter">
+<% end %>
+	<div class="container-fluid">
+		<%= render 'support_states/form' %>
+	</div>
+</div> <!-- matter -->
