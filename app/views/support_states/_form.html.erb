@@ -1,4 +1,4 @@
-
+<div class="span2 center_div">
 <%= form_for([@contact, @support_state]) do |f| %>
 	<%= f.label :initial %>
 	<%= f.check_box :initial, class: "state" %>
@@ -28,12 +28,13 @@
 	<%= f.check_box :monthly_gift, class: "state" %>
 	<br/><br/>
 	<%= f.label :letter_sent_on %>
-	<%= f.text_field :letter_sent_on, :class => "due_date_field" %>
+	<%= f.text_field :letter_sent_on, :class => "due_date_field date_select" %>
 	<br/><br/>
 	<%= f.label :presented_on %>
-	<%= f.text_field :presented_on, :class => "due_date_field" %>
+	<%= f.text_field :presented_on, :class => "due_date_field date_select" %>
 	<br/><br/>
 	<%= f.label :responding_on %>
-	<%= f.text_field :responding_on, :class => "due_date_field" %>
+	<%= f.text_field :responding_on, :class => "due_date_field date_select" %>
 	<%= f.submit %>
 <% end %>
+</div>
