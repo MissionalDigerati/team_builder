@@ -1,4 +1,6 @@
 class PresencesController < ApplicationController
+
+  before_filter :set_presence_variable, :except => [:new, :create]
   
   def new
     if params[:contact_id] == nil
@@ -25,11 +27,9 @@ class PresencesController < ApplicationController
   
   def edit
     @contact = Contact.find(params[:contact_id])
-    @presence = Presence.find(params[:id])
   end
   
   def update
-    @presence = Presence.find(params[:id])
     @contact = Contact.find(@presence.contact_id)
     respond_to do |format|
       if @presence.update_attributes(params[:presence])
@@ -43,11 +43,14 @@ class PresencesController < ApplicationController
   end
   
   def destroy
-    @presence = Presence.find(params[:id])
     @presence.destroy
     respond_to do |format|
       format.html{redirect_to :back}
       flash[:notice] = "Your Web Presence has been deleted!"
     end
+  end
+
+  def set_presence_variable
+    @presence = Presence.find(params[:id])
   end
 end

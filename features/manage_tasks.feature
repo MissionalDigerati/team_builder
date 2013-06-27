@@ -68,11 +68,4 @@ Feature: A user should be able to create tasks for a user, edit, update, and cre
 		And I am on the show page for "Dynamic task"
 		And I should see "buy iphone"
 		When I click on the "Mark as Completed" link for "buy iphone"
-		Then I should not see "buy iphone"
-		
-		
-	
-	
-	
-	
-	
+		Then I should see "buy iphone"

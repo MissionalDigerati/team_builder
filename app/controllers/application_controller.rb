@@ -30,4 +30,5 @@ class ApplicationController < ActionController::Base
     @occasions_week = Occasion.find(:all, :conditions => ["#{task_day_strftime} + 0 between ? and ? AND #{task_month_strftime} + 0 = ?", day + 1, day + 5, month], :order => "special_date")
     @occasions_month = Occasion.where("#{task_month_strftime} + 0 = ? AND #{task_day_strftime} + 0 > ?", month, day).order("special_date")
   end
+  
 end

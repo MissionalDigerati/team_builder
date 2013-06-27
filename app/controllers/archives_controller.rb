@@ -1,9 +1,11 @@
 class ArchivesController < ApplicationController
   before_filter :occasion_summary, :only => [:index]
+
   def index
     @archives = Archive.all
   end
   
+  #when an archive record is created it 
   def create
     name = Archive::file_name
     @archive = Archive.new(:filename => "#{name}.tgz")
@@ -43,4 +45,5 @@ class ArchivesController < ApplicationController
       flash[:notice] = "Unable to locate file."
     end
   end
+  
 end
