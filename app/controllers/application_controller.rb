@@ -12,10 +12,12 @@ class ApplicationController < ActionController::Base
   # This passes the info to make the tables for the left had side bar to display upcoming task info
   def task_summary
     today = Time.now.to_date
+    tomorrow = 1.days.from_now.to_date
     next_week = 1.weeks.from_now.to_date
     next_4_weeks = 4.weeks.from_now.to_date
-    @tasks_within_week_range = Task.find(:all, :order => "due_date ASC", :conditions => ["due_date between ? and ? AND completed = ?", today, next_week, false])
-    @tasks_this_month = Task.find(:all, :order => "due_date ASC", :conditions => ["due_date between ? and ? AND completed = ?", today, next_4_weeks, false])
+
+    @tasks_within_week_range = Task.find(:all, :order => "due_date ASC", :conditions => ["due_date between ? and ? AND completed = ?", tomorrow, next_week, false])
+    @tasks_this_month = Task.find(:all, :order => "due_date ASC", :conditions => ["due_date between ? and ? AND completed = ?", next_week, next_4_weeks, false])
     @tasks_overdue = Task.find(:all, :order => "due_date ASC", :conditions => ["due_date < ? AND completed = ?", today, false])
   end
   
