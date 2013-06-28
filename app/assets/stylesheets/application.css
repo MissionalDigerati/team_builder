@@ -1773,3 +1773,6 @@ footer .copy{
 a.white_text{
 	color: white !important;
 }
+.min-height{
+	min-height: 590px;
+}

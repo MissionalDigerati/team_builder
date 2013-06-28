@@ -15,7 +15,7 @@
 <% end %>
 
 
-<div class="container-fluid">
+<div class="container-fluid min-height">
 <div class="row-fluid">
 	
 	<div class="span12">
@@ -35,23 +35,43 @@
 		    <div class="clearfix"></div>
 			</div>
 
-		<table class="table index table-bordered table-hover table-striped">
+		<table class="table index table-hover table-striped">
 			<tr>
-				<td>File Name</td>
-				<td>Created</td>
-				<td>Action</td>
+				<td>
+					File Name
+					<span class="slash">/</span>
+					Created
+				</td>
+				<td><span class="pull-right">Action</span></td>
 			</tr>
 		<% @archives.each do |archive| %>
 			<tr>
-				<td><%= archive.filename %></td>
-				<td><%= archive.created_at.strftime('%m/%d/%Y') %></td>
-				<td class="text_center"><%= link_to delete_button, archive, method: :delete, data: { confirm: 'Are you sure? Please note this will also delete the backup file in the backup directory.' }, :class => "btn btn-danger btn-small" %> <%= link_to "Download <i class='icon-download icon-white'></i>".html_safe, download_archive_path(archive), :class => "btn btn-success btn-small" %></td>
+				<td>
+					<%= archive.filename %>
+					<span class="slash">/</span>
+					<%= archive.created_at.strftime('%m/%d/%Y') %>
+				</td>
+				<td>
+					<span class="pull-right">
+					<div class="btn-group pull-right">
+					<a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li>
+							<%= link_to delete_button, archive, method: :delete, data: { confirm: 'Are you sure? Please note this will also delete the backup file in the backup directory.' } %> 
+						<li class="divider"></li>
+						<li>
+							<%= link_to "Download <i class='icon-download icon-white'></i>".html_safe, download_archive_path(archive) %>
+						</li>
+					</ul>
+				</div> 
+				</td>
 			</tr>
 		<% end %>
 		</table>
+		<hr>
 		<br/>
 		<br/>
-		<p class="text-warning">Backup files are located in the backups folder, under the root directory of this application.</p>
+		<p class="text-warning">&nbsp;&nbsp;&nbsp;&nbsp;Backup files are located in the backups folder, under the root directory of this application.</p>
 	</div> <!-- widget -->
 	<br/><br/>
 	</div><!-- span12 -->

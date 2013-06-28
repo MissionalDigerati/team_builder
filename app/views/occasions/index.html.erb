@@ -26,7 +26,8 @@
 						  <!-- Widget head -->
 							<div class="widget-head">
 						  	<div class="pull-left">
-						  		<%= "Special dates (today #{Time.now.to_date.strftime('%m/%d/%Y')}):" %>
+						  		<%= "Special dates (today #{Time.now.to_date.strftime('%m/%d/%Y')}):" %><br/>
+						  		Contact <span class="slash">/</span> Occasion
 						  	</div>
 						  	<div class="widget-icons pull-right">
 						    	<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
@@ -34,12 +35,17 @@
 						    <div class="clearfix"></div>
 							</div>
 							<div class="widget-content">
-								<table class="table index table-bordered table-hover table-striped">
+								<table class="table index table-hover table-striped">
 									<% @occasions_today.each do |today| %>
 										<tr>
-											<td><%= link_to summary_name_helper(today), contact_path(today.contact_id)%></td>
-											<td><%= today.occasion %></td>
-											<td><%= link_to "View", contact_path(today.contact_id), :class => "btn btn-info btn-small pull-right" %></td>
+											<td>
+												<%= link_to summary_name_helper(today), contact_path(today.contact_id)%>
+												<span class="slash">/</span> 
+												<%= today.occasion %>
+											</td>
+											<td>
+												<%= link_to "View", contact_path(today.contact_id), :class => "btn btn-info btn-small pull-right" %>
+											</td>
 										</tr>
 									<% end %>
 								</table>
@@ -54,7 +60,8 @@
 						  <!-- Widget head -->
 							<div class="widget-head">
 						  	<div class="pull-left">
-						  		Upcoming special dates (This Week):
+						  		Upcoming special dates (This Week):<br/>
+						  		Contact <span class="slash">/</span> Occasion <span class="slash">/</span> Date
 						  	</div>
 						  	<div class="widget-icons pull-right">
 						    	<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
@@ -62,12 +69,16 @@
 						    <div class="clearfix"></div>
 							</div>
 							<div class="widget-content">
-								<table class="table index table-bordered table-hover table-striped">
+								<table class="table index table-hover table-striped">
 									<% @occasions_week.each do |week| %>
 										<tr>
-											<td><%= link_to summary_name_helper(week), contact_path(week.contact_id)%></td>
-											<td><%= week.occasion %></td>
-											<td><%= week.special_date.strftime('%m/%d') %></td>
+											<td>
+												<%= link_to summary_name_helper(week), contact_path(week.contact_id)%>
+												<span class="slash">/</span>
+												<%= week.occasion %>
+												<span class="slash">/</span>
+												<%= week.special_date.strftime('%m/%d') %>
+											</td>
 											<td><%= link_to "View", contact_path(week.contact_id), :class => "btn btn-info btn-small pull-right" %></td>
 										</tr>
 									<% end %>
@@ -84,7 +95,8 @@
 						  <!-- Widget head -->
 							<div class="widget-head">
 						  	<div class="pull-left">
-						  		Upcoming special dates (This Month):
+						  		Upcoming special dates (This Month):<br/>
+						  		Contact <span class="slash">/</span> Occasion <span class="slash">/</span> Date
 						  	</div>
 						  	<div class="widget-icons pull-right">
 						    	<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
@@ -92,12 +104,16 @@
 						    <div class="clearfix"></div>
 							</div>
 							<div class="widget-content">
-								<table class="table index table-bordered table-hover table-striped">
+								<table class="table index table-hover table-striped">
 									<% @occasions_month.each do |month| %>
 										<tr>
-											<td><%= link_to summary_name_helper(month), contact_path(month.contact_id)%></td>
-											<td><%= month.occasion %></td>
-											<td><%= month.special_date.strftime('%m/%d') %></td>
+											<td>
+												<%= link_to summary_name_helper(month), contact_path(month.contact_id)%>
+												<span class="slash">/</span>
+												<%= month.occasion %>
+												<span class="slash">/</span>
+												<%= month.special_date.strftime('%m/%d') %>
+											</td>
 											<td><%= link_to "View", contact_path(month.contact_id), :class => "btn btn-info btn-small pull-right" %></td>
 										</tr>
 									<% end %>
@@ -122,13 +138,16 @@
 				    <div class="clearfix"></div>
 					</div>
 				<div class="widget-content">
-					<table class="table index table-bordered table-hover table-striped", id="occasions">
+					<table class="table index table-hover table-striped", id="occasions">
 					  <tr>
-					    <th>Name</th>
-							<th><%= sortable "occasion" %></th>
-							<th><%= sortable "special_date", "Date (mm/dd/yyyy)" %></th>
-							<th><%= sortable "created_at" %></th>
-					    <th>Action</th>
+					    <th>
+						    Name
+						    <span class="slash">/</span>
+							<%= sortable "occasion" %>
+							<span class="slash">/</span>
+							<%= sortable "special_date", "Date (mm/dd/yyyy)" %>
+						</th>
+					    <th><span class="pull-right">Action</span></th>
 					  </tr>
 
 						<%= render @occasions %>
