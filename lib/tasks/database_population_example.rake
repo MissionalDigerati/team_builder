@@ -26,7 +26,7 @@ namespace :db do
       contact.country_id = 226
       contact.receive_newsletter = [true, false]
       contact.preferred_contact = ['Please Choose','Email', 'Letter', 'Twitter', 'Facebook', 'Call', 'In Person', 'Skype', 'FaceTime', 'Other']
-      contact.created_at = 2.weeks.ago..Time.now
+      contact.created_at = 2.weeks.ago
       contact.believer = [true, false]
       contact.donations_count = 3
       # contact.tags.name = "tags"
@@ -78,6 +78,8 @@ namespace :db do
     contact.tasks.create({task: "overdue", due_date: 1.weeks.ago.to_date, category: "Phone Call"})
     contact.tasks.create({task: "1 week", due_date: 1.weeks.from_now.to_date, category: "Phone Call"})
     contact.tasks.create({task: "3 weeks", due_date: 3.weeks.from_now.to_date, category: "Phone Call"})
+
+    Contact.all.each { |contact| contact.avatar = File.open(Dir.glob(File.join(Rails.root, 'sampleimages', '*')).sample); contact.save! }
 
   end
 end
