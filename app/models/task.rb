@@ -1,4 +1,5 @@
 class Task < ActiveRecord::Base
+	
   belongs_to :contact
   attr_accessible :contact_id, :completed, :task, :due_date, :category
   validates :task, :due_date, :category, :contact_id, :presence => true
