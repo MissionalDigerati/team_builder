@@ -15,16 +15,19 @@
 					<a class="close" data-dismiss="alert" href="#">&times;</a>
 					<%= flash[:notice] %>
 				</div>
-				<br/>
 			<% end %>
-	
+			
 			<% if flash[:alert] %>
 				<div class="alert">
 					<a class="close" data-dismiss="alert" href="#">&times;</a>
 					<%= flash[:alert] %>
 				</div>
-				<br/>
 			<% end %>
+
+			<div class="alert">
+				Please note, this is test version of this application. The database will be purged and re-populated every 3 hours. Any changes you make will be temporary.
+			</div>
+
 	</div> <!-- container-fluid -->		
 	<%= render 'layouts/header' %>
 	<%= render 'layouts/sidebar' %>

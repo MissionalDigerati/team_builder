@@ -10,10 +10,15 @@ gem 'selenium-webdriver'
 # in production environments by default.
 gem 'coffee-rails', '~> 3.2.1'
 gem 'font-awesome-rails'
+gem 'bootstrap-sass'
+gem 'jquery-ui-rails'
+gem 'capistrano'
+gem 'populator'
+gem 'faker'
+gem 'therubyracer'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
-  gem 'bootstrap-sass'
-  gem 'jquery-ui-rails'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
@@ -28,9 +33,8 @@ group :test, :development do
   gem "factory_girl_rails"
   gem 'sqlite3'
   gem 'launchy'
-  gem 'populator'
-  gem 'faker'
   gem 'spreadsheet'
+  gem 'capistrano'
 end
 
 group :test do
