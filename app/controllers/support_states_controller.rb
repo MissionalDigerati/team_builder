@@ -1,12 +1,13 @@
 class SupportStatesController < ApplicationController
 
+	before_filter :set_contact_variable
+	before_filter :set_support_state_variable, :only => [:edit, :update]
+
 	def new
-		@contact = Contact.find(params[:contact_id])
 		@support_state = @contact.build_support_state
 	end
 
 	def create
-		@contact = Contact.find(params[:contact_id])
 		@support_state = @contact.build_support_state(params[:support_state])
 		respond_to do |format|
 			if @support_state.save
@@ -20,13 +21,9 @@ class SupportStatesController < ApplicationController
 	end
 
 	def edit
-		@contact = Contact.find(params[:contact_id])
-		@support_state = SupportState.find(params[:id])
 	end
 
 	def update
-		@contact = Contact.find(params[:contact_id])
-		@support_state = SupportState.find(params[:id])
 		respond_to do |format|
 			if @support_state.update_attributes(params[:support_state])
 				format.html {redirect_to(contact_path(@contact))}
@@ -39,7 +36,6 @@ class SupportStatesController < ApplicationController
 	end
 
 	def quick_edit
-		@contact = Contact.find(params[:contact_id])
 		@state = SupportState.find(params[:id])
 		SupportState.state_edit_delegation(@state, params[:current_state])
 		# redirect_to contact_path(params[:contact_id])
@@ -49,4 +45,13 @@ class SupportStatesController < ApplicationController
 			@message = "Support state has been updated to #{params[:current_state].titleize}."
 		end
 	end
+
+	def set_contact_variable
+		@contact = Contact.find(params[:contact_id])
+	end
+
+	def set_support_state_variable
+		@support_state = SupportState.find(params[:id])
+	end
+
 end

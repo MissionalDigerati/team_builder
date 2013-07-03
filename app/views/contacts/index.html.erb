@@ -70,7 +70,7 @@
 				
 				  <!-- Widget content -->
 				  <div class="widget-content">
-				  	<table class="table index table-bordered table-hover table-striped">
+				  	<table class="table index table-hover table-striped">
 				  	  <tr>
 				  	    <th>Name</th>
 				  	    <th>Action</th>
@@ -106,17 +106,24 @@
 			
 			      <!-- Widget content -->
 			      <div class="widget-content">
-			      	<table class="table index table-bordered table-hover table-striped", id="contacts">
+			      	<table class="table index table-hover table-striped", id="contacts">
 			      	  <tr>
-			      	  	<th></th>
-			      	    <th><%= sortable "presented_vision", "Presented?" %></th>
-			      		<th>Tags</th>
-			      		<th><%= sortable "last_name" %></th>
-			      	    <th><%= sortable "first_name" %></th>
-			      		<th><%= sortable "spouse_name" %></th>
-			      		<th><%= sortable "believer" %></th>
-			      		<th><%= sortable "preferred_contact" %></th>
-			      	    <th>Action</th>
+			      	  	<th>
+				      		<%= sortable "last_name" %>
+				      		<span class="slash">/</span> 
+				      	    <%= sortable "first_name" %>
+				      	    <span class="slash">/</span> 
+				      		<%= sortable "spouse_name" %>
+				      		<span class="slash">/</span> 
+				      		<%= sortable "believer" %>
+				      		<span class="slash">/</span> 
+				      		<%= sortable "preferred_contact" %>
+				      		<span class="slash">/</span> 
+				      		<%= sortable "presented_vision", "Presented?" %>
+				      		<span class="slash">/</span> 
+				      		Tags
+				      	    <span class="pull-right">Action</span>
+			      		</th>
 			      	  </tr>
 
 			      		<%= render @contacts%>

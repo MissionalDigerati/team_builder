@@ -13,6 +13,7 @@ class Contact < ActiveRecord::Base
 
   attr_accessible :tag_list #acts as taggable gem
   acts_as_taggable
+  
   attr_accessible :numbers_attributes
   attr_accessible :occasions_attributes
   attr_accessible :presences_attributes

@@ -1,6 +1,8 @@
 class TasksController < ApplicationController
+
   helper_method :sort_column, :sort_direction
   before_filter :task_summary, :only => [:index]
+  before_filter :set_task_variable, :only => [:edit, :update, :destroy, :completed]
   
   def index
     @task = Task.order(sort_column + " " + sort_direction).page(params[:page])
@@ -31,11 +33,9 @@ class TasksController < ApplicationController
   
   def edit
     @contact = Contact.find(params[:contact_id])
-    @task = Task.find(params[:id])
   end
   
   def update
-    @task = Task.find(params[:id])
     @contact = Contact.find(@task.contact_id)
     respond_to do |format|
       if @task.update_attributes(params[:task])
@@ -49,7 +49,6 @@ class TasksController < ApplicationController
   end
   
   def destroy
-    @task = Task.find(params[:id])
     @task.destroy
     respond_to do |format|
       format.html {redirect_to :back }
@@ -58,7 +57,6 @@ class TasksController < ApplicationController
   end
   
   def completed
-    @task = Task.find(params[:id])
     # @contact = Contact.find(params[:contact_id])
     @task[:completed] = true
     respond_to do |format|
@@ -66,6 +64,10 @@ class TasksController < ApplicationController
         format.js
       end
     end
+  end
+
+  def set_task_variable
+    @task = Task.find(params[:id])
   end
   
   protected
@@ -77,4 +79,5 @@ class TasksController < ApplicationController
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
+  
 end

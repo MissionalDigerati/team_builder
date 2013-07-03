@@ -5,6 +5,7 @@ class SupportState < ActiveRecord::Base
   attr_accessible :contact_id, :initial, :letter_sent, :letter_sent_on, :contacting, :seen_presentation, :presented_on, 
   :following_up, :responding_on, :one_time_gift, :monthly_gift, :not_giving, :no_response
 
+  # this method ensures that the inputted paramater corrilates with a list of the known methods. 
   def self.state_edit_delegation(state, params)
     if self.respond_to?(params) && POSSIBLE_STATES.include?(params)
       self.send(params, state)

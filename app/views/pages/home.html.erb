@@ -177,25 +177,54 @@
 			
 			      <!-- Widget content -->
 			      <div class="widget-content">
-						<table class="table table-hover table-bordered">
+						<table class="table table-hover">
 							<thead>
-								<th>Complete</th>
-								<th>Contact</th>
-								<th>Status</th>
-								<th>Task</th>
-								<th>Due date</th>
-								<th>Category</th>
-								<th>Action</th>		
+								<th>
+									Complete
+									<span class="slash">/</span> 
+									Contact
+									<span class="slash">/</span> 
+									Status
+									<span class="slash">/</span> 
+									Task
+									<span class="slash">/</span> 
+									Due date
+									<span class="slash">/</span> 
+									Category
+								</th>
+								<th><span class="pull-right">Action</span></th>
 							</thead>
 						<% @task.each do |task| %>
 							<tr rel="<%= task.id %>" >
-								<td><%= check_box_tag "#{task.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(task), remote: true, :class => "completed_button #{task.id} hidden" %>Check to complete</td>
-								<td><%= link_to task.contact.fullname.titleize, contact_path(task.contact_id) %></td>
-								<td class="task_status"><%= status(task.completed) %></td>
-								<td><%= task.task %></td>
-								<td><%= task.due_date.strftime('%m/%d/%Y') %></td>
-								<td><%= task.category %></td>
-								<td class="text_center"><%= link_to edit_button, edit_task_path(task, contact_id: task.contact_id), :class => "btn btn-small btn-success" %> <%= link_to delete_button, task_path(task), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> <%= link_to contact_button, contact_path(task.contact_id), :class => "btn btn-small btn-info" %></td>
+								<td><%= check_box_tag "#{task.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(task), remote: true, :class => "completed_button #{task.id} hidden" %>Check to complete 
+									<span class="slash">/</span> 
+									<%= link_to task.contact.fullname.titleize, contact_path(task.contact_id) %>
+									<span class="slash">/</span> 
+									<%= status(task.completed) %>
+									<span class="slash">/</span> 
+									<%= task.task %>
+									<span class="slash">/</span> 
+									<%= task.due_date.strftime('%m/%d/%Y') %>
+									<span class="slash">/</span> 
+									<%= task.category %>
+								<td class="">
+									<div class="btn-group pull-right">
+										<a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
+										<ul class="dropdown-menu">
+											<li>
+												<%= link_to edit_button, edit_task_path(task, contact_id: task.contact_id) %>
+											</li>
+											<li class="divider"></li>
+											<li>
+												<%= link_to delete_button, task_path(task), :method => :delete, data: { confirm: 'Are you sure?'}%>
+											</li>
+											<li class="divider"></li>
+											<li>
+												<%= link_to contact_button, contact_path(task.contact_id) %>
+											</li>
+										</ul>
+									</div> 
+								</td>
 							</tr>
 						<% end %>	
 						</table>

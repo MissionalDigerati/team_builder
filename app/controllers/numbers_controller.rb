@@ -1,4 +1,6 @@
 class NumbersController < ApplicationController
+
+  before_filter :set_number_var, :only => [:update, :destroy]
   
   def new
     if params[:contact_id] == nil
@@ -29,7 +31,6 @@ class NumbersController < ApplicationController
   end
   
   def update
-    @number = Number.find(params[:id])
     @contact = Contact.find(@number.contact_id)
     respond_to do |format|
       if @number.update_attributes(params[:number])
@@ -43,7 +44,6 @@ class NumbersController < ApplicationController
   end
   
   def destroy
-     @number = Number.find(params[:id])
      @number.destroy
      respond_to do |format|
        format.html { redirect_to :back }
@@ -51,4 +51,8 @@ class NumbersController < ApplicationController
      end
    end
   
+  def set_number_var
+    @number = Number.find(params[:id])
+  end
+
 end

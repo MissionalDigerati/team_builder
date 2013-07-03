@@ -22,14 +22,14 @@
 		
 		<%= render "tasks/task_summary" %>
 
-		
+		<br/>
 		<%= link_to "Add Task", new_task_path, :class => "btn btn-primary pull-right" %>
 		<div class="clear"></div>
 		<div class="widget">
 
 			<div class="widget-head">
 				<div class="pull-left">
-					New Contacts
+					All Tasks
 				</div>
 				<div class="widget-icons pull-right">
 					<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
@@ -37,15 +37,24 @@
 				<div class="clearfix"></div>
 			</div>
 			<div class="widget-content">
-				<table class="table index table-bordered table-hover table-striped", id="tasks">
+				<table class="table index table-hover table-striped", id="tasks">
 					<thead>
-						<th>Complete</th>
-						<th>Contact</th>
-						<th><%= sortable "completed", "Status" %></th>
-						<th><%= sortable "task" %></th>
-						<th><%= sortable "due_date", "Date (mm/dd/yyyy)" %></th>
-						<th><%= sortable "category" %></th>
-						<th>Action</th>
+						<th>
+							Complete
+							<span class="slash">/</span> 
+							Contact
+							<span class="slash">/</span> 
+							<%= sortable "completed", "Status" %>
+							<span class="slash">/</span> 
+							<%= sortable "task" %>
+							<span class="slash">/</span> 
+							<%= sortable "due_date", "Date (mm/dd/yyyy)" %>
+							<span class="slash">/</span> 
+							<%= sortable "category" %>
+						</th>
+						<th>
+							<span class="pull-right">Action</span>
+						</th>
 					</thead>
 					<%= render @task %>
 				</table>
@@ -55,6 +64,8 @@
 		
 		<%= link_to "Add Task", new_task_path, :class => "btn btn-primary pull-right" %>
 		<%= paginate @task, :theme => 'twitter-bootstrap' %>
+		<br/>
+		<br/>
 	</div>
 	<div class="clear"></div>
 </div>

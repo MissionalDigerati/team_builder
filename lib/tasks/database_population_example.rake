@@ -73,5 +73,11 @@ namespace :db do
       end
       
     end
+
+    contact = Contact.first
+    contact.tasks.create({task: "overdue", due_date: 1.weeks.ago.to_date, category: "Phone Call"})
+    contact.tasks.create({task: "1 week", due_date: 1.weeks.from_now.to_date, category: "Phone Call"})
+    contact.tasks.create({task: "3 weeks", due_date: 3.weeks.from_now.to_date, category: "Phone Call"})
+
   end
 end

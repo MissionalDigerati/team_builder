@@ -1,4 +1,6 @@
 class NotesController < ApplicationController
+
+  before_filter :set_not_variable, :only => [:update, :destroy]
   
   def new
     if params[:contact_id] == nil
@@ -30,7 +32,6 @@ class NotesController < ApplicationController
   end
   
   def update
-    @note = Note.find(params[:id])
     @contact = Contact.find(@note.contact_id)
     respond_to do |format|
       if @note.update_attributes(params[:note])
@@ -45,12 +46,15 @@ class NotesController < ApplicationController
   
   def destroy
     @contact = Contact.find(params[:contact_id])
-    @note = Note.find(params[:id])
     @note.destroy
     respond_to do |format|
       format.html{redirect_to :back}
       flash[:notice] = "Your Note has been deleted!"
     end
+  end
+
+  def set_not_variable
+    @note = Note.find(params[:id])
   end
   
 end

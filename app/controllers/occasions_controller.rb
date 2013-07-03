@@ -1,9 +1,9 @@
 class OccasionsController < ApplicationController
+  
   helper_method :sort_column, :sort_direction
   before_filter :occasion_summary, :only => [:index]
   
   def index
-    # @occasions = Occasion.order("updated_at DESC").page(params[:page])
     @occasions = Occasion.order(sort_column + " " + sort_direction).page(params[:page])
   end
   

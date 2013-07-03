@@ -1765,3 +1765,11 @@ footer .copy{
 		margin-left: 200px;
 	}
 }
+.slash{
+	color: #4d4d4d;
+	font-size: 16px;
+	font-weight: bold;
+}
+a.white_text{
+	color: white !important;
+}

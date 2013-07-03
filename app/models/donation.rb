@@ -5,11 +5,6 @@ class Donation < ActiveRecord::Base
   validates :amount, :project, :contact_id, :presence => true
   validates :amount, :numericality => {:greater_than => 0}
   
-  
-  def self.month_hash
-    {"Jan" => 1, "Feb" => 2}
-  end
-  
   def self.this_month_sum
     month_strftime = DATE_MONTH_STRFTIME.gsub(/COLUMN/, "donation_date") 
     year_strftime = DATE_YEAR_STRFTIME.gsub(/COLUMN/, "donation_date")
