@@ -17,4 +17,5 @@
 /tmp
 .rvmrc
 .DS_Store
+/csv/*
 
