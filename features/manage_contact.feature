@@ -85,11 +85,11 @@ Feature: A user manages their contacts
   	Then I should be on the contact index page
   	And I should see "Bill"
 		And I should see "Ted"
-  	And I should see "Searching by tag: Friend"
+  	And I should see "Searching for: Friend"
   	When I fill in "search" with "#enemy"
   	And I click the "search_submit" button
   	Then I should be on the contact index page
-  	And I should see "Searching by tag: Enemy"	
+  	And I should see "Searching for: Enemy"	
 		And I should not see "Bill"
 		And I should not see "Ted"
 	

@@ -9,15 +9,11 @@ class ContactsController < ApplicationController
   # Also passes all the new contacts from the past week in the instance variable @new_contacts
   # the tag and search param are passed if searching with the search bar or by tags, it filters the contacts according to the search. 
   def index
-    if params[:search].present? && params[:search].first == "#"
-      params[:tag] = params[:search].to_s
-      @contacts = Contact.tag_search(params[:tag]).page(params[:page])
-    elsif params[:search] || params[:tag]
-      @contacts = Contact.contact_index(params[:tag], params[:search]).page(params[:page])
+    if params[:search] || params[:tag]
+      @contacts = Contact.contact_search_and_tag_delegation(params[:tag], params[:search]).page(params[:page])
     else
       @contacts = Contact.order(sort_column + " " + sort_direction).page(params[:page])
     end
-    
     @new_contacts = Contact.find(:all, :conditions => ["created_at between ? and ?", 1.weeks.ago, Time.now])
     respond_to do |format|
       format.js

@@ -71,12 +71,28 @@ class Contact < ActiveRecord::Base
     Contact.find(:all, :conditions => ["created_at between ? and ?", 1.years.ago.to_date, Time.now.to_date]).length
   end
 
-  def self.contact_index(tag, search)
+  #
+  # The following is the logic behind the searching of contacts
+  # via the search bar in the view. 
+
+  def self.contact_search_and_tag_delegation(tag=nil, search=nil)
     if tag.present?
-      tag_search(tag)
-    else
-      self.where("first_name like ? or last_name like ?", "%#{search}%", "%#{search}%")
+      self.tag_search(tag)
+    elsif search.present?
+      self.contact_search_delegation(search)
     end
+  end
+
+  def self.contact_search_delegation(search)
+    if search.first == "#"
+      self.tag_search(search)
+    else
+      self.contact_index(search)
+    end
+  end
+
+  def self.contact_index(search)
+    self.where("first_name like ? or last_name like ?", "%#{search}%", "%#{search}%")
   end
 
   def self.tag_search(tag)
@@ -85,6 +101,5 @@ class Contact < ActiveRecord::Base
     end
     self.tagged_with(tag)
   end
-
 
 end
