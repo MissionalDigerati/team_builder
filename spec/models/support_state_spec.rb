@@ -8,6 +8,23 @@ describe SupportState do
   	end
   end
 
+	describe "scopes" do
+		
+		describe "count_by_progress" do
+			it "should return the correct count" do
+				contact = FactoryGirl.create(:defaulted_contact)
+	      state = FactoryGirl.create(:starting_support_state, contact_id: contact.id, initial: false, seen_presentation: true)
+				contact2 = FactoryGirl.create(:defaulted_contact)
+	      state2 = FactoryGirl.create(:starting_support_state, contact_id: contact2.id, initial: false, seen_presentation: true)
+				SupportState.count_by_progress(:seen_presentation).should == 2
+			end
+			it "should return 0 if the progress_column does not exist" do
+				SupportState.count_by_progress(:not_a_progress).should == nil
+			end
+		end
+		
+	end
+
   describe "methods" do
     it "should mark the state initial boolean as true and all others false" do
       contact = FactoryGirl.create(:defaulted_contact)
@@ -47,6 +64,22 @@ describe SupportState do
       SupportState.following_up(state)
       state.following_up.should == true
     end
+
+		describe "current_progress" do
+			
+			it "should return the correct support state for a contact that is supporting Monthly" do
+				contact = FactoryGirl.create(:defaulted_contact)
+	      state = FactoryGirl.create(:starting_support_state, contact_id: contact.id, monthly_gift: true, initial: false)
+				contact.support_state.progress.should == "Monthly Gift"
+			end
+			
+			it "should return the correct support state for a contact that has shown no response" do
+				contact = FactoryGirl.create(:defaulted_contact)
+	      state = FactoryGirl.create(:starting_support_state, contact_id: contact.id, no_response: true, initial: false)
+				contact.support_state.progress.should == "No Response"
+			end
+			
+		end
 
     it "should mark all states other than one time gift false, and leave all date fields alone" do
       contact = FactoryGirl.create(:defaulted_contact)
