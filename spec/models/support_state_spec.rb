@@ -48,6 +48,22 @@ describe SupportState do
       state.following_up.should == true
     end
 
+		describe "current_progress" do
+			
+			it "should return the correct support state for a contact that is supporting Monthly" do
+				contact = FactoryGirl.create(:defaulted_contact)
+	      state = FactoryGirl.create(:starting_support_state, contact_id: contact.id, monthly_gift: true, initial: false)
+				contact.support_state.progress.should == "Monthly Gift"
+			end
+			
+			it "should return the correct support state for a contact that has shown no response" do
+				contact = FactoryGirl.create(:defaulted_contact)
+	      state = FactoryGirl.create(:starting_support_state, contact_id: contact.id, no_response: true, initial: false)
+				contact.support_state.progress.should == "No Response"
+			end
+			
+		end
+
     it "should mark all states other than one time gift false, and leave all date fields alone" do
       contact = FactoryGirl.create(:defaulted_contact)
       state = FactoryGirl.create(:defaulted_support_state, contact_id: contact.id, one_time_gift: false)

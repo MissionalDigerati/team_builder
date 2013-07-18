@@ -59,6 +59,12 @@ class SupportState < ActiveRecord::Base
     one_time_gift: false, monthly_gift: false, not_giving: false, no_response: true, responding_on: nil)
   end
 
+	def progress
+		[:initial, :letter_sent, :contacting, :seen_presentation, :following_up, :one_time_gift, :monthly_gift, :not_giving, :no_response].each do |pa|
+			return pa.to_s.gsub(/[(_)]/, ' ').titlecase if self[pa] === true
+		end
+	end
+
 private
   
   POSSIBLE_STATES = ["initial_state", "letter_sent", "contacting", "seen_presentation", "following_up", "one_time_gift", "monthly_gift", "not_giving", "no_response"]

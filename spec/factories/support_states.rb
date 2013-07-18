@@ -18,4 +18,19 @@ FactoryGirl.define do
   	not_giving true
   	no_response true
   end
+	factory :starting_support_state, parent: :support_state do
+  	contact_id 0
+  	initial true
+  	letter_sent false
+  	letter_sent_on Time.now.to_date
+  	contacting  false
+  	seen_presentation false
+  	presented_on Time.now.to_date
+  	following_up false
+  	responding_on Time.now.to_date
+  	one_time_gift false
+  	monthly_gift false
+  	not_giving false
+  	no_response false
+  end
 end
