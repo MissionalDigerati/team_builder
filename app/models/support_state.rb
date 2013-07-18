@@ -15,7 +15,7 @@ class SupportState < ActiveRecord::Base
   end
 
 	def self.count_by_progress(progress_column)
-		self.where(progress_column => true).count if POSSIBLE_STATES.include?(progress_column.to_s)
+		self.where(progress_column => true).count if PROGRESS_COLUMNS.include?(progress_column)
 	end
 
   def self.initial_state(state)
@@ -64,12 +64,13 @@ class SupportState < ActiveRecord::Base
   end
 
 	def progress
-		POSSIBLE_STATES.each do |pa|
-			return pa.gsub(/[(_)]/, ' ').titlecase if self[pa.to_sym] === true
+		PROGRESS_COLUMNS.each do |pa|
+			return pa.to_s.gsub(/[(_)]/, ' ').titlecase if self[pa] === true
 		end
 	end
 
 private
   
-  POSSIBLE_STATES = ["initial", "letter_sent", "contacting", "seen_presentation", "following_up", "one_time_gift", "monthly_gift", "not_giving", "no_response"]
+  POSSIBLE_STATES = ["initial_state", "letter_sent", "contacting", "seen_presentation", "following_up", "one_time_gift", "monthly_gift", "not_giving", "no_response"]
+	PROGRESS_COLUMNS = [:initial, :letter_sent, :contacting, :seen_presentation, :following_up, :one_time_gift, :monthly_gift, :not_giving, :no_response]
 end
