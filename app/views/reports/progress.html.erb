@@ -1,0 +1,124 @@
+<% content_for :header do %>
+<h2 class="pull-left"><i class="icon-group"></i> Contacts</h2>
+
+    <!-- Breadcrumb -->
+    <div class="bread-crumb pull-right">
+      <%= link_to "Dashboard", root_path, class: "bread-crumb" %>
+      <span class="divider">/</span> 
+      <%= link_to "Contacts", contacts_path, class: "bread-current" %>
+    </div>
+<% end %>
+
+<% content_for :stats do %>
+
+<div class="matter">
+  <div class="container-fluid">
+    <!-- Today status. jQuery Sparkline plugin used. -->
+    <div class="row-fluid">
+      <div class="span12"> 
+        <!-- List starts -->
+        <ul class="today-datas">
+          <!-- List #1 -->
+          <li>
+            <!-- Graph -->
+            <div class="datas-text">Total Contacts:<br/><%= Contact.contact_count %></div>
+          </li>
+          <li>
+            <div class="datas-text">Non-Believers:<br/><%= Contact.non_believers %></div>
+          </li>
+          <li>
+            <div class="datas-text">New Contacts (last 4 weeks):<br/><%= Contact.contacts_in_last_month %></div>
+          </li>
+          <li>
+            <div class="datas-text">New Contacts (last year):<br/><%= Contact.contacts_in_last_year %></div>
+          </li> 
+          <li>
+            <div class="datas-text">Saw Presentation:<br/><%= Contact.who_saw_presentation %></div>
+          </li>
+          <li>
+            <div class="datas-text">Contacts who Donated:<br/><%= Contact.donated_contacts %></div>
+          </li>                                                                                                                
+        </ul> 
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span12">
+				<div class="clear"></div>
+
+			<%= tag_param %>
+		    <% if @contacts.present? %>
+		    <%= link_to 'New Contact', new_contact_path, :class => "btn btn-primary pull-right" %>
+		    <br/><br/>
+			    <div class="widget">
+			      <!-- Widget head -->
+			    	<div class="widget-head">
+			        <div class="pull-left">Contacts</div>
+			        <div class="widget-icons pull-right">
+			          <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+			        </div>  
+			        <div class="clearfix"></div>
+			      </div>              
+			
+			      <!-- Widget content -->
+			      <div class="widget-content">
+			      	<table class="table index table-hover table-striped", id="contacts">
+			      	  <tr>
+			      	  	<th>
+			      	  		Image
+			      	  	</th>
+			      	  	<th>
+				      		Initial
+				      	</th>
+				      	<th>
+				      	    LetterSent
+				      	</th>
+				      	<th>
+				      		Contacting
+				      	</th>
+				      	<th>
+				      		Seen Presentation
+				      	</th>
+				      	<th>
+				      		Following Up
+				      	</th>
+				      	<th>
+				      		One Time Gift
+				      	</th>
+				      	<th>
+				      		Monthly Gift
+				      	</th>
+				      	<th>
+				      		No Response
+				      	</th>
+				      	<th>
+				      		Not Giving
+				      	</th>
+				      	<th>
+				      	    <span class="pull-right">Action</span>
+			      		</th>
+			      	  </tr>
+
+			      		<% @contacts.each do |contact| %>
+			      			<tr>
+			      				<td>
+			      				</td>	
+			      			</tr>
+			      		<% end %>
+
+			      	</table>
+						<div class="widget-foot">
+	                  	</div>
+			      </div>
+			    </div>
+		    <% end %>
+		    <%= link_to 'New Contact', new_contact_path, :class => "btn btn-primary pull-right" %>
+		    <br/><br/>
+		  </div>
+		</div>
+	</div> <!-- container-fluid end -->
+</div> <!-- div class mattter ends -->

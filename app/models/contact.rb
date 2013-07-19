@@ -102,4 +102,8 @@ class Contact < ActiveRecord::Base
     self.tagged_with(tag)
   end
 
+  def self.contact_report_query
+    self.includes(:support_state).all
+  end
+
 end
