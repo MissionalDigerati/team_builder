@@ -95,5 +95,13 @@ describe Contact do
       search.first.should == user_with_tag
     end
 
+    it "should query all contacts including their support state." do
+      contact = FactoryGirl.create(:defaulted_contact, tag_list: "fred")
+      state = FactoryGirl.create(:starting_support_state, contact_id: contact.id)
+      query = Contact.contact_report_query
+      query.first.should == contact
+      query.first.support_state.should == state
+    end
+
   end
 end
