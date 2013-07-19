@@ -67,22 +67,21 @@
 			      <!-- Widget content -->
 			      <div class="widget-content">
 			      	
-
 			      	<div class="progress">
-			      	<div class="bar bar-success" style="width: 35%">sent letter</div>
+			      		<div class="bar bar-warning progress_text" style="width: 25%">Initial</div>
+			      		<div class="bar bar-info progress_text" style="width: 25%">Contacting</div>
+			      		<div class="bar bar-success progress_text" style="width: 25%">Giving</div>
+			      		<div class="bar bar-danger progress_text" style="width: 25%">Not Giving</div>
 			      	</div>
-
 
 			      	<table class="table index table-hover table-striped", id="contacts">
 			      	  <tr>
 			      	  	<th>
-			      	  		Image
-			      	  	</th>
-			      	  	<th class="text_justified">
+			      	  		Image /
 			      	  		<span class="text_justified">
 				      		Initial / Letter Sent / Contacting / Seen Presentation / Following Up / One Time Gift / Monthly Gift / No Response / Not Giving
 				      		</span>
-				      	</th>
+			      	  	</th>
 				      	<th>
 				      	    <span class="pull-right">Action</span>
 			      		</th>
@@ -91,7 +90,16 @@
 			      		<% @contacts.each do |contact| %>
 			      			<tr>
 			      				<td>
-			      				</td>	
+			      					<% if contact.avatar.url.present? %>
+			      						<%= image_tag contact.avatar.url(:thumb) %>
+			      					<% end %>
+			      					<div class="clear"></div>
+			      					<%= link_to contact.fullname, contact_path(contact) %>
+			      					<div class="clear"></div>
+			      					<%= display_progress_bar(contact.support_state) %>
+			      				</td>
+			      				<td>
+			      				</td>
 			      			</tr>
 			      		<% end %>
 

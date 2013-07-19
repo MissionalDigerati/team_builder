@@ -1777,3 +1777,7 @@ a.white_text{
 	text-align: justify; 
 	text-justify: newspaper;
 }
+.progress_text{
+	color: black !important;
+	padding-top: 3px;
+}
