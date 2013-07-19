@@ -1773,3 +1773,7 @@ footer .copy{
 a.white_text{
 	color: white !important;
 }
+.text_justified{
+	text-align: justify; 
+	text-justify: newspaper;
+}

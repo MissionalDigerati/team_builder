@@ -17,6 +17,7 @@ FactoryGirl.define do
   	monthly_gift true
   	not_giving true
   	no_response true
+    progress_percent 10
   end
 	factory :starting_support_state, parent: :support_state do
   	contact_id 0
@@ -32,5 +33,6 @@ FactoryGirl.define do
   	monthly_gift false
   	not_giving false
   	no_response false
+    progress_percent 10
   end
 end

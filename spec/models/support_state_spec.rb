@@ -2,10 +2,12 @@ require 'spec_helper'
 
 describe SupportState do
   describe "validations" do
+
   	it "should create a valid record if all fields are present" do
   		contact = FactoryGirl.create(:defaulted_contact)
   		FactoryGirl.create(:defaulted_support_state, contact_id: contact.id).should be_valid
   	end
+
   end
 
 	describe "scopes" do
@@ -28,9 +30,10 @@ describe SupportState do
   describe "methods" do
     it "should mark the state initial boolean as true and all others false" do
       contact = FactoryGirl.create(:defaulted_contact)
-      state = FactoryGirl.create(:defaulted_support_state, contact_id: contact.id, initial: false)
+      state = FactoryGirl.create(:defaulted_support_state, contact_id: contact.id, initial: false, progress_percent: 14)
       SupportState.initial_state(state)
       state.initial.should == true
+      state.progress_percent.should == 14
     end
 
     it "should mark the letter_sent boolean as true and all others false, and mark the letter sent on date" do

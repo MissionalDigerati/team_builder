@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130703231646) do
+ActiveRecord::Schema.define(:version => 20130719213056) do
 
   create_table "archives", :force => true do |t|
     t.string   "filename"
@@ -124,6 +124,7 @@ ActiveRecord::Schema.define(:version => 20130703231646) do
     t.boolean  "no_response",       :default => false
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
+    t.integer  "progress_percent"
   end
 
   create_table "taggings", :force => true do |t|
