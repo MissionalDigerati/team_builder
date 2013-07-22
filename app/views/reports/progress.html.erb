@@ -65,7 +65,7 @@
 			      </div>              
 			
 			      <!-- Widget content -->
-			      <div class="widget-content">
+			      <div class="widget-content support_progress">
 			      	
 			      	<div class="progress">
 			      		<div class="bar bar-warning progress_text" style="width: 25%">Initial</div>
@@ -74,7 +74,7 @@
 			      		<div class="bar bar-danger progress_text" style="width: 25%">Not Giving</div>
 			      	</div>
 
-			      	<table class="table index table-hover table-striped support_progress", id="contacts">
+			      	<table class="table index table-hover table-striped", id="contacts">
 			      	  <tr>
 			      	  	<th>
 			      	  		Contact
@@ -85,7 +85,7 @@
 			      			<tr>
 			      				<td>
 			      					<% if contact.avatar.url.present? %>
-			      						<%= image_tag(contact.avatar.url(:thumb))  %>
+			      						<%= link_to image_tag(contact.avatar.url(:thumb)), contact_path(contact) %>
 			      					<% end %>
 			      					<div class="clear"></div>
 			      					<%= link_to contact.fullname, contact_path(contact) %>

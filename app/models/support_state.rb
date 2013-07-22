@@ -71,7 +71,8 @@ class SupportState < ActiveRecord::Base
 
 
 private
-  
+
   POSSIBLE_STATES = ["initial_state", "letter_sent", "contacting", "seen_presentation", "following_up", "one_time_gift", "monthly_gift", "not_giving", "no_response"]
 	PROGRESS_COLUMNS = [:initial, :letter_sent, :contacting, :seen_presentation, :following_up, :one_time_gift, :monthly_gift, :not_giving, :no_response]
+  
 end
