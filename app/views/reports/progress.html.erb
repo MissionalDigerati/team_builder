@@ -1,11 +1,11 @@
 <% content_for :header do %>
-<h2 class="pull-left"><i class="icon-group"></i> Contacts</h2>
+<h2 class="pull-left"><i class="icon-signal"></i> Reports</h2>
 
     <!-- Breadcrumb -->
     <div class="bread-crumb pull-right">
       <%= link_to "Dashboard", root_path, class: "bread-crumb" %>
       <span class="divider">/</span> 
-      <%= link_to "Contacts", contacts_path, class: "bread-current" %>
+      <%= link_to "Progress", reports_progress_path, class: "bread-current" %>
     </div>
 <% end %>
 
@@ -74,31 +74,23 @@
 			      		<div class="bar bar-danger progress_text" style="width: 25%">Not Giving</div>
 			      	</div>
 
-			      	<table class="table index table-hover table-striped", id="contacts">
+			      	<table class="table index table-hover table-striped support_progress", id="contacts">
 			      	  <tr>
 			      	  	<th>
-			      	  		Image /
-			      	  		<span class="text_justified">
-				      		Initial / Letter Sent / Contacting / Seen Presentation / Following Up / One Time Gift / Monthly Gift / No Response / Not Giving
-				      		</span>
+			      	  		Contact
 			      	  	</th>
-				      	<th>
-				      	    <span class="pull-right">Action</span>
-			      		</th>
 			      	  </tr>
 
 			      		<% @contacts.each do |contact| %>
 			      			<tr>
 			      				<td>
 			      					<% if contact.avatar.url.present? %>
-			      						<%= image_tag contact.avatar.url(:thumb) %>
+			      						<%= image_tag(contact.avatar.url(:thumb))  %>
 			      					<% end %>
 			      					<div class="clear"></div>
 			      					<%= link_to contact.fullname, contact_path(contact) %>
 			      					<div class="clear"></div>
 			      					<%= display_progress_bar(contact.support_state) %>
-			      				</td>
-			      				<td>
 			      				</td>
 			      			</tr>
 			      		<% end %>
