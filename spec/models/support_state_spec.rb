@@ -5,7 +5,7 @@ describe SupportState do
 
   	it "should create a valid record if all fields are present" do
   		contact = FactoryGirl.create(:defaulted_contact)
-  		FactoryGirl.create(:defaulted_support_state, contact_id: contact.id).should be_valid
+  		FactoryGirl.create(:starting_support_state, contact_id: contact.id).should be_valid
   	end
 
   end
@@ -30,7 +30,7 @@ describe SupportState do
   describe "methods" do
     it "should mark the state initial boolean as true and all others false" do
       contact = FactoryGirl.create(:defaulted_contact)
-      state = FactoryGirl.create(:defaulted_support_state, contact_id: contact.id, initial: false, progress_percent: 14)
+      state = FactoryGirl.create(:starting_support_state, contact_id: contact.id, initial: false, progress_percent: 14)
       SupportState.initial_state(state)
       state.initial.should == true
       state.progress_percent.should == 14
@@ -38,7 +38,7 @@ describe SupportState do
 
     it "should mark the letter_sent boolean as true and all others false, and mark the letter sent on date" do
       contact = FactoryGirl.create(:defaulted_contact)
-      state = FactoryGirl.create(:defaulted_support_state, contact_id: contact.id, initial: false, letter_sent: false, letter_sent_on: nil)
+      state = FactoryGirl.create(:starting_support_state, contact_id: contact.id, initial: false, letter_sent: false, letter_sent_on: nil)
       SupportState.letter_sent(state)
       state.letter_sent.should == true
       state.letter_sent_on == Time.now.to_date
@@ -46,7 +46,7 @@ describe SupportState do
 
     it "should mark the state contacting state as true and all others false" do
       contact = FactoryGirl.create(:defaulted_contact)
-      state = FactoryGirl.create(:defaulted_support_state, contact_id: contact.id, initial: false, letter_sent: false, contacting: false)
+      state = FactoryGirl.create(:starting_support_state, contact_id: contact.id, initial: false, letter_sent: false, contacting: false)
       SupportState.contacting(state)
       state.initial.should == false
       state.letter_sent.should == false
@@ -55,7 +55,7 @@ describe SupportState do
 
     it "should mark all states other than seen presentation false, and mark the seen presentation date with the current date" do
       contact = FactoryGirl.create(:defaulted_contact)
-      state = FactoryGirl.create(:defaulted_support_state, contact_id: contact.id, seen_presentation: true, presented_on: Time.now.to_date)
+      state = FactoryGirl.create(:starting_support_state, contact_id: contact.id, initial: false, seen_presentation: true, presented_on: Time.now.to_date)
       SupportState.seen_presentation(state)
       state.seen_presentation.should == true
       state.presented_on.should == Time.now.to_date
@@ -63,7 +63,7 @@ describe SupportState do
 
     it "should mark all states other than follow up false, and leave all date fields alone" do
       contact = FactoryGirl.create(:defaulted_contact)
-      state = FactoryGirl.create(:defaulted_support_state, contact_id: contact.id, following_up: false)
+      state = FactoryGirl.create(:starting_support_state, contact_id: contact.id, following_up: false)
       SupportState.following_up(state)
       state.following_up.should == true
     end
@@ -86,35 +86,35 @@ describe SupportState do
 
     it "should mark all states other than one time gift false, and leave all date fields alone" do
       contact = FactoryGirl.create(:defaulted_contact)
-      state = FactoryGirl.create(:defaulted_support_state, contact_id: contact.id, one_time_gift: false)
+      state = FactoryGirl.create(:starting_support_state, contact_id: contact.id, one_time_gift: false)
       SupportState.one_time_gift(state)
       state.one_time_gift.should == true
     end
 
     it "should mark all states other than monthly gift false, and leave all date fields alone" do
       contact = FactoryGirl.create(:defaulted_contact)
-      state = FactoryGirl.create(:defaulted_support_state, contact_id: contact.id, monthly_gift: false)
+      state = FactoryGirl.create(:starting_support_state, contact_id: contact.id, monthly_gift: false)
       SupportState.monthly_gift(state)
       state.monthly_gift.should == true
     end
 
     it "should mark all states other than not giving false, and leave all date fields alone" do
       contact = FactoryGirl.create(:defaulted_contact)
-      state = FactoryGirl.create(:defaulted_support_state, contact_id: contact.id, not_giving: false)
+      state = FactoryGirl.create(:starting_support_state, contact_id: contact.id, not_giving: false)
       SupportState.not_giving(state)
       state.not_giving.should == true
     end
 
     it "should mark all states other than no response false, and leave all date fields alone" do
       contact = FactoryGirl.create(:defaulted_contact)
-      state = FactoryGirl.create(:defaulted_support_state, contact_id: contact.id, no_response: false)
+      state = FactoryGirl.create(:starting_support_state, contact_id: contact.id, no_response: false)
       SupportState.no_response(state)
       state.no_response.should == true
     end
 
     it "should delegate which method is called based on the params passed in" do
       contact = FactoryGirl.create(:defaulted_contact)
-      state = FactoryGirl.create(:defaulted_support_state, contact_id: contact.id)
+      state = FactoryGirl.create(:starting_support_state, contact_id: contact.id)
 
       SupportState.stub(:initial_state).and_return("initial_state")
       SupportState.state_edit_delegation(state.id, "initial_state").should == "initial_state"

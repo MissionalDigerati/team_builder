@@ -1,6 +1,8 @@
 class SupportState < ActiveRecord::Base
 
   belongs_to :contact
+
+  validate :falsify_all_other_states
   
   attr_accessible :contact_id, :initial, :letter_sent, :letter_sent_on, :contacting, :seen_presentation, :presented_on, 
   :following_up, :responding_on, :one_time_gift, :monthly_gift, :not_giving, :no_response, :progress_percent
@@ -69,6 +71,13 @@ class SupportState < ActiveRecord::Base
 		end
 	end
 
+  def falsify_all_other_states
+    number = 0
+    PROGRESS_COLUMNS.each do |pa|
+      number += 1 if self[pa] === true
+    end
+    errors[:base] << "You can only select one state." if number > 1
+  end
 
 private
 

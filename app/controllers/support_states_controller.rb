@@ -30,7 +30,7 @@ class SupportStatesController < ApplicationController
 				flash[:notice] = "Support state has been updated!"
 			else
 				format.html {render action: "edit"}
-				flash[:notice] = @support_state.errors.to_sentence
+				flash[:notice] = @support_state.errors.full_messages.to_sentence
 			end
 		end
 	end
