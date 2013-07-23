@@ -8,6 +8,11 @@ describe SupportState do
   		FactoryGirl.create(:starting_support_state, contact_id: contact.id).should be_valid
   	end
 
+    it "should not create a valid record if more than one state boolean is true" do
+      contact = FactoryGirl.create(:defaulted_contact)
+      FactoryGirl.build(:starting_support_state, contact_id: contact.id, initial: true, seen_presentation: true).should_not be_valid
+    end
+
   end
 
 	describe "scopes" do

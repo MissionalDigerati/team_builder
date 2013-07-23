@@ -2,7 +2,9 @@ class SupportState < ActiveRecord::Base
 
   belongs_to :contact
 
-  validate :falsify_all_other_states
+  validate :one_state_validation
+
+  after_validation :calculate_progress_percentage
   
   attr_accessible :contact_id, :initial, :letter_sent, :letter_sent_on, :contacting, :seen_presentation, :presented_on, 
   :following_up, :responding_on, :one_time_gift, :monthly_gift, :not_giving, :no_response, :progress_percent
@@ -22,47 +24,47 @@ class SupportState < ActiveRecord::Base
 
   def self.initial_state(state)
     state.update_attributes(initial: true, letter_sent: false, contacting: false, seen_presentation: false, following_up: false,
-    one_time_gift: false, monthly_gift: false, not_giving: false, no_response: false, letter_sent_on: nil, presented_on: nil, responding_on: nil, progress_percent: 14)
+    one_time_gift: false, monthly_gift: false, not_giving: false, no_response: false, letter_sent_on: nil, presented_on: nil, responding_on: nil)
   end
 
   def self.letter_sent(state)
     state.update_attributes(initial: false, letter_sent: true, contacting: false, seen_presentation: false, following_up: false,
-    one_time_gift: false, monthly_gift: false, not_giving: false, no_response: false, letter_sent_on: Time.now.to_date, progress_percent: 32)
+    one_time_gift: false, monthly_gift: false, not_giving: false, no_response: false, letter_sent_on: Time.now.to_date)
   end
 
   def self.contacting(state)
     state.update_attributes(initial: false, letter_sent: false, contacting: true, seen_presentation: false, following_up: false,
-    one_time_gift: false, monthly_gift: false, not_giving: false, no_response: false, presented_on: nil, responding_on: nil, progress_percent: 58)
+    one_time_gift: false, monthly_gift: false, not_giving: false, no_response: false, presented_on: nil, responding_on: nil)
   end
 
   def self.seen_presentation(state)
     state.update_attributes(initial: false, letter_sent: false, contacting: false, seen_presentation: true, following_up: false,
-    one_time_gift: false, monthly_gift: false, not_giving: false, no_response: false, presented_on: Time.now.to_date, responding_on: nil, progress_percent: 75)
+    one_time_gift: false, monthly_gift: false, not_giving: false, no_response: false, presented_on: Time.now.to_date, responding_on: nil)
   end
 
   def self.following_up(state)
     state.update_attributes(initial: false, letter_sent: false, contacting: false, seen_presentation: false, following_up: true,
-    one_time_gift: false, monthly_gift: false, not_giving: false, no_response: false, responding_on: nil, progress_percent: 85)
+    one_time_gift: false, monthly_gift: false, not_giving: false, no_response: false, responding_on: nil)
   end
 
   def self.one_time_gift(state)
     state.update_attributes(initial: false, letter_sent: false, contacting: false, seen_presentation: false, following_up: false,
-    one_time_gift: true, monthly_gift: false, not_giving: false, no_response: false, responding_on: nil, progress_percent: 100)
+    one_time_gift: true, monthly_gift: false, not_giving: false, no_response: false, responding_on: nil)
   end
 
   def self.monthly_gift(state)
     state.update_attributes(initial: false, letter_sent: false, contacting: false, seen_presentation: false, following_up: false,
-    one_time_gift: false, monthly_gift: true, not_giving: false, no_response: false, responding_on: nil, progress_percent: 100)
+    one_time_gift: false, monthly_gift: true, not_giving: false, no_response: false, responding_on: nil)
   end
 
   def self.not_giving(state)
     state.update_attributes(initial: false, letter_sent: false, contacting: false, seen_presentation: false, following_up: false,
-    one_time_gift: false, monthly_gift: false, not_giving: true, no_response: false, responding_on: nil, progress_percent: 100)
+    one_time_gift: false, monthly_gift: false, not_giving: true, no_response: false, responding_on: nil)
   end
 
   def self.no_response(state)
     state.update_attributes(initial: false, letter_sent: false, contacting: false, seen_presentation: false, following_up: false,
-    one_time_gift: false, monthly_gift: false, not_giving: false, no_response: true, responding_on: nil, progress_percent: 100)
+    one_time_gift: false, monthly_gift: false, not_giving: false, no_response: true, responding_on: nil)
   end
 
 	def progress
@@ -71,12 +73,28 @@ class SupportState < ActiveRecord::Base
 		end
 	end
 
-  def falsify_all_other_states
+  def one_state_validation
     number = 0
     PROGRESS_COLUMNS.each do |pa|
       number += 1 if self[pa] === true
     end
     errors[:base] << "You can only select one state." if number > 1
+  end
+
+  def calculate_progress_percentage
+    if self.not_giving == true || self.no_response == true || self.monthly_gift == true || self.one_time_gift == true
+      self.progress_percent = 100
+    elsif self.following_up == true
+      self.progress_percent = 85
+    elsif self.seen_presentation == true
+      self.progress_percent = 75
+    elsif self.contacting == true
+      self.progress_percent = 58
+    elsif self.letter_sent == true
+      self.progress_percent = 32
+    elsif self.initial == true
+      self.progress_percent = 14  
+    end
   end
 
 private
