@@ -15,6 +15,48 @@ describe SupportState do
 
   end
 
+  describe "after validations" do
+     
+    it "should calculate the support states progress percent based on the current state it's in" do
+      contact_1 = FactoryGirl.create(:defaulted_contact)
+      state_1 = FactoryGirl.create(:starting_support_state, contact_id: contact_1.id, initial: true, progress_percent: 0)
+      state_1.progress_percent.should == 14
+
+      contact_2 = FactoryGirl.create(:defaulted_contact)
+      state_2 = FactoryGirl.create(:starting_support_state, contact_id: contact_2.id, initial: false, letter_sent: true, progress_percent: 0)
+      state_2.progress_percent.should == 32
+
+      contact_3 = FactoryGirl.create(:defaulted_contact)
+      state_3 = FactoryGirl.create(:starting_support_state, contact_id: contact_3.id, initial: false, contacting: true, progress_percent: 0)
+      state_3.progress_percent.should == 58
+
+      contact_4 = FactoryGirl.create(:defaulted_contact)
+      state_4 = FactoryGirl.create(:starting_support_state, contact_id: contact_4.id, initial: false, seen_presentation: true, progress_percent: 0)
+      state_4.progress_percent.should == 75
+
+      contact_5 = FactoryGirl.create(:defaulted_contact)
+      state_5 = FactoryGirl.create(:starting_support_state, contact_id: contact_5.id, initial: false, following_up: true, progress_percent: 0)
+      state_5.progress_percent.should == 85
+
+      contact_6 = FactoryGirl.create(:defaulted_contact)
+      state_6 = FactoryGirl.create(:starting_support_state, contact_id: contact_6.id, initial: false, not_giving: true, progress_percent: 0)
+      state_6.progress_percent.should == 100
+
+      contact_7 = FactoryGirl.create(:defaulted_contact)
+      state_7 = FactoryGirl.create(:starting_support_state, contact_id: contact_7.id, initial: false, no_response: true, progress_percent: 0)
+      state_7.progress_percent.should == 100
+
+      contact_8 = FactoryGirl.create(:defaulted_contact)
+      state_8 = FactoryGirl.create(:starting_support_state, contact_id: contact_8.id, initial: false, monthly_gift: true, progress_percent: 0)
+      state_8.progress_percent.should == 100
+
+      contact_9 = FactoryGirl.create(:defaulted_contact)
+      state_9 = FactoryGirl.create(:starting_support_state, contact_id: contact_9.id, initial: false, one_time_gift: true, progress_percent: 0)
+      state_9.progress_percent.should == 100
+    end
+
+  end
+
 	describe "scopes" do
 		
 		describe "count_by_progress" do
