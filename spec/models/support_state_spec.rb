@@ -71,6 +71,15 @@ describe SupportState do
 			it "should return 0 if the progress_column does not exist" do
 				SupportState.count_by_progress(:not_a_progress).should == nil
 			end
+      it "should return results with multiple parameters" do
+        contact = FactoryGirl.create(:defaulted_contact)
+        state = FactoryGirl.create(:starting_support_state, contact_id: contact.id, initial: true, seen_presentation: false)
+        contact2 = FactoryGirl.create(:defaulted_contact)
+        state2 = FactoryGirl.create(:starting_support_state, contact_id: contact2.id, initial: false, seen_presentation: true)
+        contact3 = FactoryGirl.create(:defaulted_contact)
+        state3 = FactoryGirl.create(:starting_support_state, contact_id: contact3.id, initial: false, seen_presentation: true)
+        SupportState.count_by_progress(:initial, :seen_presentation).should == 3
+      end
 		end
 		
 	end

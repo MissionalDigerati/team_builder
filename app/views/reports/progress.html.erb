@@ -68,10 +68,10 @@
 			      <div class="widget-content support_progress">
 			      	
 			      	<div class="progress">
-			      		<div class="bar bar-warning progress_text" style="width: 25%">Initial</div>
-			      		<div class="bar bar-info progress_text" style="width: 25%">Contacting</div>
-			      		<div class="bar bar-success progress_text" style="width: 25%">Giving</div>
-			      		<div class="bar bar-danger progress_text" style="width: 25%">Not Giving</div>
+			      		<div class="bar bar-warning progress_text" style="width: 25%">Initial (<%= SupportState.count_by_progress(:initial) %>)</div>
+			      		<div class="bar bar-info progress_text" style="width: 25%">Contacting (<%= SupportState.count_by_progress(:letter_sent, :contacting, :seen_presentation, :following_up) %>)</div>
+			      		<div class="bar bar-success progress_text" style="width: 25%">Giving (<%= SupportState.count_by_progress(:one_time_gift, :monthly_gift) %>)</div>
+			      		<div class="bar bar-danger progress_text" style="width: 25%">Not Giving (<%= SupportState.count_by_progress(:not_giving, :no_response) %>)</div>
 			      	</div>
 
 			      	<table class="table index table-hover table-striped", id="contacts">

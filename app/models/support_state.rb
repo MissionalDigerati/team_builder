@@ -18,8 +18,13 @@ class SupportState < ActiveRecord::Base
   	end
   end
 
-	def self.count_by_progress(progress_column)
-		self.where(progress_column => true).count if PROGRESS_COLUMNS.include?(progress_column)
+  # using splat to get multiple params
+	def self.count_by_progress(*progress_column)
+    where_clause = ''
+    progress_column.each_with_index do |pc, i|
+      where_clause = (i == 0) ? "#{pc} = 't'" : "#{where_clause} OR #{pc} = 't'"
+    end
+		self.where(where_clause).count if (progress_column - PROGRESS_COLUMNS).empty?
 	end
 
   def self.initial_state(state)
