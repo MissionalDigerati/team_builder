@@ -71,4 +71,20 @@ describe Task do
     end
     
   end
+
+  context "methods" do
+
+    context "#is_overdue?" do
+
+      it "should return true if the task is overdue" do
+        task = FactoryGirl.create(:defaulted_task, :completed => true, :task => "task3", :due_date => 1.month.ago)
+        task.is_overdue?.should === true
+      end
+
+      it "should return false if the task is not overdue" do
+        task = FactoryGirl.create(:defaulted_task, :completed => true, :task => "task3", :due_date => 1.month.from_now)
+        task.is_overdue?.should === false
+      end
+    end
+  end
 end

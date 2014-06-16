@@ -39,22 +39,9 @@
 			<div class="widget-content">
 				<table class="table index table-hover table-striped", id="tasks">
 					<thead>
-						<th>
-							Complete
-							<span class="slash">/</span> 
-							Contact
-							<span class="slash">/</span> 
-							<%= sortable "completed", "Status" %>
-							<span class="slash">/</span> 
-							<%= sortable "task" %>
-							<span class="slash">/</span> 
-							<%= sortable "due_date", "Date (mm/dd/yyyy)" %>
-							<span class="slash">/</span> 
-							<%= sortable "category" %>
-						</th>
-						<th>
-							<span class="pull-right">Action</span>
-						</th>
+						<th>Complete</th>
+						<th>Task</th>
+						<th><span>Action</span></th>
 					</thead>
 					<%= render @task %>
 				</table>

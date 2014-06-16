@@ -29,6 +29,10 @@ class Task < ActiveRecord::Base
   	4.weeks.from_now.to_date
   end
 
+  def is_overdue?
+    self.due_date.to_datetime < DateTime.now
+  end
+
   #
   # The following methods are used in the application controller
   # They are used to help define what category occasions are to go in based on date
