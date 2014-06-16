@@ -31,6 +31,7 @@ group :test, :development do
   gem 'populator'
   gem 'faker'
   gem 'spreadsheet'
+  gem 'rubocop', require: false
 end
 
 group :test do
