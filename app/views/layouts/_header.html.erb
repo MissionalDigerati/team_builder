@@ -14,24 +14,41 @@
 
         <!-- Button section -->
         <div class="span4">
+        </div>
 
-          <!-- Buttons -->
-          <ul class="nav nav-pills">
+        <div class="span4">
 
-            <!-- Comment button with number of latest comments count -->
-            <li class="dropdown dropdown-big">
-              <%= link_to "<i class='icon-group'></i> Contacts <span class='badge badge-info'> #{number_of_contacts}</span>".html_safe, contacts_path %>
-            </li>
+          <div class="header-data text-right">
 
-            <li class="dropdown dropdown-big">
-              <%= link_to "<i class='icon-tasks'></i> Overdue Tasks <span class='badge badge-warning'> #{number_of_overdue_tasks}</span>".html_safe, tasks_path %>
-            </li>
+            <div class="hdata">
+              <div class="mcol-left">
+                <i class="icon-ok bred"></i> 
+              </div>
+              <div class="mcol-right">
+                <p><a href="#"><%= number_of_overdue_tasks %></a> <em>overdue</em></p>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="hdata">
+              <div class="mcol-left">
+                <i class="icon-group bblue"></i> 
+              </div>
+              <div class="mcol-right">
+                <p><a href="#"><%= number_of_contacts %></a> <em>contacts</em></p>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="hdata">
+                <div class="mcol-left">
+                    <i class="icon-calendar bgreen"></i> 
+                </div>
+                <div class="mcol-right">
+                    <p><a href="#"><%= occasions_today %></a> <em>occasions</em></p>
+                </div>
+                <div class="clearfix"></div>
+            </div>                        
 
-            <li class="dropdown dropdown-big">
-              <%= link_to "<i class='icon-calendar'></i> Special Dates Today <span class='badge badge-success'> #{occasions_today}</span>".html_safe, contacts_path %>
-            </li>
-
-          </ul>
+          </div>
 
         </div>
 
