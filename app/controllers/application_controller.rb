@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
     task_month_strftime = DATE_MONTH_STRFTIME.gsub(/COLUMN/, "special_date") 
     # task_year_strftime = DATE_YEAR_STRFTIME.gsub(/COLUMN/, "special_date")
     @occasions_today = Occasion.where(["#{task_day_strftime} + 0 = ? AND #{task_month_strftime} + 0 = ?", Task.current_day_number, Task.current_month_number])
-    @occasions_week = Occasion.find(:all, :conditions => ["#{task_day_strftime} + 0 between ? and ? AND #{task_month_strftime} + 0 = ?", Task.current_day_number + 1, Task.current_day_number + 5, Task.current_month_number], :order => "special_date")
+    @occasions_week = Occasion.find(:all, :conditions => ["#{task_day_strftime} + 0 between ? and ? AND #{task_month_strftime} + 0 = ?", Task.current_day_number + 1, Task.current_day_number + 5, Task.current_month_number], :order => "special_date ASC")
     @occasions_month = Occasion.where("#{task_month_strftime} + 0 = ? AND #{task_day_strftime} + 0 > ?", Task.current_month_number, Task.current_day_number).order("special_date")
   end
   
