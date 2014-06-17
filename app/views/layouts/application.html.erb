@@ -27,9 +27,16 @@
 			<% end %>
 	</div> <!-- container-fluid -->		
 	<%= render 'layouts/header' %>
-	<%= render 'layouts/sidebar' %>
-	<%= render 'layouts/mainbar' %>
-	<%= yield %>
+	<div class="content">
+		<div class="sidebar">
+			<%= render 'layouts/sidebar' %>
+		</div>
+		<div class="mainbar">
+			<%= render 'layouts/mainbar' %>
+			<%= yield %>
+		</div>
+		<div class="clearfix"></div>
+	<div>
 	<footer>
 	  <div class="container-fluid">
 	    <div class="row-fluid">

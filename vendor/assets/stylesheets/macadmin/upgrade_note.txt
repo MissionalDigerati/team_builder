@@ -1,0 +1,1 @@
+When upgrading CSS< you will need to search and replace ../img with ./images, and load all img files in the images directory.
