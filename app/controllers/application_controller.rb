@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
     order_by_strftime = DATE_MONTH_DAY_ORDER_STRFTIME.gsub(/COLUMN/, "special_date").gsub(/DIRECTION/, "ASC")
     # task_year_strftime = DATE_YEAR_STRFTIME.gsub(/COLUMN/, "special_date")
     @occasions_today = Occasion.where(["#{task_day_strftime} + 0 = ? AND #{task_month_strftime} + 0 = ?", Task.current_day_number, Task.current_month_number]).order(order_by_strftime)
-    @occasions_week = Occasion.where(["#{task_day_strftime} + 0 between ? and ? AND #{task_month_strftime} + 0 = ?", Task.current_day_number + 1, Task.current_day_number + 5, Task.current_month_number]).order(order_by_strftime)
+    @occasions_week = Occasion.where(["#{task_day_strftime} + 0 between ? and ? AND #{task_month_strftime} + 0 = ?", Task.current_day_number + 1, Task.current_day_number + 7, Task.current_month_number]).order(order_by_strftime)
     @occasions_month = Occasion.where("#{task_month_strftime} + 0 = ? AND #{task_day_strftime} + 0 > ?", Task.current_month_number, Task.current_day_number).order(order_by_strftime)
   end
   
