@@ -14,4 +14,16 @@ class Donation < ActiveRecord::Base
   def self.average_donation
     Donation.where("amount > ?", 1).average(:amount).to_f
   end
+
+  def self.monthly_sums(year)
+    totals = [0,0,0,0,0,0,0,0,0,0,0,0]
+    month_strftime = DATE_MONTH_STRFTIME.gsub(/COLUMN/, "donation_date") 
+    year_strftime = DATE_YEAR_STRFTIME.gsub(/COLUMN/, "donation_date")
+    donations = Donation.select("SUM(amount) as total_donations, #{month_strftime} as donate_month").where("#{year_strftime} = ?", year).group(month_strftime)
+    donations.each do |donation|
+      array_index = donation.donate_month.to_i-1
+      totals[array_index] = donation.total_donations.round
+    end
+    totals
+  end
 end

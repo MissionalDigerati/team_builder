@@ -36,6 +36,40 @@ describe Donation do
       FactoryGirl.create(:defaulted_donation)
       Donation.average_donation.should == 72.25
     end
+
+    context "#monthly_sums" do
+
+      it "should return an array of zeros for each month by default" do
+        expected = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        Donation.monthly_sums('2013').should == expected
+      end
+
+      it "should return an array of sums for each month" do
+        expected = [100, 100, 150, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        FactoryGirl.create(:defaulted_donation, {:donation_date => Time.parse("20-03-2013"), :amount => 100.00})
+        FactoryGirl.create(:defaulted_donation, {:donation_date => Time.parse("20-03-2013"), :amount => 50.00})
+        FactoryGirl.create(:defaulted_donation, {:donation_date => Time.parse("20-01-2013"), :amount => 100.00})
+        FactoryGirl.create(:defaulted_donation, {:donation_date => Time.parse("20-02-2013"), :amount => 100.00})
+        Donation.monthly_sums('2013').should == expected
+      end
+
+      it "should return only data for the given year" do
+        expected = [0, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        FactoryGirl.create(:defaulted_donation, {:donation_date => Time.parse("20-03-2012"), :amount => 100.00})
+        FactoryGirl.create(:defaulted_donation, {:donation_date => Time.parse("20-03-2012"), :amount => 50.00})
+        FactoryGirl.create(:defaulted_donation, {:donation_date => Time.parse("20-01-2012"), :amount => 100.00})
+        FactoryGirl.create(:defaulted_donation, {:donation_date => Time.parse("20-02-2013"), :amount => 100.00})
+        Donation.monthly_sums('2013').should == expected
+      end
+
+      it "should return values rounded up" do
+        expected = [35, 50, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        FactoryGirl.create(:defaulted_donation, {:donation_date => Time.parse("20-01-2011"), :amount => 34.55})
+        FactoryGirl.create(:defaulted_donation, {:donation_date => Time.parse("20-02-2011"), :amount => 49.95})
+        Donation.monthly_sums('2011').should == expected
+      end
+
+    end
   end
   
   context "before_validation methods" do

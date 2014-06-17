@@ -70,6 +70,6 @@ $(document).ready(function(){
 	    $(this).children('i').addClass('icon-chevron-up');
 	  }            
 	  $wcontent.toggle(500);
-	}); 
+	});
 	
 });
