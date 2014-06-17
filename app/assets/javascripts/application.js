@@ -34,6 +34,9 @@
 //= require macadmin/jquery.uniform.min
 //= require macadmin/sparklines
 //= require macadmin/charts
+//= require macadmin/layouts/bottom
+//= require macadmin/layouts/top
+//= require macadmin/layouts/topRight
 //= require macadmin/themes/default
 //= require_self
 //= require_tree .
