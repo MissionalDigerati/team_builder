@@ -12,7 +12,7 @@
 	    </div>
 
 	    <div class="user-details">
-	        <h5><%= link_to contact.family_name.titleize, contact %></h5>
+	        <h5><%= link_to contact.family_name, contact %></h5>
 	        <p><strong>Believer</strong>: <%= contact.believer.yes_or_no %></p>
 	        <% unless contact.spouse_name.empty? %>
 	        	<p><strong>Spouse Believer</strong>: <%= contact.spouse_believer.yes_or_no %></p>

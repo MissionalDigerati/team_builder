@@ -40,11 +40,11 @@ class Contact < ActiveRecord::Base
 
   def fullname
     fullname = "#{first_name} #{last_name}"
-    fullname.present? ? fullname : ""
+    fullname.present? ? fullname.titleize : ""
   end
 
   def family_name
-    self.spouse_name.blank? ? self.fullname : "#{self.first_name} & #{self.spouse_name} #{self.last_name}"
+    self.spouse_name.blank? ? self.fullname.titleize : "#{self.first_name} & #{self.spouse_name} #{self.last_name}".titleize
   end
   
   def self.non_believers

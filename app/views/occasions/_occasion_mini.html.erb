@@ -7,7 +7,7 @@
     </div>
 
     <div class="user-details">
-        <h5><%= contact.family_name.titleize %></h5>
+        <h5><%= contact.family_name %></h5>
         <p><%= occasion_mini.occasion %></p>
         <p><strong><%= occasion_mini.special_date.strftime('%B %d') %></strong></p>
         <%= link_to contact_button, contact_path(occasion_mini.contact_id), :class => "btn btn-info btn-small"  %>
