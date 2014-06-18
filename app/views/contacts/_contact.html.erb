@@ -19,7 +19,7 @@
 	            <p>
 	            <strong>Tags</strong>: 
 	            <% contact.tag_list.each do |tag| %>
-	                <span class="label label-info"><%= link_to tag, tag_path(tag), :class => "white_text" %></span>
+	                <span class="label label-info"><%= link_to tag.titleize, tag_path(tag), :class => "white_text" %></span>
 	            <% end %>
 	        <% end %>
 	    </div>
