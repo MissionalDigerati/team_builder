@@ -73,3 +73,7 @@ a.white_text{
 .status-no-response {
     background-color: #ad1564 !important;
 }
+.tag_cloud_entry_1 { font-size: 1.0em; }
+.tag_cloud_entry_2 { font-size: 1.4em; }
+.tag_cloud_entry_3 { font-size: 1.6em; }
+.tag_cloud_entry_4 { font-size: 1.8em; }

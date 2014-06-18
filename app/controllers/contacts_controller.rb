@@ -13,6 +13,7 @@ class ContactsController < ApplicationController
     else
       @contacts = Contact.order(sort_column + " " + sort_direction).page(params[:page])
     end
+    @tags = Contact.tag_counts_on(:tags)
     respond_to do |format|
       format.js
       format.html # index.html.erb
