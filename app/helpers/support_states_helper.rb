@@ -1,5 +1,9 @@
 module SupportStatesHelper
 
+	def total_contacts
+		@total_contacts ||= Contact.contact_count
+	end
+
 	def display_progress_bar(state)
 		if state.present?
 			if state.not_giving == true || state.no_response == true
@@ -37,6 +41,15 @@ module SupportStatesHelper
 			else
 			  "icon-star-empty"
 		end
+	end
+
+	def status_progress_bar(state)
+		progress_count = SupportState.count_by_progress(state)
+		percentage = (progress_count.to_f / total_contacts.to_f) * 100
+		bar_class = "progress_#{state.to_s.downcase.parameterize}".tr("_", '-')
+		html = "<h5>#{state.to_s.titleize} (#{percentage.round}% / #{progress_count} People)</h5><div class='progress #{bar_class}'>";
+        html += "<div class='bar' style='width: #{percentage.round}%'>#{percentage.round}%</div>"
+        html += "</div>"
 	end
 
 end

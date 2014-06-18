@@ -1,0 +1,62 @@
+@import "mixins.css.scss";
+.status-initial {
+    background-color: #8dd8ee !important;
+}
+.status-letter-sent {
+    background-color: #a8e651 !important;
+}
+.status-contacting {
+    background-color: #5584ed !important;
+}
+.status-seen-presentation {
+    background-color: #f7f156 !important;
+}
+.status-following-up {
+    background-color: #5584ed !important;
+}
+.status-one-time-gift {
+    background-color: #60ad15 !important;
+}
+.status-monthly-gift {
+    background-color: #60ad15 !important;
+}
+.status-not-giving {
+    background-color: #ad1564 !important;
+}
+.status-no-response {
+    background-color: #ad1564 !important;
+}
+.progress-initial .bar {
+    @include linear-gradient(#BBE8F5, #8dd8ee);
+}
+.progress-letter-sent .bar {
+    @include linear-gradient(#CBF097, #a8e651);
+}
+.progress-contacting .bar {
+    @include linear-gradient(#99B5F4, #5584ed);
+}
+.progress-seen-presentation .bar {
+    @include linear-gradient(#FAF79A, #f7f156);
+}
+.progress-following-up .bar {
+    @include linear-gradient(#99B5F4, #5584ed);
+}
+.progress-one-time-gift .bar {
+    @include linear-gradient(#A0CE73, #60ad15);
+}
+.progress-monthly-gift .bar {
+    @include linear-gradient(#A0CE73, #60ad15);
+}
+.progress-not-giving .bar {
+    @include linear-gradient(#CE73A2, #ad1564);
+}
+.progress-no-response .bar {
+    @include linear-gradient(#CE73A2, #ad1564);
+}
+.support_progress{
+    .progress{
+        height: 30px !important;
+        line-height: 23px;
+        margin: 0px 0px !important;
+    }
+}

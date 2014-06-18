@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require_tree .
+ *= stub mixins
  *= require jquery.ui.all
  *= require font-awesome
  *= reqire_twitter/bootstrap
@@ -46,34 +47,11 @@ a.white_text{
     padding: 3px;
     font-size: 14px;
 }
-.status-initial {
-    background-color: #8dd8ee !important;
-}
-.status-letter-sent {
-    background-color: #a8e651 !important;
-}
-.status-contacting {
-    background-color: #5584ed !important;
-}
-.status-seen-presentation {
-    background-color: #f7f156 !important;
-}
-.status-following-up {
-    background-color: #5584ed !important;
-}
-.status-one-time-gift {
-    background-color: #60ad15 !important;
-}
-.status-monthly-gift {
-    background-color: #60ad15 !important;
-}
-.status-not-giving {
-    background-color: #ad1564 !important;
-}
-.status-no-response {
-    background-color: #ad1564 !important;
-}
 .tag_cloud_entry_1 { font-size: 1.0em; }
 .tag_cloud_entry_2 { font-size: 1.4em; }
 .tag_cloud_entry_3 { font-size: 1.6em; }
 .tag_cloud_entry_4 { font-size: 1.8em; }
+.progress .bar {
+    font-weight: bold;
+    font-size: 11px !important;
+}
