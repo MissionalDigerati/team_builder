@@ -14,6 +14,9 @@
 	    <div class="user-details">
 	        <h5><%= link_to contact.family_name.titleize, contact %></h5>
 	        <p><strong>Believer</strong>: <%= contact.believer.yes_or_no %></p>
+	        <% unless contact.spouse_name.empty? %>
+	        	<p><strong>Spouse Believer</strong>: <%= contact.spouse_believer.yes_or_no %></p>
+	        <% end %>
 	        <p><strong>Preferred Contact</strong>: <%= contact.preferred_contact %></p>
 	        <% if contact.tag_list.present? %>
 	            <p>
