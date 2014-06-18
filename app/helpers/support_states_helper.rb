@@ -14,4 +14,29 @@ module SupportStatesHelper
 		end
 	end
 
+	def state_icon(state)
+		case state.downcase
+			when "initial"
+			  	"icon-star-empty"
+			when "letter sent"
+			  	"icon-envelope"
+			when "contacting"
+			  	"icon-bullhorn"
+			when "seen presentation"
+			  	"icon-comment"
+			when "following up"
+				"icon-repeat"
+			when "one time gift"
+				"icon-gift"
+			when "monthly gift"
+				"icon-user"
+			when "not giving"
+				"icon-ban-circle"
+			when "no response"
+				"icon-remove"
+			else
+			  "icon-star-empty"
+		end
+	end
+
 end

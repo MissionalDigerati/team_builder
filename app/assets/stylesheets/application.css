@@ -35,3 +35,41 @@
     max-width: 100%;
     width: 100%;
 }
+.sort-spacer {
+    padding: 0px 5px;
+}
+a.white_text{
+    color: white !important;
+}
+.contact-support-state-label .label {
+    text-transform: uppercase;
+    padding: 3px;
+    font-size: 14px;
+}
+.status-initial {
+    background-color: #8dd8ee !important;
+}
+.status-letter-sent {
+    background-color: #a8e651 !important;
+}
+.status-contacting {
+    background-color: #5584ed !important;
+}
+.status-seen-presentation {
+    background-color: #f7f156 !important;
+}
+.status-following-up {
+    background-color: #5584ed !important;
+}
+.status-one-time-gift {
+    background-color: #60ad15 !important;
+}
+.status-monthly-gift {
+    background-color: #60ad15 !important;
+}
+.status-not-giving {
+    background-color: #ad1564 !important;
+}
+.status-no-response {
+    background-color: #ad1564 !important;
+}
