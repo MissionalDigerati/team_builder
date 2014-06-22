@@ -11,11 +11,33 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery_migrate
 //= require jquery_ujs
 //= require jquery.ui.all
 // Loads all Bootstrap javascripts
 //= require bootstrap
 //= require bootstrap-dropdown
+//= require macadmin/html5shim
+//= require macadmin/bootstrap-datetimepicker.min
+//= require macadmin/excanvas.min
+//= require macadmin/filter
+//= require macadmin/fullcalendar.min
+//= require macadmin/jquery.cleditor.min
+//= require macadmin/jquery.flot
+//= require macadmin/jquery.flot.pie
+//= require macadmin/jquery.flot.resize
+//= require macadmin/jquery.flot.stack
+//= require macadmin/jquery.noty
+//= require macadmin/jquery.prettyPhoto
+//= require macadmin/jquery.rateit.min
+//= require macadmin/jquery.toggle.buttons
+//= require macadmin/jquery.uniform.min
+//= require macadmin/sparklines
+//= require macadmin/charts
+//= require macadmin/layouts/bottom
+//= require macadmin/layouts/top
+//= require macadmin/layouts/topRight
+//= require macadmin/themes/default
 //= require_self
 //= require_tree .
 
@@ -48,6 +70,6 @@ $(document).ready(function(){
 	    $(this).children('i').addClass('icon-chevron-up');
 	  }            
 	  $wcontent.toggle(500);
-	}); 
+	});
 	
 });

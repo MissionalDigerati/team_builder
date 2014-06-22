@@ -1,17 +1,14 @@
+<div class="sidebar-dropdown"><a href="#">Navigation</a></div>
 
-<div class="sidebar">
-    <div class="sidebar-dropdown"><a href="#">Navigation</a></div>
-
-    <!--- Sidebar navigation -->
-    <!-- If the main navigation has sub navigation, then add the class "has_sub" to "li" of main navigation. -->
-    <ul id="nav">
-      <!-- Main menu with font awesome icon -->
-      <li><%= link_to "<i class='icon-home'></i> Dashboard".html_safe, root_path %> </li>
-      <li><%= link_to "<i class='icon-group'></i> Contacts".html_safe, contacts_path %> </li>
-      <li><%= link_to "<i class='icon-money'></i> Donations".html_safe, donations_path %> </li>
-      <li><%= link_to "<i class='icon-tasks'></i> Tasks".html_safe, tasks_path %> </li>
-      <li><%= link_to "<i class='icon-calendar'></i> Special Dates".html_safe, occasions_path %> </li>
-      <li><%= link_to "<i class='icon-cloud-download'></i> Backup".html_safe, archives_path %> </li>
-      <li><%= link_to "<i class='icon-signal'></i> Reports".html_safe, reports_progress_path %> </li>
-    </ul>
-</div>
+<!--- Sidebar navigation -->
+<!-- If the main navigation has sub navigation, then add the class "has_sub" to "li" of main navigation. -->
+<ul id="nav">
+  <!-- Main menu with font awesome icon -->
+  <li><%= link_to "<i class='icon-home'></i> Dashboard".html_safe, root_path %> </li>
+  <li><%= link_to "<i class='icon-group'></i> Contacts".html_safe, contacts_path %> </li>
+  <li><%= link_to "<i class='icon-money'></i> Donations".html_safe, donations_path %> </li>
+  <li><%= link_to "<i class='icon-tasks'></i> Tasks".html_safe, tasks_path %> </li>
+  <li><%= link_to "<i class='icon-calendar'></i> Special Dates".html_safe, occasions_path %> </li>
+  <li><%= link_to "<i class='icon-cloud-download'></i> Backup".html_safe, archives_path %> </li>
+  <li><%= link_to "<i class='icon-signal'></i> Reports".html_safe, reports_progress_path %> </li>
+</ul>

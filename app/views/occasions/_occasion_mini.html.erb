@@ -1,0 +1,17 @@
+<% contact = occasion_mini.contact %>
+<div class="user">
+    <div class="user-pic">
+        <% if contact.avatar.url.present? %>
+            <a href=""><%= image_tag contact.avatar.url(:thumb), {:width => '104'} %></a>
+        <% end %>
+    </div>
+
+    <div class="user-details">
+        <h5><%= contact.family_name %></h5>
+        <p><%= occasion_mini.occasion %></p>
+        <p><strong><%= occasion_mini.special_date.strftime('%B %d') %></strong></p>
+        <%= link_to contact_button, contact_path(occasion_mini.contact_id), :class => "btn btn-info btn-small"  %>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<hr>

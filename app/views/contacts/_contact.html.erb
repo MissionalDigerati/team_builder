@@ -1,46 +1,50 @@
 <tr>
-	 <td class="avatar_index">
+	<td class="user">
+		<div class="contact-support-state-label pull-right">
+	    	<span class="label status-<%= contact.support_state.progress.downcase.parameterize %>">
+	    		<i class="<%= state_icon(contact.support_state.progress) %> icon-white"></i> <%= contact.support_state.progress %>
+	    	</span>
+	   	</div>
+	    <div class="user-pic">
+	        <% if contact.avatar.url.present? %>
+	            <a href="<%= contact_path(contact) %>"><%= image_tag contact.avatar.url(:thumb), {:width => '104'} %></a>
+	        <% end %>
+	    </div>
 
-	 	<% if contact.avatar.url.present? %>
-			<%= image_tag contact.avatar.url(:thumb) %>
-		<% end %>
-	 	<br/>
-		<%= link_to contact.last_name.capitalize, contact %>
-		<span class="slash">/</span> 
-		<%= link_to contact.first_name.capitalize, contact %>
-		<span class="slash">/</span> 
-		<%= contact.spouse_name.capitalize %>
-		<span class="slash">/</span> 
-		<%= contact.believer.yes_or_no %>
-		<span class="slash">/</span> 
-		<%= contact.preferred_contact %>
-		<span class="slash">/</span> 
-		<%= contact.presented_vision ? image_tag('presented_vision.png', title: "Presented Vision", alt: "Presented Vision") : "No" %>
-		
-		<% if contact.tag_list.present? %>
-			<br/>
-			Tags: 
-			<% contact.tag_list.each do |tag| %>
-				<span class="label label-important"><%= link_to tag, tag_path(tag), :class => "white_text" %></span>
-			<% end %>
-		<% end %>
-		<span class="pull-right">
-			<div class="btn-group pull-right">
-			<a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
-			<ul class="dropdown-menu">
-				<li>
-					<%= link_to contact_button, contact %>
-				</li>
-				<li class="divider"></li>
-				<li>
-					<%= link_to edit_button, edit_contact_path(contact) %>
-				</li>
-				<li class="divider"></li>
-				<li>
-					<%= link_to delete_button, contact, method: :delete, data: { confirm: 'Are you sure?' } %>
-				</li>
-			</ul>
-			</div> 
-		</span>
-		</td>
+	    <div class="user-details">
+	        <h5><%= link_to contact.family_name, contact %></h5>
+	        <p><strong>Believer</strong>: <%= contact.believer.yes_or_no %></p>
+	        <% unless contact.spouse_name.empty? %>
+	        	<p><strong>Spouse Believer</strong>: <%= contact.spouse_believer.yes_or_no %></p>
+	        <% end %>
+	        <p><strong>Preferred Contact</strong>: <%= contact.preferred_contact %></p>
+	        <% if contact.tag_list.present? %>
+	            <p>
+	            <strong>Tags</strong>: 
+	            <% contact.tag_list.each do |tag| %>
+	                <span class="label label-info"><%= link_to tag.titleize, tag_path(tag), :class => "white_text" %></span>
+	            <% end %>
+	        <% end %>
+	    </div>
+	    <div class="pull-right">
+            <div class="btn-group pull-right">
+	            <a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
+	            <ul class="dropdown-menu">
+	                <li>
+	                    <%= link_to contact_button, contact %>
+	                </li>
+	                <li class="divider"></li>
+	                <li>
+	                    <%= link_to edit_button, edit_contact_path(contact) %>
+	                </li>
+	                <li class="divider"></li>
+	                <li>
+	                    <%= link_to delete_button, contact, method: :delete, data: { confirm: 'Are you sure?' } %>
+	                </li>
+	            </ul>
+            </div> 
+        </div>
+	    <div class="clearfix"></div>
+
+	</td>
 </tr>

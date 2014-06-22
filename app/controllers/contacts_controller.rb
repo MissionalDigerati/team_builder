@@ -5,8 +5,7 @@ class ContactsController < ApplicationController
   before_filter :sub_contact_info, :only => [:show] 
   
   #
-  #passes sortable info the the main contact table on the contact index page. 
-  # Also passes all the new contacts from the past week in the instance variable @new_contacts
+  # passes sortable info the the main contact table on the contact index page.
   # the tag and search param are passed if searching with the search bar or by tags, it filters the contacts according to the search. 
   def index
     if params[:search] || params[:tag]
@@ -14,7 +13,7 @@ class ContactsController < ApplicationController
     else
       @contacts = Contact.order(sort_column + " " + sort_direction).page(params[:page])
     end
-    @new_contacts = Contact.find(:all, :conditions => ["created_at between ? and ?", 1.weeks.ago, Time.now])
+    @tags = Contact.tag_counts_on(:tags)
     respond_to do |format|
       format.js
       format.html # index.html.erb
