@@ -1,14 +1,20 @@
 <% content_for :header do %>
-<h2 class="pull-left"><i class="icon-group"></i> Contact: <%= @contact.family_name %></h2>
+<div class="pull-left">
+	<h2><i class="icon-group"></i> <%= @contact.family_name %>
+		<span class="label status-<%= @contact.support_state.progress.downcase.parameterize %>">
+		<i class="<%= state_icon(@contact.support_state.progress) %> icon-white"></i> <%= @contact.support_state.progress %>
+		</span>
+	</h2>
+</div>
 
-    <!-- Breadcrumb -->
-    <div class="bread-crumb pull-right">
-      <%= link_to "Dashboard", root_path, class: "bread-crumb" %>
-      <span class="divider">/</span> 
-      <%= link_to "Contacts", contacts_path, class: "bread-crumb" %>
-      <span class="divider">/</span> 
-      <%= link_to "#{@contact.fullname.present? ? @contact.fullname : 'Contact'}", contact_path(@contact), class: "bread-current" %>
-    </div>
+<!-- Breadcrumb -->
+<div class="bread-crumb pull-right">
+  <%= link_to "Dashboard", root_path, class: "bread-crumb" %>
+  <span class="divider">/</span> 
+  <%= link_to "Contacts", contacts_path, class: "bread-crumb" %>
+  <span class="divider">/</span> 
+  <%= link_to "#{@contact.fullname.present? ? @contact.fullname : 'Contact'}", contact_path(@contact), class: "bread-current" %>
+</div>
 <% end %>
 
 <% content_for :stats do %>
@@ -33,11 +39,11 @@
 
 		<div class="row-fluid">
 			
-				<div class="span4">
+				<div class="span6">
 					<div class="widget">
 						<div class="widget-head">
 						  	<div class="pull-left">
-						  		Contact info
+						  		Details
 						  	</div>
 						  	<div class="widget-icons pull-right">
 						    	<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
@@ -45,99 +51,88 @@
 						    <div class="clearfix"></div>
 						</div>
 						<div class="widget-content">
-							<table class="table index table-bordered table-hover table-striped">
-								<% if @contact.avatar.url.present? %>
-									<tr>
-										<td colspan="2" class="text_center"><%= image_tag @contact.avatar.url(:medium) %></td>
-									</tr>
-								<% end %>
-								<tr>
-									<td colspan="2" class="text_center">
-										<span class="bold"><%= @contact.family_name %></span>
-										<% unless @contact.children.blank? %>
-											<br><span class="italic"><%= @contact.children %></span>
-										<% end %>
-									</td>
-								</tr>
-								<tr>
-									<td class="bold">Email:</td>
-									<td><%= mail_to @contact.email %></td>
-								</tr>
-								<% unless @contact.spouse_name.blank? %>
-									<tr>
-										<td class="bold">Spouse Email:</td>
-										<td><%= mail_to @contact.spouse_email %></td>
-									</tr>
-								<% end %>
-								<tr>
-									<td class="bold">Network:</td>
-									<td><%= @contact.network %></td>
-								</tr>
-								<tr>
-									<td class="bold">Account Number:</td>
-									<td><%= @contact.account_number %></td>
-								</tr>
-								<tr>
-									<td class="bold">Address 1:</td>
-									<td><%= @contact.address_1 %></td>
-								</tr>
-								<tr>
-									<td class="bold">Address 2:</td>
-									<td><%= @contact.address_2 %></td>
-								</tr>
-								<tr>
-									<td class="bold">City:</td>
-									<td><%= @contact.city %></td>
-								</tr>
-								<tr>
-									<td class="bold">State:</td>
-									<td><%= @contact.state.state_long %></td>
-								</tr>
-								<tr>
-									<td class="bold">Zip:</td>
-									<td><%= @contact.zip %></td>
-								</tr>
-								<tr>
-									<td class="bold">Country:</td>
-									<td><%= @contact.country.printable_name %></td>
-								</tr>
-								<tr>
-									<td class="bold">Receive NewsLetter?</td>
-									<td><%= @contact.receive_newsletter.yes_or_no %></td>
-								</tr>
-								<tr>
-									<td class="bold">Presented Vision?</td>
-									<td><%= @contact.presented_vision.yes_or_no %></td>
-								</tr>
-								<tr>
-									<td class="bold">Created at:</td>
-									<td><%= @contact.created_at.strftime('%m/%d/%Y') %></td>
-								</tr>
-								<tr>
-									<td class="bold">Last Updated:</td>
-									<td><%= @contact.updated_at.strftime('%m/%d/%Y') %></td>
-								</tr>
-								<tr>
-									<td class="bold">Believer:</td>
-									<td class="believer"><%= @contact.believer.yes_or_no %></td>
-								</tr>
-								<% unless @contact.spouse_name.blank? %>
-									<tr>
-										<td class="bold">Spouse Believer:</td>
-										<td class="believer"><%= @contact.spouse_believer.yes_or_no %></td>
-									</tr>
-								<% end %>
-								<tr>
-									<td colspan="2"><% @contact.tag_list.each do |tag| %>
-										<span class="label label-important"><%= link_to tag, tag_path(tag), :class => "white_link" %></span>
+							<div class="user user-profile-page">
+								<div class="user-pic">
+									<% if @contact.avatar.url.present? %>
+										<%= image_tag @contact.avatar.url(:medium) %>
 									<% end %>
-									</td>
-								</tr>
+							    </div>
+
+							    <div class="user-details">
+							        <h4><%= @contact.family_name %></h4>
+							        <% unless @contact.children.blank? %>
+										<h5><%= @contact.children %></h5>
+									<% end %>
+                                    <br>
+                                    <p><%= @contact.address_1 %></p>
+                                    <% unless @contact.address_2.blank? %>
+                                        <p><%= @contact.address_2 %></p>
+                                    <% end %>
+                                    <p><%= @contact.city %>, <%= @contact.state.state_long %> <%= @contact.zip %></p>
+                                    <p><%= @contact.country.printable_name %></p>
+							    </div>
+                                <div class="clearfix"></div>
+							</div>
+							<table class="table index table-bordered table-hover table-striped">
+								<thead>
+                                </thead>
+								<tbody>
+									<tr>
+										<td class="bold">Email:</td>
+										<td><%= mail_to @contact.email %></td>
+									</tr>
+									<% unless @contact.spouse_name.blank? %>
+										<tr>
+											<td class="bold">Spouse Email:</td>
+											<td><%= mail_to @contact.spouse_email %></td>
+										</tr>
+									<% end %>
+									<tr>
+										<td class="bold">Network:</td>
+										<td><%= @contact.network %></td>
+									</tr>
+									<tr>
+										<td class="bold">Account Number:</td>
+										<td><%= @contact.account_number %></td>
+									</tr>
+									<tr>
+										<td class="bold">Receive NewsLetter?</td>
+										<td><%= @contact.receive_newsletter.yes_or_no %></td>
+									</tr>
+									<tr>
+										<td class="bold">Presented Vision?</td>
+										<td><%= @contact.presented_vision.yes_or_no %></td>
+									</tr>
+                                    <tr>
+                                        <td class="bold">Believer:</td>
+                                        <td class="believer"><%= @contact.believer.yes_or_no %></td>
+                                    </tr>
+                                    <% unless @contact.spouse_name.blank? %>
+                                        <tr>
+                                            <td class="bold">Spouse Believer:</td>
+                                            <td class="believer"><%= @contact.spouse_believer.yes_or_no %></td>
+                                        </tr>
+                                    <% end %>
+									<tr>
+										<td class="bold">Created at:</td>
+										<td><%= @contact.created_at.strftime('%m/%d/%Y') %></td>
+									</tr>
+									<tr>
+										<td class="bold">Last Updated:</td>
+										<td><%= @contact.updated_at.strftime('%m/%d/%Y') %></td>
+									</tr>
+									<tr>
+										<td colspan="2">
+                                            <% @contact.tag_list.each do |tag| %>
+                                                <span class="label label-info"><%= link_to tag.titleize, tag_path(tag), :class => "white_text" %></span>
+                                            <% end %>
+										</td>
+									</tr>
+								</tbody>
 							</table>
 						</div>
-						<div class="widget-foot">
-							<%= link_to "Edit #{@contact.first_name.capitalize}", edit_contact_path(@contact), :class => "btn btn btn-info pull-right" %>
-							<div class="clear"></div>
+						<div class="widget-foot text-right">
+                            <%= link_to "Edit Details", edit_contact_path(@contact), :class => "btn btn btn-info" %>
 						</div>
 					</div><!-- widget -->
 				</div><!-- span4 -->
@@ -145,7 +140,7 @@
 
 
 
-				<div class="span8">
+				<div class="span6">
 
 
 					<div class="widget">
@@ -183,6 +178,25 @@
 							</div>
 						</div>
 					</div><!-- widget -->
+
+                    <div class="widget">
+                        <div class="widget-head">
+                            <div class="pull-left">
+                                Map
+                            </div>
+                            <div class="widget-icons pull-right">
+                                <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
+                            </div>  
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="widget-content">
+                            <div class="padd">
+                                <div id="contact-google-map"></div>
+                            </div>
+                            
+                            <div class="widget-foot"></div>
+                        </div>
+                    </div><!-- widget -->
 
 
 					<div class="widget">

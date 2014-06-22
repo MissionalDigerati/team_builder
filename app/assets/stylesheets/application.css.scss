@@ -55,3 +55,16 @@ a.white_text{
     font-weight: bold;
     font-size: 11px !important;
 }
+.user.user-profile-page {
+    border-bottom: 1px solid #dddddd;
+    padding: 5px;
+}
+.user.user-profile-page img {
+    max-width: 300px;
+}
+.user.user-profile-page .user-pic {
+    width: 310px;
+}
+.user.user-profile-page .user-details {
+    margin-left: 315px;
+}
