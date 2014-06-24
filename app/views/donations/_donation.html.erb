@@ -1,7 +1,7 @@
 <tr rel="<%= donation.id %>" >
     <td><strong><%= donation.donation_date.strftime('%m/%d/%Y') %></strong>: <%= currency(donation.amount) %><br>
         <% unless hide_contact %>
-            <em>Contact: <%= link_to donation.contact.fullname.titleize, contact_path(donation.contact_id) %></em><br>
+            <em>Contact: <%= link_to donation.contact.family_name, contact_path(donation.contact_id) %></em><br>
         <% end %>
         <strong>Project</strong>: <%= donation.project.capitalize %>
     </td>   
