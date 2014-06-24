@@ -137,7 +137,7 @@
                         <table class="table table-striped phone_number table-bordered">
                             <thead>
                                 <th></th>
-                                <th class="text_right">Action</th>
+                                <th>Action</th>
                             </thead>
                             <tbody>
                                 <%= render :partial => 'numbers/number', :collection => @contact.numbers %>
@@ -158,18 +158,11 @@
                     <% if @contact.occasions.present? %>
                         <table class="table table-striped occasions table-bordered">
                             <thead>
-                                <th class="normal">Date (mm/dd/yyyy)</th>
-                                <th class="normal">Occasion</th>
-                                <th class="text_right">Action</th>
+                                <th></th>
+                                <th>Action</th>
                             </thead>
                             <tbody>
-                                <% @contact.occasions.each do |occasion| %>
-                                    <tr>
-                                        <td class="normal"><%= occasion.special_date.strftime('%m/%d/%Y') %></td>
-                                        <td class="normal"><%= occasion.occasion %></td>
-                                        <td class="text_right"><%= link_to "Edit", edit_occasion_path(occasion, contact_id: occasion.contact_id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", occasion_path(occasion), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
-                                    </tr>
-                                <% end %>
+                                <%= render :partial => 'occasions/occasion', :collection => @contact.occasions, :locals => {:hide_contact => true} %>
                             </tbody>
                         </table>
                     <% else %>

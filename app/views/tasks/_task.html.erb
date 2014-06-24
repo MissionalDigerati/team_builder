@@ -8,7 +8,7 @@
 		<em><%= link_to task.contact.fullname.titleize, contact_path(task.contact_id) %></em> by <strong><%= task.due_date.strftime('%m/%d/%Y') %></strong><br>
 		<span class="label label-info"><%= task.category %></span>
 	</td>	
-	<td class="">
+	<td class="actions">
 		<div class="btn-group pull-right">
 			<a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
 			<ul class="dropdown-menu">

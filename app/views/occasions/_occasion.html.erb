@@ -1,8 +1,27 @@
-<tr>
-	<td><%= link_to occasion.contact.fullname.titleize, contact_path(occasion.contact_id) %></td>
-	<td><%= occasion.occasion %></td>
-	<td><%= occasion.special_date.strftime('%m/%d/%Y') %></td>
-	<td><%= occasion.created_at.strftime('%m/%d/%Y') %></td>
-	<td class="text_center"><%= link_to edit_button, edit_occasion_path(occasion, contact_id: occasion.contact_id), :class => "btn btn-success btn-small"  %> <%= link_to delete_button, occasion, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-small"  %> <%= link_to contact_button, contact_path(occasion.contact_id), :class => "btn btn-info btn-small"  %>
-	</td>
+<tr rel="<%= occasion.id %>" >
+    <td><strong><%= occasion.special_date.strftime('%B %d') %></strong>: <%= occasion.occasion %><br>
+        <% unless hide_contact %>
+            <em>Contact: <%= link_to occasion.contact.family_name, contact_path(occasion.contact_id) %></em>
+        <% end %>
+    </td>   
+    <td class="actions">
+        <div class="btn-group pull-right">
+            <a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li>
+                    <%= link_to edit_button, edit_occasion_path(occasion, contact_id: occasion.contact_id) %>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <%= link_to delete_button, occasion_path(occasion), :method => :delete, data: { confirm: 'Are you sure?'}%>
+                </li>
+                <% unless hide_contact %>
+                    <li class="divider"></li>
+                    <li>
+                        <%= link_to contact_button, contact_path(occasion.contact_id) %>
+                    </li>
+                <% end %>
+            </ul>
+        </div> 
+    </td>
 </tr>
