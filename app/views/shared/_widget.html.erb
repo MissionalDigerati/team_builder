@@ -10,11 +10,5 @@
     </div>
     <div class="widget-content">
         <%= yield %>
-        <div class="widget-foot text-right">
-            <% if local_assigns.has_key? :footer_btn_link %>
-                <%= link_to footer_btn_text, footer_btn_link, :class => "btn btn-primary presence" %>
-            <% end %>
-            <div class="clear"></div>
-        </div>
     </div>
 </div><!-- widget -->
