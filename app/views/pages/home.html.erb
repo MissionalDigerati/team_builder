@@ -1,170 +1,143 @@
 <% content_for :header do %>
-<h2 class="pull-left"><i class="icon-home"></i> Dashboard</h2>
+    <h2 class="pull-left"><i class="icon-home"></i> Dashboard</h2>
 
     <!-- Breadcrumb -->
     <div class="bread-crumb pull-right">
-      <a href="/" class="bread-current">Dashboard</a>
-      <!-- <span class="divider">/</span>  -->
+        <a href="/" class="bread-current">Dashboard</a>
     </div>
 <% end %>
 
 <% content_for :stats do %>
 
 <div class="matter">
-  <div class="container-fluid">
-    <div class="row-fluid">
-      <div class="span12"> 
-        <!-- List starts -->
-        <ul class="today-datas">
-          <!-- List #1 -->
-          <li>
-            <!-- Graph -->
-            <div class="datas-text">Total Contacts:<br/><%= Contact.contact_count %></div>
-          </li>
-          <li>
-            <div class="datas-text">Non-Believers:<br/><%= Contact.non_believers %></div>
-          </li>
-          <li>
-            <div class="datas-text">New Contacts (last 4 weeks):<br/><%= Contact.contacts_in_last_month %></div>
-          </li>
-          <li>
-            <div class="datas-text">New Contacts (last year):<br/><%= Contact.contacts_in_last_year %></div>
-          </li> 
-          <li>
-            <div class="datas-text">Saw Presentation:<br/><%= Contact.who_saw_presentation %></div>
-          </li>
-          <li>
-            <div class="datas-text">Contacts who Donated:<br/><%= Contact.donated_contacts %></div>
-          </li>                                                                                                                
-        </ul> 
-      </div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12"> 
+                <!-- List starts -->
+                <ul class="today-datas">
+                    <!-- List #1 -->
+                    <li>
+                    <!-- Graph -->
+                        <div class="datas-text">Total Contacts:<br/><%= Contact.contact_count %></div>
+                    </li>
+                    <li>
+                        <div class="datas-text">Non-Believers:<br/><%= Contact.non_believers %></div>
+                    </li>
+                    <li>
+                        <div class="datas-text">New Contacts (last 4 weeks):<br/><%= Contact.contacts_in_last_month %></div>
+                    </li>
+                    <li>
+                        <div class="datas-text">New Contacts (last year):<br/><%= Contact.contacts_in_last_year %></div>
+                    </li> 
+                    <li>
+                        <div class="datas-text">Saw Presentation:<br/><%= Contact.who_saw_presentation %></div>
+                    </li>
+                    <li>
+                        <div class="datas-text">Contacts who Donated:<br/><%= Contact.donated_contacts %></div>
+                    </li>                                                                                                                
+                </ul> 
+            </div>
+        </div>
     </div>
-  </div>
 <% end %>
 
 
-	<div class="container-fluid">
-		<div class="row-fluid">
-			<div class="span8">
-			    <!-- task within week range begin -->
-			    <% if @tasks_within_week_range.present? %>
-				    <div class="widget">
-				      <!-- Widget head -->
-				    	<div class="widget-head">
-				        <div class="pull-left">Tasks Due This Week (Check to Complete)</div>
-				        <div class="widget-icons pull-right">
-				          <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a>
-				          <a href="#" class="wclose"><i class="icon-remove"></i></a>
-				        </div>  
-				        <div class="clearfix"></div>
-				      </div>              
-				
-				      <!-- Widget content -->
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span8">
+                <!-- task within week range begin -->
+                <%= render  :layout => 'shared/widget', :locals => 
+                {
+                :title => 'Tasks Due This Week (Check to Complete)',
+                    :footer_btn_text => "Add Task",
+                    :footer_btn_link => new_task_path
+                } do %>
+                    <% if @tasks_within_week_range.present? %>
+                        <table class="table table-hover">
+                            <thead>
+                                <th>Complete</th>
+                                <th>Task</th>
+                                <th><span>Action</span></th>
+                            </thead>
+                            <tbody>
+                                <%= render :partial => 'tasks/task', :collection => @tasks_within_week_range %>
+                            </tbody>
+                        </table>
+                    <% else %>
+                        <div class="padd">
+                            <p>No tasks due this week.</p>
+                        </div>
+                    <% end %>
+                <% end %>
+                <!-- task within week range end -->
 
-				      <div class="widget-content">
-							<table class="table table-hover">
-								<thead>
-									<th>Complete</th>
-									<th>Task</th>
-									<th><span>Action</span></th>
-								</thead>
-								<tbody>
-									<%= render :partial => 'tasks/task', :collection => @tasks_within_week_range %>
-								</tbody>
-							</table>
-							<div class="widget-foot text-right">
-								<%= link_to "Add Task", new_task_path, :class => "btn btn-primary" %> <%= link_to "View All Tasks", tasks_path, :class => "btn" %>
-		                  	</div>
-				      </div>
-				    </div>
-			    <% end %>
-			    <!-- task within week range end -->
-
-			    <!-- tasks begin -->
-			    <% if @task.present? %>
-				    <div class="widget">
-				      <!-- Widget head -->
-				    	<div class="widget-head">
-				        <div class="pull-left">Incomplete Tasks (Check to Complete)</div>
-				        <div class="widget-icons pull-right">
-				          <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a>
-				          <a href="#" class="wclose"><i class="icon-remove"></i></a>
-				        </div>  
-				        <div class="clearfix"></div>
-				      </div>              
-				
-				      <!-- Widget content -->
-				      <div class="widget-content">
-							<table class="table table-hover">
-								<thead>
-									<th>Complete</th>
-									<th>Task</th>
-									<th><span>Action</span></th>
-								</thead>
-								<tbody>
-									<%= render @task %>
-								</tbody>	
-							</table>
-							<div class="widget-foot text-right">
-								<%= link_to "Add Task", new_task_path, :class => "btn btn-primary" %> <%= link_to "View All Tasks", tasks_path, :class => "btn" %>
-		                  	</div>
-				      </div>
-				    </div>
-			    <% end %>
-			    <!-- tasks end -->
-			    <br/> <br/>
-		  </div>
-		  <div class="span4">
-            <!-- occassions within week range begin -->
-            <% if @occasions_week.present? %>
-                <div class="widget">
-                  <!-- Widget head -->
-                    <div class="widget-head">
-                    <div class="pull-left">Upcoming Special Dates</div>
-                    <div class="widget-icons pull-right">
-                      <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a>
-                      <a href="#" class="wclose"><i class="icon-remove"></i></a>
-                    </div>  
-                    <div class="clearfix"></div>
-                  </div>              
-            
-                  <!-- Widget content -->
-
-                  <div class="widget-content">
-                    <div class="padd">
-                        <%= render :partial => 'occasions/occasion_mini', :collection => @occasions_week %>
-                    </div>
-                    <div class="widget-foot"></div>
-                  </div>
-                </div>
-            <% end %>
-            <!-- task within week range end -->
-            <div class="widget">
-              <!-- Widget head -->
-                <div class="widget-head">
-                <div class="pull-left">This Year's Donations (<%= donation_this_year %>)</div>
-                <div class="widget-icons pull-right">
-                  <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a>
-                  <a href="#" class="wclose"><i class="icon-remove"></i></a>
-                </div>  
-                <div class="clearfix"></div>
-              </div>              
-        
-              <!-- Widget content -->
-
-              <div class="widget-content">
-                <div class="padd">
-                    <div id="donation-summary-wiget" class="widget-chart"></div>
-                </div>
-                <div class="widget-foot text-center donation-total-widget"></div>
-              </div>
+                <!-- tasks begin -->
+                <%= render  :layout => 'shared/widget', :locals => 
+                {
+                    :title => 'Incomplete Tasks (Check to Complete)',
+                    :footer_btn_text => "Add Task",
+                    :footer_btn_link => new_task_path
+                } do %>
+                    <% if @tasks.present? %>
+                        <table class="table table-hover">
+                            <thead>
+                                <th>Complete</th>
+                                <th>Task</th>
+                                <th><span>Action</span></th>
+                            </thead>
+                            <tbody>
+                                <%= render :partial => 'tasks/task', :collection => @tasks %>
+                            </tbody>
+                        </table>
+                    <% else %>
+                        <div class="padd">
+                            <p>No tasks to complete.</p>
+                        </div>
+                    <% end %>
+                <% end %>
+                <!-- tasks end -->
             </div>
-            <%= render :partial => "support_states/overall_status" %>
+            <div class="span4">
+                <%= render  :layout => 'shared/widget', :locals => 
+                {
+                    :title => 'Upcoming Special Dates'
+                } do %>
+                    <div class="padd">
+                        <% if @occasions_week.present? %>
+                            <%= render :partial => 'occasions/occasion_mini', :collection => @occasions_week %>
+                        <% else %>
+                            <p>Currently, no upcoming special dates.</p>
+                        <% end %>
+                    </div>
+                <% end %>
 
-		  </div>
-		  <div class="clear"></div>
-		</div>
-	</div> <!-- container-fluid end -->
+                <div class="widget">
+                    <!-- Widget head -->
+                    <div class="widget-head">
+                        <div class="pull-left">This Year's Donations (<%= donation_this_year %>)</div>
+                        <div class="widget-icons pull-right">
+                            <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a>
+                            <a href="#" class="wclose"><i class="icon-remove"></i></a>
+                        </div>  
+                        <div class="clearfix"></div>
+                    </div>              
+
+                        <!-- Widget content -->
+
+                    <div class="widget-content">
+                        <div class="padd">
+                            <div id="donation-summary-wiget" class="widget-chart"></div>
+                        </div>
+                        <div class="widget-foot text-center donation-total-widget"></div>
+                    </div>
+                </div>
+
+                <%= render :partial => "support_states/overall_status" %>
+
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div> <!-- container-fluid end -->
 </div> <!-- div class mattter ends -->
 
 <% content_for :additional_js do %>
