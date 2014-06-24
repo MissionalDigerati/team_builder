@@ -249,20 +249,11 @@
                     <% if @contact.presences.present? %>
                         <table class="table table-striped presence table-bordered">
                             <thead>
-                                <th>Site</th>
-                                <th>URL</th>
-                                <th>Account</th>
-                                <th class="text_right">Action</th>
+                                <th></th>
+                                <th>Action</th>
                             </thead>
                             <tbody>
-                                <% @contact.presences.each do |presence| %>
-                                    <tr>
-                                        <td class="normal"><%= presence.site %></td>
-                                        <td class="normal"><%= link_to "#{presence.url}", presence.url%></td>
-                                        <td class="normal"><%= presence.account %></td>
-                                        <td class="text_right"><%= link_to "Edit", edit_presence_path(presence, contact_id: @contact.id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", presence_path(presence), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
-                                    </tr>
-                                <% end %>
+                                <%= render :partial => 'presences/presence', :collection => @contact.presences, :locals => {:hide_contact => true} %>
                             </tbody>
                         </table>
                     <% else %>
