@@ -227,18 +227,11 @@
                     <% if @notes.present? %>
                         <table class="table table-striped notes table-bordered">
                             <thead>
-                                <th class="normal">Note</th>
-                                <th class="normal">Created at</th>
-                                <th class="text_right">Action</th>
+                                <th></th>
+                                <th>Action</th>
                             </thead>
                             <tbody>
-                                <% @notes.each do |note| %>
-                                    <tr>
-                                        <td><%= note.note %></td>
-                                        <td><%= note.created_at.strftime('%m/%d/%Y') %></td>
-                                        <td class="text_right"><%= link_to "Edit", edit_note_path(note, contact_id: @contact.id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", note_path(note, contact_id: @contact.id), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %></td>
-                                    </tr>
-                                <% end %>
+                                <%= render :partial => 'notes/note', :collection => @notes, :locals => {:hide_contact => true} %>
                             </tbody>
                         </table>
                     <% else %>

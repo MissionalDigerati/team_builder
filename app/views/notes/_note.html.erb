@@ -1,0 +1,28 @@
+<tr rel="<%= note.id %>" >
+    <td><strong><%= note.created_at.strftime('%B %d, %Y') %></strong>:<br>
+        <% unless hide_contact %>
+            <em>Contact: <%= link_to note.contact.family_name, contact_path(note.contact_id) %></em><br>
+        <% end %>
+        <%= note.note %>
+    </td>   
+    <td class="actions">
+        <div class="btn-group pull-right">
+            <a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li>
+                    <%= link_to edit_button, edit_note_path(note, contact_id: note.contact_id)%>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <%= link_to delete_button, note_path(note, contact_id: note.contact.id), method: :delete, data: { confirm: 'Are you sure?' }%>
+                </li>
+                <% unless hide_contact %>
+                    <li class="divider"></li>
+                    <li>
+                        <%= link_to contact_button, contact_path(note.contact_id) %>
+                    </li>
+                <% end %>
+            </ul>
+        </div> 
+    </td>
+</tr>
