@@ -201,30 +201,20 @@
 
 
                 <%= render  :layout => 'shared/widget', :locals => { :title => 'Task(s)' } do %>
-                    <% if @task.present? %>
+                    <% if @tasks.present? %>
                         <table class="table table-striped tasks table-bordered">
                             <thead>
-                                <th>Completed?</th>
+                                <th>Complete</th>
                                 <th>Task</th>
-                                <th>Due date (mm/dd/yyyy)</th>
-                                <th>Category</th>
-                                <th class="text_right">Action</th>
+                                <th>Action</th>
                             </thead>
                             <tbody>
-                                <% @task.each do |task| %>
-                                    <tr rel="<%= task.id %>" >
-                                        <td class="normal"><%= check_box_tag "#{task.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(task), remote: true, :class => "completed_button #{task.id} hidden" %></td>
-                                        <td class="normal"><%= task.task %></td>
-                                        <td class="normal"><%= task.due_date.strftime('%m/%d/%Y') %></td>
-                                        <td class="normal"><%= task.category %></td>
-                                        <td class="text_right"><%= link_to "Edit", edit_task_path(task, contact_id: task.contact_id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", task_path(task), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
-                                    </tr>
-                                <% end %>
+                                <%= render :partial => 'tasks/task', :collection => @tasks.order("due_date ASC"), :locals => {:hide_contact => true} %>
                             </tbody>
                         </table>
                     <% else %>
                         <div class="padd">
-                            <p>No tasks have been added to this contact.</p>
+                            <p>No incomplete tasks for this contact.</p>
                         </div>
                     <% end %>
                     <div class="widget-foot text-right">

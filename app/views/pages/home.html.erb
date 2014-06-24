@@ -55,7 +55,7 @@
                                 <th><span>Action</span></th>
                             </thead>
                             <tbody>
-                                <%= render :partial => 'tasks/task', :collection => @tasks_within_week_range %>
+                                <%= render :partial => 'tasks/task', :collection => @tasks_within_week_range, :locals => {:hide_contact => false} %>
                             </tbody>
                         </table>
                     <% else %>
@@ -81,7 +81,7 @@
                                 <th><span>Action</span></th>
                             </thead>
                             <tbody>
-                                <%= render :partial => 'tasks/task', :collection => @tasks %>
+                                <%= render :partial => 'tasks/task', :collection => @tasks, :locals => {:hide_contact => false} %>
                             </tbody>
                         </table>
                     <% else %>

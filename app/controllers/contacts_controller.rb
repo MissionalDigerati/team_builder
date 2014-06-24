@@ -100,7 +100,7 @@ class ContactsController < ApplicationController
   
     def sub_contact_info
       @contact = Contact.find(params[:id])
-      @task = @contact.tasks.where(:completed => false )
+      @tasks = @contact.tasks.where(:completed => false )
       @notes = @contact.notes.order("created_at DESC")
     end
     
