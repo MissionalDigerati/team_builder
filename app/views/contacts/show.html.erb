@@ -41,25 +41,27 @@
 
             <div class="span6">
                 <%= render  :layout => 'shared/widget', :locals => { :title => 'Details' } do %>
-                    <div class="user user-profile-page">
-                        <div class="user-pic">
+                    <div class="row-fluid contact-details">
+                        <div class="span5 text-center">
                             <% if @contact.avatar.url.present? %>
                                 <%= image_tag @contact.avatar.url(:medium) %>
                             <% end %>
                         </div>
 
-                        <div class="user-details">
+                        <div class="span6 offset1">
                             <h4><%= @contact.family_name %></h4>
                             <% unless @contact.children.blank? %>
                             <h5><%= @contact.children %></h5>
                             <% end %>
-                            <br>
-                            <p><%= @contact.address_1 %></p>
-                            <% unless @contact.address_2.blank? %>
-                            <p><%= @contact.address_2 %></p>
+                            <% unless @contact.address_1.blank? %>
+                                <br>
+                                <p><%= @contact.address_1 %></p>
+                                <% unless @contact.address_2.blank? %>
+                                <p><%= @contact.address_2 %></p>
+                                <% end %>
+                                <p><%= @contact.city %>, <%= @contact.state.state_long %> <%= @contact.zip %></p>
+                                <p><%= @contact.country.printable_name %></p>
                             <% end %>
-                            <p><%= @contact.city %>, <%= @contact.state.state_long %> <%= @contact.zip %></p>
-                            <p><%= @contact.country.printable_name %></p>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -134,20 +136,11 @@
                     <% if @contact.numbers.present?%>
                         <table class="table table-striped phone_number table-bordered">
                             <thead>
-                                <th>Type</th>
-                                <th>Number</th>
-                                <th>Note</th>
+                                <th></th>
                                 <th class="text_right">Action</th>
                             </thead>
                             <tbody>
-                                <% @contact.numbers.each do |number| %>
-                                    <tr>
-                                        <td class="normal"><%= number.phone_type %></td>
-                                        <td class="normal"><%= number_to_phone(number.number, :area_code => true, :delimiter => " ") %></td>
-                                        <td class="normal"><%= number.note %></td>
-                                        <td class="text_right"><%= link_to "Edit", edit_number_path(number, contact_id: number.contact_id ), :class => "btn btn-small btn-success" %> <%= link_to "Delete", number_path(number), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
-                                    </tr>
-                                <% end %>
+                                <%= render :partial => 'numbers/number', :collection => @contact.numbers %>
                             </tbody>
                         </table>
                     <% else %>
