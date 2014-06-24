@@ -162,7 +162,7 @@
                                 <th>Action</th>
                             </thead>
                             <tbody>
-                                <%= render :partial => 'occasions/occasion', :collection => @contact.occasions, :locals => {:hide_contact => true} %>
+                                <%= render :partial => 'occasions/occasion', :collection => @contact.occasions.order("special_date ASC"), :locals => {:hide_contact => true} %>
                             </tbody>
                         </table>
                     <% else %>
