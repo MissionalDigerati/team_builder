@@ -176,26 +176,16 @@
                     </div>
                 <% end %>
 
-
-                <%= render  :layout => 'shared/widget', :locals => {    :title => 'Donation(s)' } do %>
+                <%= render  :layout => 'shared/widget', :locals => {    :title => "Donation(s) - #{currency(@contact.donations.sum(:amount))}" } do %>
                     <% if @contact.donations.present? %>
                         <table class="table table-striped donations table-bordered">
                             <thead>
-                                <th>Date (mm/dd/yyyy)</th>
-                                <th>Amount</th>
-                                <th>Project</th>
-                                <th class="text_right">Action</th>
+                                <th></th>
+                                <th>Action</th>
                             </thead>
                             <tbody>
-                                <% @contact.donations.each do |donation| %>
-                                    <tr>
-                                        <td class="normal"><%= donation.donation_date.strftime('%m/%d/%Y') %></td>
-                                        <td class="normal"><%= currency(donation.amount) %></td>
-                                        <td class="normal"><%= donation.project %></td>
-                                        <td class="text_right"><%= link_to "Edit", edit_donation_path(donation, contact_id: donation.contact_id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", donation_path(donation), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
-                                    </tr>
-                                <% end %>
-                            </tbody> 
+                                <%= render :partial => 'donations/donation', :collection => @contact.donations.order("donation_date DESC"), :locals => {:hide_contact => true} %>
+                            </tbody>
                         </table>
                     <% else %>
                         <div class="padd">
