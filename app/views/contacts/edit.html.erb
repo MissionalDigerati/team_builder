@@ -14,7 +14,17 @@
 <% content_for :stats do %>
 <div class="matter">
 <% end %>
-	<div class="container-fluid">
-		<%= render 'edit_form' %>
-	</div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <%= render  :layout => 'shared/widget', :locals => { :title => "Edit Details for #{@contact.family_name}" } do %>
+                    <div class="padd"><%= render 'edit_form' %></div>
+                    
+                    <div class="widget-foot text-right">
+                    </div>
+                <% end %>
+            </div>
+        </div>
+
+    </div>
 </div> <!-- matter -->
