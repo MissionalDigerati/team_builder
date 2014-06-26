@@ -34,12 +34,6 @@
           </li> 
           <li>
             <div class="datas-text">Number of contacts that have donated:<br/><%= Contact.donated_contacts %></div>
-          </li>
-          <li>
-            <div class="datas-text">
-            	<%= link_to "View all Donations this month", donations_path(:month => Time.now.month, :year => Time.now.year) %><br/>
-				<%= link_to "View all Donations this year", donations_path(:year => Time.now.year) %><br/>
-            </div>
           </li>                                                                                                                
         </ul> 
       </div>
@@ -49,58 +43,85 @@
 
 
 	<div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12 text-right">
+                <%= link_to 'New Donation', new_donation_path, :class => "btn btn-primary" %>
+                <div class="clear"></div>
+            </div>
+        </div>
+
 		<div class="row-fluid">
-			<div class="span12">
+            <div class="span8">
 
+                <%= tag_param %>
+                <%= render  :layout => 'shared/widget', :locals => { :title => 'Donations' } do %>
+                    <% if @donations.present? %>
+                        <table class="table index table-hover table-striped", id="donations">
+                            <tr>
+                                <th> Sort By<span class="sort-spacer"></span> 
+                                    <%= sortable "donation_date", "Date (mm/dd/yyyy)" %>
+                                    <span class="sort-spacer">|</span> 
+                                    <%= sortable "amount" %>
+                                    <span class="sort-spacer">|</span> 
+                                    <%= sortable "project" %>
+                                </th>
+                            </tr>
+                            <%= render :partial => 'donations/donation', :collection => @donations, :locals => {:hide_contact => false} %>
+                        </table>  
+                    <% else %>
+                        <div class="padd">
+                            <p>There are no donations available.</p>
+                        </div>
+                    <% end %>
+                    <div class="widget-foot text-right">
+                        <%= link_to 'New Donation', new_donation_path, :class => "btn btn-primary" %>
+                        <div class="clear"></div>
+                    </div>
+                <% end %>
+            </div>
+            <div class="span4">
 
-				<div class="pull-right">
+                <%= render  :layout => 'shared/widget', :locals => { title: 'Filter Donations' } do %>
+                    <div class="padd text-center">
+                        <div class="btn-group">
+                            <%= link_to "This Month", donations_path(month: Time.now.month, year: Time.now.year, filter_type: 'this_month'), class: 'btn', id: 'this-month-button' %>
+                            <%= link_to "This Year", donations_path(:year => Time.now.year, filter_type: 'this_year'), class: 'btn', id: 'this-year-button' %>
+                        </div>
+                    </div>
+                    <div class="widget-foot text-right">
+                        <%= link_to "Clear", donations_path, class: 'btn btn-info' %>
+                    </div>
+                <% end %>
 
-				</div>
-				<div class="clear"></div>
+                <%= render  :layout => 'shared/widget', :locals => { :title => "This Year's Donations (#{donation_this_year})" } do %>
+                    <div class="padd">
+                        <div id="donation-summary-wiget" class="widget-chart"></div>
+                    </div>
+                    <div class="widget-foot text-center donation-total-widget"></div>
+                <% end %>
 
-			<%= tag_param %>
-		    <% if @donations.present? %>
-		    <%= link_to 'New Donation', new_donation_path, :class => "btn btn-primary pull-right" %>
-		    <br/><br/>
-			    <div class="widget">
-			      <!-- Widget head -->
-			    	<div class="widget-head">
-			        <div class="pull-left">Donations</div>
-			        <div class="widget-icons pull-right">
-			          <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
-			        </div>  
-			        <div class="clearfix"></div>
-			      </div>              
-			
-			      <!-- Widget content -->
-			      <div class="widget-content">
-			      	<table class="table index table-hover table-striped", id="donations">
-			      		<tr>
-			      	    	<th>
-			      	    		Name
-			      	    		<span class="slash">/</span> 
-								<%= sortable "donation_date", "Date (mm/dd/yyyy)" %>
-								<span class="slash">/</span> 
-								<%= sortable "amount" %>
-								<span class="slash">/</span> 
-								<%= sortable "project" %>
-							</th>
-							<th>
-		    					<span class="pull-right">Action</span>
-		    				</th>
-			      	  	</tr>
-                        <%= render :partial => 'donations/donation', :collection => @donations, :locals => {:hide_contact => false} %>
-			      	</table>
-						<div class="widget-foot">
-	                  	</div>
-			      </div>
-			    </div>
-		    <% end %>
-		    <%= link_to 'New Donation', new_donation_path, :class => "btn btn-primary pull-right" %>
-		    <%= paginate @donations, :theme => 'twitter-bootstrap' %>
-		    <br/><br/>
-		  </div>
+            </div>
+            <div class="clear"></div>
 		</div>
+        <div class="row-fluid">
+            <div class="span12">
+                <%= paginate @donations, :theme => 'twitter-bootstrap' %>
+            </div>
+        </div>
 	</div> <!-- container-fluid end -->
 </div> <!-- div class mattter ends -->
+<% content_for :additional_js do %>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            <% unless params[:filter_type].blank? %>
+                <% if params[:filter_type] == 'this_month' %>
+                    $('a#this-month-button').addClass('btn-primary');
+                <% elsif params[:filter_type] == 'this_year' %>
+                    $('a#this-year-button').addClass('btn-primary');
+                <% end %>
+            <% end %>
+            donationsWidget(<%= widget_donation_data %>);
+        });
+    </script>
+<% end %>
 
