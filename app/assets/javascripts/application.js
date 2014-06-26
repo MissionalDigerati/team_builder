@@ -38,6 +38,8 @@
 //= require macadmin/layouts/top
 //= require macadmin/layouts/topRight
 //= require macadmin/themes/default
+//= require macadmin/themes/default
+//= require tag-it/tag-it.min
 //= require_self
 //= require_tree .
 

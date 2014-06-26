@@ -465,16 +465,13 @@
             </div>  
         </div> <!-- span3 -->
 
-        <div class="span3 offset1">
+        <div class="span7 offset1">
             <div class="control-group">
                 <%= f.label :tag_list, "Tags (separated by commas)", class: 'control-label' %>
                 <div class="controls">
-                    <%= f.text_field :tag_list, id: "tag_list", class: 'input-block-level'  %>
+                    <%= f.text_field :tag_list, id: "tag_list", class: 'input-block-level tagger'  %>
                 </div>
             </div>
-        </div> <!-- span3 -->
-
-        <div class="span3 offset1">
         </div> <!-- span3 -->
 
         <div class="span1"></div>
@@ -491,7 +488,9 @@
 <% end %>
 <% content_for :additional_js do %>
     <script type="text/javascript">
+        var availableTags = <%=raw @tags %>;
         $(document).ready(function() {
+            $('input.tagger').tagit({availableTags: availableTags, allowSpaces: true});
             $("div.avatar-holder input").uniform();
             $('div.toggle-button').toggleButtons(
                 {

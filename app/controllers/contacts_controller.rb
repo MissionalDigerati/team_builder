@@ -39,6 +39,7 @@ class ContactsController < ApplicationController
     @contact.occasions.build
     @contact.presences.build
     @contact.build_support_state
+    @tags = ActsAsTaggableOn::Tag.all.collect(&:name)
     
     respond_to do |format|
       format.html # new.html.erb
@@ -49,6 +50,7 @@ class ContactsController < ApplicationController
   # GET /contacts/1/edit
   def edit
     @contact = Contact.find(params[:id])
+    @tags = ActsAsTaggableOn::Tag.all.collect(&:name)
   end
 
   # POST /contacts
