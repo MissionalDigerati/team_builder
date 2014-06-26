@@ -1,18 +1,61 @@
+<%= form_for([@donations]) do |f| %>
+    <div class="row-fluid">
+        <div class="span3">
+            <div class="control-group">
+                <%= f.label :donation_date, "Date", class: 'control-label' %>
+                <div class="controls">
+                    <%= f.text_field :donation_date, id: "donation_date", class: 'input-block-level due_date_field date_select'  %>
+                </div>
+            </div>
+        </div> <!-- span3 -->
 
-<div class="span2 center_div">
-	<%= form_for([@donations]) do |f| %>
-		<%= f.label :contact_id, "Contact" %>
-		<%= f.select(:contact_id, form_select) %><br/><br/>
-		<%= f.label :donation_date, "Date" %>
-		<%= f.text_field :donation_date, :id => "date_select" %><br/><br/>
-		<%= f.label :amount, "Amount" %>
-		<%= f.text_field :amount %><br/><br/>
-		<%= f.label :project, "Project" %>
-		<%= f.text_field :project %><br/><br/>
-	
-		<%= f.submit :class => "btn btn-large btn-success pull-right" %>
+        <div class="span3 offset1">
+    		<%= f.label :contact_id, "Contact", class: 'control-label' %>
+            <div class="controls">
+                <%= f.select :contact_id, form_select, {}, class: 'input-block-level' %>
+            </div>
+        </div> <!-- span3 -->
 
-	<% end %>
-	<br/><br/><br/><br/>
-</div>
-<div class="clear"></div>
+        <div class="span3 offset1">
+            <div class="control-group">
+                <%= f.label :amount, "Amount", class: 'control-label' %>
+                <div class="input-prepend">
+                    <span class="add-on">$</span>
+                    <%= f.text_field :amount, id: "amount", class: 'input-block-level'  %>
+                </div>
+            </div>
+        </div> <!-- span3 -->
+
+        <div class="span1"></div>
+        <div class="clear"></div>
+    </div> <!-- row-fluid -->
+
+    <div class="row-fluid">
+        <div class="span3">
+            <div class="control-group">
+                <%= f.label :project, "Project/Specific Use", class: 'control-label' %>
+                <div class="controls">
+                    <%= f.text_field :project, id: "project", class: 'input-block-level'  %>
+                </div>
+            </div>
+        </div> <!-- span3 -->
+
+        <div class="span3 offset1"></div> <!-- span3 -->
+
+        <div class="span3 offset1"></div> <!-- span3 -->
+
+        <div class="span1"></div>
+        <div class="clear"></div>
+    </div> <!-- row-fluid -->
+
+    <div class="row-fluid">
+        <div class="span12 text-center">
+            <hr>
+            <% if form_type == 'add' %>
+                <%= f.submit :id => "Add Donation", :class => "btn btn-large btn-success" %>
+            <% else %>
+                <%= f.submit :id => "Update Donation", :class => "btn btn-large btn-success" %>
+            <% end %>
+        </div>
+    </div>
+<% end %>
