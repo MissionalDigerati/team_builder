@@ -74,8 +74,7 @@ describe Donation do
     context "#yearly_sums" do
 
         it "should return an hash of years and sums for donations" do
-            expected = {'2004' => 250, '2005' => 500, '2006' => 400}
-            FactoryGirl.create(:defaulted_donation, {:donation_date => Time.parse("20-03-2004"), :amount => 250.00})
+            expected = {'2005' => 500, '2006' => 400}
             FactoryGirl.create(:defaulted_donation, {:donation_date => Time.parse("20-03-2005"), :amount => 250.00})
             FactoryGirl.create(:defaulted_donation, {:donation_date => Time.parse("20-03-2005"), :amount => 250.00})
             FactoryGirl.create(:defaulted_donation, {:donation_date => Time.parse("20-03-2006"), :amount => 400.00})
@@ -84,6 +83,17 @@ describe Donation do
 
         it "should return an empty hash if there are no sums" do
             Donation.yearly_sums.should == {}
+        end
+
+        it "should only return the last 10 years" do
+            expected = {'2005' => 500, '2006' => 500}
+            FactoryGirl.create(:defaulted_donation, {:donation_date => Time.parse("20-03-2002"), :amount => 1000.00})
+            FactoryGirl.create(:defaulted_donation, {:donation_date => Time.parse("20-03-2003"), :amount => 550.00})
+            FactoryGirl.create(:defaulted_donation, {:donation_date => Time.parse("20-03-2004"), :amount => 250.00})
+            FactoryGirl.create(:defaulted_donation, {:donation_date => Time.parse("20-03-2005"), :amount => 250.00})
+            FactoryGirl.create(:defaulted_donation, {:donation_date => Time.parse("20-04-2005"), :amount => 250.00})
+            FactoryGirl.create(:defaulted_donation, {:donation_date => Time.parse("20-04-2006"), :amount => 500.00})
+            Donation.yearly_sums.should == expected
         end
 
     end
