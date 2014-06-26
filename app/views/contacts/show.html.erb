@@ -1,393 +1,282 @@
 <% content_for :header do %>
-<div class="pull-left">
-	<h2><i class="icon-group"></i> <%= @contact.family_name %>
-		<span class="label status-<%= @contact.support_state.progress.downcase.parameterize %>">
-		<i class="<%= state_icon(@contact.support_state.progress) %> icon-white"></i> <%= @contact.support_state.progress %>
-		</span>
-	</h2>
-</div>
+    <div class="pull-left">
+        <h2><i class="icon-group"></i> <%= @contact.family_name %>
+            <span class="label status-<%= @contact.support_state.progress.downcase.parameterize %>">
+                <i class="<%= state_icon(@contact.support_state.progress) %> icon-white"></i> <%= @contact.support_state.progress %>
+            </span>
+        </h2>
+    </div>
 
-<!-- Breadcrumb -->
-<div class="bread-crumb pull-right">
-  <%= link_to "Dashboard", root_path, class: "bread-crumb" %>
-  <span class="divider">/</span> 
-  <%= link_to "Contacts", contacts_path, class: "bread-crumb" %>
-  <span class="divider">/</span> 
-  <%= link_to "#{@contact.fullname.present? ? @contact.fullname : 'Contact'}", contact_path(@contact), class: "bread-current" %>
-</div>
+    <!-- Breadcrumb -->
+    <div class="bread-crumb pull-right">
+        <%= link_to "Dashboard", root_path, class: "bread-crumb" %>
+        <span class="divider">/</span> 
+        <%= link_to "Contacts", contacts_path, class: "bread-crumb" %>
+        <span class="divider">/</span> 
+        <%= link_to "#{@contact.fullname.present? ? @contact.fullname : 'Contact'}", contact_path(@contact), class: "bread-current" %>
+    </div>
 <% end %>
 
 <% content_for :stats do %>
 
 <div class="matter">
 
-	<div class="span12 center_div"> 
-	  <!-- List starts -->
-		<center>
-			<% if @contact.support_state.present? %>
-				<div class="support_state_buttons">
-					<%= render partial: 'support_states/support_state' %>
-				</div>
-			<% else %>
-				<%= link_to "Create Donation Status", new_contact_support_state_path(@contact), class: "create_donation_status btn btn-small btn-info" %>
-			<% end %>
-		</center>
-	</div>
+    <div class="span12 center_div"> 
+        <!-- List starts -->
+        <center>
+            <% if @contact.support_state.present? %>
+                <div class="support_state_buttons">
+                    <%= render partial: 'support_states/support_state' %>
+                </div>
+            <% else %>
+                <%= link_to "Create Donation Status", new_contact_support_state_path(@contact), class: "create_donation_status btn btn-small btn-info" %>
+            <% end %>
+        </center>
+    </div>
 
 <% end %>
-	<div class="container-fluid">
+    <div class="container-fluid">
 
-		<div class="row-fluid">
-			
-				<div class="span6">
-					<div class="widget">
-						<div class="widget-head">
-						  	<div class="pull-left">
-						  		Details
-						  	</div>
-						  	<div class="widget-icons pull-right">
-						    	<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
-						    </div>  
-						    <div class="clearfix"></div>
-						</div>
-						<div class="widget-content">
-							<div class="user user-profile-page">
-								<div class="user-pic">
-									<% if @contact.avatar.url.present? %>
-										<%= image_tag @contact.avatar.url(:medium) %>
-									<% end %>
-							    </div>
+        <div class="row-fluid">
 
-							    <div class="user-details">
-							        <h4><%= @contact.family_name %></h4>
-							        <% unless @contact.children.blank? %>
-										<h5><%= @contact.children %></h5>
-									<% end %>
-                                    <br>
-                                    <p><%= @contact.address_1 %></p>
-                                    <% unless @contact.address_2.blank? %>
-                                        <p><%= @contact.address_2 %></p>
-                                    <% end %>
-                                    <p><%= @contact.city %>, <%= @contact.state.state_long %> <%= @contact.zip %></p>
-                                    <p><%= @contact.country.printable_name %></p>
-							    </div>
-                                <div class="clearfix"></div>
-							</div>
-							<table class="table index table-bordered table-hover table-striped">
-								<thead>
-                                </thead>
-								<tbody>
-									<tr>
-										<td class="bold">Email:</td>
-										<td><%= mail_to @contact.email %></td>
-									</tr>
-									<% unless @contact.spouse_name.blank? %>
-										<tr>
-											<td class="bold">Spouse Email:</td>
-											<td><%= mail_to @contact.spouse_email %></td>
-										</tr>
-									<% end %>
-									<tr>
-										<td class="bold">Network:</td>
-										<td><%= @contact.network %></td>
-									</tr>
-									<tr>
-										<td class="bold">Account Number:</td>
-										<td><%= @contact.account_number %></td>
-									</tr>
-									<tr>
-										<td class="bold">Receive NewsLetter?</td>
-										<td><%= @contact.receive_newsletter.yes_or_no %></td>
-									</tr>
-									<tr>
-										<td class="bold">Presented Vision?</td>
-										<td><%= @contact.presented_vision.yes_or_no %></td>
-									</tr>
-                                    <tr>
-                                        <td class="bold">Believer:</td>
-                                        <td class="believer"><%= @contact.believer.yes_or_no %></td>
-                                    </tr>
-                                    <% unless @contact.spouse_name.blank? %>
-                                        <tr>
-                                            <td class="bold">Spouse Believer:</td>
-                                            <td class="believer"><%= @contact.spouse_believer.yes_or_no %></td>
-                                        </tr>
-                                    <% end %>
-									<tr>
-										<td class="bold">Created at:</td>
-										<td><%= @contact.created_at.strftime('%m/%d/%Y') %></td>
-									</tr>
-									<tr>
-										<td class="bold">Last Updated:</td>
-										<td><%= @contact.updated_at.strftime('%m/%d/%Y') %></td>
-									</tr>
-									<tr>
-										<td colspan="2">
-                                            <% @contact.tag_list.each do |tag| %>
-                                                <span class="label label-info"><%= link_to tag.titleize, tag_path(tag), :class => "white_text" %></span>
-                                            <% end %>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-						<div class="widget-foot text-right">
-                            <%= link_to "Edit Details", edit_contact_path(@contact), :class => "btn btn btn-info" %>
-						</div>
-					</div><!-- widget -->
-				</div><!-- span4 -->
-
-
-
-
-				<div class="span6">
-
-
-					<div class="widget">
-						<div class="widget-head">
-						  	<div class="pull-left">
-						  		Phone Number(s)
-						  	</div>
-						  	<div class="widget-icons pull-right">
-						    	<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
-						    </div>  
-						    <div class="clearfix"></div>
-						</div>
-						<div class="widget-content">
-							<% if @contact.numbers.present?%>
-							<table class="table table-striped phone_number table-bordered">
-								<thead>
-									<th>Type</th>
-									<th>Number</th>
-									<th>Note</th>
-									<th class="text_right">Action</th>
-								</thead>
-							<% @contact.numbers.each do |number| %>
-								<tr>
-								<td class="normal"><%= number.phone_type %></td>
-								<td class="normal"><%= number_to_phone(number.number, :area_code => true, :delimiter => " ") %></td>
-								<td class="normal"><%= number.note %></td>
-								<td class="text_right"><%= link_to "Edit", edit_number_path(number, contact_id: number.contact_id ), :class => "btn btn-small btn-success" %> <%= link_to "Delete", number_path(number), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
-								</tr>
-							<% end %>
-							</table>
-							<% end %>
-							<div class="widget-foot">
-							<%= link_to "Add Phone Number", new_number_path(contact_id: @contact.id), :class => "btn btn-primary pull-right" %>
-							<div class="clear"></div>
-							</div>
-						</div>
-					</div><!-- widget -->
-
-                    <div class="widget">
-                        <div class="widget-head">
-                            <div class="pull-left">
-                                Map
-                            </div>
-                            <div class="widget-icons pull-right">
-                                <a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
-                            </div>  
-                            <div class="clearfix"></div>
+            <div class="span6">
+                <%= render  :layout => 'shared/widget', :locals => { :title => 'Details' } do %>
+                    <div class="row-fluid contact-details">
+                        <div class="span5 text-center">
+                            <% if @contact.avatar.url.present? %>
+                                <%= image_tag @contact.avatar.url(:medium) %>
+                            <% end %>
                         </div>
-                        <div class="widget-content">
-                            <div class="padd">
-                                <div id="contact-google-map"></div>
-                            </div>
-                            
-                            <div class="widget-foot"></div>
+
+                        <div class="span6 offset1">
+                            <h4><%= @contact.family_name %></h4>
+                            <% unless @contact.children.blank? %>
+                            <h5><%= @contact.children %></h5>
+                            <% end %>
+                            <% unless @contact.address_1.blank? %>
+                                <br>
+                                <p><%= @contact.address_1 %></p>
+                                <% unless @contact.address_2.blank? %>
+                                <p><%= @contact.address_2 %></p>
+                                <% end %>
+                                <p><%= @contact.city %>, <%= @contact.state.state_long %> <%= @contact.zip %></p>
+                                <p><%= @contact.country.printable_name %></p>
+                            <% end %>
                         </div>
-                    </div><!-- widget -->
+                        <div class="clearfix"></div>
+                    </div>
+                    <table class="table index table-bordered table-hover table-striped">
+                        <thead>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="bold">Email:</td>
+                                <td><%= mail_to @contact.email %></td>
+                            </tr>
+                            <% unless @contact.spouse_name.blank? %>
+                                <tr>
+                                    <td class="bold">Spouse Email:</td>
+                                    <td><%= mail_to @contact.spouse_email %></td>
+                                </tr>
+                            <% end %>
+                            <tr>
+                                <td class="bold">Network:</td>
+                                <td><%= @contact.network %></td>
+                            </tr>
+                            <tr>
+                                <td class="bold">Account Number:</td>
+                                <td><%= @contact.account_number %></td>
+                            </tr>
+                            <tr>
+                                <td class="bold">Receive NewsLetter?</td>
+                                <td><%= @contact.receive_newsletter.yes_or_no %></td>
+                            </tr>
+                            <tr>
+                                <td class="bold">Presented Vision?</td>
+                                <td><%= @contact.presented_vision.yes_or_no %></td>
+                            </tr>
+                            <tr>
+                                <td class="bold">Believer:</td>
+                                <td class="believer"><%= @contact.believer.yes_or_no %></td>
+                            </tr>
+                            <% unless @contact.spouse_name.blank? %>
+                                <tr>
+                                    <td class="bold">Spouse Believer:</td>
+                                    <td class="believer"><%= @contact.spouse_believer.yes_or_no %></td>
+                                </tr>
+                            <% end %>
+                            <tr>
+                                <td class="bold">Created at:</td>
+                                <td><%= @contact.created_at.strftime('%m/%d/%Y') %></td>
+                            </tr>
+                            <tr>
+                                <td class="bold">Last Updated:</td>
+                                <td><%= @contact.updated_at.strftime('%m/%d/%Y') %></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <% @contact.tag_list.each do |tag| %>
+                                        <span class="label label-info"><%= link_to tag.titleize, tag_path(tag), :class => "white_text" %></span>
+                                    <% end %>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="widget-foot text-right">
+                        <%= link_to 'Edit Details', edit_contact_path(@contact), :class => "btn btn-primary" %>
+                        <div class="clear"></div>
+                    </div>
 
+                <% end %>
+            </div>
 
-					<div class="widget">
-						<div class="widget-head">
-						  	<div class="pull-left">
-						  		Special Dates
-						  	</div>
-						  	<div class="widget-icons pull-right">
-						    	<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
-						    </div>  
-						    <div class="clearfix"></div>
-						</div>
-						<div class="widget-content">
-							<% if @contact.occasions.present? %>
-								<table class="table table-striped occasions table-bordered">
-									<thead>
-										<th class="normal">Date (mm/dd/yyyy)</th>
-										<th class="normal">Occasion</th>
-										<th class="text_right">Action</th>
-									</thead>
-									<% @contact.occasions.each do |occasion| %>
-										<tr>
-										<td class="normal"><%= occasion.special_date.strftime('%m/%d/%Y') %></td>
-										<td class="normal"><%= occasion.occasion %></td>
-										<td class="text_right"><%= link_to "Edit", edit_occasion_path(occasion, contact_id: occasion.contact_id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", occasion_path(occasion), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
-										</tr>
-									<% end %>
-								</table>
-							<% end %>
-							<div class="widget-foot">
-							<%= link_to "Add Special Date", new_occasion_path(contact_id: @contact.id), :class => "btn btn-primary pull-right" %>
-							<div class="clear"></div>
-							</div>
-						</div>
-					</div><!-- widget -->
+            <div class="span6">
 
+                <%= render  :layout => 'shared/widget', :locals => { :title => 'Phone Number(s)' } do %>
+                    <% if @contact.numbers.present?%>
+                        <table class="table table-striped phone_number table-bordered">
+                            <thead>
+                                <th></th>
+                                <th>Action</th>
+                            </thead>
+                            <tbody>
+                                <%= render :partial => 'numbers/number', :collection => @contact.numbers %>
+                            </tbody>
+                        </table>
+                    <% else %>
+                        <div class="padd">
+                            <p>No phone numbers have been added to this contact.</p>
+                        </div>
+                    <% end %>
+                    <div class="widget-foot text-right">
+                        <%= link_to 'Add Phone Number', new_number_path(contact_id: @contact.id), :class => "btn btn-primary" %>
+                        <div class="clear"></div>
+                    </div>
+                <% end %>
 
+                <%= render :layout => 'shared/widget', :locals => {    :title => 'Web Presence' } do %>
+                    <% if @contact.presences.present? %>
+                        <table class="table table-striped presence table-bordered">
+                            <thead>
+                                <th></th>
+                                <th>Action</th>
+                            </thead>
+                            <tbody>
+                                <%= render :partial => 'presences/presence', :collection => @contact.presences, :locals => {:hide_contact => true} %>
+                            </tbody>
+                        </table>
+                    <% else %>
+                        <div class="padd">
+                            <p>No web presence has been added to this contact.</p>
+                        </div>
+                    <% end %>
+                    <div class="widget-foot text-right">
+                        <%= link_to 'Add Web Presence', new_presence_path(@contact), :class => "btn btn-primary" %>
+                        <div class="clear"></div>
+                    </div>
+                <% end %>
 
-					<div class="widget">
-						<div class="widget-head">
-						  	<div class="pull-left">
-						  		Donations
-						  	</div>
-						  	<div class="widget-icons pull-right">
-						    	<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
-						    </div>  
-						    <div class="clearfix"></div>
-						</div>
-						<div class="widget-content">
-							<% if @contact.donations.present? %>
-								<table class="table table-striped donations table-bordered">
-									<thead>
-										<th>Date (mm/dd/yyyy)</th>
-										<th>Amount</th>
-										<th>Project</th>
-										<th class="text_right">Action</th>
-									</thead>
-									<% @contact.donations.each do |donation| %>
-										<tr>
-										<td class="normal"><%= donation.donation_date.strftime('%m/%d/%Y') %></td>
-										<td class="normal"><%= currency(donation.amount) %></td>
-										<td class="normal"><%= donation.project %></td>
-										<td class="text_right"><%= link_to "Edit", edit_donation_path(donation, contact_id: donation.contact_id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", donation_path(donation), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
-										</tr>
-									<% end %>
-								</table>
-							<% end %>
-							
-							<div class="widget-foot">
-							<%= link_to "Add Donation", new_donation_path(contact_id: @contact.id), :class => "btn btn-primary pull-right" %>
-							<div class="clear"></div>
-							</div>
-						</div>
-					</div><!-- widget -->
+                <%= render  :layout => 'shared/widget', :locals => { :title => 'Special Date(s)' } do %>
+                    <% if @contact.occasions.present? %>
+                        <table class="table table-striped occasions table-bordered">
+                            <thead>
+                                <th></th>
+                                <th>Action</th>
+                            </thead>
+                            <tbody>
+                                <%= render :partial => 'occasions/occasion', :collection => @contact.occasions.order("special_date ASC"), :locals => {:hide_contact => true} %>
+                            </tbody>
+                        </table>
+                    <% else %>
+                        <div class="padd">
+                            <p>No special dates have been added to this contact.</p>
+                        </div>
+                    <% end %>
+                    <div class="widget-foot text-right">
+                        <%= link_to 'Add Special Date', new_occasion_path(contact_id: @contact.id), :class => "btn btn-primary" %>
+                        <div class="clear"></div>
+                    </div>
+                <% end %>
 
+                <%= render  :layout => 'shared/widget', :locals => { :title => 'Task(s)' } do %>
+                    <% if @tasks.present? %>
+                        <table class="table table-striped tasks table-bordered">
+                            <thead>
+                                <th>Complete</th>
+                                <th>Task</th>
+                                <th>Action</th>
+                            </thead>
+                            <tbody>
+                                <%= render :partial => 'tasks/task', :collection => @tasks.order("due_date ASC"), :locals => {:hide_contact => true} %>
+                            </tbody>
+                        </table>
+                    <% else %>
+                        <div class="padd">
+                            <p>No incomplete tasks for this contact.</p>
+                        </div>
+                    <% end %>
+                    <div class="widget-foot text-right">
+                        <%= link_to 'Add Task', new_task_path(contact_id: @contact.id), :class => "btn btn-primary" %>
+                        <div class="clear"></div>
+                    </div>
+                <% end %>
 
-					<div class="widget">
-						<div class="widget-head">
-						  	<div class="pull-left">
-						  		Tasks
-						  	</div>
-						  	<div class="widget-icons pull-right">
-						    	<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
-						    </div>  
-						    <div class="clearfix"></div>
-						</div>
-						<div class="widget-content">
-							<% if @task.present? %>
-								<table class="table table-striped tasks table-bordered">
-									<thead>
-										<th>Completed?</th>
-										<th>Task</th>
-										<th>Due date (mm/dd/yyyy)</th>
-										<th>Category</th>
-										<th class="text_right">Action</th>		
-									</thead>
-									<% @task.each do |task| %>
-										<tr rel="<%= task.id %>" >
-											<td class="normal"><%= check_box_tag "#{task.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(task), remote: true, :class => "completed_button #{task.id} hidden" %></td>
-											<td class="normal"><%= task.task %></td>
-											<td class="normal"><%= task.due_date.strftime('%m/%d/%Y') %></td>
-											<td class="normal"><%= task.category %></td>
-											<td class="text_right"><%= link_to "Edit", edit_task_path(task, contact_id: task.contact_id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", task_path(task), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
-										</tr>
-									<% end %>
-								</table>
-							<% end %>
-							<div class="widget-foot">
-							<%= link_to "Add Task", new_task_path(contact_id: @contact.id ), :class => "btn btn-primary pull-right"%>
-							<div class="clear"></div>
-							</div>
-						</div>
-					</div><!-- widget -->
+            </div><!-- span6 -->
+        </div><!-- row-fluid -->
+        <div class="row-fluid">
 
+            <div class="span6">
 
+                <%= render :layout => 'shared/widget', :locals => { :title => 'Note(s)' } do %>
+                    <% if @notes.present? %>
+                        <table class="table table-striped notes table-bordered">
+                            <thead>
+                                <th></th>
+                                <th>Action</th>
+                            </thead>
+                            <tbody>
+                                <%= render :partial => 'notes/note', :collection => @notes, :locals => {:hide_contact => true} %>
+                            </tbody>
+                        </table>
+                    <% else %>
+                        <div class="padd">
+                            <p>No notes have been added to this contact.</p>
+                        </div>
+                    <% end %>
+                    <div class="widget-foot text-right">
+                        <%= link_to 'Add Note', new_note_path(contact_id: @contact.id), :class => "btn btn-primary" %>
+                        <div class="clear"></div>
+                    </div>
+                <% end %>
 
-					<div class="widget">
-						<div class="widget-head">
-						  	<div class="pull-left">
-						  		Notes
-						  	</div>
-						  	<div class="widget-icons pull-right">
-						    	<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
-						    </div>  
-						    <div class="clearfix"></div>
-						</div>
-						<div class="widget-content">
-							<% if @notes.present? %>
-								<table class="table table-striped notes table-bordered">
-									<thead>
-										<th class="normal">Note</th>
-										<th class="normal">Created at</th>
-										<th class="text_right">Action</th>
-									</thead>
-									<% @notes.each do |note| %>
-										<tr>
-											<td><%= note.note %></td>
-											<td><%= note.created_at.strftime('%m/%d/%Y') %></td>
-											<td class="text_right"><%= link_to "Edit", edit_note_path(note, contact_id: @contact.id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", note_path(note, contact_id: @contact.id), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %></td>
-										</tr>
-									<% end %>
-								</table>
-							<% end %>
-							<div class="widget-foot">
-							<%= link_to "Add Note", new_note_path(contact_id: @contact.id), :class => "btn btn-primary pull-right" %>
-							<div class="clear"></div>
-							</div>
-						</div>
-					</div><!-- widget -->
+            </div><!-- span6 -->
 
+            <div class="span6">
 
+                <%= render  :layout => 'shared/widget', :locals => {    :title => "Donation(s) - #{currency(@contact.donations.sum(:amount))}" } do %>
+                    <% if @contact.donations.present? %>
+                        <table class="table table-striped donations table-bordered">
+                            <thead>
+                                <th></th>
+                                <th>Action</th>
+                            </thead>
+                            <tbody>
+                                <%= render :partial => 'donations/donation', :collection => @contact.donations.order("donation_date DESC"), :locals => {:hide_contact => true} %>
+                            </tbody>
+                        </table>
+                    <% else %>
+                        <div class="padd">
+                            <p>No donations have been added to this contact.</p>
+                        </div>
+                    <% end %>
+                    <div class="widget-foot text-right">
+                        <%= link_to 'Add Donation', new_donation_path(contact_id: @contact.id), :class => "btn btn-primary" %>
+                        <div class="clear"></div>
+                    </div>
+                <% end %>
 
-					<div class="widget">
-						<div class="widget-head">
-						  	<div class="pull-left">
-						  		Web Presence
-						  	</div>
-						  	<div class="widget-icons pull-right">
-						    	<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
-						    </div>  
-						    <div class="clearfix"></div>
-						</div>
-						<div class="widget-content">
-							<% if @contact.presences.present? %>
-								<table class="table table-striped presence table-bordered">
-									<thead>
-										<th>Site</th>
-										<th>URL</th>
-										<th>Account</th>
-										<th class="text_right">Action</th>
-									</thead>
-									<% @contact.presences.each do |presence| %>
-										<tr>
-											<td class="normal"><%= presence.site %></td>
-											<td class="normal"><%= link_to "#{presence.url}", presence.url%></td>
-											<td class="normal"><%= presence.account %></td>
-											<td class="text_right"><%= link_to "Edit", edit_presence_path(presence, contact_id: @contact.id), :class => "btn btn-small btn-success" %> <%= link_to "Delete", presence_path(presence), :method => :delete, data: { confirm: 'Are you sure?'}, :class => "btn btn-small btn-danger" %> </td>
-										</tr>
-									<% end %>
-								</table>
-							<% end %>
-							<div class="widget-foot">
-							<%= link_to "Add Web Presence", new_presence_path(@contact), :class => "btn btn-primary pull-right presence" %>
-							<div class="clear"></div>
-							</div>
-						</div>
-					</div><!-- widget -->
+            </div><!-- span6 -->
 
-				</div><!-- span8 -->
-
-
-		</div> <!-- row fluid -->
-	</div> <!-- container-fluid -->
+        </div> <!-- row fluid -->
+    </div> <!-- container-fluid -->
 </div> <!-- matter -->

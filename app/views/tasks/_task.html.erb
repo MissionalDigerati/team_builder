@@ -5,10 +5,14 @@
 		<% end %>
 	</td>
 	<td><%= task.task %><br>
-		<em><%= link_to task.contact.fullname.titleize, contact_path(task.contact_id) %></em> by <strong><%= task.due_date.strftime('%m/%d/%Y') %></strong><br>
+		<% unless hide_contact %>
+			<em><%= link_to task.contact.fullname.titleize, contact_path(task.contact_id) %></em> by <strong><%= task.due_date.strftime('%m/%d/%Y') %></strong><br>
+		<% else %>
+			<strong>Due by <%= task.due_date.strftime('%m/%d/%Y') %></strong><br>
+		<% end %>
 		<span class="label label-info"><%= task.category %></span>
 	</td>	
-	<td class="">
+	<td class="actions">
 		<div class="btn-group pull-right">
 			<a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
 			<ul class="dropdown-menu">
@@ -19,10 +23,12 @@
 				<li>
 					<%= link_to delete_button, task_path(task), :method => :delete, data: { confirm: 'Are you sure?'}%>
 				</li>
-				<li class="divider"></li>
-				<li>
-					<%= link_to contact_button, contact_path(task.contact_id) %>
-				</li>
+				<% unless hide_contact %>
+					<li class="divider"></li>
+					<li>
+						<%= link_to contact_button, contact_path(task.contact_id) %>
+					</li>
+				<% end %>
 			</ul>
 		</div> 
 	</td>

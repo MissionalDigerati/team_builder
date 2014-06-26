@@ -124,14 +124,14 @@
 				<div class="widget-content">
 					<table class="table index table-bordered table-hover table-striped", id="occasions">
 					  <tr>
-					    <th>Name</th>
-							<th><%= sortable "occasion" %></th>
-							<th><%= sortable "special_date", "Date (mm/dd/yyyy)" %></th>
-							<th><%= sortable "created_at" %></th>
+						<th>Sort By<span class="sort-spacer"></span>
+							<%= sortable "occasion" %>
+							<span class="sort-spacer">|</span>
+							<%= sortable "special_date", "Date" %></th>
 					    <th>Action</th>
 					  </tr>
 
-						<%= render @occasions %>
+						<%= render :partial	=> 'occasion', :collection => @occasions, :locals => {:hide_contact => false} %>
 					</table>
 				</div>
 				<br/><br/>

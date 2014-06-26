@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130719213056) do
+ActiveRecord::Schema.define(:version => 20140625231348) do
 
   create_table "archives", :force => true do |t|
     t.string   "filename"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20130719213056) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "account_number"
+    t.string   "province"
   end
 
   create_table "countries", :force => true do |t|

@@ -1,29 +1,28 @@
-  <tr>
-		<td>
-			<%= link_to donation.contact.fullname.titleize, contact_path(donation.contact_id) %>
-			<span class="slash">/</span> 
-			<%= donation.donation_date.strftime('%m/%d/%Y') %>
-			<span class="slash">/</span> 
-			<%= currency(donation.amount) %>
-			<span class="slash">/</span> 
-			<%= donation.project.capitalize %>
-		</td>
-		<td>
-			<span class="pull-right">
-			<div class="btn-group pull-right">
-			<a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
-			<ul class="dropdown-menu">
-				<li>
-					<%= link_to contact_button, contact_path(donation.contact_id) %>
-				<li class="divider"></li>
-				<li>
-					<%= link_to edit_button, edit_donation_path(donation, contact_id: donation.contact_id)%>
-				</li>
-				<li class="divider"></li>
-				<li>
-					<%= link_to delete_button, donation, method: :delete, data: { confirm: 'Are you sure?' }%>
-				</li>
-			</ul>
-		</div> 
-		</td>
-  </tr>
+<tr rel="<%= donation.id %>" >
+    <td><strong><%= donation.donation_date.strftime('%m/%d/%Y') %></strong>: <%= currency(donation.amount) %><br>
+        <% unless hide_contact %>
+            <em>Contact: <%= link_to donation.contact.family_name, contact_path(donation.contact_id) %></em><br>
+        <% end %>
+        <strong>Project</strong>: <%= donation.project.capitalize %>
+    </td>   
+    <td class="actions">
+        <div class="btn-group pull-right">
+            <a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li>
+                    <%= link_to edit_button, edit_donation_path(donation, contact_id: donation.contact_id)%>
+                </li>
+                <li class="divider"></li>
+                <li>
+                    <%= link_to delete_button, donation, method: :delete, data: { confirm: 'Are you sure?' }%>
+                </li>
+                <% unless hide_contact %>
+                    <li class="divider"></li>
+                    <li>
+                        <%= link_to contact_button, contact_path(donation.contact_id) %>
+                    </li>
+                <% end %>
+            </ul>
+        </div> 
+    </td>
+</tr>

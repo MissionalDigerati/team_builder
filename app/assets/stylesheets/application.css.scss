@@ -22,6 +22,7 @@
  *= require macadmin/prettyPhoto
  *= require macadmin/rateit
  *= require macadmin/fullcalendar
+ *= require macadmin/bootstrap-toggle-buttons
  */
  .hidden-submit {
     border: 0 none;
@@ -55,16 +56,21 @@ a.white_text{
     font-weight: bold;
     font-size: 11px !important;
 }
-.user.user-profile-page {
+.contact-details {
     border-bottom: 1px solid #dddddd;
     padding: 5px;
 }
-.user.user-profile-page img {
-    max-width: 300px;
+.contact-details img {
+    max-width: 100%;
+    border: 1px solid #dddddd;
 }
-.user.user-profile-page .user-pic {
-    width: 310px;
+td.actions {
+    width: 20%;
+    max-width: 20%;
+    word-wrap: break-word;
 }
-.user.user-profile-page .user-details {
-    margin-left: 315px;
+.clear {
+    display: block;
+    clear: both;
+    height: 1px;
 }

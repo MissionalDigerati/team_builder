@@ -1,12 +1,35 @@
-<fieldset class="attributes">
-	<%= f.label :site, "Site" %>
-	<%= f.select :site, Presence::SITES, {:include_blank => true} %><br/><br/>
-	<%= f.label :url, "URL" %>
-	<%= f.text_field :url %><br/><br/>
-	<%= f.label :account, "Account" %>
-	<%= f.text_field :account %><br/><br/>
-	<%= f.hidden_field :_destroy %>
-	<%= link_to "remove", '#', class: "remove_fields btn btn-small btn-info" %>
-	<br/>
-	<br/>
-</fieldset>
+<div class="row-fluid repeatable-inputs">
+    <div class="span3">
+         <div class="control-group">
+            <%= f.label :site, "Website", class: 'control-label' %>
+            <div class="controls">
+                <%= f.select :site, Presence::SITES, :require => true, class: 'input-block-level' %>
+            </div>
+        </div>
+    </div> <!-- span3 -->
+
+    <div class="span3 offset1">
+        <div class="control-group">
+            <%= f.label :url, "URL (Include the http://)", class: 'control-label' %>
+            <div class="controls">
+                <%= f.text_field :url, id: "url", class: 'input-block-level'  %>
+            </div>
+        </div>
+    </div> <!-- span3 -->
+
+    <div class="span3 offset1">
+        <div class="control-group">
+            <%= f.label :account, "Account ID", class: 'control-label' %>
+            <div class="controls">
+                <%= f.text_field :account, id: "account", class: 'input-block-level'  %>
+            </div>
+        </div>
+        <div class="text-right">
+            <%= f.hidden_field :_destroy %>
+            <%= link_to "Remove", '#', class: "remove_fields btn btn-small btn-info" %>
+        </div>
+    </div> <!-- span3 -->
+
+    <div class="span1"></div>
+    <div class="clear"></div>
+</div> <!-- row-fluid -->
