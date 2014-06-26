@@ -5,7 +5,7 @@ jQuery ->
 	# this function removes fields from the create contact page. eg special dates, phone numbers, and web presences. 
 	$('form').on 'click', '.remove_fields', (event) ->
 		$(this).prev('input[type=hidden]').val('1')
-		$(this).closest('fieldset').slideUp('slow')
+		$(this).closest('div.repeatable-inputs').slideUp('slow')
 		event.preventDefault()
 	# this will add extra fields as needed on the create contact form / page. 	
 	$('form').on 'click', '.add_fields', (event) ->

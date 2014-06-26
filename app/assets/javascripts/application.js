@@ -51,9 +51,9 @@ $(document).ready(function(){
 		dateFormat: "dd-mm-yy"
 	});
 
-	$('input.state').click(function(event){
-		$(this).prevAll().removeAttr('checked');
-		$(this).nextAll().removeAttr('checked');
+	$('input.support-state-checkbox').click(function(event){
+		$('input.support-state-checkbox').attr('checked', false);
+		$(this).attr('checked', true);
 	});
 
 	$('.wminimize').click(function(e){

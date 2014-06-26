@@ -1,21 +1,30 @@
 <% content_for :header do %>
-<h2 class="pull-left"><i class="icon-group"></i> New Contact</h2>
+<h2 class="pull-left"><i class="icon-group"></i> Add New Contact</h2>
+
     <!-- Breadcrumb -->
     <div class="bread-crumb pull-right">
       <%= link_to "Dashboard", root_path, class: "bread-crumb" %>
       <span class="divider">/</span> 
       <%= link_to "Contacts", contacts_path, class: "bread-crumb" %>
       <span class="divider">/</span> 
-      <%= link_to "New Contact", new_contact_path, class: "bread-current" %>
+      <%= link_to "Add New Contact", new_contact_path, class: "bread-current" %>
     </div>
 <% end %>
 
 <% content_for :stats do %>
 <div class="matter">
 <% end %>
-	
-	<div class="container-fluid">
-	<%= render "form" %>
-	</div>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <%= render  layout: 'shared/widget', locals: { title: "Add New Contact" } do %>
+                    <div class="padd"><%= render partial: 'form', locals: { form_type: 'add'} %></div>
+                    
+                    <div class="widget-foot text-right">
+                    </div>
+                <% end %>
+            </div>
+        </div>
 
-</div>
+    </div>
+</div> <!-- matter -->

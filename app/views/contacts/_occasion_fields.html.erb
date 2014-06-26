@@ -1,12 +1,26 @@
-<fieldset class="attributes">
-	<%= f.label :occasion, "Occasion"%>
-	<%= f.text_field :occasion %><br/><br/>
-	<%= f.label :special_date, "Date" %>
-	<%= f.text_field :special_date, :class => "due_date_field" %>
-	<%= f.hidden_field :_destroy %>
-	<br/>
-	<br/>
-	<%= link_to "remove", '#', class: "remove_fields btn btn-small btn-info" %>
-	<br/>
-	<br/>
-</fieldset>
+<div class="row-fluid repeatable-inputs">
+    <div class="span3">
+         <div class="control-group">
+            <%= f.label :special_date, "Date", class: 'control-label' %>
+            <div class="controls">
+                <%= f.text_field :special_date, id: "special_date", class: 'input-block-level due_date_field'  %>
+            </div>
+        </div>
+    </div> <!-- span3 -->
+
+    <div class="span3 offset1">
+        <div class="control-group">
+            <%= f.label :occasion, "Occassion", class: 'control-label' %>
+            <div class="controls">
+                <%= f.text_field :occasion, id: "occasion", class: 'input-block-level'  %>
+            </div>
+            <%= f.hidden_field :_destroy %>
+            <%= link_to "Remove", '#', class: "remove_fields btn btn-small btn-info" %>
+        </div>
+    </div> <!-- span3 -->
+
+    <div class="span3 offset1"></div> <!-- span3 -->
+
+    <div class="span1"></div>
+    <div class="clear"></div>
+</div> <!-- row-fluid -->

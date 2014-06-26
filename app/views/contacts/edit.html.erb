@@ -17,8 +17,8 @@
     <div class="container-fluid">
         <div class="row-fluid">
             <div class="span12">
-                <%= render  :layout => 'shared/widget', :locals => { :title => "Edit Details for #{@contact.family_name}" } do %>
-                    <div class="padd"><%= render 'edit_form' %></div>
+                <%= render  layout: 'shared/widget', locals: { title: "Edit Details for #{@contact.family_name}" } do %>
+                    <div class="padd"><%= render partial: 'form', locals: { form_type: 'edit'} %></div>
                     
                     <div class="widget-foot text-right">
                     </div>
