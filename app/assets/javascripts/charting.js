@@ -1,6 +1,6 @@
 var previousPoint = null;
 var previousLabel = null;
-function donationsWidget(data) {
+function donationsThisYearWidget(data) {
     $('.donation-total-widget').html('<strong>Jan. $'+data[0][1]+'.00</strong>');
     var donationDatasets = [
         { label: "Donations Received", data: data, color: "#5482FF" }
