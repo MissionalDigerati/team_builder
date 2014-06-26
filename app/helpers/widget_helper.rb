@@ -5,4 +5,8 @@ module WidgetHelper
     donations.each_with_index.map { |x,i| [i, x] }
   end
 
+  def widget_donation_yearly_data
+    donations = Donation.yearly_sums.to_json
+  end
+
 end

@@ -70,6 +70,23 @@ describe Donation do
       end
 
     end
+
+    context "#yearly_sums" do
+
+        it "should return an hash of years and sums for donations" do
+            expected = {'2004' => 250, '2005' => 500, '2006' => 400}
+            FactoryGirl.create(:defaulted_donation, {:donation_date => Time.parse("20-03-2004"), :amount => 250.00})
+            FactoryGirl.create(:defaulted_donation, {:donation_date => Time.parse("20-03-2005"), :amount => 250.00})
+            FactoryGirl.create(:defaulted_donation, {:donation_date => Time.parse("20-03-2005"), :amount => 250.00})
+            FactoryGirl.create(:defaulted_donation, {:donation_date => Time.parse("20-03-2006"), :amount => 400.00})
+            Donation.yearly_sums.should == expected
+        end
+
+        it "should return an empty hash if there are no sums" do
+            Donation.yearly_sums.should == {}
+        end
+
+    end
   end
   
   context "before_validation methods" do

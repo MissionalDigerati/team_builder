@@ -100,6 +100,13 @@
                     <div class="widget-foot text-center donation-total-widget"></div>
                 <% end %>
 
+                <%= render  :layout => 'shared/widget', :locals => { :title => "Yearly Donations (#{donations_all_time})" } do %>
+                    <div class="padd">
+                        <div id="donation-yearly-summary-wiget" class="widget-chart"></div>
+                    </div>
+                    <div class="widget-foot text-center donation-yearly-total-widget"></div>
+                <% end %>
+
             </div>
             <div class="clear"></div>
 		</div>
@@ -120,7 +127,8 @@
                     $('a#this-year-button').addClass('btn-primary');
                 <% end %>
             <% end %>
-            donationsWidget(<%= widget_donation_data %>);
+            donationsThisYearWidget(<%= widget_donation_this_year_data %>);
+            donationsYearlyWidget(<%=raw widget_donation_yearly_data %>);
         });
     </script>
 <% end %>
