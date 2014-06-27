@@ -1,19 +1,25 @@
 class TasksController < ApplicationController
 
   helper_method :sort_column, :sort_direction
-  before_filter :task_summary, :only => [:index]
   before_filter :set_task_variable, :only => [:edit, :update, :destroy, :completed]
   
   def index
+    # Do not worry, we are verifying these are only the fields we allow
+    #
+    if sort_column.empty? && sort_direction.empty?
+        sort_order = "completed ASC, due_date DESC"
+    else
+        sort_order = sort_column + " " + sort_direction
+    end
     case params[:filter_type]
         when "incomplete"
-            @tasks = Task.where(completed: false).order(sort_column + " " + sort_direction).page(params[:page])
+            @tasks = Task.where(completed: false).order(sort_order).page(params[:page])
         when "completed"
-            @tasks = Task.where(completed: true).order(sort_column + " " + sort_direction).page(params[:page])
+            @tasks = Task.where(completed: true).order(sort_order).page(params[:page])
         when "overdue"
-            @tasks = Task.where("completed = ? AND due_date < ?", false, Date.today).order(sort_column + " " + sort_direction).page(params[:page])
+            @tasks = Task.where("completed = ? AND due_date < ?", false, Date.today).order(sort_order).page(params[:page])
         else
-            @tasks = Task.order(sort_column + " " + sort_direction).page(params[:page])
+            @tasks = Task.order(sort_order).page(params[:page])
     end
   end
   
@@ -82,11 +88,11 @@ class TasksController < ApplicationController
   protected
   
   def sort_column
-    Task.column_names.include?(params[:sort]) ? params[:sort] : "completed"
+    Task.column_names.include?(params[:sort]) ? params[:sort] : ""
   end
   
   def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : ""
   end
   
 end
