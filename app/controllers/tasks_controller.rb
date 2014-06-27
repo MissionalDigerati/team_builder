@@ -5,7 +5,16 @@ class TasksController < ApplicationController
   before_filter :set_task_variable, :only => [:edit, :update, :destroy, :completed]
   
   def index
-    @tasks = Task.order(sort_column + " " + sort_direction).page(params[:page])
+    case params[:filter_type]
+        when "incomplete"
+            @tasks = Task.where(completed: false).order(sort_column + " " + sort_direction).page(params[:page])
+        when "completed"
+            @tasks = Task.where(completed: true).order(sort_column + " " + sort_direction).page(params[:page])
+        when "overdue"
+            @tasks = Task.where("completed = ? AND due_date < ?", false, Date.today).order(sort_column + " " + sort_direction).page(params[:page])
+        else
+            @tasks = Task.order(sort_column + " " + sort_direction).page(params[:page])
+    end
   end
   
   def new

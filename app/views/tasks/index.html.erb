@@ -57,9 +57,9 @@
                 <%= render  :layout => 'shared/widget', :locals => { title: 'Filter Tasks' } do %>
                     <div class="padd text-center">
                         <div class="btn-group">
-                            <%= link_to "Incomplete Tasks", tasks_path(filter_type: 'incomplete_tasks'), class: 'btn', id: 'incomplete-button' %>
-                            <%= link_to "Overdue Tasks", tasks_path(filter_type: 'overdue_tasks'), class: 'btn', id: 'overdue-button' %>
-                            <%= link_to "Completed Tasks", tasks_path(filter_type: 'completed_tasks'), class: 'btn', id: 'completed-button' %>
+                            <%= link_to "Incomplete Tasks", tasks_path(filter_type: 'incomplete'), class: 'btn', id: 'incomplete-button' %>
+                            <%= link_to "Overdue Tasks", tasks_path(filter_type: 'overdue'), class: 'btn', id: 'overdue-button' %>
+                            <%= link_to "Completed Tasks", tasks_path(filter_type: 'completed'), class: 'btn', id: 'completed-button' %>
                         </div>
                     </div>
                     <div class="widget-foot text-right">
@@ -91,11 +91,11 @@
     <script type="text/javascript">
         $(document).ready(function() {
             <% unless params[:filter_type].blank? %>
-                <% if params[:filter_type] == 'incomplete_tasks' %>
+                <% if params[:filter_type] == 'incomplete' %>
                     $('a#incomplete-button').addClass('btn-primary');
-                <% elsif params[:filter_type] == 'overdue_tasks' %>
+                <% elsif params[:filter_type] == 'overdue' %>
                     $('a#overdue-button').addClass('btn-primary');
-                 <% elsif params[:filter_type] == 'completed_tasks' %>
+                 <% elsif params[:filter_type] == 'completed' %>
                     $('a#completed-button').addClass('btn-primary');
                 <% end %>
             <% end %>
