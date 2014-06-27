@@ -2,17 +2,6 @@ require 'spec_helper'
 
 describe Task do
   context "incomplete_tasks method" do
-    it "should return the correct number of incomplete tasks" do
-      FactoryGirl.create(:defaulted_task, :completed => false, :task => "task1")
-      FactoryGirl.create(:defaulted_task, :completed => false, :task => "task2")
-      FactoryGirl.create(:defaulted_task, :completed => true, :task => "task3")            
-      Task.incomplete_tasks.should == 2
-    end
-    
-    it "should reutrn 0 if no incomplete tasks exist" do
-      FactoryGirl.create(:defaulted_task, :completed => true, :task => "task complete")
-      Task.incomplete_tasks.should == 0
-    end
 
     it "should return the current date" do
       Task.current_date.should == Time.now.to_date
@@ -74,17 +63,71 @@ describe Task do
 
   context "methods" do
 
+
+    context "#total_tasks" do
+
+        it "should return the correct # of completed tasks" do
+            FactoryGirl.create(:defaulted_task, :completed => false, :task => "task1")
+            FactoryGirl.create(:defaulted_task, :completed => true, :task => "task2")
+            FactoryGirl.create(:defaulted_task, :completed => true, :task => "task3")
+            Task.total_tasks(:completed).should == 2
+        end
+
+        it "should return the correct # of incomplete tasks" do
+            FactoryGirl.create(:defaulted_task, :completed => false, :task => "task1")
+            FactoryGirl.create(:defaulted_task, :completed => true, :task => "task2")
+            FactoryGirl.create(:defaulted_task, :completed => true, :task => "task3")
+            Task.total_tasks(:incomplete).should == 1
+        end
+
+        it "should return the correct # of all tasks by default" do
+            FactoryGirl.create(:defaulted_task, :completed => false, :task => "task1")
+            FactoryGirl.create(:defaulted_task, :completed => true, :task => "task2")
+            FactoryGirl.create(:defaulted_task, :completed => true, :task => "task3")
+            Task.total_tasks.should == 3
+        end
+
+        it "should return the correct # of overdue tasks (ie. tasks overdue and incomplete)" do
+            FactoryGirl.create(:defaulted_task, :completed => false, :task => "task1", :due_date => 1.month.ago)
+            FactoryGirl.create(:defaulted_task, :completed => false, :task => "task4")
+            FactoryGirl.create(:defaulted_task, :completed => false, :task => "task1", :due_date => 1.month.ago)
+            FactoryGirl.create(:defaulted_task, :completed => true, :task => "task2")
+            FactoryGirl.create(:defaulted_task, :completed => true, :task => "task3", :due_date => 1.month.ago)
+            Task.total_tasks(:overdue).should == 2
+        end
+
+    end
+
     context "#is_overdue?" do
 
       it "should return true if the task is overdue" do
-        task = FactoryGirl.create(:defaulted_task, :completed => true, :task => "task3", :due_date => 1.month.ago)
+        task = FactoryGirl.create(:defaulted_task, :completed => false, :task => "task3", :due_date => 1.month.ago)
         task.is_overdue?.should === true
       end
 
       it "should return false if the task is not overdue" do
-        task = FactoryGirl.create(:defaulted_task, :completed => true, :task => "task3", :due_date => 1.month.from_now)
+        task = FactoryGirl.create(:defaulted_task, :completed => false, :task => "task3", :due_date => 1.month.from_now)
+        task.is_overdue?.should === false
+      end
+
+      it "should return false if the task is completed" do
+        task = FactoryGirl.create(:defaulted_task, :completed => true, :task => "task3", :due_date => 1.month.ago)
         task.is_overdue?.should === false
       end
     end
+
+    context "#is_completed?" do
+
+        it "should return true if it is completed" do
+            task = FactoryGirl.create(:defaulted_task, :completed => true, :task => "task3")
+            task.is_completed?.should === true
+        end
+
+        it "should return false if it is incomplete" do
+            task = FactoryGirl.create(:defaulted_task, :completed => false, :task => "task3")
+            task.is_completed?.should === false
+        end
+    end
+
   end
 end

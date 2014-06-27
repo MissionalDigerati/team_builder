@@ -5,7 +5,7 @@ class TasksController < ApplicationController
   before_filter :set_task_variable, :only => [:edit, :update, :destroy, :completed]
   
   def index
-    @task = Task.order(sort_column + " " + sort_direction).page(params[:page])
+    @tasks = Task.order(sort_column + " " + sort_direction).page(params[:page])
   end
   
   def new

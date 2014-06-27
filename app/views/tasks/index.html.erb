@@ -14,48 +14,82 @@
 <div class="matter">
 
 <% end %>
-	
-<div class="container-fluid">
-	<div class="row-fluid">
 
-	<div class="span12">
-		
-		<%= render "tasks/task_summary" %>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12 text-right">
+                <%= link_to 'Add New Task', new_task_path, :class => "btn btn-primary" %>
+                <div class="clear"></div>
+            </div>
+        </div>
 
-		<br/>
-		<%= link_to "Add Task", new_task_path, :class => "btn btn-primary pull-right" %>
-		<div class="clear"></div>
-		<div class="widget">
+        <div class="row-fluid">
 
-			<div class="widget-head">
-				<div class="pull-left">
-					All Tasks
-				</div>
-				<div class="widget-icons pull-right">
-					<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
-				</div>
-				<div class="clearfix"></div>
-			</div>
-			<div class="widget-content">
-				<table class="table index table-hover table-striped", id="tasks">
-					<thead>
-						<th>Complete</th>
-						<th>Task</th>
-						<th><span>Action</span></th>
-					</thead>
-					<%= render @task %>
-				</table>
-			</div>
-		</div><!-- widget -->
-		<br/>
-		
-		<%= link_to "Add Task", new_task_path, :class => "btn btn-primary pull-right" %>
-		<%= paginate @task, :theme => 'twitter-bootstrap' %>
-		<br/>
-		<br/>
-	</div>
-	<div class="clear"></div>
-</div>
-</div>
+            <div class="span8">
+                <!-- incomplete tasks begin -->
+                <%= render  :layout => 'shared/widget', :locals => { :title => 'Incomplete Tasks (Check to Complete)' } do %>
+                    <% if @tasks.present? %>
+                        <table class="table table-hover" id="tasks">
+                            <thead>
+                                <th>Complete</th>
+                                <th>Task</th>
+                                <th>Action</th>
+                            </thead>
+                            <tbody>
+                                <%= render :partial => 'tasks/task', :collection => @tasks, :locals => {:hide_contact => false} %>
+                            </tbody>
+                        </table>
+                    <% else %>
+                        <div class="padd">
+                            <p>No tasks available.</p>
+                        </div>
+                    <% end %>
+                    <div class="widget-foot text-right">
+                        <%= link_to "Add New Task", new_task_path, :class => "btn btn-primary" %>
+                        <div class="clear"></div>
+                    </div>
+                <% end %>
+                <!-- incomplete tasks end -->
+            </div>
+
+            <div class="span4">
+
+                <%= render  :layout => 'shared/widget', :locals => { title: 'Filter Tasks' } do %>
+                    <div class="padd text-center">
+                        <div class="btn-group">
+                            <%= link_to "Incomplete Tasks", tasks_path(filter_type: 'incomplete_tasks'), class: 'btn', id: 'incomplete-button' %>
+                            <%= link_to "Completed Tasks", tasks_path(filter_type: 'completed_tasks'), class: 'btn', id: 'completed-button' %>
+                        </div>
+                    </div>
+                    <div class="widget-foot text-right">
+                        <%= link_to "Clear", tasks_path, class: 'btn btn-info' %>
+                    </div>
+                <% end %>
+
+                <%= render  :layout => 'shared/widget', :locals => { title: 'Stats' } do %>
+                    <div class="padd text-center">
+                        <div id="tasks-summary-wiget" class="widget-chart"></div>
+                    </div>
+                    <div class="widget-foot text-right tasks-total-widget">
+                    </div>
+                <% end %>
+
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="row-fluid">
+            <div class="span12">
+                <%= paginate @tasks, :theme => 'twitter-bootstrap' %>
+            </div>
+        </div>
+    </div>
 
 </div><!-- matter -->
+<% content_for :additional_js do %>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            tasksSummaryWidget(<%=raw widget_tasks_summary_data %>);
+        });
+    </script>
+<% end %>

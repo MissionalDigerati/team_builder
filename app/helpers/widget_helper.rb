@@ -9,4 +9,15 @@ module WidgetHelper
     donations = Donation.yearly_sums.to_json
   end
 
+  def widget_tasks_summary_data
+    completed = Task.total_tasks(:completed)
+    overdue = Task.total_tasks(:overdue)
+    incomplete = Task.total_tasks(:incomplete) - overdue
+    [
+        {label: "Completed (#{completed})", data: completed},
+        {label: "Incomplete (#{incomplete})", data: incomplete},
+        {label: "Overdue (#{overdue})", data: overdue}
+    ].to_json
+  end
+
 end
