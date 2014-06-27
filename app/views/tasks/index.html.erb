@@ -31,9 +31,13 @@
                     <% if @tasks.present? %>
                         <table class="table table-hover" id="tasks">
                             <thead>
-                                <th>Complete</th>
-                                <th>Task</th>
-                                <th>Action</th>
+                                <th colspan="2">
+                                    Sort By<span class="sort-spacer"></span> 
+                                    <%= sortable "due_date", "Due Date (mm/dd/yyyy)" %>
+                                    <span class="sort-spacer">|</span> 
+                                    <%= sortable "category" %>
+                                </th>
+                                <th></th>
                             </thead>
                             <tbody>
                                 <%= render :partial => 'tasks/task', :collection => @tasks, :locals => {:hide_contact => false} %>
