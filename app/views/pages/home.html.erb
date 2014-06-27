@@ -71,9 +71,9 @@
                 <% end %>
                 <!-- task within week range end -->
 
-                <!-- tasks begin -->
+                <!-- incomplete tasks begin -->
                 <%= render  :layout => 'shared/widget', :locals => { :title => 'Incomplete Tasks (Check to Complete)' } do %>
-                    <% if @tasks.present? %>
+                    <% if @incomplete_tasks.present? %>
                         <table class="table table-hover">
                             <thead>
                                 <th>Complete</th>
@@ -81,7 +81,7 @@
                                 <th><span>Action</span></th>
                             </thead>
                             <tbody>
-                                <%= render :partial => 'tasks/task', :collection => @tasks, :locals => {:hide_contact => false} %>
+                                <%= render :partial => 'tasks/task', :collection => @incomplete_tasks, :locals => {:hide_contact => false} %>
                             </tbody>
                         </table>
                     <% else %>
@@ -95,7 +95,7 @@
                         <div class="clear"></div>
                     </div>
                 <% end %>
-                <!-- tasks end -->
+                <!-- incomplete tasks end -->
             </div>
             <div class="span4">
                 <%= render  :layout => 'shared/widget', :locals => { :title => 'Upcoming Special Dates' } do %>
