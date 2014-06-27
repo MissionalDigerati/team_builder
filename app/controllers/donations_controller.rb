@@ -4,9 +4,9 @@ class DonationsController < ApplicationController
     donation_year = DATE_YEAR_STRFTIME.gsub(/COLUMN/, "donation_date")
     donation_month = DATE_MONTH_STRFTIME.gsub(/COLUMN/, "donation_date")
     if params[:month] && params[:year]
-      @donations = Donation.where(["#{donation_month} + 0 = ? AND #{donation_year} = ?", params[:month], params[:year]]).page(params[:page]).order("donation_date")
+      @donations = Donation.where(["#{donation_month} + 0 = ? AND #{donation_year} = ?", params[:month], params[:year]]).page(params[:page]).order("donation_date DESC")
     elsif params[:year]
-      @donations = Donation.where(["#{donation_year} = ?",params[:year]]).page(params[:page]).order("donation_date")
+      @donations = Donation.where(["#{donation_year} = ?",params[:year]]).page(params[:page]).order("donation_date DESC")
     else
       @donations = Donation.order(sort_column + " " + sort_direction).page(params[:page])
     end
@@ -38,6 +38,7 @@ class DonationsController < ApplicationController
   def edit
     @contact = Contact.find(params[:contact_id])
     @donations = @contact.donations.find(params[:id])
+    @donations.amount = "%.2f" % @donations.amount
   end
   
   def update

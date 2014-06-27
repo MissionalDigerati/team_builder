@@ -26,4 +26,16 @@ class Donation < ActiveRecord::Base
     end
     totals
   end
+
+  def self.yearly_sums
+    totals = {}
+    year_strftime = DATE_YEAR_STRFTIME.gsub(/COLUMN/, "donation_date")
+    year_to_int = DATE_YEAR_AS_INTEGER.gsub(/COLUMN/, "donation_date")
+    ten_years_ago = 10.years.ago.strftime("%Y")
+    donations = Donation.select("SUM(amount) as total_donations, #{year_strftime} as donate_year").where("#{year_to_int} > #{ten_years_ago}").group('donate_year')
+    donations.each do |donation|
+      totals[donation.donate_year] = donation.total_donations.round
+    end
+    totals
+  end
 end
