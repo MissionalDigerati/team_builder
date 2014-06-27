@@ -17,13 +17,13 @@
  *= require macadmin/style
  *= require macadmin/uniform.default
  *= require macadmin/widgets
- *= require macadmin/fullcalendar
  *= require macadmin/jquery.cleditor
  *= require macadmin/prettyPhoto
  *= require macadmin/rateit
- *= require macadmin/fullcalendar
  *= require macadmin/bootstrap-toggle-buttons
  *= require tag-it/jquery.tagit
+ *= require fullcalendar/fullcalendar
+ *= require fullcalendar/fullcalendar.print
  */
  .hidden-submit {
     border: 0 none;
