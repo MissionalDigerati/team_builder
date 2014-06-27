@@ -64,16 +64,16 @@
                         </div>
                     <% end %>
                     <div class="widget-foot text-right">
-                        <%= link_to "Add Task", new_task_path, :class => "btn btn-primary" %>
+                        <%= link_to "Add New Task", new_task_path, :class => "btn btn-primary" %>
                         <%= link_to "View All Task", tasks_path, :class => "btn" %>
                         <div class="clear"></div>
                     </div>
                 <% end %>
                 <!-- task within week range end -->
 
-                <!-- tasks begin -->
+                <!-- incomplete tasks begin -->
                 <%= render  :layout => 'shared/widget', :locals => { :title => 'Incomplete Tasks (Check to Complete)' } do %>
-                    <% if @tasks.present? %>
+                    <% if @incomplete_tasks.present? %>
                         <table class="table table-hover">
                             <thead>
                                 <th>Complete</th>
@@ -81,7 +81,7 @@
                                 <th><span>Action</span></th>
                             </thead>
                             <tbody>
-                                <%= render :partial => 'tasks/task', :collection => @tasks, :locals => {:hide_contact => false} %>
+                                <%= render :partial => 'tasks/task', :collection => @incomplete_tasks, :locals => {:hide_contact => false} %>
                             </tbody>
                         </table>
                     <% else %>
@@ -90,12 +90,12 @@
                         </div>
                     <% end %>
                     <div class="widget-foot text-right">
-                        <%= link_to "Add Task", new_task_path, :class => "btn btn-primary" %>
-                        <%= link_to "View All Task", tasks_path, :class => "btn" %>
+                        <%= link_to "Add New Task", new_task_path, :class => "btn btn-primary" %>
+                        <%= link_to "View All Tasks", tasks_path, :class => "btn" %>
                         <div class="clear"></div>
                     </div>
                 <% end %>
-                <!-- tasks end -->
+                <!-- incomplete tasks end -->
             </div>
             <div class="span4">
                 <%= render  :layout => 'shared/widget', :locals => { :title => 'Upcoming Special Dates' } do %>

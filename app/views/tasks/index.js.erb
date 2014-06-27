@@ -1,6 +1,6 @@
-$('table#tasks tbody').append('<%= escape_javascript render(@task) %>');
-<% if (@task.current_page < @task.num_pages) %> 
-  $('.pagination').replaceWith('<%= escape_javascript paginate(@task, :theme => "twitter-bootstrap") %>');
+$('table#tasks tbody').append('<%= escape_javascript render(:partial => "tasks/task", :collection => @tasks, :locals => {:hide_contact => false}) %>');
+<% if (@tasks.current_page < @tasks.num_pages) %> 
+  $('.pagination').replaceWith('<%= escape_javascript paginate(@tasks, :theme => "twitter-bootstrap") %>');
 <% else %>
   $('.pagination').remove();
 <% end %>
