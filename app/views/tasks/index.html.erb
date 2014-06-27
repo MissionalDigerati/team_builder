@@ -27,7 +27,7 @@
 
             <div class="span8">
                 <!-- incomplete tasks begin -->
-                <%= render  :layout => 'shared/widget', :locals => { :title => 'Incomplete Tasks (Check to Complete)' } do %>
+                <%= render  :layout => 'shared/widget', :locals => { :title => @widget_title } do %>
                     <% if @tasks.present? %>
                         <table class="table table-hover" id="tasks">
                             <thead>

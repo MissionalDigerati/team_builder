@@ -14,12 +14,16 @@ class TasksController < ApplicationController
     case params[:filter_type]
         when "incomplete"
             @tasks = Task.where(completed: false).order(sort_order).page(params[:page])
+            @widget_title = "Incomplete Tasks (Check to Complete)"
         when "completed"
             @tasks = Task.where(completed: true).order(sort_order).page(params[:page])
+            @widget_title = "Completed Tasks"
         when "overdue"
             @tasks = Task.where("completed = ? AND due_date < ?", false, Date.today).order(sort_order).page(params[:page])
+            @widget_title = "Overdue Tasks (Check to Complete)"
         else
             @tasks = Task.order(sort_order).page(params[:page])
+            @widget_title = "All Tasks (Check to Complete)"
     end
   end
   
