@@ -38,6 +38,7 @@ class DonationsController < ApplicationController
   def edit
     @contact = Contact.find(params[:contact_id])
     @donations = @contact.donations.find(params[:id])
+    @donations.amount = "%.2f" % @donations.amount
   end
   
   def update
