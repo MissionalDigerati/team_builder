@@ -9,21 +9,20 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
- *= stub mixins
+ *= require_tree ./all
+ *= stub ./all/mixins
  *= require jquery.ui.all
  *= require font-awesome
  *= reqire_twitter/bootstrap
  *= require macadmin/style
  *= require macadmin/uniform.default
  *= require macadmin/widgets
- *= require macadmin/fullcalendar
  *= require macadmin/jquery.cleditor
  *= require macadmin/prettyPhoto
  *= require macadmin/rateit
- *= require macadmin/fullcalendar
  *= require macadmin/bootstrap-toggle-buttons
  *= require tag-it/jquery.tagit
+ *= require fullcalendar/fullcalendar
  */
  .hidden-submit {
     border: 0 none;
@@ -74,4 +73,14 @@ td.actions {
     display: block;
     clear: both;
     height: 1px;
+}
+.popover {
+    z-index: 1010 !important; /* A value higher than 1010 that solves the problem */
+}
+.popover-title{
+    background: #5eb2d9 !important;
+    color: #ffffff;
+}
+.fc-event-inner:hover {
+    cursor: pointer;
 }

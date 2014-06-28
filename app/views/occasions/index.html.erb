@@ -14,135 +14,52 @@
 <div class="matter">
 
 <% end %>
-	<div class="container-fluid">
+    <div class="container-fluid">
 
-		<div class="row-fluid">
-			
-			<div class="span12">
+        <div class="row-fluid">
+            <div class="span12 text-right">
+                <%= link_to 'Add New Special Date', new_occasion_path, class: "btn btn-primary" %>
+                <div class="clear"></div>
+            </div>
+        </div>
 
-				<% if @occasions_today.present? %>
-					<div class="span4">
-						<div class="widget">
-						  <!-- Widget head -->
-							<div class="widget-head">
-						  	<div class="pull-left">
-						  		<%= "Special dates (today #{Time.now.to_date.strftime('%m/%d/%Y')}):" %>
-						  	</div>
-						  	<div class="widget-icons pull-right">
-						    	<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
-						    </div>  
-						    <div class="clearfix"></div>
-							</div>
-							<div class="widget-content">
-								<table class="table index table-bordered table-hover table-striped">
-									<% @occasions_today.each do |today| %>
-										<tr>
-											<td><%= link_to summary_name_helper(today), contact_path(today.contact_id)%></td>
-											<td><%= today.occasion %></td>
-											<td><%= link_to "View", contact_path(today.contact_id), :class => "btn btn-info btn-small pull-right" %></td>
-										</tr>
-									<% end %>
-								</table>
-							</div>
-						</div>
-					</div>
-				<% end %>
+        <div class="row-fluid">
 
-				<% if @occasions_week.present? %>
-					<div class="span4">
-						<div class="widget">
-						  <!-- Widget head -->
-							<div class="widget-head">
-						  	<div class="pull-left">
-						  		Upcoming special dates (This Week):
-						  	</div>
-						  	<div class="widget-icons pull-right">
-						    	<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
-						    </div>  
-						    <div class="clearfix"></div>
-							</div>
-							<div class="widget-content">
-								<table class="table index table-bordered table-hover table-striped">
-									<% @occasions_week.each do |week| %>
-										<tr>
-											<td><%= link_to summary_name_helper(week), contact_path(week.contact_id)%></td>
-											<td><%= week.occasion %></td>
-											<td><%= week.special_date.strftime('%m/%d') %></td>
-											<td><%= link_to "View", contact_path(week.contact_id), :class => "btn btn-info btn-small pull-right" %></td>
-										</tr>
-									<% end %>
-								</table>
-							</div>
-						</div>
-					</div>
-				<% end %>
-				
+            <div class="span8">
+                <%= render  :layout => 'shared/widget', locals: { title: 'Special Dates' } do %>
+                    <div class="padd text-center"><br><br>
+                        <div id="special-dates-calendar"></div>
+                    </div>
+                    <div class="widget-foot">
+                    </div>
+                <% end %>
 
-				<% if @occasions_month.present? %>
-					<div class="span4">
-						<div class="widget">
-						  <!-- Widget head -->
-							<div class="widget-head">
-						  	<div class="pull-left">
-						  		Upcoming special dates (This Month):
-						  	</div>
-						  	<div class="widget-icons pull-right">
-						    	<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
-						    </div>  
-						    <div class="clearfix"></div>
-							</div>
-							<div class="widget-content">
-								<table class="table index table-bordered table-hover table-striped">
-									<% @occasions_month.each do |month| %>
-										<tr>
-											<td><%= link_to summary_name_helper(month), contact_path(month.contact_id)%></td>
-											<td><%= month.occasion %></td>
-											<td><%= month.special_date.strftime('%m/%d') %></td>
-											<td><%= link_to "View", contact_path(month.contact_id), :class => "btn btn-info btn-small pull-right" %></td>
-										</tr>
-									<% end %>
-								</table>
-							</div>
-						</div>
-					</div>
-				<% end %>
-				
-				<%= link_to 'New Special Date', new_occasion_path, :class => "btn btn-primary pull-right" %>
-				<div class="clear"></div>
+            </div> <!-- span8 -->
 
-				<div class="widget">
-				  <!-- Widget head -->
-					<div class="widget-head">
-				  	<div class="pull-left">
-				  		Special Dates
-				  	</div>
-				  	<div class="widget-icons pull-right">
-				    	<a href="#" class="wminimize"><i class="icon-chevron-up"></i></a> 
-				    </div>  
-				    <div class="clearfix"></div>
-					</div>
-				<div class="widget-content">
-					<table class="table index table-bordered table-hover table-striped", id="occasions">
-					  <tr>
-						<th>Sort By<span class="sort-spacer"></span>
-							<%= sortable "occasion" %>
-							<span class="sort-spacer">|</span>
-							<%= sortable "special_date", "Date" %></th>
-					    <th>Action</th>
-					  </tr>
+            <div class="span4">
+                <%= render  :layout => 'shared/widget', :locals => { :title => 'Upcoming Special Dates' } do %>
+                    <div class="padd">
+                        <% if @occasions_week.present? %>
+                            <%= render :partial => 'occasions/occasion_mini', :collection => @occasions_week %>
+                        <% else %>
+                            <p>Currently, no upcoming special dates.</p>
+                        <% end %>
+                    </div>
+                    <div class="widget-foot text-right">
+                        <%= link_to "View All Special Dates", occasions_path, :class => "btn" %>
+                        <div class="clear"></div>
+                    </div>
+                <% end %>
+            </div>
 
-						<%= render :partial	=> 'occasion', :collection => @occasions, :locals => {:hide_contact => false} %>
-					</table>
-				</div>
-				<br/><br/>
-			</div><!-- widget -->
-			<%= link_to 'New Special Date', new_occasion_path, :class => "btn btn-primary pull-right" %>
-				<%= paginate @occasions, :theme => 'twitter-bootstrap' %>
-				
-			</div> <!-- span12 -->
-
-		</div> <!-- row fluid -->
-	</div> <!-- container-fluid -->
+        </div> <!-- row fluid -->
+    </div> <!-- container-fluid -->
 </div> <!-- matter -->
-
-<!-- <Occasion id: nil, day: nil, month: nil, year: nil, occasion: nil, created_at: nil, updated_at: nil, contact_id: nil>  -->
+<% content_for :additional_js do %>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            setUpCalendar("<%= occasions_path(format: 'json') %>");
+        });
+    </script>
+    <%= render  partial: 'manage_modal' %>
+<% end %>

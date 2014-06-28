@@ -3,11 +3,11 @@ class Contact < ActiveRecord::Base
   belongs_to :country
 
   has_many :numbers, :dependent => :destroy
-  has_many :occasions
+  has_many :occasions, :dependent => :destroy
   has_many :donations
-  has_many :tasks
+  has_many :tasks, :dependent => :destroy
   has_many :notes, :dependent => :destroy
-  has_many :presences
+  has_many :presences, :dependent => :destroy
 
   has_one :support_state
 

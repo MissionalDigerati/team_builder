@@ -21,7 +21,6 @@
 //= require macadmin/bootstrap-datetimepicker.min
 //= require macadmin/excanvas.min
 //= require macadmin/filter
-//= require macadmin/fullcalendar.min
 //= require macadmin/jquery.cleditor.min
 //= require macadmin/jquery.flot
 //= require macadmin/jquery.flot.pie
@@ -39,6 +38,9 @@
 //= require macadmin/layouts/topRight
 //= require macadmin/themes/default
 //= require macadmin/themes/default
+//= require fullcalendar/moment.min
+//= require fullcalendar/fullcalendar.min
+//= require fullcalendar/gcal
 //= require tag-it/tag-it.min
 //= require_self
 //= require_tree .

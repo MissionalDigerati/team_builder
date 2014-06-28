@@ -14,7 +14,18 @@
 <% content_for :stats do %>
 <div class="matter">
 <% end %>
-	<div class="container-fluid">
-		<%= render 'occasions/form' %>
-	</div>
+
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <%= render  layout: 'shared/widget', locals: { title: "Add New Special Date" } do %>
+                    <div class="padd"><%= render partial: 'form', locals: { form_type: 'add'} %></div>
+                    
+                    <div class="widget-foot text-right">
+                    </div>
+                <% end %>
+            </div>
+        </div>
+
+    </div>
 </div> <!-- matter -->
