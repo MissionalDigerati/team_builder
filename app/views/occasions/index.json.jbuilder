@@ -8,14 +8,16 @@ json.array!(@reoccuring_occasions) do |occasion|
     json.backgroundColor '#5eb2d9'
     json.textColor '#FFFFFF'
     json.borderColor '#FFFFFF'
+    json.editOccasionLink edit_occasion_path(occasion, contact_id: occasion.contact_id)
+    json.deleteOccasionLink occasion_path(occasion)
     if occasion.contact.nil?
-        json.contact nil
+        json.contact {}.to_json
     else
-        json.url contact_path(occasion.contact_id)
         json.contact do
             json.id occasion.contact.id
             json.name occasion.contact.family_name
-            json.view_link contact_path(occasion.contact_id)
+            json.viewContactLink contact_path(occasion.contact_id)
+            json.imagePath occasion.contact.avatar.url(:medium)
         end
     end
 end

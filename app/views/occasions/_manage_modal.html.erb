@@ -1,0 +1,20 @@
+<div class="modal hide fade" id="manage-occasion-modal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h3>Manage Special Date: <span id="occasion-title-holder"></span></h3>
+    </div>
+    <div class="modal-body" id="occasion-body-holder">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span6 contact-image"></div>
+                <div class="span6 contact-details"></div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <%= link_to edit_button, '', class: 'btn', id: 'edit-occasion-link' %>
+        <%= link_to contact_button, '', class: 'btn', id: 'occasion-view-contact-link' %>
+        <%= link_to delete_button, '', :method => :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger', id: 'delete-occasion-link' %>
+    </div>
+</div>
