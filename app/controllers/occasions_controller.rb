@@ -1,10 +1,13 @@
 class OccasionsController < ApplicationController
   
-  helper_method :sort_column, :sort_direction
   before_filter :occasion_summary, :only => [:index]
   
   def index
-    @occasions = Occasion.order(sort_column + " " + sort_direction).page(params[:page])
+    if params[:start].present? && params[:end].present?
+        start_date = Date.parse(params[:start])
+        end_date = Date.parse(params[:end])
+        @reoccuring_occasions = Occasion.find_special_dates_for(start_date, end_date)
+    end
   end
   
   def new
@@ -57,12 +60,6 @@ class OccasionsController < ApplicationController
        format.html { redirect_to :back }
        flash[:notice] = "Your Occasion has been deleted."
      end
-   end
-   
-   protected
-   
-   def sort_column
-     Occasion.column_names.include?(params[:sort]) ? params[:sort] : "updated_at"
    end
   
 end
