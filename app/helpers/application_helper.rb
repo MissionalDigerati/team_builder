@@ -95,9 +95,7 @@ module ApplicationHelper
   end
 
   def occasions_today
-    task_day_strftime = DATE_DAY_STRFTIME.gsub(/COLUMN/, "special_date") 
-    task_month_strftime = DATE_MONTH_STRFTIME.gsub(/COLUMN/, "special_date") 
-    occasions_today = Occasion.where(["#{task_day_strftime} + 0 = ? AND #{task_month_strftime} + 0 = ?", Time.now.day, Time.now.month]).length
+    occasions_today = Occasion.special_date_today.length
     occasions_today.present? ? occasions_today : "0"
   end
 
