@@ -1,15 +1,43 @@
 
-<div class="span2 center_div">
-		<%= form_for([@occasions]) do |f| %>
-				<%= f.label :contact_id, "Contact" %>
-				<%= f.select(:contact_id, form_select) %><br/><br/>
-				<%= f.label :occasion, "Occasion"%>
-				<%= f.text_field :occasion, :required => true %><br/><br/>
-				<%= f.label :special_date, "Date" %>
-				<%= f.text_field :special_date, :required => true, :class => "date_select" %>
-				<%= f.submit :class => "btn btn-large btn-success pull-right" %>
-		<% end %>
-	<br/><br/><br/><br/>
-</div>
+<%= form_for([@occasions]) do |f| %>
+    <div class="row-fluid">
+        <div class="span3">
+            <div class="control-group">
+                <%= f.label :special_date, "Date", class: 'control-label' %>
+                <div class="controls">
+                    <%= f.text_field :special_date, :required => true, id: "special_date", class: 'input-block-level date_select'  %>
+                </div>
+            </div>
+        </div> <!-- span3 -->
 
-<div class="clear"></div>
+        <div class="span3 offset1">
+            <%= f.label :contact_id, "Contact", class: 'control-label' %>
+            <div class="controls">
+                <%= f.select :contact_id, form_select, {}, class: 'input-block-level' %>
+            </div>
+        </div> <!-- span3 -->
+
+        <div class="span3 offset1">
+            <div class="control-group">
+                <%= f.label :occasion, "Category", class: 'control-label' %>
+                <div class="controls">
+                  <%= f.text_field :occasion, :required => true, id: "occasion", class: 'input-block-level'  %>
+                </div>
+            </div>
+        </div> <!-- span3 -->
+
+        <div class="span1"></div>
+        <div class="clear"></div>
+    </div> <!-- row-fluid -->
+
+    <div class="row-fluid">
+        <div class="span12 text-center">
+            <hr>
+            <% if form_type == 'add' %>
+                <%= f.submit :id => "Add Special Date", :class => "btn btn-large btn-success" %>
+            <% else %>
+                <%= f.submit :id => "Update Special Date", :class => "btn btn-large btn-success" %>
+            <% end %>
+        </div>
+    </div>
+<% end %>
