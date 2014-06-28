@@ -30,7 +30,8 @@ function callbackEventsAfterRender(event, element) {
                 title: event.title,
                 trigger: 'hover',
                 placement: 'top',
-                content: "Event for "+event.contact.name,
+                html: true,
+                content: "<strong>"+event.date_formatted+"</strong>: "+event.title+"<br><em>Contact: "+event.contact.name+"</em><br>",
                 container: 'body'
             });
 };
