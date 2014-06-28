@@ -39,8 +39,8 @@
 //= require macadmin/themes/default
 //= require macadmin/themes/default
 //= require fullcalendar/moment.min
-//= require fullcalendar/gcal
 //= require fullcalendar/fullcalendar.min
+//= require fullcalendar/gcal
 //= require tag-it/tag-it.min
 //= require_self
 //= require_tree .
