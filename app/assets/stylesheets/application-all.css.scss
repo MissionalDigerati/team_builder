@@ -9,8 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
- *= stub mixins
+ *= require_tree ./all
+ *= stub ./all/mixins
  *= require jquery.ui.all
  *= require font-awesome
  *= reqire_twitter/bootstrap
@@ -23,7 +23,6 @@
  *= require macadmin/bootstrap-toggle-buttons
  *= require tag-it/jquery.tagit
  *= require fullcalendar/fullcalendar
- *= require fullcalendar/fullcalendar.print
  */
  .hidden-submit {
     border: 0 none;

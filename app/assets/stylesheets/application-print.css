@@ -1,0 +1,7 @@
+/**
+ * application-print.css
+ *
+ *= require_self
+ *= require_tree ./print
+ *= require fullcalendar/fullcalendar.print
+ */
