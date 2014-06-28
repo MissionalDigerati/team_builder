@@ -50,7 +50,19 @@
                     center: 'title',
                     right: 'month,agendaWeek,agendaDay'
                 },
-                'events': "<%= occasions_path(format: 'json') %>"
+                'events': "<%= occasions_path(format: 'json') %>",
+                eventBackgroundColor: '#5eb2d9',
+                textColor: '#FFFFFF',
+                color: '#5eb2d9',
+                eventAfterRender: function(event, element) {
+                    element.popover({
+                        title: event.title,
+                        trigger: 'hover',
+                        placement: 'top',
+                        content: "Event for "+event.contact.name,
+                        container: 'body'
+                    });
+                }
             });
         });
     </script>

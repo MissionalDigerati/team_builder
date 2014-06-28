@@ -7,6 +7,7 @@ json.array!(@reoccuring_occasions) do |occasion|
     if occasion.contact.nil?
         json.contact nil
     else
+        json.url contact_path(occasion.contact_id)
         json.contact do
             json.id occasion.contact.id
             json.name occasion.contact.family_name

@@ -75,3 +75,6 @@ td.actions {
     clear: both;
     height: 1px;
 }
+.popover {
+    z-index: 1010 !important; /* A value higher than 1010 that solves the problem */
+}
