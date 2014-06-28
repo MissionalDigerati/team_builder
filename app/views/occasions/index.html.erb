@@ -18,7 +18,7 @@
 
         <div class="row-fluid">
             <div class="span12 text-right">
-                <%= link_to 'Add New Special Date', new_occasion_path, :class => "btn btn-primary" %>
+                <%= link_to 'Add New Special Date', new_occasion_path, class: "btn btn-primary" %>
                 <div class="clear"></div>
             </div>
         </div>
@@ -26,8 +26,8 @@
         <div class="row-fluid">
 
             <div class="span8">
-                <%= render  :layout => 'shared/widget', :locals => { title: 'Special Dates' } do %>
-                    <div class="padd text-center">
+                <%= render  :layout => 'shared/widget', locals: { title: 'Special Dates' } do %>
+                    <div class="padd text-center"><br><br>
                         <div id="special-dates-calendar"></div>
                     </div>
                     <div class="widget-foot">
@@ -44,7 +44,14 @@
 <% content_for :additional_js do %>
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#special-dates-calendar').fullCalendar({});
+            $('#special-dates-calendar').fullCalendar({
+                'header': {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                'events': "<%= occasions_path(format: 'json') %>"
+            });
         });
     </script>
 <% end %>
