@@ -77,3 +77,7 @@ td.actions {
 .popover {
     z-index: 1010 !important; /* A value higher than 1010 that solves the problem */
 }
+.popover-title{
+    background: #5eb2d9 !important;
+    color: #ffffff;
+}

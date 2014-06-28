@@ -12,9 +12,6 @@ function setUpCalendar(eventsPath) {
             right: 'month,agendaWeek,agendaDay'
         },
         'events': eventsPath,
-        eventBackgroundColor: '#5eb2d9',
-        textColor: '#FFFFFF',
-        color: '#5eb2d9',
         eventAfterRender: callbackEventsAfterRender
     });
 };

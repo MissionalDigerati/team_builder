@@ -5,6 +5,9 @@ json.array!(@reoccuring_occasions) do |occasion|
     json.date_formatted occasion.special_date.strftime('%B %d')
     json.allDay true
     json.editable false
+    json.backgroundColor '#5eb2d9'
+    json.textColor '#FFFFFF'
+    json.borderColor '#FFFFFF'
     if occasion.contact.nil?
         json.contact nil
     else
