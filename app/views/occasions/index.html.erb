@@ -36,7 +36,21 @@
 
             </div> <!-- span8 -->
 
-            <div class="span4"></div>
+            <div class="span4">
+                <%= render  :layout => 'shared/widget', :locals => { :title => 'Upcoming Special Dates' } do %>
+                    <div class="padd">
+                        <% if @occasions_week.present? %>
+                            <%= render :partial => 'occasions/occasion_mini', :collection => @occasions_week %>
+                        <% else %>
+                            <p>Currently, no upcoming special dates.</p>
+                        <% end %>
+                    </div>
+                    <div class="widget-foot text-right">
+                        <%= link_to "View All Special Dates", occasions_path, :class => "btn" %>
+                        <div class="clear"></div>
+                    </div>
+                <% end %>
+            </div>
 
         </div> <!-- row fluid -->
     </div> <!-- container-fluid -->
