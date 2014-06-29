@@ -1,19 +1,60 @@
-<div class="span2 center_div">
-		<%= form_for([@number]) do |f| %>
-			<%= f.label :contact_id, "Contact" %>
-			<%= f.select(:contact_id, form_select) %><br/><br/>
-			<%= f.label :phone_type, "Type" %>
-			<%= f.select :phone_type, Number::TYPES, :required => true %><br/><br/>
-			<%= f.label :number, "Phone Number" %>
-			<%= f.text_field :number, :required => true %><br/>
-			<br/>
-			<%= f.label :note, "Note" %>
-			<%= f.text_field :note%><br/>
-			<br/>
-			<%= f.submit :class => "btn btn-large pull-right btn-success" %>
-		<% end %>
-	<br/><br/><br/><br/>
-</div>
+<%= form_for([@number]) do |f| %>
+    <div class="row-fluid">
+        <div class="span3">
+            <div class="control-group">
+               <%= f.label :contact_id, "Contact", class: 'control-label' %>
+	            <div class="controls">
+	                <%= f.select :contact_id, form_select, {}, class: 'input-block-level' %>
+	            </div>
+            </div>
+        </div> <!-- span3 -->
 
+        <div class="span3 offset1">
+            <%= f.label :phone_type, "Type of Number", class: 'control-label' %>
+            <div class="controls">
+                <%= f.select :phone_type, Number::TYPES, {}, class: 'input-block-level' %>
+            </div>
+        </div> <!-- span3 -->
 
-<div class="clear"></div>
+        <div class="span3 offset1">
+            <div class="control-group">
+                <%= f.label :number, "Phone Number", class: 'control-label' %>
+                <div class="controls">
+                    <%= f.text_field :number, id: "number", class: 'input-block-level'  %>
+                </div>
+            </div>
+        </div> <!-- span3 -->
+
+        <div class="span1"></div>
+        <div class="clear"></div>
+    </div> <!-- row-fluid -->
+
+    <div class="row-fluid">
+        <div class="span3">
+            <div class="control-group">
+                <%= f.label :note, "Note", class: 'control-label' %>
+                <div class="controls">
+                    <%= f.text_field :note, id: "note", class: 'input-block-level'  %>
+                </div>
+            </div>
+        </div> <!-- span3 -->
+
+        <div class="span3 offset1"></div> <!-- span3 -->
+
+        <div class="span3 offset1"></div> <!-- span3 -->
+
+        <div class="span1"></div>
+        <div class="clear"></div>
+    </div> <!-- row-fluid -->
+
+    <div class="row-fluid">
+        <div class="span12 text-center">
+            <hr>
+            <% if form_type == 'add' %>
+                <%= f.submit :id => "Add Phone Number", :class => "btn btn-large btn-success" %>
+            <% else %>
+                <%= f.submit :id => "Update Phone Number", :class => "btn btn-large btn-success" %>
+            <% end %>
+        </div>
+    </div>
+<% end %>
