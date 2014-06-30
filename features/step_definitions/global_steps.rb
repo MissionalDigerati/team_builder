@@ -5,7 +5,7 @@ When /^I click the "(.*?)" button$/ do |button|
   click_on button
 end
 Then /^I should see "(.*?)"$/ do |text|
-  page.should have_content text
+  expect(page).to have_content(text)
 end
 Given /^there is a contact "(.*?)"$/ do |first_name|
   FactoryGirl.create(:contact, first_name: first_name, last_name: "unknown", spouse_name: "River", email: "Thedoctor@who.com", spouse_email: "River@who.com", state_id: 1, country_id: 1)
@@ -16,7 +16,7 @@ When /^I click on the "(.*?)" link for "(.*?)"$/ do |link, title|
   end
 end
 Then /^I should not see "(.*?)"$/ do |text|
-  page.should_not have_content text
+  expect(page).to_not have_content(text)
 end
 When /^I confirm popup$/ do
   page.driver.browser.switch_to.alert.accept
