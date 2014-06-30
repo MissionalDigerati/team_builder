@@ -23,7 +23,7 @@ end
 gem 'jquery-rails'
 
 group :test, :development do
-  gem "rspec-rails"
+  gem "rspec-rails", '~> 2.9'
   gem "database_cleaner"
   gem "factory_girl_rails"
   gem 'sqlite3'

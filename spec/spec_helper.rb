@@ -35,4 +35,6 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+  # Use folder structure to maintain test type.  For more info check out https://www.relishapp.com/rspec/rspec-rails/docs/directory-structure
+  config.infer_spec_type_from_file_location!
 end

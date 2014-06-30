@@ -101,7 +101,7 @@ describe Donation do
   
   context "before_validation methods" do
     it "should remove symbols from amount currency" do
-      pending "we need to figure out how to test this"
+      skip "we need to figure out how to test this"
       donaiton = FactoryGirl.create(:defaulted_donation, :amount => "$400.00")
       donation.amount.should_not == "$400.00"
       donation.amount.should == 400.00
