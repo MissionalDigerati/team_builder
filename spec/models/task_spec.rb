@@ -1,38 +1,38 @@
 require 'spec_helper'
 
-describe Task do
+describe Task, :type => :model do
   context "incomplete_tasks method" do
 
     it "should return the current date" do
-      Task.current_date.should == Time.now.to_date
+      expect(Task.current_date).to eq(Time.now.to_date)
     end
 
     it "should not return anything other than the current date" do
-      Task.current_date.should_not == 1.weeks.from_now.to_date
+      expect(Task.current_date).not_to eq(1.weeks.from_now.to_date)
     end
 
     it "shoud return tomorrows date" do
-      Task.tomorrows_date.should == 1.days.from_now.to_date
+      expect(Task.tomorrows_date).to eq(1.days.from_now.to_date)
     end
 
     it "shoud return the date one week from today" do
-      Task.next_weeks_date.should == 1.weeks.from_now.to_date
+      expect(Task.next_weeks_date).to eq(1.weeks.from_now.to_date)
     end
 
     it "should return the date 4 weeks from today" do
-      Task.next_4_weeks_date.should == 4.weeks.from_now.to_date
+      expect(Task.next_4_weeks_date).to eq(4.weeks.from_now.to_date)
     end
 
     it "should return the number that corresponds with the current day" do
-      Task.current_day_number.should == Time.now.day
+      expect(Task.current_day_number).to eq(Time.now.day)
     end
 
     it "should return the number that corresponds with the current month" do
-      Task.current_month_number.should == Time.now.month
+      expect(Task.current_month_number).to eq(Time.now.month)
     end
 
     it "should return the current year in number for as a string" do
-      Task.current_year.should == Time.now.year.to_s
+      expect(Task.current_year).to eq(Time.now.year.to_s)
     end
 
 
@@ -40,23 +40,23 @@ describe Task do
   
   context "validataions" do
     it "should create a valid task" do
-      FactoryGirl.build(:defaulted_task).should be_valid
+      expect(FactoryGirl.build(:defaulted_task)).to be_valid
     end
     
     it "should require task" do
-      FactoryGirl.build(:defaulted_task, :task => "").should_not be_valid
+      expect(FactoryGirl.build(:defaulted_task, :task => "")).not_to be_valid
     end
     
     it "should require due_date" do
-      FactoryGirl.build(:defaulted_task, :due_date => nil).should_not be_valid
+      expect(FactoryGirl.build(:defaulted_task, :due_date => nil)).not_to be_valid
     end
     
     it "should require category" do
-      FactoryGirl.build(:defaulted_task, :category => nil).should_not be_valid
+      expect(FactoryGirl.build(:defaulted_task, :category => nil)).not_to be_valid
     end
     
     it "should require contact_id" do
-      FactoryGirl.build(:defaulted_task, :contact_id => nil).should_not be_valid
+      expect(FactoryGirl.build(:defaulted_task, :contact_id => nil)).not_to be_valid
     end
     
   end
@@ -70,21 +70,21 @@ describe Task do
             FactoryGirl.create(:defaulted_task, :completed => false, :task => "task1")
             FactoryGirl.create(:defaulted_task, :completed => true, :task => "task2")
             FactoryGirl.create(:defaulted_task, :completed => true, :task => "task3")
-            Task.total_tasks(:completed).should == 2
+            expect(Task.total_tasks(:completed)).to eq(2)
         end
 
         it "should return the correct # of incomplete tasks" do
             FactoryGirl.create(:defaulted_task, :completed => false, :task => "task1")
             FactoryGirl.create(:defaulted_task, :completed => true, :task => "task2")
             FactoryGirl.create(:defaulted_task, :completed => true, :task => "task3")
-            Task.total_tasks(:incomplete).should == 1
+            expect(Task.total_tasks(:incomplete)).to eq(1)
         end
 
         it "should return the correct # of all tasks by default" do
             FactoryGirl.create(:defaulted_task, :completed => false, :task => "task1")
             FactoryGirl.create(:defaulted_task, :completed => true, :task => "task2")
             FactoryGirl.create(:defaulted_task, :completed => true, :task => "task3")
-            Task.total_tasks.should == 3
+            expect(Task.total_tasks).to eq(3)
         end
 
         it "should return the correct # of overdue tasks (ie. tasks overdue and incomplete)" do
@@ -93,7 +93,7 @@ describe Task do
             FactoryGirl.create(:defaulted_task, :completed => false, :task => "task1", :due_date => 1.month.ago)
             FactoryGirl.create(:defaulted_task, :completed => true, :task => "task2")
             FactoryGirl.create(:defaulted_task, :completed => true, :task => "task3", :due_date => 1.month.ago)
-            Task.total_tasks(:overdue).should == 2
+            expect(Task.total_tasks(:overdue)).to eq(2)
         end
 
     end
@@ -102,17 +102,17 @@ describe Task do
 
       it "should return true if the task is overdue" do
         task = FactoryGirl.create(:defaulted_task, :completed => false, :task => "task3", :due_date => 1.month.ago)
-        task.is_overdue?.should === true
+        expect(task.is_overdue?).to be === true
       end
 
       it "should return false if the task is not overdue" do
         task = FactoryGirl.create(:defaulted_task, :completed => false, :task => "task3", :due_date => 1.month.from_now)
-        task.is_overdue?.should === false
+        expect(task.is_overdue?).to be === false
       end
 
       it "should return false if the task is completed" do
         task = FactoryGirl.create(:defaulted_task, :completed => true, :task => "task3", :due_date => 1.month.ago)
-        task.is_overdue?.should === false
+        expect(task.is_overdue?).to be === false
       end
     end
 
@@ -120,12 +120,12 @@ describe Task do
 
         it "should return true if it is completed" do
             task = FactoryGirl.create(:defaulted_task, :completed => true, :task => "task3")
-            task.is_completed?.should === true
+            expect(task.is_completed?).to be === true
         end
 
         it "should return false if it is incomplete" do
             task = FactoryGirl.create(:defaulted_task, :completed => false, :task => "task3")
-            task.is_completed?.should === false
+            expect(task.is_completed?).to be === false
         end
     end
 

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe WidgetHelper do
+describe WidgetHelper, :type => :helper do
 
   context "methods" do
 
@@ -11,7 +11,7 @@ describe WidgetHelper do
         current_year = Time.now.strftime("%Y").to_s
         FactoryGirl.create(:defaulted_donation, {:donation_date => Time.parse("20-01-#{current_year}"), :amount => 100.00})
         FactoryGirl.create(:defaulted_donation, {:donation_date => Time.parse("20-02-#{current_year}"), :amount => 50.00})
-        widget_donation_this_year_data.should == expected
+        expect(widget_donation_this_year_data).to eq(expected)
       end
 
     end
