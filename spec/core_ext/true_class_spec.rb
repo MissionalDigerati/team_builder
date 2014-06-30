@@ -1,7 +1,7 @@
 describe TrueClass do
   context "Method yes_or_no" do
     it "should return yes" do
-      true.yes_or_no.should == "Yes"
+      expect(true.yes_or_no).to eq("Yes")
     end
   end
 end

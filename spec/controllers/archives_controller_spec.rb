@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe ArchivesController do
+describe ArchivesController, :type => :controller do
   describe "Create" do
     it "should create the backup file" do
-      Archive.should_receive(:file_name).and_return("fred")
+      expect(Archive).to receive(:file_name).and_return("fred")
       post 'create' 
-      FileTest.exists?(Rails.root.join('backups', 'fred.tgz')).should == true
+      expect(FileTest.exists?(Rails.root.join('backups', 'fred.tgz'))).to eq(true)
     end
   end
   
@@ -15,7 +15,7 @@ describe ArchivesController do
       fred = FactoryGirl.create(:archive, :filename => "delete.tgz")
       File.open(Rails.root.join('backups', 'delete.tgz'), 'w'){|f| f.write('sometext')}
       delete :destroy, :id => fred.id
-      FileTest.exists?(Rails.root.join('backups', 'delete.tgz')).should == false
+      expect(FileTest.exists?(Rails.root.join('backups', 'delete.tgz'))).to eq(false)
     end
   end
 end

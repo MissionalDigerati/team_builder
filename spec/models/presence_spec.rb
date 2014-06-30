@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Presence do
+describe Presence, :type => :model do
   context "validation" do
     it "should create a valid web presence" do
-      FactoryGirl.build(:defaulted_presence).should be_valid
+      expect(FactoryGirl.build(:defaulted_presence)).to be_valid
     end
   end
 end
