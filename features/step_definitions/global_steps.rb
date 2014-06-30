@@ -30,12 +30,8 @@ Then /^I should be on the show page for "(.*?)"$/ do |user_name|
   current_path.should == contact_path(user)
 end
 Then /^I should be on the contact index page$/ do
-  current_path.should == contacts_path
+  expect(current_path).to eq(contacts_path)
 end
 When /^I submit the form "(.*?)"$/ do |element|
   page.execute_script("$('#search').submit()")
 end
- # <!-- => #<Contact id: nil, first_name: nil, last_name: nil, spouse_name: nil, email: nil, 
- # spouse_email: nil, tags: nil, network: nil, address_1: nil, address_2: nil, city: nil, 
- # state_id: nil, zip: nil, country_id: nil, receive_newsletter: false, children: nil, 
- # preferred_contact: nil, created_at: nil, updated_at: nil>  -->

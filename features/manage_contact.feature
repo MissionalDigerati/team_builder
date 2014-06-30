@@ -16,7 +16,7 @@ Feature: A user manages their contacts
 		And I fill in "address_2" with "apt 103"		
 		And I fill in "city" with "san jose"
 		And I fill in "zip" with "91801"				
-		And I fill in "Children" with "none"		
+		And I fill in "children" with "none"		
 		And I select "Email" from "contact_preferred_contact"
 		And I select "Roommates" from "contact_network"
 		And I check the "receive_newsletter" checkboxes
@@ -36,17 +36,17 @@ Feature: A user manages their contacts
 		And I select "California" from "contact_state_id"
 		And I fill in "zip" with "91801"				
 		And I select "United States" from "contact_country_id"
-		And I fill in "Children" with "none"		
+		And I fill in "children" with "none"		
 		And I select "Email" from "contact_preferred_contact"
 		And I select "Roommates" from "contact_network"
 		And I check the "receive_newsletter" checkboxes
-		And I select "Home" from "Phone Type"
-		And I fill in "Phone Number" with "7777777"
-		And I fill in "contact_occasions_attributes_0_special_date" with "01-11-2012"
-		And I fill in "Occasion" with "new years"
-		And I select "Facebook" from "Site"
-		And I fill in "URL" with "www.facebook.com"
-		And I fill in "Account" with "facebook filler"
+		And I select "Home" from "Type"
+		And I fill in "number" with "7777777"
+		And I fill in "special_date" with "01-11-2012"
+		And I fill in "occasion" with "new years"
+		And I select "Facebook" from "Website"
+		And I fill in "url" with "www.facebook.com"
+		And I fill in "account" with "facebook filler"
 		And I click the "create_contact" button
 		Then I should see "Contact was successfully created."
 		And I should see "7777777"
@@ -60,19 +60,21 @@ Feature: A user manages their contacts
 		When I fill in "first_name" with "Starbucks"
 		And I fill in "last_name" with "Cafe"
 		And I fill in "email" with "Starbucks@coffee.com"
-		And I fill in "contact_tag_list" with "friend, coffee"
+		And I fill in "tag_list" with "friend, coffee"
 		And I click the "create_contact" button
 		Then I should see "Contact was successfully created."
-		When I click the "coffee" link
+		When I click the "Coffee" link
 		Then I should see "Searching by tag: Coffee"
 		And I should see "Starbucks"
 		And I should not see "Amy"
-		When I click the "friend" link
+		When I click the "Starbucks Cafe" link
+		And I click the "Friend" link
 		Then I should see "Starbucks"
 		And I should see "Searching by tag: Friend"
 		And I should see "Amy"
-		When I click the "doctor" link
-		And I should see "Searching by tag: Doctor"
+		When I click the "Amy" link
+		And I click the "Doctor" link
+		Then I should see "Searching by tag: Doctor"
 		And I should see "Amy"
 		And I should not see "Starbucks"
 	

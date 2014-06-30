@@ -2,7 +2,7 @@ When /^I click the "(.*?)" link$/ do |link_title|
   click_on link_title
 end
 Then /^I should be on the add contact page$/ do
-  page.current_path.should == new_contact_path
+  expect(page.current_path).to eq(new_contact_path)
 end
 When /^I fill in "(.*?)" with "(.*?)"$/ do |form_name, form_content|
   fill_in form_name, with: form_content
