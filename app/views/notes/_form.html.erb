@@ -1,11 +1,36 @@
-<div class="span2 center_div">
-		<%= form_for([@note]) do |f| %>
-				<%= f.label :contact_id, "Contact"%>
-				<%= f.select(:contact_id, form_select) %><br/><br/>
-				<%= f.label :note, "Note" %>
-				<%= f.text_area :note, :rows => 10 %><br/><br/>
-				<%= f.submit :class => "btn btn-large btn-success pull-right" %><br/>
-		<% end %>
-		<br/><br/><br/><br/>
-</div>
-<div class="clear"></div>
+<%= form_for([@note]) do |f| %>
+    <div class="row-fluid">
+        <div class="span3">
+            <div class="control-group">
+              <%= f.label :contact_id, "Contact", class: 'control-label' %>
+              <div class="controls">
+                  <%= f.select :contact_id, form_select, {}, class: 'input-block-level' %>
+              </div>
+            </div>
+        </div> <!-- span3 -->
+
+        <div class="span7 offset1">
+          <div class="control-group">
+            <%= f.label :note, "Note", class: 'control-label' %>
+            <div class="controls">
+                <%= f.text_area :note, id: "note", class: 'input-block-level', :rows => 10  %>
+            </div>
+          </div>
+
+        </div> <!-- span3 -->
+
+        <div class="span1"></div>
+        <div class="clear"></div>
+    </div> <!-- row-fluid -->
+
+    <div class="row-fluid">
+        <div class="span12 text-center">
+            <hr>
+            <% if form_type == 'add' %>
+                <%= f.submit :id => "Add Note", :class => "btn btn-large btn-success" %>
+            <% else %>
+                <%= f.submit :id => "Update Note", :class => "btn btn-large btn-success" %>
+            <% end %>
+        </div>
+    </div>
+<% end %>
