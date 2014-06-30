@@ -1,16 +1,63 @@
-<div class="span2 center_div">
-	<%= form_for([@presence]) do |f| %>
-		<%= f.label :contact_id, "Contact" %>
-		<%= f.select(:contact_id, form_select) %><br/><br/>
-		<%= f.label :site, "Site" %>
-		<%= f.select :site, Presence::SITES, {:include_blank => true} %><br/><br/>
-		<%= f.label :url, "URL" %>
-		<%= f.text_field :url, :required => true %><br/><br/>
-		<%= f.label :account, "Account" %>
-		<%= f.text_field :account, :required => true %><br/><br/>
-		<%= f.submit :class => "btn btn-large btn-success pull-right" %>
-	<% end %>
-	<br/><br/><br/><br/>
-</div>
-<div class="clear"></div>
-<!-- <Presence id: nil, contact_id: nil, site: nil, url: nil, account: nil, created_at: nil, updated_at: nil>  -->
+<%= form_for([@presence]) do |f| %>
+    <div class="row-fluid">
+        <div class="span3">
+            <div class="control-group">
+	            <%= f.label :contact_id, "Contact", class: 'control-label' %>
+	            <div class="controls">
+	                <%= f.select :contact_id, form_select, {}, class: 'input-block-level' %>
+	            </div>
+            </div>
+        </div> <!-- span3 -->
+
+        <div class="span3 offset1">
+            <div class="control-group">
+                <%= f.label :site, "Social Media Site", class: 'control-label' %>
+                <div class="controls">
+                    <%= f.select :site, Presence::SITES, {}, class: 'input-block-level' %>
+                </div>
+            </div>
+        </div> <!-- span3 -->
+
+        <div class="span3 offset1">
+            <div class="control-group">
+                <%= f.label :url, "URL", class: 'control-label' %>
+                <div class="controls">
+                    <%= f.text_field :url, id: "url", class: 'input-block-level'  %>
+                </div>
+            </div>
+        </div> <!-- span3 -->
+
+        <div class="span1"></div>
+        <div class="clear"></div>
+    </div> <!-- row-fluid -->
+
+    <div class="row-fluid">
+        <div class="span3">
+            <div class="control-group">
+                <%= f.label :account, "Account", class: 'control-label' %>
+                <div class="controls">
+                    <%= f.text_field :account, id: "account", class: 'input-block-level'  %>
+                </div>
+            </div>
+        </div> <!-- span3 -->
+
+        <div class="span3 offset1">
+        </div> <!-- span3 -->
+
+        <div class="span3 offset1"></div> <!-- span3 -->
+
+        <div class="span1"></div>
+        <div class="clear"></div>
+    </div> <!-- row-fluid -->
+
+    <div class="row-fluid">
+        <div class="span12 text-center">
+            <hr>
+            <% if form_type == 'add' %>
+                <%= f.submit :id => "Add Web Presence", :class => "btn btn-large btn-success" %>
+            <% else %>
+                <%= f.submit :id => "Update Web Presence", :class => "btn btn-large btn-success" %>
+            <% end %>
+        </div>
+    </div>
+<% end %>
