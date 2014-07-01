@@ -46,15 +46,15 @@ module ApplicationHelper
   
   #shortcuts for buttons with white icons used throughout the app
   def edit_button
-    'Edit <i class="icon-edit icon-white"></i>'.html_safe
+    'Edit <i class="fa fa-edit"></i>'.html_safe
   end  
   
   def delete_button
-    'Delete <i class="icon-trash icon-white"></i>'.html_safe
+    'Delete <i class="fa fa-trash-o"></i>'.html_safe
   end
     
   def contact_button
-    'View Contact <i class="icon-user icon-white"></i>'.html_safe
+    'View Contact <i class="fa fa-user"></i>'.html_safe
   end
   
   def sortable(column, title = nil)
