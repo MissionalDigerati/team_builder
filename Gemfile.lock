@@ -35,7 +35,7 @@ GEM
     birthday (0.3.1)
       activerecord
       activesupport
-    bootstrap-kaminari-views (0.0.2)
+    bootstrap-kaminari-views (0.0.3)
       kaminari (>= 0.13)
       rails (>= 3.1)
     bootstrap-sass (2.3.1.2)
