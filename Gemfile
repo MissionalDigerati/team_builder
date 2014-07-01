@@ -8,22 +8,22 @@ gem 'rails', '3.2.18'
 gem 'selenium-webdriver'
 # Gems used only for assets and not required
 # in production environments by default.
-gem 'coffee-rails', '~> 3.2.1'
+gem 'coffee-rails'
 gem 'font-awesome-rails'
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
+  gem 'sass-rails'
   gem 'bootstrap-sass'
   gem 'jquery-ui-rails'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier'
 end
 
 gem 'jquery-rails'
 
 group :test, :development do
-  gem 'rspec-rails', '~> 3.0.0'
+  gem 'rspec-rails'
   gem "database_cleaner"
   gem "factory_girl_rails"
   gem 'sqlite3'
@@ -43,7 +43,7 @@ gem 'kaminari'
 gem 'acts-as-taggable-on'
 gem 'bootstrap-kaminari-views'
 gem 'rails-backup-migrate'
-gem 'jbuilder', '~> 2.1.1'
-gem 'birthday', '~> 0.3.0'
+gem 'jbuilder'
+gem 'birthday'
 gem 'quiet_assets'
 gem 'thin'
