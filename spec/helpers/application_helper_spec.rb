@@ -39,15 +39,15 @@ describe ApplicationHelper, :type => :helper do
     end
     
     it "should return the html for an edit button with icon" do
-      expect(edit_button).to eq("Edit <i class=\"icon-edit icon-white\"></i>")
+      expect(edit_button).to eq("Edit <i class=\"fa fa-edit\"></i>")
     end
     
     it "should return the html for an delete button with icon" do
-      expect(delete_button).to eq("Delete <i class=\"icon-trash icon-white\"></i>")
+      expect(delete_button).to eq("Delete <i class=\"fa fa-trash-o\"></i>")
     end
     
     it "should return the html for an contact button with icon" do
-      expect(contact_button).to eq("View Contact <i class=\"icon-user icon-white\"></i>")
+      expect(contact_button).to eq("View Contact <i class=\"fa fa-user\"></i>")
     end
     
     it "should return the last name of the instance followed by a comma, followed by the first letter of the first name, all names are titalized." do
