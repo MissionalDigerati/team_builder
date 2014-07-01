@@ -27,11 +27,20 @@ Given /^given there are contacts "(.*?)" and "(.*?)"$/ do |first_user, second_us
 end
 Then /^I should be on the show page for "(.*?)"$/ do |user_name|
   user = Contact.where(first_name: user_name).first
-  current_path.should == contact_path(user)
+  expect(current_path).to eq(contact_path(user))
 end
 Then /^I should be on the contact index page$/ do
   expect(current_path).to eq(contacts_path)
 end
 When /^I submit the form "(.*?)"$/ do |element|
   page.execute_script("$('#search').submit()")
+end
+When /^I click on the "(.*?)" "(.*?)" link under the action selector for "(.*?)"$/ do |resource_type, link_type, title|
+  case resource_type
+    when 'donation'
+      resource_content = Donation.where(project: title).first
+    else
+      resource_content = nil
+  end
+  click_link("#{link_type.downcase}-#{resource_type}-#{resource_content.id}") unless resource_content.nil?
 end
