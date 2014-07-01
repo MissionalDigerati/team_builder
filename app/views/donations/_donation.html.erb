@@ -19,7 +19,7 @@
                 <% unless hide_contact %>
                     <li class="divider"></li>
                     <li>
-                        <%= link_to contact_button, contact_path(donation.contact_id) %>
+                        <%= link_to contact_button, contact_path(donation.contact_id), id: "view-contact-#{donation.contact_id}" %>
                     </li>
                 <% end %>
             </ul>
