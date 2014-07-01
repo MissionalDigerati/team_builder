@@ -58,8 +58,7 @@ describe ApplicationHelper, :type => :helper do
 
     it "should return a button with method post for the quick editing of a support state when the method name is suppied" do
       contact = FactoryGirl.create(:defaulted_contact)
-      state = FactoryGirl.create(:starting_support_state, contact_id: contact.id)
-      expect(state_quick_edit(contact, state, "initial", true)).to eq("<a href=\"/contacts/1/support_states/1/quick_edit?current_state=initial\" class=\"btn true\" data-method=\"put\" data-remote=\"true\" rel=\"nofollow\">Initial</a>")
+      expect(state_quick_edit(contact, contact.support_state, "initial", true)).to eq("<a href=\"/contacts/1/support_states/1/quick_edit?current_state=initial\" class=\"btn true\" data-method=\"put\" data-remote=\"true\" rel=\"nofollow\">Initial</a>")
     end
 
     it "should return the number of contacts, if nil then it will return 0" do

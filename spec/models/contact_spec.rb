@@ -91,10 +91,9 @@ describe Contact, :type => :model do
 
     it "should query all contacts including their support state." do
       contact = FactoryGirl.create(:defaulted_contact, tag_list: "fred")
-      state = FactoryGirl.create(:starting_support_state, contact_id: contact.id)
       query = Contact.contact_report_query
       expect(query.first).to eq(contact)
-      expect(query.first.support_state).to eq(state)
+      expect(query.first.support_state).to eq(contact.support_state)
     end
 
   end

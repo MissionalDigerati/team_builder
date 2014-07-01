@@ -72,12 +72,12 @@ describe SupportState, :type => :model do
 				expect(SupportState.count_by_progress(:not_a_progress)).to eq(nil)
 			end
       it "should return results with multiple parameters" do
-        contact = FactoryGirl.create(:defaulted_contact)
-        state = FactoryGirl.create(:starting_support_state, contact_id: contact.id, initial: true, seen_presentation: false)
-        contact2 = FactoryGirl.create(:defaulted_contact)
-        state2 = FactoryGirl.create(:starting_support_state, contact_id: contact2.id, initial: false, seen_presentation: true)
-        contact3 = FactoryGirl.create(:defaulted_contact)
-        state3 = FactoryGirl.create(:starting_support_state, contact_id: contact3.id, initial: false, seen_presentation: true)
+        state = FactoryGirl.create(:starting_support_state, initial: true, seen_presentation: false)
+        contact = FactoryGirl.create(:defaulted_contact, support_state: state)
+        state2 = FactoryGirl.create(:starting_support_state, initial: false, seen_presentation: true)
+        contact2 = FactoryGirl.create(:defaulted_contact, support_state: state2)
+        state3 = FactoryGirl.create(:starting_support_state, initial: false, seen_presentation: true)
+        contact3 = FactoryGirl.create(:defaulted_contact, support_state: state3)
         expect(SupportState.count_by_progress(:initial, :seen_presentation)).to eq(3)
       end
 		end
@@ -128,14 +128,14 @@ describe SupportState, :type => :model do
 		describe "current_progress" do
 			
 			it "should return the correct support state for a contact that is supporting Monthly" do
-				contact = FactoryGirl.create(:defaulted_contact)
-	      state = FactoryGirl.create(:starting_support_state, contact_id: contact.id, monthly_gift: true, initial: false)
+        state = FactoryGirl.create(:starting_support_state, monthly_gift: true, initial: false)
+				contact = FactoryGirl.create(:defaulted_contact, support_state: state)
 				expect(contact.support_state.progress).to eq("Monthly Gift")
 			end
 			
 			it "should return the correct support state for a contact that has shown no response" do
-				contact = FactoryGirl.create(:defaulted_contact)
-	      state = FactoryGirl.create(:starting_support_state, contact_id: contact.id, no_response: true, initial: false)
+        state = FactoryGirl.create(:starting_support_state, no_response: true, initial: false)
+				contact = FactoryGirl.create(:defaulted_contact, support_state: state)
 				expect(contact.support_state.progress).to eq("No Response")
 			end
 			
