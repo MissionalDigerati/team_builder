@@ -7,13 +7,12 @@ Feature: A user should be able to create, edit, and delete web presences from th
 		And I am on the show page for "Add Presence"
 		When I click the "Add Web Presence" link
 		And I select "Facebook" from "Site"
-		And I fill in "URL" with "www.facebook.com"
-		And I fill in "Account" with "filler"
+		And I fill in "url" with "www.facebook.com"
+		And I fill in "account" with "filler"
 		And I click the "Create Presence" button
 		Then I should see "Your Web Presence has been saved!"
 		And I should be on the show page for "Add Presence"
 		And I should see "Facebook"
-		And I should see "www.facebook.com"
 		And I should see "filler"
 		
 	Scenario: A user should be able to edit an existing web presence
@@ -21,20 +20,19 @@ Feature: A user should be able to create, edit, and delete web presences from th
 		And I am on the show page for "Edit presence"
 		And I should see "testing"
 		And I should see "Facebook"
-		When I click on the "Edit" link for "testing"
+		When I click on the "presence" "edit" link under the action selector for "testing"
 		And I select "Twitter" from "Site"
-		And I fill in "URL" with "www.twitter.com"
-		And I fill in "Account" with "Twitter Account"
+		And I fill in "url" with "www.twitter.com"
+		And I fill in "account" with "Twitter Account"
 		And I click the "Update Presence" button
 	  Then I should see "Your Web Presence has been updated!"
 		And I should see "Twitter"
-		And I should see "www.twitter.com"
 		
 	Scenario: A user should be able to delete an existing web presence
 		Given There is a contact "Delete presence" and they have a web presence "tumblr"
 		And I am on the show page for "Delete presence"
 		And I should see "tumblr"
-		When I click on the "Delete" link for "tumblr"
+		When I click on the "presence" "delete" link under the action selector for "tumblr"
 		Then I should see "Your Web Presence has been deleted!"
 		And I should be on the show page for "Delete presence"
 		And I should not see "tumblr"
@@ -45,15 +43,13 @@ Feature: A user should be able to create, edit, and delete web presences from th
 		When I click the "Add Web Presence" link
 		And I select "chicken" from "Contact"
 		And I select "Twitter" from "Site"
-		And I fill in "URL" with "www.twitter.com"
-		And I fill in "Account" with "testing filler"
+		And I fill in "url" with "www.twitter.com"
+		And I fill in "account" with "testing filler"
 		And I click the "Create Presence" button
 		Then I should see "Your Web Presence has been saved!"
 		And I should be on the show page for "chicken"
 		And I should see "Twitter"
-		And I should see "www.twitter.com"
 		And I should see "testing filler"
 		Then I am on the show page for "cow"
 		And I should not see "Twitter"
-		And I should not see "www.twitter.com"
 		And I should not see "testing filler"
