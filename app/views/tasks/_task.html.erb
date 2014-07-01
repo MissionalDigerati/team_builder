@@ -3,7 +3,7 @@
 		<% if task.is_completed? %>
             <span class="label">COMPLETED</span>
 		<% else %>
-			<%= check_box_tag "#{task.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(task), remote: true, :class => "completed_button #{task.id} hidden" %>
+			<%= check_box_tag "#{task.id}", "checkbox", false, class: "checkbox", id: "mark-complete-task-#{task.id}"  %> <%= link_to "Mark as Completed", complete_task_path(task), remote: true, class: "completed_button #{task.id} hidden", id: "mark-complete-task-link-#{task.id}" %>
 			<% if task.is_overdue? %>
                 &nbsp;<span class="label label-important">OVERDUE</span>
             <% end %>
@@ -22,16 +22,16 @@
 			<a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
 			<ul class="dropdown-menu">
 				<li>
-					<%= link_to edit_button, edit_task_path(task, contact_id: task.contact_id) %>
+					<%= link_to edit_button, edit_task_path(task, contact_id: task.contact_id), id: "edit-task-#{task.id}" %>
 				</li>
 				<li class="divider"></li>
 				<li>
-					<%= link_to delete_button, task_path(task), :method => :delete, data: { confirm: 'Are you sure?'}%>
+					<%= link_to delete_button, task_path(task), :method => :delete, data: { confirm: 'Are you sure?' }, id: "delete-task-#{task.id}"%>
 				</li>
 				<% unless hide_contact %>
 					<li class="divider"></li>
 					<li>
-						<%= link_to contact_button, contact_path(task.contact_id) %>
+						<%= link_to contact_button, contact_path(task.contact_id), id: "view-contact-#{task.contact_id}" %>
 					</li>
 				<% end %>
 			</ul>

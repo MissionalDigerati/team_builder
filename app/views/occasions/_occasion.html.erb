@@ -9,16 +9,16 @@
             <a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
             <ul class="dropdown-menu">
                 <li>
-                    <%= link_to edit_button, edit_occasion_path(occasion, contact_id: occasion.contact_id) %>
+                    <%= link_to edit_button, edit_occasion_path(occasion, contact_id: occasion.contact_id), id: "edit-occasion-#{occasion.id}" %>
                 </li>
                 <li class="divider"></li>
                 <li>
-                    <%= link_to delete_button, occasion_path(occasion), :method => :delete, data: { confirm: 'Are you sure?'}%>
+                    <%= link_to delete_button, occasion_path(occasion), :method => :delete, data: { confirm: 'Are you sure?'}, id: "delete-occasion-#{occasion.id}" %>
                 </li>
                 <% unless hide_contact %>
                     <li class="divider"></li>
                     <li>
-                        <%= link_to contact_button, contact_path(occasion.contact_id) %>
+                        <%= link_to contact_button, contact_path(occasion.contact_id), id: "view-contact-#{occasion.contact_id}" %>
                     </li>
                 <% end %>
             </ul>

@@ -6,7 +6,7 @@ Feature: A user should be able to create, edit, and delete notes from their cont
 		Given there is a contact "Hamlet"
 		And I am on the show page for "Hamlet"
 		When I click the "Add Note" link
-		And I fill in "Note" with "Once more into the breach dear friends."
+		And I fill in "note" with "Once more into the breach dear friends."
 		And I click the "Create Note" button
 		Then I should see "Your Note has been saved!"
 		And I should be on the show page for "Hamlet"
@@ -16,8 +16,8 @@ Feature: A user should be able to create, edit, and delete notes from their cont
 		Given There is a contact "Edit note" and they have a note "what what in the"
 		And I am on the show page for "Edit note"
 		And I should see "what what in the"
-		When I click on the "Edit" link for "what what in the"
-		And I fill in "Note" with "Samwell is the best"
+		When I click on the "note" "edit" link under the action selector for "what what in the"
+		And I fill in "note" with "Samwell is the best"
 		And I click the "Update Note" button
 		Then I should see "Your Note has been updated!"
 		And I should be on the show page for "Edit note"
@@ -28,7 +28,7 @@ Feature: A user should be able to create, edit, and delete notes from their cont
 		Given There is a contact "Delete note" and they have a note "This note will be deleted"
 		And I am on the show page for "Delete note"
 		And I should see "This note will be deleted"
-		When I click on the "Delete" link for "This note will be deleted"
+		When I click on the "note" "delete" link under the action selector for "This note will be deleted"
 		Then I should see "Your Note has been deleted!"
 		And I should be on the show page for "Delete note"
 		And I should not see "This note will be deleted"
@@ -38,7 +38,7 @@ Feature: A user should be able to create, edit, and delete notes from their cont
 		And I am on the show page for "cheese"
 		When I click the "Add Note" link
 		And I select "cake" from "Contact"
-		And I fill in "Note" with "pumpkin pie is better than cheesecake"
+		And I fill in "note" with "pumpkin pie is better than cheesecake"
 		And I click the "Create Note" button
 		Then I should see "Your Note has been saved!"
 		And I should be on the show page for "cake"

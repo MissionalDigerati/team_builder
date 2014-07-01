@@ -5,7 +5,7 @@ When /^I click the "(.*?)" button$/ do |button|
   click_on button
 end
 Then /^I should see "(.*?)"$/ do |text|
-  page.should have_content text
+  expect(page).to have_content(text)
 end
 Given /^there is a contact "(.*?)"$/ do |first_name|
   FactoryGirl.create(:contact, first_name: first_name, last_name: "unknown", spouse_name: "River", email: "Thedoctor@who.com", spouse_email: "River@who.com", state_id: 1, country_id: 1)
@@ -16,7 +16,7 @@ When /^I click on the "(.*?)" link for "(.*?)"$/ do |link, title|
   end
 end
 Then /^I should not see "(.*?)"$/ do |text|
-  page.should_not have_content text
+  expect(page).to_not have_content(text)
 end
 When /^I confirm popup$/ do
   page.driver.browser.switch_to.alert.accept
@@ -27,15 +27,32 @@ Given /^given there are contacts "(.*?)" and "(.*?)"$/ do |first_user, second_us
 end
 Then /^I should be on the show page for "(.*?)"$/ do |user_name|
   user = Contact.where(first_name: user_name).first
-  current_path.should == contact_path(user)
+  expect(current_path).to eq(contact_path(user))
 end
 Then /^I should be on the contact index page$/ do
-  current_path.should == contacts_path
+  expect(current_path).to eq(contacts_path)
 end
 When /^I submit the form "(.*?)"$/ do |element|
   page.execute_script("$('#search').submit()")
 end
- # <!-- => #<Contact id: nil, first_name: nil, last_name: nil, spouse_name: nil, email: nil, 
- # spouse_email: nil, tags: nil, network: nil, address_1: nil, address_2: nil, city: nil, 
- # state_id: nil, zip: nil, country_id: nil, receive_newsletter: false, children: nil, 
- # preferred_contact: nil, created_at: nil, updated_at: nil>  -->
+# When I click on the "donation" "edit" link under the action selector for "the tardis"
+#
+When /^I click on the "(.*?)" "(.*?)" link under the action selector for "(.*?)"$/ do |resource_type, link_type, title|
+  case resource_type
+    when 'donation'
+      resource_content = Donation.where(project: title).first
+    when 'note'
+      resource_content = Note.where(note: title).first
+    when 'occasion'
+      resource_content = Occasion.where(occasion: title).first
+    when 'number'
+      resource_content = Number.where(number: title).first
+    when 'presence'
+      resource_content = Presence.where(account: title).first
+    when 'task'
+      resource_content = Task.where(task: title).first
+    else
+      resource_content = nil
+  end
+  click_link("#{link_type.downcase}-#{resource_type}-#{resource_content.id}") unless resource_content.nil?
+end

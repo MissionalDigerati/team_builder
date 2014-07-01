@@ -5,3 +5,8 @@ end
 When /^I check the checkbox for "(.*?)"$/ do |checkbox|
   check(checkbox)
 end
+
+When /^I check the completed checkbox for "(.*?)"$/ do |task_title|
+  task_to_complete = Task.where(task: task_title).first
+  check("mark-complete-task-#{task_to_complete.id}")
+end

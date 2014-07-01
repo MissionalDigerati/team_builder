@@ -7,11 +7,11 @@
             <a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
             <ul class="dropdown-menu">
                 <li>
-                    <%= link_to edit_button, edit_number_path(number, contact_id: number.contact_id) %>
+                    <%= link_to edit_button, edit_number_path(number, contact_id: number.contact_id), id: "edit-number-#{number.id}" %>
                 </li>
                 <li class="divider"></li>
                 <li>
-                    <%= link_to delete_button, number_path(number), :method => :delete, data: { confirm: 'Are you sure?'}%>
+                    <%= link_to delete_button, number_path(number), :method => :delete, data: { confirm: 'Are you sure?' }, id: "delete-number-#{number.id}" %>
                 </li>
             </ul>
         </div> 

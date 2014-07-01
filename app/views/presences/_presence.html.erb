@@ -11,16 +11,16 @@
             <a class="btn btn-inverse dropdown-toggle" data-toggle="dropdown" href="#">Action <span class="caret"></span></a>
             <ul class="dropdown-menu">
                 <li>
-                    <%= link_to edit_button, edit_presence_path(presence, contact_id: presence.contact_id)%>
+                    <%= link_to edit_button, edit_presence_path(presence, contact_id: presence.contact_id), id: "edit-presence-#{presence.id}"%>
                 </li>
                 <li class="divider"></li>
                 <li>
-                    <%= link_to delete_button, presence_path(presence), method: :delete, data: { confirm: 'Are you sure?' }%>
+                    <%= link_to delete_button, presence_path(presence), method: :delete, data: { confirm: 'Are you sure?' }, id: "delete-presence-#{presence.id}" %>
                 </li>
                 <% unless hide_contact %>
                     <li class="divider"></li>
                     <li>
-                        <%= link_to contact_button, contact_path(presence.contact_id) %>
+                        <%= link_to contact_button, contact_path(presence.contact_id), id: "view-contact-#{presence.contact_id}" %>
                     </li>
                 <% end %>
             </ul>
