@@ -49,6 +49,8 @@ When /^I click on the "(.*?)" "(.*?)" link under the action selector for "(.*?)"
       resource_content = Number.where(number: title).first
     when 'presence'
       resource_content = Presence.where(account: title).first
+    when 'task'
+      resource_content = Task.where(task: title).first
     else
       resource_content = nil
   end

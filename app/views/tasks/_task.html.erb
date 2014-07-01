@@ -3,7 +3,7 @@
 		<% if task.is_completed? %>
             <span class="label">COMPLETED</span>
 		<% else %>
-			<%= check_box_tag "#{task.id}", "checkbox", false, :class => "checkbox" %> <%= link_to "Mark as Completed", complete_task_path(task), remote: true, :class => "completed_button #{task.id} hidden" %>
+			<%= check_box_tag "#{task.id}", "checkbox", false, class: "checkbox", id: "mark-complete-task-#{task.id}"  %> <%= link_to "Mark as Completed", complete_task_path(task), remote: true, class: "completed_button #{task.id} hidden", id: "mark-complete-task-link-#{task.id}" %>
 			<% if task.is_overdue? %>
                 &nbsp;<span class="label label-important">OVERDUE</span>
             <% end %>

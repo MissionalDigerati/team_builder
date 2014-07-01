@@ -6,9 +6,9 @@ Feature: A user should be able to create tasks for a user, edit, update, and cre
 		Given there is a contact "Matt Smith"
 		And I am on the show page for "Matt Smith"
 		When I click the "Add Task" link
-		And I fill in "Task" with "Get to the tardis"
-		And I fill in "Due Date" with "06-11-2012"
-		And I select "Call" from "Category"
+		And I fill in "task" with "Get to the tardis"
+		And I fill in "due_date" with "06-11-2012"
+		And I select "Call" from "task_category"
 		And I click the "Create Task" button
 		Then I should see "Your Task has been saved!"
 		And I should be on the show page for "Matt Smith"
@@ -18,10 +18,10 @@ Feature: A user should be able to create tasks for a user, edit, update, and cre
 	Scenario: A user should be able to edit a task that already exists.
 		Given There is a contact "Edit task" and they have a task "build a fort"
 		And I am on the show page for "Edit task"
-		When I click on the "Edit" link for "build a fort"
-		And I fill in "Task" with "destroy a fort"
-		And I fill in "Due Date" with "03-04-2012"
-		And I select "Lunch" from "Category"
+		When I click on the "task" "edit" link under the action selector for "build a fort"
+		And I fill in "task" with "destroy a fort"
+		And I fill in "due_date" with "03-04-2012"
+		And I select "Lunch" from "task_category"
 		And I click the "Update Task" button
 		Then I should see "Your Task has been updated!"
 		And I should be on the show page for "Edit task"
@@ -33,7 +33,7 @@ Feature: A user should be able to create tasks for a user, edit, update, and cre
 		Given There is a contact "Delete task" and they have a task "throw a computer"
 		And I am on the show page for "Delete task"
 		And I should see "throw a computer"
-		When I click on the "Delete" link for "throw a computer"
+		When I click on the "task" "delete" link under the action selector for "throw a computer"
 		Then I should see "Your Task has been deleted."
 		And I should be on the show page for "Delete task"
 		And I should not see "throw a computer"		
@@ -43,29 +43,30 @@ Feature: A user should be able to create tasks for a user, edit, update, and cre
 		And I am on the show page for "rose"
 		When I click the "Add Task" link
 		And I select "martha" from "Contact"
-		And I fill in "Task" with "destroy tardis"
-		And I fill in "Due Date" with "1/2/201121"
-		And I select "Lunch" from "Category"
+		And I fill in "task" with "destroy tardis"
+		And I fill in "due_date" with "1/2/201121"
+		And I select "Lunch" from "task_category"
 		And I click the "Create Task" button
 		Then I should see "Your Task has been saved!"
 		And I should be on the show page for "martha"
 		And I should see "destroy tardis"
 		Then I am on the show page for "rose"
 		And I should not see "destroy tardis"
-		
+
 	Scenario: A user should be able to mark a task as completed	
 		Given There is a contact "Mark task" and they have a task "buy a house"
 		And I am on the show page for "Mark task"
-		When I click on the "Edit" link for "buy a house"
-		And I check the checkbox for "Completed"
+		When I click on the "task" "edit" link under the action selector for "buy a house"
+		And I check the checkbox for "completed"
 		And I click the "Update Task" button
 		Then I should see "Your Task has been updated!"
 		And I should be on the show page for "Mark task"
 		And I should not see "buy a house"
 
+	@javascript
 	Scenario: A user should be able to dynamically mark a task as completed	
 		Given There is a contact "Dynamic task" and they have a task "buy iphone"
 		And I am on the show page for "Dynamic task"
 		And I should see "buy iphone"
-		When I click on the "Mark as Completed" link for "buy iphone"
-		Then I should see "buy iphone"
+		When I check the completed checkbox for "buy iphone"
+		Then I should not see "buy iphone"
