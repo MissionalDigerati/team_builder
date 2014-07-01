@@ -7,7 +7,7 @@ Feature: A user should be able to edit and create phone numbers for their contac
 		And I am on the show page for "The Doctor"
 		When I click the "Add Phone Number" link
 		And I select "Home" from "number_phone_type"
-		And I fill in "number_number" with "14082182617"
+		And I fill in "number" with "14082182617"
 		And I click the "Create Number" button
 		Then I should see "Your number has been saved!"
 		And I should be on the doctor's show page
@@ -17,10 +17,10 @@ Feature: A user should be able to edit and create phone numbers for their contac
 		Given There is a contact "Kirk" and they have a phone number "1231231234"
 		And I am on the show page for "Kirk"
 		And I should see "(123) 123 1234"
-		When I click on the "Edit" link for "(123) 123 1234"
+		When I click on the "number" "edit" link under the action selector for "1231231234"
 		And I select "Home" from "number_phone_type"
-		And I fill in "number_number" with "9999999999"
-		And I fill in "Note" with "call this number"
+		And I fill in "number" with "9999999999"
+		And I fill in "note" with "call this number"
 		And I click the "Update Number" button
 		Then I should see "Your phone number has been updated."
 		And I should see "(999) 999 9999"
@@ -31,7 +31,7 @@ Feature: A user should be able to edit and create phone numbers for their contac
 		Given There is a contact "Delete phone test" and they have a phone number "1111111111"
 		And I am on the show page for "Delete phone test"
 		And I should see "(111) 111 1111"
-		When I click on the "Delete" link for "(111) 111 1111"
+		When I click on the "number" "delete" link under the action selector for "1111111111"
 		# And I confirm popup, not sure why this is working without confirming the pop up, however it is. 
 		Then I should see "Your phone number has been deleted."
 		And I am on the show page for "Delete phone test"
@@ -43,7 +43,7 @@ Feature: A user should be able to edit and create phone numbers for their contac
 		When I click the "Add Phone Number" link
 		And I select "android" from "Contact"
 		And I select "Mobile" from "number_phone_type"
-		And I fill in "number_number" with "2312321232"
+		And I fill in "number" with "2312321232"
 		And I click the "Create Number" button
 		Then I should see "Your number has been saved!"
 		And I should be on the show page for "android"

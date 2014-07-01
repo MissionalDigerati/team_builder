@@ -45,6 +45,8 @@ When /^I click on the "(.*?)" "(.*?)" link under the action selector for "(.*?)"
       resource_content = Note.where(note: title).first
     when 'occasion'
       resource_content = Occasion.where(occasion: title).first
+    when 'number'
+      resource_content = Number.where(number: title).first
     else
       resource_content = nil
   end
