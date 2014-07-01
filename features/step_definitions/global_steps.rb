@@ -35,10 +35,14 @@ end
 When /^I submit the form "(.*?)"$/ do |element|
   page.execute_script("$('#search').submit()")
 end
+# When I click on the "donation" "edit" link under the action selector for "the tardis"
+#
 When /^I click on the "(.*?)" "(.*?)" link under the action selector for "(.*?)"$/ do |resource_type, link_type, title|
   case resource_type
     when 'donation'
       resource_content = Donation.where(project: title).first
+    when 'note'
+      resource_content = Note.where(note: title).first
     else
       resource_content = nil
   end
