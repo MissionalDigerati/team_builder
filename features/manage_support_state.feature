@@ -3,9 +3,8 @@ Feature: A user should be able to create, edit, and delete web presences from th
 	I should be able to update contacts support statvia their contact page for through forms. 
 	
 	@javascript
-	Scenario: A user should be able to manage their contacts 
-		Given I am on the home page
-		And there is a contact "support state buttons" with a support state
+	Scenario: A user should be able to manage their contacts
+		Given there is a contact "support state buttons" with a support state
 		And I am on the show page for "support state buttons"
 		When I click the "Initial State" link
 		Then I should see "Support state has been updated to Initial State."
@@ -23,14 +22,6 @@ Feature: A user should be able to create, edit, and delete web presences from th
 		Then I should see "Support state has been updated to One Time Gift."
 		When I click the "Monthly Gift" link
 		Then I should see "Support state has been updated to Monthly Gift."
-
-	Scenario: A contact without a support state should be able to create one.
-		Given there is a contact "Create support state"
-		And I am on the show page for "Create support state"
-		When I click the "Create Donation Status" link
-		And I click the "Create Support state" link
-		Then I should be on the show page for "Create support state"
-		And I should see "Support state has been saved!"
 
 	Scenario: A user should be able to manually edit their contacts support state
 		Given there is a contact "support_state_update" with a support state
