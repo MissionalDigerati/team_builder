@@ -1,18 +1,14 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.18'
+gem 'rails', '~> 4.1.2'
 
 gem 'selenium-webdriver'
 gem 'coffee-rails'
 gem 'font-awesome-rails'
-group :assets do
-  gem 'sass-rails'
-  gem 'bootstrap-sass'
-  gem 'jquery-ui-rails'
-
-  gem 'uglifier'
-end
-
+gem 'sass-rails'
+gem 'bootstrap-sass'
+gem 'jquery-ui-rails'
+gem 'uglifier'
 gem 'jquery-rails'
 
 group :test, :development do
