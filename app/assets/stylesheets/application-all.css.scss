@@ -1,30 +1,22 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
- *= require_self
- *= require_tree ./all
- *= stub ./all/mixins
- *= require jquery.ui.all
- *= require font-awesome
- *= reqire_twitter/bootstrap
- *= require macadmin/style
- *= require macadmin/uniform.default
- *= require macadmin/widgets
- *= require macadmin/jquery.cleditor
- *= require macadmin/prettyPhoto
- *= require macadmin/rateit
- *= require macadmin/bootstrap-toggle-buttons
- *= require tag-it/jquery.tagit
- *= require fullcalendar/fullcalendar
- */
- .hidden-submit {
+@import "bootstrap";
+@import "other/mixins";
+@import "all/*";
+@import "macadmin/style";
+@import "macadmin/uniform.default";
+@import "macadmin/widgets";
+@import "macadmin/jquery.cleditor";
+@import "macadmin/prettyPhoto";
+@import "macadmin/rateit";
+@import "macadmin/bootstrap-toggle-buttons";
+@import "tag-it/jquery.tagit";
+@import "fullcalendar/fullcalendar";
+@import "font-awesome";
+@import "jquery.ui.all";
+body{
+    background:#343434 url(asset-path("macadmin/back.png")) repeat;
+}
+
+.hidden-submit {
     border: 0 none;
     height: 0;
     width: 0;

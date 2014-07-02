@@ -37,7 +37,7 @@ GEM
     bootstrap-kaminari-views (0.0.3)
       kaminari (>= 0.13)
       rails (>= 3.1)
-    bootstrap-sass (3.2.0.0)
+    bootstrap-sass (2.3.2.2)
       sass (~> 3.2)
     builder (3.2.2)
     capybara (2.3.0)
@@ -212,7 +212,7 @@ DEPENDENCIES
   acts-as-taggable-on
   birthday
   bootstrap-kaminari-views
-  bootstrap-sass
+  bootstrap-sass (~> 2.3)
   coffee-rails
   cucumber-rails
   database_cleaner
