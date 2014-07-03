@@ -1,5 +1,4 @@
 class Number < ActiveRecord::Base
-  attr_accessible :phone_type, :number, :contact_id, :note
   belongs_to :contact
   before_save :phone_number_strip
   
