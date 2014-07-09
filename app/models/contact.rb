@@ -12,9 +12,6 @@ class Contact < ActiveRecord::Base
   has_one :support_state
 
   acts_as_taggable
-
-  # attr_accessible :occasions_attributes
-  # attr_accessible :presences_attributes
   
   accepts_nested_attributes_for :numbers, :reject_if => lambda { |a| a[:number].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :occasions, :reject_if => lambda { |a| a[:occasion].blank? }, :allow_destroy => true

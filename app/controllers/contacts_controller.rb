@@ -119,6 +119,14 @@ class ContactsController < ApplicationController
         numbers_attributes:
           [
             :phone_type, :number, :contact_id, :note
+          ],
+        occasions_attributes:
+          [
+            :occasion, :contact_id, :special_date
+          ],
+        presences_attributes:
+          [
+            :site, :url, :account, :contact_id
           ]
       )
     end
