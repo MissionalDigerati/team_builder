@@ -115,6 +115,10 @@ class ContactsController < ApplicationController
           [
             :contact_id, :initial, :letter_sent, :letter_sent_on, :contacting, :seen_presentation, :presented_on, 
             :following_up, :responding_on, :one_time_gift, :monthly_gift, :not_giving, :no_response, :progress_percent
+          ],
+        numbers_attributes:
+          [
+            :phone_type, :number, :contact_id, :note
           ]
       )
     end

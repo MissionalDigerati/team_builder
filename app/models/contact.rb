@@ -10,13 +10,11 @@ class Contact < ActiveRecord::Base
   has_many :presences, :dependent => :destroy
 
   has_one :support_state
-  
+
   acts_as_taggable
-  
-  # attr_accessible :numbers_attributes
+
   # attr_accessible :occasions_attributes
   # attr_accessible :presences_attributes
-  # attr_accessible :support_state_attributes
   
   accepts_nested_attributes_for :numbers, :reject_if => lambda { |a| a[:number].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :occasions, :reject_if => lambda { |a| a[:occasion].blank? }, :allow_destroy => true
