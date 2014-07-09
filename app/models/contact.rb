@@ -56,11 +56,11 @@ class Contact < ActiveRecord::Base
   end
   
   def self.contacts_in_last_month
-    Contact.find(:all, :conditions => ["created_at between ? and ?", 4.weeks.ago.to_date, Time.now.to_date]).length
+    Contact.where(["created_at between ? and ?", 4.weeks.ago.to_date, Time.now.to_date]).length
   end
   
   def self.contacts_in_last_year
-    Contact.find(:all, :conditions => ["created_at between ? and ?", 1.years.ago.to_date, Time.now.to_date]).length
+    Contact.where(["created_at between ? and ?", 1.years.ago.to_date, Time.now.to_date]).length
   end
 
   #
