@@ -90,7 +90,7 @@ module ApplicationHelper
   end
 
   def number_of_overdue_tasks
-    tasks_overdue = Task.where(["due_date < ? AND completed = ?", Time.now.to_date, false]).length
+    tasks_overdue = Task.overdue.count
     tasks_overdue.present? ? tasks_overdue : "0"
   end
 

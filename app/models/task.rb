@@ -10,13 +10,15 @@ class Task < ActiveRecord::Base
     scope :one_week_from_today, -> { where(completed: false, due_date: Date.today..1.weeks.from_now.to_date).order("due_date ASC") }
     scope :one_month_from_today, -> { where(completed: false, due_date: Date.today..1.month.from_now.to_date).order("due_date ASC") }
     scope :overdue, -> { where(["due_date < ? AND completed = ?", Date.today, false]).order("due_date ASC") }
+    scope :completed, -> { where(completed: true) }
+    scope :incomplete, -> { where(completed: false) }
 
     def self.total_tasks(type = nil)
         case type
             when :incomplete
-                Task.where(completed: false).length
+                Task.incomplete.count
             when :completed
-                Task.where(completed: true).length
+                Task.completed.count
             when :overdue
                 Task.overdue.count
             else
