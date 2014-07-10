@@ -11,15 +11,7 @@ class Contact < ActiveRecord::Base
 
   has_one :support_state
 
-  attr_accessible :tag_list #acts as taggable gem
   acts_as_taggable
-  
-  attr_accessible :numbers_attributes
-  attr_accessible :occasions_attributes
-  attr_accessible :presences_attributes
-  attr_accessible :support_state_attributes
-  attr_accessible :first_name, :last_name, :spouse_name, :email, :spouse_email, :network, :address_1, :address_2, :city, :province,
-  :state_id, :zip, :country_id, :receive_newsletter, :children, :preferred_contact, :believer, :spouse_believer, :presented_vision, :avatar, :account_number
   
   accepts_nested_attributes_for :numbers, :reject_if => lambda { |a| a[:number].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :occasions, :reject_if => lambda { |a| a[:occasion].blank? }, :allow_destroy => true
@@ -64,11 +56,11 @@ class Contact < ActiveRecord::Base
   end
   
   def self.contacts_in_last_month
-    Contact.find(:all, :conditions => ["created_at between ? and ?", 4.weeks.ago.to_date, Time.now.to_date]).length
+    Contact.where(["created_at between ? and ?", 4.weeks.ago.to_date, Time.now.to_date]).length
   end
   
   def self.contacts_in_last_year
-    Contact.find(:all, :conditions => ["created_at between ? and ?", 1.years.ago.to_date, Time.now.to_date]).length
+    Contact.where(["created_at between ? and ?", 1.years.ago.to_date, Time.now.to_date]).length
   end
 
   #

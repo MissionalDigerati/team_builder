@@ -18,7 +18,6 @@
 //= require bootstrap
 //= require bootstrap-dropdown
 //= require macadmin/html5shim
-//= require macadmin/bootstrap-datetimepicker.min
 //= require macadmin/excanvas.min
 //= require macadmin/filter
 //= require macadmin/jquery.cleditor.min
@@ -36,7 +35,6 @@
 //= require macadmin/layouts/bottom
 //= require macadmin/layouts/top
 //= require macadmin/layouts/topRight
-//= require macadmin/themes/default
 //= require macadmin/themes/default
 //= require fullcalendar/moment.min
 //= require fullcalendar/fullcalendar.min

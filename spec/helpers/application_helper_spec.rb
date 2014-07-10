@@ -39,15 +39,15 @@ describe ApplicationHelper, :type => :helper do
     end
     
     it "should return the html for an edit button with icon" do
-      expect(edit_button).to eq("Edit <i class=\"icon-edit icon-white\"></i>")
+      expect(edit_button).to eq("Edit <i class=\"fa fa-edit\"></i>")
     end
     
     it "should return the html for an delete button with icon" do
-      expect(delete_button).to eq("Delete <i class=\"icon-trash icon-white\"></i>")
+      expect(delete_button).to eq("Delete <i class=\"fa fa-trash-o\"></i>")
     end
     
     it "should return the html for an contact button with icon" do
-      expect(contact_button).to eq("View Contact <i class=\"icon-user icon-white\"></i>")
+      expect(contact_button).to eq("View Contact <i class=\"fa fa-user\"></i>")
     end
     
     it "should return the last name of the instance followed by a comma, followed by the first letter of the first name, all names are titalized." do
@@ -58,25 +58,25 @@ describe ApplicationHelper, :type => :helper do
 
     it "should return a button with method post for the quick editing of a support state when the method name is suppied" do
       contact = FactoryGirl.create(:defaulted_contact)
-      expect(state_quick_edit(contact, contact.support_state, "initial", true)).to eq("<a href=\"/contacts/1/support_states/1/quick_edit?current_state=initial\" class=\"btn true\" data-method=\"put\" data-remote=\"true\" rel=\"nofollow\">Initial</a>")
+      expect(state_quick_edit(contact, contact.support_state, "initial", true)).to eq("<a class=\"btn true\" data-method=\"put\" data-remote=\"true\" href=\"/contacts/1/support_states/1/quick_edit?current_state=initial\" rel=\"nofollow\">Initial</a>")
     end
 
     it "should return the number of contacts, if nil then it will return 0" do
-      expect(number_of_contacts).to eq(0)
+      expect(number_of_contacts).to eq("0")
       contact = FactoryGirl.create(:defaulted_contact)
-      expect(number_of_contacts).to eq(1)
+      expect(number_of_contacts).to eq("1")
     end
 
     it "should return the number of overdue tasks" do
-      expect(number_of_overdue_tasks).to eq(0)
+      expect(number_of_overdue_tasks).to eq("0")
       FactoryGirl.create(:defaulted_task, completed: false, due_date: 1.weeks.ago.to_date)
-      expect(number_of_overdue_tasks).to eq(1)
+      expect(number_of_overdue_tasks).to eq("1")
     end
 
     it "return the number of special dates occuring today" do
-      expect(occasions_today).to eq(0)
+      expect(occasions_today).to eq("0")
       FactoryGirl.create(:defaulted_occasion, special_date: Time.now.to_date)
-      expect(occasions_today).to eq(1)
+      expect(occasions_today).to eq("1")
     end
     
   end

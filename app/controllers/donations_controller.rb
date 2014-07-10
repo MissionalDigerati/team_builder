@@ -23,7 +23,7 @@ class DonationsController < ApplicationController
   
   def create
     @contact = Contact.find(params[:donation][:contact_id])
-    @donations = @contact.donations.new(params[:donation])
+    @donations = @contact.donations.new(donation_params)
     respond_to do |format|
       if @donations.save
         format.html {redirect_to(contact_path(@contact))}
@@ -45,7 +45,7 @@ class DonationsController < ApplicationController
     @donations = Donation.find(params[:id])
     @contact = Contact.find(@donations.contact_id)
     respond_to do |format|
-      if @donations.update_attributes(params[:donation])
+      if @donations.update_attributes(donation_params)
         format.html {redirect_to(contact_path(@contact))}
         flash[:notice] = "Your Donation has been updated!"
       else
@@ -66,9 +66,15 @@ class DonationsController < ApplicationController
   
   protected
   
-  def sort_column
-    Donation.column_names.include?(params[:sort]) ? params[:sort] : "updated_at"
-  end
+    def sort_column
+      Donation.column_names.include?(params[:sort]) ? params[:sort] : "updated_at"
+    end
+
+  private
+
+    def donation_params
+      params.require(:donation).permit(:amount, :contact_id, :donation_date, :project)
+    end
   
 end
 

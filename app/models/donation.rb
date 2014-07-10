@@ -1,6 +1,5 @@
 class Donation < ActiveRecord::Base
   belongs_to :contact, :counter_cache => true
-  attr_accessible :date, :amount, :project, :contact_id, :donation_date
   # before_validation :strip_amount
   validates :amount, :project, :contact_id, :presence => true
   validates :amount, :numericality => {:greater_than => 0}

@@ -13,7 +13,7 @@ class PresencesController < ApplicationController
   
   def create
     @contact = Contact.find(params[:presence][:contact_id])
-    @presence = @contact.presences.new(params[:presence])
+    @presence = @contact.presences.new(presence_params)
     respond_to do |format|
       if @presence.save 
         format.html{redirect_to(contact_path(@contact))}
@@ -32,7 +32,7 @@ class PresencesController < ApplicationController
   def update
     @contact = Contact.find(@presence.contact_id)
     respond_to do |format|
-      if @presence.update_attributes(params[:presence])
+      if @presence.update_attributes(presence_params)
         format.html {redirect_to(contact_path(@contact))}
         flash[:notice] = "Your Web Presence has been updated!"
       else
@@ -53,4 +53,10 @@ class PresencesController < ApplicationController
   def set_presence_variable
     @presence = Presence.find(params[:id])
   end
+
+  private
+
+    def presence_params
+      params.require(:presence).permit(:site, :url, :account, :contact_id)
+    end
 end

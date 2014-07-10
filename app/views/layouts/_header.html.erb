@@ -22,7 +22,7 @@
 
             <div class="hdata">
               <div class="mcol-left">
-                <i class="icon-ok bred"></i> 
+                <i class="fa fa-check bred"></i> 
               </div>
               <div class="mcol-right">
                 <p><a href="<%= tasks_path %>"><%= number_of_overdue_tasks %></a> <em>Overdue <%= pluralize_without_count(number_of_overdue_tasks, 'Task') %></em></p>
@@ -31,7 +31,7 @@
             </div>
             <div class="hdata">
               <div class="mcol-left">
-                <i class="icon-group bblue"></i> 
+                <i class="fa fa-group bblue"></i> 
               </div>
               <div class="mcol-right">
                 <p><a href="<%= contacts_path %>"><%= number_of_contacts %></a> <em>Total <%= pluralize_without_count(number_of_contacts, 'Contact') %></em></p>
@@ -40,7 +40,7 @@
             </div>
             <div class="hdata">
                 <div class="mcol-left">
-                    <i class="icon-calendar bgreen"></i> 
+                    <i class="fa fa-calendar bgreen"></i> 
                 </div>
                 <div class="mcol-right">
                     <p><a href="<%= occasions_path %>"><%= occasions_today %></a> <em><%= pluralize_without_count(occasions_today, 'Occasion') %> Today</em></p>

@@ -13,7 +13,7 @@ class NumbersController < ApplicationController
   
   def create
     @contact = Contact.find(params[:number][:contact_id])
-    @number = @contact.numbers.new(params[:number])
+    @number = @contact.numbers.new(number_params)
     respond_to do |format|
       if @number.save
         format.html {redirect_to(contact_path(@contact))}
@@ -33,7 +33,7 @@ class NumbersController < ApplicationController
   def update
     @contact = Contact.find(@number.contact_id)
     respond_to do |format|
-      if @number.update_attributes(params[:number])
+      if @number.update_attributes(number_params)
         format.html {redirect_to(contact_path(@contact))}
         flash[:notice] = "Your phone number has been updated."
       else
@@ -54,5 +54,11 @@ class NumbersController < ApplicationController
   def set_number_var
     @number = Number.find(params[:id])
   end
+
+  private
+
+    def number_params
+      params.require(:number).permit(:phone_type, :number, :contact_id, :note)
+    end
 
 end

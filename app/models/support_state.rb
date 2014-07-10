@@ -5,9 +5,6 @@ class SupportState < ActiveRecord::Base
   validate :one_state_validation
 
   after_validation :calculate_progress_percentage
-  
-  attr_accessible :contact_id, :initial, :letter_sent, :letter_sent_on, :contacting, :seen_presentation, :presented_on, 
-  :following_up, :responding_on, :one_time_gift, :monthly_gift, :not_giving, :no_response, :progress_percent
 	
   # this method ensures that the inputted paramater corrilates with a list of the known methods. 
   def self.state_edit_delegation(state, params)

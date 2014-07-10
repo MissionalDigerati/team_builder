@@ -11,6 +11,7 @@
 /db/*.sqlite3
 /db/seeds/fat_free.yml
 /config/db_fat_free.yml
+/config/secrets.yml
 
 # Ignore all logfiles and tempfiles.
 /log/*.log

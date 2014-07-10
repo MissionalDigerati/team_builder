@@ -56,7 +56,7 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
-    @contact = Contact.new(params[:contact])
+    @contact = Contact.new(contact_params)
 
     respond_to do |format|
       if @contact.save
@@ -75,7 +75,7 @@ class ContactsController < ApplicationController
     @contact = Contact.find(params[:id])
 
     respond_to do |format|
-      if @contact.update_attributes(params[:contact])
+      if @contact.update_attributes(contact_params)
         format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
         format.json { head :no_content }
       else
@@ -104,6 +104,31 @@ class ContactsController < ApplicationController
       @contact = Contact.find(params[:id])
       @tasks = @contact.tasks.where(:completed => false )
       @notes = @contact.notes.order("created_at DESC")
+    end
+
+    def contact_params
+      params.require(:contact).permit(
+        :first_name, :last_name, :spouse_name, :email, :spouse_email, :network, :address_1, :address_2, :city, :province,
+        :state_id, :zip, :country_id, :receive_newsletter, :children, :preferred_contact, :believer, :spouse_believer, 
+        :presented_vision, :avatar, :account_number, :tag_list, 
+        support_state_attributes: 
+          [
+            :contact_id, :initial, :letter_sent, :letter_sent_on, :contacting, :seen_presentation, :presented_on, 
+            :following_up, :responding_on, :one_time_gift, :monthly_gift, :not_giving, :no_response, :progress_percent
+          ],
+        numbers_attributes:
+          [
+            :phone_type, :number, :contact_id, :note
+          ],
+        occasions_attributes:
+          [
+            :occasion, :contact_id, :special_date
+          ],
+        presences_attributes:
+          [
+            :site, :url, :account, :contact_id
+          ]
+      )
     end
     
   protected

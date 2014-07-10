@@ -21,7 +21,7 @@ class OccasionsController < ApplicationController
   
   def create
     @contact = Contact.find(params[:occasion][:contact_id])
-    @occasions = @contact.occasions.new(params[:occasion])
+    @occasions = @contact.occasions.new(occasion_params)
     respond_to do |format|
       if @occasions.save
         format.html {redirect_to(contact_path(@contact))}
@@ -42,7 +42,7 @@ class OccasionsController < ApplicationController
     @occasions = Occasion.find(params[:id])
     @contact = Contact.find(@occasions.contact_id)
     respond_to do |format|
-      if @occasions.update_attributes(params[:occasion])
+      if @occasions.update_attributes(occasion_params)
         format.html {redirect_to(contact_path(@contact))}
         flash[:notice] = "Your Occasion has ben updated."
       else
@@ -61,5 +61,11 @@ class OccasionsController < ApplicationController
        flash[:notice] = "Your Occasion has been deleted."
      end
    end
+
+  private
+
+    def occasion_params
+      params.require(:occasion).permit(:occasion, :contact_id, :special_date)
+    end
   
 end

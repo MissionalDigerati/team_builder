@@ -38,7 +38,7 @@ class TasksController < ApplicationController
   
   def create
     @contact = Contact.find(params[:task][:contact_id])
-    @task = @contact.tasks.new(params[:task])
+    @task = @contact.tasks.new(task_params)
     respond_to do |format|
       if @task.save
         format.html {redirect_to(contact_path(@contact))}
@@ -57,7 +57,7 @@ class TasksController < ApplicationController
   def update
     @contact = Contact.find(@task.contact_id)
     respond_to do |format|
-      if @task.update_attributes(params[:task])
+      if @task.update_attributes(task_params)
         format.html {redirect_to(contact_path(@contact))}
         flash[:notice] = "Your Task has been updated!"
       else
@@ -98,5 +98,11 @@ class TasksController < ApplicationController
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : ""
   end
+
+  private
+
+    def task_params
+      params.require(:task).permit(:contact_id, :completed, :task, :due_date, :category)
+    end
   
 end

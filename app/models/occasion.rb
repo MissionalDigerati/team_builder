@@ -1,6 +1,5 @@
 class Occasion < ActiveRecord::Base
     belongs_to :contact
-    attr_accessible :occasion, :contact_id, :special_date
     acts_as_birthday :special_date
 
     def calendar_date

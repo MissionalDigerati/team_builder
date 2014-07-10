@@ -46,15 +46,15 @@ module ApplicationHelper
   
   #shortcuts for buttons with white icons used throughout the app
   def edit_button
-    'Edit <i class="icon-edit icon-white"></i>'.html_safe
+    'Edit <i class="fa fa-edit"></i>'.html_safe
   end  
   
   def delete_button
-    'Delete <i class="icon-trash icon-white"></i>'.html_safe
+    'Delete <i class="fa fa-trash-o"></i>'.html_safe
   end
     
   def contact_button
-    'View Contact <i class="icon-user icon-white"></i>'.html_safe
+    'View Contact <i class="fa fa-user"></i>'.html_safe
   end
   
   def sortable(column, title = nil)
@@ -86,17 +86,18 @@ module ApplicationHelper
   end
 
   def number_of_contacts
-    Contact.all.length.present? ? Contact.all.length : "0"
+    total_contacts = Contact.all.length
+    total_contacts.present? ? "#{total_contacts}" : "0"
   end
 
   def number_of_overdue_tasks
-    tasks_overdue = Task.find(:all, :order => "due_date ASC", :conditions => ["due_date < ? AND completed = ?", Time.now.to_date, false]).length
-    tasks_overdue.present? ? tasks_overdue : "0"
+    tasks_overdue = Task.overdue.count
+    tasks_overdue.present? ? "#{tasks_overdue}" : "0"
   end
 
   def occasions_today
     occasions_today = Occasion.special_date_today.length
-    occasions_today.present? ? occasions_today : "0"
+    occasions_today.present? ? "#{occasions_today}" : "0"
   end
 
   def pluralize_without_count(count, noun, text = nil)
