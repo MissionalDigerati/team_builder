@@ -86,17 +86,18 @@ module ApplicationHelper
   end
 
   def number_of_contacts
-    Contact.all.length.present? ? Contact.all.length : "0"
+    total_contacts = Contact.all.length
+    total_contacts.present? ? "#{total_contacts}" : "0"
   end
 
   def number_of_overdue_tasks
     tasks_overdue = Task.overdue.count
-    tasks_overdue.present? ? tasks_overdue : "0"
+    tasks_overdue.present? ? "#{tasks_overdue}" : "0"
   end
 
   def occasions_today
     occasions_today = Occasion.special_date_today.length
-    occasions_today.present? ? occasions_today : "0"
+    occasions_today.present? ? "#{occasions_today}" : "0"
   end
 
   def pluralize_without_count(count, noun, text = nil)

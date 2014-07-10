@@ -62,21 +62,21 @@ describe ApplicationHelper, :type => :helper do
     end
 
     it "should return the number of contacts, if nil then it will return 0" do
-      expect(number_of_contacts).to eq(0)
+      expect(number_of_contacts).to eq("0")
       contact = FactoryGirl.create(:defaulted_contact)
-      expect(number_of_contacts).to eq(1)
+      expect(number_of_contacts).to eq("1")
     end
 
     it "should return the number of overdue tasks" do
-      expect(number_of_overdue_tasks).to eq(0)
+      expect(number_of_overdue_tasks).to eq("0")
       FactoryGirl.create(:defaulted_task, completed: false, due_date: 1.weeks.ago.to_date)
-      expect(number_of_overdue_tasks).to eq(1)
+      expect(number_of_overdue_tasks).to eq("1")
     end
 
     it "return the number of special dates occuring today" do
-      expect(occasions_today).to eq(0)
+      expect(occasions_today).to eq("0")
       FactoryGirl.create(:defaulted_occasion, special_date: Time.now.to_date)
-      expect(occasions_today).to eq(1)
+      expect(occasions_today).to eq("1")
     end
     
   end
