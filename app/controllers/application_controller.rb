@@ -9,14 +9,13 @@ class ApplicationController < ActionController::Base
         %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
     end
 
-    #
     # This method is set up as a before filter for the home page in the pages controller. 
     # This passes the info to make the tables for the left had side bar to display upcoming task info
     # all of the variables that define the dates in these queries, are located in the Task.rb model / file
     def task_summary
-        @tasks_within_week_range = Task.find(:all, :order => "due_date ASC", :conditions => ["due_date between ? and ? AND completed = ?", Task.tomorrows_date, Task.next_weeks_date, false])
-        @tasks_this_month = Task.find(:all, :order => "due_date ASC", :conditions => ["due_date between ? and ? AND completed = ?", Task.next_weeks_date, Task.next_4_weeks_date, false])
-        @tasks_overdue = Task.find(:all, :order => "due_date ASC", :conditions => ["due_date < ? AND completed = ?", Task.current_date, false])
+        @tasks_within_week_range = Task.one_week_from_today
+        @tasks_this_month = Task.one_month_from_today
+        @tasks_overdue = Task.overdue
     end
 
     def occasion_summary

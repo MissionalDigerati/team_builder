@@ -61,6 +61,60 @@ describe Task, :type => :model do
     
   end
 
+  context "scopes" do
+
+    context "#one_week_from_today" do
+
+      it "should return all tasks for the today and 6 days after" do
+        FactoryGirl.create(:defaulted_task, completed: false, task: "task1", due_date: Date.today)
+        FactoryGirl.create(:defaulted_task, completed: false, task: "task2", due_date: 1.day.from_now.to_date)
+        FactoryGirl.create(:defaulted_task, completed: false, task: "task3", due_date: 1.week.from_now.to_date)
+        FactoryGirl.create(:defaulted_task, completed: false, task: "task4", due_date: 2.weeks.from_now.to_date)
+        results = Task.one_week_from_today
+        expect(results.count).to eq(3)
+        results.each do |t|
+          expect(t.task).not_to eq('task4')
+        end
+      end
+
+    end
+
+    context "#one_month_from_today" do
+
+      it "should return all tasks for today and 1 month from today" do
+        FactoryGirl.create(:defaulted_task, completed: false, task: "task1", due_date: Date.today)
+        FactoryGirl.create(:defaulted_task, completed: false, task: "task2", due_date: 1.day.from_now.to_date)
+        FactoryGirl.create(:defaulted_task, completed: false, task: "task3", due_date: 1.week.from_now.to_date)
+        FactoryGirl.create(:defaulted_task, completed: false, task: "task4", due_date: 3.weeks.from_now.to_date)
+        FactoryGirl.create(:defaulted_task, completed: false, task: "task5", due_date: 5.weeks.from_now.to_date)
+        results = Task.one_month_from_today
+        expect(results.count).to eq(4)
+        results.each do |t|
+          expect(t.task).not_to eq('task5')
+        end
+      end
+
+    end
+
+    context "#overdue" do
+
+      it "should return all overdue tasks" do
+        FactoryGirl.create(:defaulted_task, completed: false, task: "task1", due_date: 1.day.ago.to_date)
+        FactoryGirl.create(:defaulted_task, completed: false, task: "task2", due_date: 5.days.ago.to_date)
+        FactoryGirl.create(:defaulted_task, completed: false, task: "task3", due_date: 1.week.ago.to_date)
+        FactoryGirl.create(:defaulted_task, completed: false, task: "task3b", due_date: 2.weeks.ago.to_date)
+        FactoryGirl.create(:defaulted_task, completed: false, task: "task4", due_date: 1.day.from_now.to_date)
+        results = Task.overdue
+        expect(results.count).to eq(4)
+        results.each do |t|
+          expect(t.task).not_to eq('task4')
+        end
+      end
+
+    end
+
+  end
+
   context "methods" do
 
 

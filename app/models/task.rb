@@ -5,6 +5,12 @@ class Task < ActiveRecord::Base
 
     CATEGORY = ["Call", "Email", "Follow Up", "Lunch", "Meeting", "Money Presentation", "Trip", "Other"]
 
+    # scopes
+    #
+    scope :one_week_from_today, -> { where(completed: false, due_date: Date.today..1.weeks.from_now.to_date).order("due_date ASC") }
+    scope :one_month_from_today, -> { where(completed: false, due_date: Date.today..1.month.from_now.to_date).order("due_date ASC") }
+    scope :overdue, -> { where(["due_date < ? AND completed = ?", Date.today, false]).order("due_date ASC") }
+
     def self.total_tasks(type = nil)
         case type
             when :incomplete
@@ -12,7 +18,7 @@ class Task < ActiveRecord::Base
             when :completed
                 Task.where(completed: true).length
             when :overdue
-                Task.where("completed = ? AND due_date < ?", false, Date.today).length
+                Task.overdue.count
             else
                 Task.all.length
         end
