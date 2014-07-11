@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140701232204) do
+ActiveRecord::Schema.define(version: 20140711233434) do
 
   create_table "archives", force: true do |t|
     t.string   "filename"
@@ -70,9 +70,9 @@ ActiveRecord::Schema.define(version: 20140701232204) do
 
   create_table "notes", force: true do |t|
     t.integer  "contact_id"
-    t.string   "note"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "note",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "numbers", force: true do |t|
