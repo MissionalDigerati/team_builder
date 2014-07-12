@@ -12,10 +12,11 @@ describe ApplicationHelper, :type => :helper do
     end
     
     it "should return an array, containting and array of contacts names and id's for forms. Last name, first name, then id, in alphabetical order by last name then first name" do
-      FactoryGirl.create(:defaulted_contact)
-      FactoryGirl.create(:defaulted_contact, :first_name => "Fred")
-      FactoryGirl.create(:defaulted_contact, :first_name => "Abacabb", :last_name => "Zeffer")
-      expect(form_select).to eq([["Williams, Fred", 2], ["Williams, Rory", 1], ["Zeffer, Abacabb", 3]])
+      rory = FactoryGirl.create(:defaulted_contact, :first_name => "Rory")
+      fred = FactoryGirl.create(:defaulted_contact, :first_name => "Fred")
+      abba = FactoryGirl.create(:defaulted_contact, :first_name => "Abba", :last_name => "Zeffer")
+      expected = [["Williams, Fred", fred.id], ["Williams, Rory", rory.id], ["Zeffer, Abba", abba.id]]
+      expect(form_select).to eq(expected)
     end
     
     it "should return the first name of contact to which an attribute belongs to, capitalized" do
