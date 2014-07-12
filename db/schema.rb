@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140711234212) do
+ActiveRecord::Schema.define(version: 20140701232204) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "archives", force: true do |t|
     t.string   "filename"
@@ -61,18 +64,18 @@ ActiveRecord::Schema.define(version: 20140711234212) do
 
   create_table "donations", force: true do |t|
     t.integer  "contact_id"
-    t.float    "amount",        limit: 255
+    t.text     "amount"
     t.string   "project"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.date     "donation_date"
   end
 
   create_table "notes", force: true do |t|
     t.integer  "contact_id"
-    t.text     "note",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "note"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "numbers", force: true do |t|
@@ -138,23 +141,23 @@ ActiveRecord::Schema.define(version: 20140711234212) do
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
 
   create_table "tags", force: true do |t|
     t.string  "name"
     t.integer "taggings_count", default: 0
   end
 
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "tasks", force: true do |t|
     t.integer  "contact_id"
-    t.boolean  "completed",              default: false
+    t.boolean  "completed",  default: false
     t.string   "task"
-    t.date     "due_date",   limit: 255
+    t.text     "due_date"
     t.string   "category"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
 end
