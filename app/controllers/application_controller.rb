@@ -15,9 +15,8 @@ class ApplicationController < ActionController::Base
     end
 
     def occasion_summary
-      order_by_strftime = DATE_MONTH_DAY_ORDER_STRFTIME.gsub(/COLUMN/, "special_date").gsub(/DIRECTION/, "ASC")
       today = Date.today
-      @occasions_week = Occasion.find_special_dates_for(today, today + 8.days).order(order_by_strftime)
+      @occasions_week = Occasion.find_special_dates_for(today, today + 8.days).order('special_date ASC')
     end
 
 end
