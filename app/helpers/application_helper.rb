@@ -77,7 +77,7 @@ module ApplicationHelper
   # http://stackoverflow.com/questions/9624601/activerecord-find-by-year-day-or-month-on-a-date-field
   
   def donation_this_year
-    donation_year = Donation.where("EXTRACT(YEAR FROM donation_date) = ?", Time.now.year.to_s)
+    donation_year = Donation.where("EXTRACT(YEAR FROM donation_date)::int = ?", Time.now.year.to_s)
     currency(donation_year.sum(:amount))
   end
 
