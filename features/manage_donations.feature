@@ -64,6 +64,15 @@ Feature: A user should be able to create, edit, and delete donations from their 
 		When I click the "Add Donation" link
 		And I click the "Create Donation" button
 		Then I should see "Your Donation has not been saved"
+
+	Scenario: A user should be able to see the donations index page
+		Given I am on the home page
+		And There is a contact "Dr Fu" and they have a donation "For your project"
+		When I click the "Donations" link
+		Then I should be on the donation index page
+		And I should see "Dr Fu"
+		And I should see "For your project"
+
 	
 	
 	

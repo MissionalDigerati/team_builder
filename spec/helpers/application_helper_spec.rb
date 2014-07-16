@@ -12,10 +12,11 @@ describe ApplicationHelper, :type => :helper do
     end
     
     it "should return an array, containting and array of contacts names and id's for forms. Last name, first name, then id, in alphabetical order by last name then first name" do
-      FactoryGirl.create(:defaulted_contact)
-      FactoryGirl.create(:defaulted_contact, :first_name => "Fred")
-      FactoryGirl.create(:defaulted_contact, :first_name => "Abacabb", :last_name => "Zeffer")
-      expect(form_select).to eq([["Williams, Fred", 2], ["Williams, Rory", 1], ["Zeffer, Abacabb", 3]])
+      rory = FactoryGirl.create(:defaulted_contact, :first_name => "Rory")
+      fred = FactoryGirl.create(:defaulted_contact, :first_name => "Fred")
+      abba = FactoryGirl.create(:defaulted_contact, :first_name => "Abba", :last_name => "Zeffer")
+      expected = [["Williams, Fred", fred.id], ["Williams, Rory", rory.id], ["Zeffer, Abba", abba.id]]
+      expect(form_select).to eq(expected)
     end
     
     it "should return the first name of contact to which an attribute belongs to, capitalized" do
@@ -56,9 +57,10 @@ describe ApplicationHelper, :type => :helper do
       expect(summary_name_helper(donation)).to eq("Weasley, R")
     end
 
-    it "should return a button with method post for the quick editing of a support state when the method name is suppied" do
+    it "should return a button with method post for the quick editing of a support state when the method name is supplied" do
       contact = FactoryGirl.create(:defaulted_contact)
-      expect(state_quick_edit(contact, contact.support_state, "initial", true)).to eq("<a class=\"btn true\" data-method=\"put\" data-remote=\"true\" href=\"/contacts/1/support_states/1/quick_edit?current_state=initial\" rel=\"nofollow\">Initial</a>")
+      edit_path = quick_edit_contact_support_state_path(contact, contact.support_state, current_state: 'initial')
+      expect(state_quick_edit(contact, contact.support_state, "initial", true)).to eq('<a class="btn true" data-method="put" data-remote="true" href="' + edit_path + '" rel="nofollow">Initial</a>')
     end
 
     it "should return the number of contacts, if nil then it will return 0" do

@@ -10,12 +10,12 @@ gem 'bootstrap-sass', '~> 2.3'
 gem 'jquery-ui-rails'
 gem 'uglifier'
 gem 'jquery-rails'
+gem 'pg'
 
 group :test, :development do
   gem 'rspec-rails'
   gem "database_cleaner"
   gem "factory_girl_rails"
-  gem 'sqlite3'
   gem 'launchy'
   gem 'populator'
   gem 'faker'
