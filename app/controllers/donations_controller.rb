@@ -1,12 +1,10 @@
 class DonationsController < ApplicationController
   helper_method :sort_column, :sort_direction
   def index
-    donation_year = DATE_YEAR_STRFTIME.gsub(/COLUMN/, "donation_date")
-    donation_month = DATE_MONTH_STRFTIME.gsub(/COLUMN/, "donation_date")
     if params[:month] && params[:year]
-      @donations = Donation.where(["#{donation_month} + 0 = ? AND #{donation_year} = ?", params[:month], params[:year]]).page(params[:page]).order("donation_date DESC")
+      @donations = Donation.where(["EXTRACT(MONTH FROM donation_date)::int = ? AND EXTRACT(YEAR FROM donation_date)::int = ?", params[:month], params[:year]]).page(params[:page]).order("donation_date DESC")
     elsif params[:year]
-      @donations = Donation.where(["#{donation_year} = ?",params[:year]]).page(params[:page]).order("donation_date DESC")
+      @donations = Donation.where(["EXTRACT(YEAR FROM donation_date)::int = ?",params[:year]]).page(params[:page]).order("donation_date DESC")
     else
       @donations = Donation.order(sort_column + " " + sort_direction).page(params[:page])
     end
