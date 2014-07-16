@@ -1,0 +1,59 @@
+**Changelog:***
+
+**Version 5:**
+
+- Major update in macbeath, macadmin and mackart. (Detailed changelog inside)
+
+**Version 4.5:**
+
+- Macadmin and Macbeath Update. 
+
+**Version 4.4:**
+
+- MacAdmin - Date & Time picker update.
+
+**Version 4.3:**
+
+- Mackart - Updates in multiple pages.
+
+**Version 4.2:**
+
+- Macadmin - Navbar brand color.
+- Macadmin - Bootstrap toggle.
+- Macadmin - Mainbar width.
+
+**Version 4.1:**
+
+- Sparkline tooltip fix.
+
+**Version 4.0:**
+
+- Updated to Bootstrap 3.0
+
+**Version 3.2:**
+
+- Twitter Feed Removed.
+- Carousel bug fix in Macbeath and Mackart.
+
+**Version 3.1:**
+
+- Portfolio update in Macbeath.
+- Widget title area fix.
+
+**Version 3.0:**
+
+- Admin theme added.
+- Various updates in themes.
+
+**Version 2.1:**
+
+- Comment update.
+- Flexslider fix.
+
+**Version 2.0:**
+
+- Adding eCommerce theme.
+
+**Version 1.0:**
+
+- Initial release.

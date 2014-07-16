@@ -17,10 +17,11 @@
 // Loads all Bootstrap javascripts
 //= require bootstrap
 //= require bootstrap-dropdown
-//= require macadmin/html5shim
+//= require macadmin/html5shiv
 //= require macadmin/excanvas.min
 //= require macadmin/filter
 //= require macadmin/jquery.cleditor.min
+//= require macadmin/jquery.dataTables.min
 //= require macadmin/jquery.flot
 //= require macadmin/jquery.flot.pie
 //= require macadmin/jquery.flot.resize
@@ -28,10 +29,11 @@
 //= require macadmin/jquery.noty
 //= require macadmin/jquery.prettyPhoto
 //= require macadmin/jquery.rateit.min
-//= require macadmin/jquery.toggle.buttons
-//= require macadmin/jquery.uniform.min
+//= require macadmin/jquery.slimscroll.min
+//= require macadmin/jquery.onoff.min
 //= require macadmin/sparklines
 //= require macadmin/charts
+//= require macadmin/respond.min
 //= require macadmin/layouts/bottom
 //= require macadmin/layouts/top
 //= require macadmin/layouts/topRight

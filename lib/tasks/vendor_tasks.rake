@@ -1,8 +1,8 @@
 namespace :vendor_tasks do
   
-  desc "Convert the url(../images), url(./images), url(/images), and url(images) to to SASS asset-url(folder name) in the vendor directory of the stylesheets"
-  task :sassify do |t, args|
-    current_image_path_name = 'images'
+  desc "Convert the url(../img), url(./img), url(/img), and url(img) to to SASS asset-url(folder name) in the vendor directory of the stylesheets"
+  task :sassify do
+    current_image_path_name = 'img'
     path_seperator = File.join( "", "")
     root_relative_path = File.join('..', '..','..')
     root_dir = File.expand_path(root_relative_path, __FILE__)
