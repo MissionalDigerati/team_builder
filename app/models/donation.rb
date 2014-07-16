@@ -16,7 +16,7 @@ class Donation < ActiveRecord::Base
 
   def self.monthly_sums(year)
     totals = [0,0,0,0,0,0,0,0,0,0,0,0]
-    donations = Donation.select("SUM(amount) as total_donations, EXTRACT(MONTH FROM donation_date) as donate_month").where("EXTRACT(YEAR FROM donation_date) = ?", year).group(month_strftime)
+    donations = Donation.select("SUM(amount) as total_donations, EXTRACT(MONTH FROM donation_date) as donate_month").where("EXTRACT(YEAR FROM donation_date) = ?", year).group('donate_month')
     donations.each do |donation|
       array_index = donation.donate_month.to_i-1
       totals[array_index] = donation.total_donations.round
