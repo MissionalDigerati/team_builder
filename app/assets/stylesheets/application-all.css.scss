@@ -9,10 +9,13 @@
 @import "macadmin/prettyPhoto";
 @import "macadmin/rateit";
 @import "macadmin/jquery.onoff";
+@import "macadmin/bootstrap-datepicker";
 @import "tag-it/jquery.tagit";
 @import "fullcalendar/fullcalendar";
 @import "font-awesome";
-@import "jquery-ui";
+@import "jquery-ui/core";
+@import "jquery-ui/theme";
+@import "jquery-ui/autocomplete";
 
 .hidden-submit {
     border: 0 none;
@@ -73,4 +76,14 @@ td.actions {
 }
 .fc-event-inner:hover {
     cursor: pointer;
+}
+.add-fields-link-div {
+    padding: 10px 0px;
+}
+.onoffswitch-inner:before {
+    content: "YES";
+}
+
+.onoffswitch-inner:after {
+    content: "NO";
 }

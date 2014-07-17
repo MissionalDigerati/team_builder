@@ -1,35 +1,28 @@
-<div class="row-fluid repeatable-inputs">
-    <div class="span3">
-         <div class="control-group">
-            <%= f.label :site, "Website", class: 'control-label' %>
-            <div class="controls">
-                <%= f.select :site, Presence::SITES, :require => true, class: 'input-block-level' %>
-            </div>
+<div class="row repeatable-inputs">
+    <div class="col-md-3">
+         <div class="form-group">
+            <%= f.label :site, "Website" %>
+            <%= f.select :site, Presence::SITES, { require: true }, { class: 'form-control' } %>
         </div>
-    </div> <!-- span3 -->
+    </div>
 
-    <div class="span3 offset1">
-        <div class="control-group">
-            <%= f.label :url, "URL (Include the http://)", class: 'control-label' %>
-            <div class="controls">
-                <%= f.text_field :url, id: "url", class: 'input-block-level'  %>
-            </div>
+    <div class="col-md-3 col-md-offset-1">
+        <div class="form-group">
+            <%= f.label :url, "URL (Include the http://)" %>
+            <%= f.text_field :url, id: "url", class: 'form-control'  %>
         </div>
-    </div> <!-- span3 -->
+    </div>
 
-    <div class="span3 offset1">
-        <div class="control-group">
-            <%= f.label :account, "Account ID", class: 'control-label' %>
-            <div class="controls">
-                <%= f.text_field :account, id: "account", class: 'input-block-level'  %>
-            </div>
+    <div class="col-md-3 col-md-offset-1">
+        <div class="form-group">
+            <%= f.label :account, "Account ID" %>
+            <%= f.text_field :account, id: "account", class: 'form-control'  %>
         </div>
-        <div class="text-right">
-            <%= f.hidden_field :_destroy %>
-            <%= link_to "Remove", '#', class: "remove_fields btn btn-small btn-info" %>
-        </div>
-    </div> <!-- span3 -->
+    </div>
 
-    <div class="span1"></div>
+    <div class="col-md-1 text-right">
+        <%= f.hidden_field :_destroy %>
+        <%= link_to "Remove", '#', class: "remove_fields btn btn-sm btn-info" %>
+    </div>
     <div class="clear"></div>
-</div> <!-- row-fluid -->
+</div>

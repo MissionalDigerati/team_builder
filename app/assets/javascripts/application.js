@@ -13,7 +13,11 @@
 //= require jquery
 //= require jquery_migrate
 //= require jquery_ujs
-//= require jquery-ui
+//= require jquery-ui/core
+//= require jquery-ui/widget
+//= require jquery-ui/mouse
+//= require jquery-ui/position
+//= require jquery-ui/autocomplete
 // Loads all Bootstrap javascripts
 //= require bootstrap-sprockets
 //= require macadmin/html5shiv
@@ -41,18 +45,11 @@
 //= require fullcalendar/fullcalendar.min
 //= require fullcalendar/gcal
 //= require tag-it/tag-it.min
+//= require macadmin/bootstrap-datepicker
 //= require_self
 //= require_tree .
 
 $(document).ready(function(){
-
-	$('#date_select').datepicker({
-		dateFormat: "dd-mm-yy"
-	});
-
-	$('.date_select').datepicker({
-		dateFormat: "dd-mm-yy"
-	});
 
 	$('input.support-state-checkbox').click(function(event){
 		$('input.support-state-checkbox').attr('checked', false);

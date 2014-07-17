@@ -7,6 +7,3 @@
 jQuery ->
 	$("td.task_status:contains('Completed')").parent('tr').addClass "success"
 	$("td.task_status:contains('In Progress')").parent('tr').addClass "error"
-	
-	$(".due_date_field").datepicker dateFormat: "dd-mm-yy"
-	#this adds the jquery datepicker the the appropriate field. 
