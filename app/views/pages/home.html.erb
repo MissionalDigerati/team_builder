@@ -10,9 +10,9 @@
 <% content_for :stats do %>
 
 <div class="matter">
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span12"> 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12"> 
                 <!-- List starts -->
                 <ul class="today-datas">
                     <!-- List #1 -->
@@ -42,9 +42,9 @@
 <% end %>
 
 
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span8">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
                 <!-- task within week range begin -->
                 <%= render  :layout => 'shared/widget', :locals => {:title => 'Tasks Due This Week (Check to Complete)'} do %>
                     <% if @tasks_within_week_range.present? %>
@@ -97,7 +97,7 @@
                 <% end %>
                 <!-- incomplete tasks end -->
             </div>
-            <div class="span4">
+            <div class="col-md-4">
                 <%= render  :layout => 'shared/widget', :locals => { :title => 'Upcoming Special Dates' } do %>
                     <div class="padd">
                         <% if @occasions_week.present? %>
