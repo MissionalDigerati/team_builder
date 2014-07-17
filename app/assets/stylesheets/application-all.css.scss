@@ -1,3 +1,4 @@
+@import "bootstrap-sprockets";
 @import "bootstrap";
 @import "other/mixins";
 @import "all/*";
@@ -11,7 +12,7 @@
 @import "tag-it/jquery.tagit";
 @import "fullcalendar/fullcalendar";
 @import "font-awesome";
-@import "jquery.ui.all";
+@import "jquery-ui";
 
 .hidden-submit {
     border: 0 none;

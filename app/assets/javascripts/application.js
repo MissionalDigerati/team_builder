@@ -13,10 +13,9 @@
 //= require jquery
 //= require jquery_migrate
 //= require jquery_ujs
-//= require jquery.ui.all
+//= require jquery-ui
 // Loads all Bootstrap javascripts
-//= require bootstrap
-//= require bootstrap-dropdown
+//= require bootstrap-sprockets
 //= require macadmin/html5shiv
 //= require macadmin/excanvas.min
 //= require macadmin/filter
