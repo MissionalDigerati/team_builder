@@ -8,6 +8,7 @@ FactoryGirl.define do
     first_name "Rory"
     last_name "Williams"
     email "fred@fakeemail.com"
+    team_status :sent_letter
   end
    
 end

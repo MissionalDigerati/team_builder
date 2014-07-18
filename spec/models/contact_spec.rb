@@ -18,6 +18,55 @@ describe Contact, :type => :model do
       expect(FactoryGirl.build(:defaulted_contact, :email => nil)).not_to be_valid
     end
   end
+
+  context "state machine with AASM" do
+
+    it "should default the state to pending" do
+      contact = FactoryGirl.create(:defaulted_contact, team_status: nil)
+      expect(contact.team_status).to eq('pending')
+    end
+
+    it "should allow a contact be set to sent_letter" do
+      contact = FactoryGirl.create(:defaulted_contact, team_status: :sent_letter)
+      expect(contact.team_status).to eq(:sent_letter)
+    end
+
+    it "should allow a contact be set to setting_up_a_meeting" do
+      contact = FactoryGirl.create(:defaulted_contact, team_status: :setting_up_a_meeting)
+      expect(contact.team_status).to eq(:setting_up_a_meeting)
+    end
+
+    it "should allow a contact be set to presented_vision" do
+      contact = FactoryGirl.create(:defaulted_contact, team_status: :presented_vision)
+      expect(contact.team_status).to eq(:presented_vision)
+    end
+
+    it "should allow a contact be set to following_up" do
+      contact = FactoryGirl.create(:defaulted_contact, team_status: :following_up)
+      expect(contact.team_status).to eq(:following_up)
+    end
+
+    it "should allow a contact be set to no_response" do
+      contact = FactoryGirl.create(:defaulted_contact, team_status: :no_response)
+      expect(contact.team_status).to eq(:no_response)
+    end
+
+    it "should allow a contact be set to cannot_give" do
+      contact = FactoryGirl.create(:defaulted_contact, team_status: :cannot_give)
+      expect(contact.team_status).to eq(:cannot_give)
+    end
+
+    it "should allow a contact be set to special_gift" do
+      contact = FactoryGirl.create(:defaulted_contact, team_status: :special_gift)
+      expect(contact.team_status).to eq(:special_gift)
+    end
+
+    it "should allow a contact be set to monthly_supporter" do
+      contact = FactoryGirl.create(:defaulted_contact, team_status: :monthly_supporter)
+      expect(contact.team_status).to eq(:monthly_supporter)
+    end
+
+  end
   
   context "methods" do
 
