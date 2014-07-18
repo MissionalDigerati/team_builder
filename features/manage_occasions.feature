@@ -9,7 +9,7 @@ Feature: A user should be able to manage their occasions that belong to users
 		And I fill in "special_date" with "19-11-2012"
 		And I fill in "occasion" with "birthday"
 		And I click the "Create Occasion" button
-		Then I should see "Your Occasion has been saved!"
+		Then I should see "Your special date has been saved!"
 		And I should be on the doctor's show page
 		And I should see "birthday"
 		And I should see "November 19"
@@ -22,7 +22,7 @@ Feature: A user should be able to manage their occasions that belong to users
 		And I fill in "special_date" with "3-11-2012"
 		And I fill in "occasion" with "halloween"
 		And I click the "Update Occasion" button
-		Then I should see "Your Occasion has ben updated."
+		Then I should see "Your special date has been updated."
 		And I should be on the show page for "Edit occasions"
 		And I should not see "birthday"
 		And I should see "halloween"
@@ -33,7 +33,7 @@ Feature: A user should be able to manage their occasions that belong to users
 		And I am on the show page for "Delete occasions"
 		And I should see "holiday"
 		When I click on the "occasion" "delete" link under the action selector for "holiday"
-		Then I should see "Your Occasion has been deleted."
+		Then I should see "Your special date has been deleted."
 		And I am on the show page for "Delete occasions"
 		And I should not see "holiday"
 		
@@ -45,7 +45,7 @@ Feature: A user should be able to manage their occasions that belong to users
 		And I fill in "special_date" with "2-11-2012"
 		And I fill in "occasion" with "party"
 		And I click the "Create Occasion" button
-		Then I should see "Your Occasion has been saved!"
+		Then I should see "Your special date has been saved!"
 		And I should be on the show page for "mug"
 		And I should see "party"
 		And I should see "November 02"

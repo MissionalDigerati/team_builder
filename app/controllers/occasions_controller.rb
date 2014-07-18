@@ -44,7 +44,7 @@ class OccasionsController < ApplicationController
     respond_to do |format|
       if @occasion.update_attributes(occasion_params)
         format.html {redirect_to(contact_path(@contact))}
-        flash[:notice] = "Your Occasion has ben updated."
+        flash[:notice] = "Your special date has been updated."
       else
         format.html {render action: "edit"}
         flash[:notice] = @occasions.errors.empty? ? "Your special date has not been saved" : "Your special date has not been saved because: " + @occasions.errors.full_messages.to_sentence
