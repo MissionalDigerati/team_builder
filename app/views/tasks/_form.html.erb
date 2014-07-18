@@ -1,85 +1,74 @@
 <%= form_for([@task]) do |f| %>
-    <div class="row-fluid">
-        <div class="span3">
-            <div class="control-group">
-                <%= f.label :due_date, "Due Date", class: 'control-label' %>
-                <div class="controls">
-                    <%= f.text_field :due_date, id: "due_date", class: 'input-block-level due_date_field date_select'  %>
-                </div>
-            </div>
-        </div> <!-- span3 -->
+  <div class="row">
 
-        <div class="span3 offset1">
-            <%= f.label :contact_id, "Contact", class: 'control-label' %>
-            <div class="controls">
-                <%= f.select :contact_id, form_select, {}, class: 'input-block-level' %>
-            </div>
-        </div> <!-- span3 -->
-
-        <div class="span3 offset1">
-            <div class="control-group">
-                <%= f.label :category, "Category", class: 'control-label' %>
-                <div class="controls">
-                    <%= f.select :category, Task::CATEGORY, {}, class: 'input-block-level' %>
-                </div>
-            </div>
-        </div> <!-- span3 -->
-
-        <div class="span1"></div>
-        <div class="clear"></div>
-    </div> <!-- row-fluid -->
-
-    <div class="row-fluid">
-        <div class="span3">
-            <div class="control-group">
-                <%= f.label :task, "Task", class: 'control-label' %>
-                <div class="controls">
-                    <%= f.text_field :task, id: "task", class: 'input-block-level'  %>
-                </div>
-            </div>
-        </div> <!-- span3 -->
-
-        <div class="span3 offset1">
-            <% if form_type == 'edit' %>
-                <div class="control-group">
-                    <%= f.label :completed, "Completed?", class: 'control-label' %>
-                    <div class="toggle-button">
-                        <%= f.check_box :completed, id: "completed"  %>
-                    </div>
-                </div>
-            <% end %>
-        </div> <!-- span3 -->
-
-        <div class="span3 offset1"></div> <!-- span3 -->
-
-        <div class="span1"></div>
-        <div class="clear"></div>
-    </div> <!-- row-fluid -->
-
-    <div class="row-fluid">
-        <div class="span12 text-center">
-            <hr>
-            <% if form_type == 'add' %>
-                <%= f.submit :id => "Add Task", :class => "btn btn-large btn-success" %>
-            <% else %>
-                <%= f.submit :id => "Update Task", :class => "btn btn-large btn-success" %>
-            <% end %>
-        </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <%= f.label :due_date, "Due Date" %>
+        <%= render 'shared/date_picker_field', form: f, field_name: :due_date, default_value: @task.due_date %>
+      </div>
     </div>
+
+    <div class="col-md-3 col-md-offset-1">
+      <div class="form-group">
+        <%= f.label :contact_id, "Contact" %>
+        <%= f.select :contact_id, form_select, {}, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-md-offset-1">
+      <div class="form-group">
+        <%= f.label :category, "Category" %>
+        <%= f.select :category, Task::CATEGORY, {}, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="clear"></div>
+  
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-3">
+      <div class="form-group">
+        <%= f.label :task, "Task", class: 'control-label' %>
+        <%= f.text_field :task, id: "task", class: 'form-control'  %>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-md-offset-1">
+    <% if form_type == 'edit' %>
+      <div class="form-group">
+        <%= f.label :completed, "Completed?", class: 'control-label' %>
+        <div class="sw-blue">
+          <%= f.check_box :completed, id: "completed", class: "toggle-button" %>
+        </div>
+      </div>
+    <% end %>
+    </div>
+
+    <div class="col-md-3 col-md-offset-1"></div>
+
+    <div class="col-md-1"></div>
+    <div class="clear"></div>
+
+  </div>
+
+<div class="row">
+  <div class="col-md-12 text-center">
+    <hr>
+    <% if form_type == 'add' %>
+      <%= f.submit :id => "Add Task", :class => "btn btn-large btn-success" %>
+    <% else %>
+      <%= f.submit :id => "Update Task", :class => "btn btn-large btn-success" %>
+    <% end %>
+  </div>
+</div>
 <% end %>
 <% content_for :additional_js do %>
-    <% if form_type == 'edit' %>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $('div.toggle-button').toggleButtons(
-                    {
-                        label: {
-                            enabled: "YES",
-                            disabled: "NO"
-                        }
-                    }
-                ); 
-            });
-        </script>
-    <% end %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.date-picker').datepicker();
+      $('.toggle-button').onoff();
+    });
+  </script>
 <% end %>
