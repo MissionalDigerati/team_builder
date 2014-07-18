@@ -1,11 +1,11 @@
-<tr rel="<%= task.id %>"<% if task.is_completed? %> class="completed-task"<% end %>>
+<tr rel="<%= task.id %>"<% if task.is_completed? %> class="completed-task task-listing"<% else %> class="task-listing"<% end %>>
 	<td>
 		<% if task.is_completed? %>
-            <span class="label">COMPLETED</span>
+            <span class="label label-default">COMPLETED</span>
 		<% else %>
 			<%= check_box_tag "#{task.id}", "checkbox", false, class: "checkbox", id: "mark-complete-task-#{task.id}"  %> <%= link_to "Mark as Completed", complete_task_path(task), remote: true, class: "completed_button #{task.id} hidden", id: "mark-complete-task-link-#{task.id}" %>
 			<% if task.is_overdue? %>
-                &nbsp;<span class="label label-important">OVERDUE</span>
+                <br><span class="label label-danger">OVERDUE</span>
             <% end %>
 		<% end %>
 	</td>
