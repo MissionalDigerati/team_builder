@@ -15,12 +15,15 @@
     <!-- Search form -->
     <%= form_tag contacts_path, {class: 'navbar-form navbar-left', role: 'search', method: 'get'} do%>
       <div class="form-group">
-        <%= text_field_tag :search, nil, 
-            placeholder: (params[:search].present? ? params[:search] : "Search Contacts"),
-            class: "form-control",
-            rel: "tooltip",
-            title: "Use this search bar tosearch through your contacts by name. Prefix your search query with # to search by tags. Press enter to search".html_safe 
-        %>
+        <div class="input-group">
+          <div class="input-group-addon"><i class='fa fa-search'></i></div>
+          <%= text_field_tag :search, nil, 
+              placeholder: (params[:search].present? ? params[:search] : "Search Contacts"),
+              class: "form-control",
+              rel: "tooltip",
+              title: "Use this search bar tosearch through your contacts by name. Prefix your search query with # to search by tags. Press enter to search".html_safe 
+          %>
+        </div>
       </div>
       <%= submit_tag "Search", name: nil, id: "search_submit", class: "hidden-submit" %>
     <% end %>
