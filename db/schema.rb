@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140716223952) do
+ActiveRecord::Schema.define(version: 20140718221216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 20140716223952) do
     t.boolean  "receive_newsletter",  default: false
     t.string   "children"
     t.string   "preferred_contact"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.boolean  "believer"
     t.integer  "donations_count",     default: 0
     t.boolean  "spouse_believer"
@@ -50,7 +50,10 @@ ActiveRecord::Schema.define(version: 20140716223952) do
     t.datetime "avatar_updated_at"
     t.string   "account_number"
     t.string   "province"
+    t.string   "team_status",         default: "initial"
   end
+
+  add_index "contacts", ["team_status"], name: "index_contacts_on_team_status", using: :btree
 
   create_table "countries", force: true do |t|
     t.string   "iso"
