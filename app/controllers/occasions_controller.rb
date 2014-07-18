@@ -12,53 +12,53 @@ class OccasionsController < ApplicationController
   
   def new
     if params[:contact_id] == nil
-      @occasions = Occasion.new
+      @occasion = Occasion.new
     else
       @contact = Contact.find(params[:contact_id])
-      @occasions = @contact.occasions.build
+      @occasion = @contact.occasions.build
     end
   end
   
   def create
     @contact = Contact.find(params[:occasion][:contact_id])
-    @occasions = @contact.occasions.new(occasion_params)
+    @occasion = @contact.occasions.new(occasion_params)
     respond_to do |format|
-      if @occasions.save
+      if @occasion.save
         format.html {redirect_to(contact_path(@contact))}
-        flash[:notice] = "Your Occasion has been saved!"
+        flash[:notice] = "Your special date has been saved!"
       else
         format.html {render action: "new"}
-        flash[:notice] = @occasions.errors.empty? ? "Your Occasion has not been saved" : "Your Occasion has not been saved because: " + @occasions.errors.full_messages.to_sentence
+        flash[:notice] = @occasions.errors.empty? ? "Your special date has not been saved" : "Your special date has not been saved because: " + @occasions.errors.full_messages.to_sentence
       end
     end
   end
   
   def edit
     @contact = Contact.find(params[:contact_id])
-    @occasions = @contact.occasions.find(params[:id])
+    @occasion = @contact.occasions.find(params[:id])
   end
    
   def update
-    @occasions = Occasion.find(params[:id])
-    @contact = Contact.find(@occasions.contact_id)
+    @occasion = Occasion.find(params[:id])
+    @contact = Contact.find(@occasion.contact_id)
     respond_to do |format|
-      if @occasions.update_attributes(occasion_params)
+      if @occasion.update_attributes(occasion_params)
         format.html {redirect_to(contact_path(@contact))}
         flash[:notice] = "Your Occasion has ben updated."
       else
         format.html {render action: "edit"}
-        flash[:notice] = @occasions.errors.empty? ? "Your Occasion has not been saved" : "Your Occasion has not been saved because: " + @occasions.errors.full_messages.to_sentence
+        flash[:notice] = @occasions.errors.empty? ? "Your special date has not been saved" : "Your special date has not been saved because: " + @occasions.errors.full_messages.to_sentence
       end
     end
   end
   
    
   def destroy
-     @occasions = Occasion.find(params[:id])
-     @occasions.destroy
+     @occasion = Occasion.find(params[:id])
+     @occasion.destroy
      respond_to do |format|
        format.html { redirect_to :back }
-       flash[:notice] = "Your Occasion has been deleted."
+       flash[:notice] = "Your special date has been deleted."
      end
    end
 

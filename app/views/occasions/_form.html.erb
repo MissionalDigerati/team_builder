@@ -1,11 +1,11 @@
 
-<%= form_for([@occasions]) do |f| %>
+<%= form_for([@occasion]) do |f| %>
   <div class="row">
 
     <div class="col-md-3">
       <div class="form-group">
         <%= f.label :special_date, "Date" %>
-        <%= render 'shared/date_picker_field', form: f, field_name: :special_date, default_value: @occasions.special_date %>
+        <%= render 'shared/date_picker_field', form: f, field_name: :special_date, default_value: @occasion.special_date %>
       </div>
     </div>
 
