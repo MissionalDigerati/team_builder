@@ -46,6 +46,7 @@
 //= require fullcalendar/gcal
 //= require tag-it/tag-it.min
 //= require macadmin/bootstrap-datepicker
+//= require file-input/bootstrap.file-input
 //= require_self
 //= require_tree .
 
@@ -72,4 +73,5 @@ $(document).ready(function(){
 	  $wcontent.toggle(500);
 	});
 	
+	$('input[type=file]').bootstrapFileInput();
 });

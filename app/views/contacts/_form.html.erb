@@ -13,13 +13,12 @@
                 <label class="control-label">Current Photo</label>
                 <%= image_tag @contact.avatar.url(:medium) %>
             <% end %>
+            <div class="avatar-holder text-center">
+                <%= f.file_field :avatar, class: 'file', title: 'Upload a New Photo' %>
+            </div>
         </div> 
 
         <div class="col-md-3 col-md-offset-1">
-            <div class="avatar-holder">
-                <%= f.label :avatar, "Upload New Photo" %>
-                <%= f.file_field :avatar, class: 'file' %>
-            </div>
         </div> 
 
         <div class="col-md-3 col-md-offset-1">
@@ -412,27 +411,21 @@
                 <div class="col-md-3">
                     <div class="form-group">
                         <%= builder.label :letter_sent_on, "Letter Sent On" %>
-                        <div class="controls">
-                            <%= builder.text_field :letter_sent_on, id: "letter_sent_on", class: 'form-control due_date_field date_select'  %>
-                        </div>
+                        <%= render 'shared/date_picker_field', form: builder, field_name: :letter_sent_on %>
                     </div>
                 </div> 
 
                 <div class="col-md-3 col-md-offset-1">
                     <div class="form-group">
                         <%= builder.label :presented_on, "Presented On" %>
-                        <div class="controls">
-                            <%= builder.text_field :presented_on, id: "presented_on", class: 'form-control due_date_field date_select'  %>
-                        </div>
+                        <%= render 'shared/date_picker_field', form: builder, field_name: :presented_on %>
                     </div>
                 </div> 
 
                 <div class="col-md-3 col-md-offset-1">
                     <div class="form-group">
                         <%= builder.label :responding_on, "Responded On" %>
-                        <div class="controls">
-                            <%= builder.text_field :responding_on, id: "responding_on", class: 'form-control due_date_field date_select'  %>
-                        </div>
+                        <%= render 'shared/date_picker_field', form: builder, field_name: :responding_on %>
                     </div>
                 </div> 
 

@@ -10,10 +10,13 @@ jQuery ->
 	# this will add extra fields as needed on the create contact form / page. 	
 	$('form').on 'click', '.add_fields', (event) ->
 		time = new Date().getTime()
+		wrapper_id = 'added-wrapper'+time
 		regexp = new RegExp($(this).data('id'), 'g')
-		$(this).before($(this).data('fields').replace(regexp, time))
-		event.preventDefault()	
-		$(".due_date_field").datepicker dateFormat: "dd-mm-yy"
+		newFields = $('<div />').attr('id', wrapper_id).hide().html($(this).data('fields').replace(regexp, time))
+		newFields.find('div.date-picker').datepicker()
+		$(this).parents('div.add-fields-link-div').eq(0).before(newFields)
+		$('#'+wrapper_id).slideDown('slow')
+		event.preventDefault()
 		
 	# To get the tasks to mark as complete when the check box is clicked,
 	# 	there is a hidden link that is submitted that updates the task. 	
