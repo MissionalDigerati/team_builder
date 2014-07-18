@@ -11,6 +11,7 @@ gem 'jquery-ui-rails'
 gem 'uglifier'
 gem 'jquery-rails'
 gem 'pg'
+gem 'aasm'
 
 group :test, :development do
   gem 'rspec-rails'

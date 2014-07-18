@@ -23,6 +23,22 @@ class Contact < ActiveRecord::Base
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "115x115>" }, :default_url => "/images/missing/:style/missing.png"
 
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/gif", "image/png"]
+
+  # AASM State machine settings
+  #
+  include AASM
+
+  aasm column: :team_status do
+    state :intial, initial: true
+    state :sent_letter
+    state :setting_up_a_meeting
+    state :presented_vision
+    state :following_up
+    state :no_response
+    state :cannot_give
+    state :special_gift
+    state :monthly_supporter
+  end
   
   NETWORKS = ['168 Film Festival', 'AACF - Cal Poly Pomona', 'Bible Study Fellowship', 'Cal Poly Pomona', 
   'Calvary Chapel', 'Co-Worker', "Dillions International", 'Extended Faimly', 'First Church of God - Pomona', 'Friends of Friends',
