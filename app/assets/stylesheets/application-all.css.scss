@@ -87,3 +87,9 @@ td.actions {
 .onoffswitch-inner:after {
     content: "NO";
 }
+
+.widget .table .caret {
+    border-top: 4px solid !important;
+    border-right: 4px solid transparent !important;
+    border-left: 4px solid transparent !important;
+}
