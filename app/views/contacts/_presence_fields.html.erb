@@ -7,8 +7,9 @@
     </div>
 
     <div class="col-md-3 col-md-offset-1">
-        <div class="form-group">
-            <%= f.label :url, "URL (Include the http://)" %>
+        <%= f.label :url, "URL" %>
+        <div class="input-group">
+            <div class="input-group-addon">http://</div>
             <%= f.text_field :url, id: "url", class: 'form-control'  %>
         </div>
     </div>
