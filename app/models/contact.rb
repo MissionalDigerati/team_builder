@@ -21,6 +21,8 @@ class Contact < ActiveRecord::Base
   validates :first_name, :last_name, :email, :presence => true
 
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "115x115>" }, :default_url => "/images/missing/:style/missing.png"
+
+  validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/gif", "image/png"]
   
   NETWORKS = ['168 Film Festival', 'AACF - Cal Poly Pomona', 'Bible Study Fellowship', 'Cal Poly Pomona', 
   'Calvary Chapel', 'Co-Worker', "Dillions International", 'Extended Faimly', 'First Church of God - Pomona', 'Friends of Friends',

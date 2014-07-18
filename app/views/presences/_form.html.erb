@@ -1,63 +1,61 @@
 <%= form_for([@presence]) do |f| %>
-    <div class="row-fluid">
-        <div class="span3">
-            <div class="control-group">
-	            <%= f.label :contact_id, "Contact", class: 'control-label' %>
-	            <div class="controls">
-	                <%= f.select :contact_id, form_select, {}, class: 'input-block-level' %>
-	            </div>
-            </div>
-        </div> <!-- span3 -->
+  <div class="row">
 
-        <div class="span3 offset1">
-            <div class="control-group">
-                <%= f.label :site, "Social Media Site", class: 'control-label' %>
-                <div class="controls">
-                    <%= f.select :site, Presence::SITES, {}, class: 'input-block-level' %>
-                </div>
-            </div>
-        </div> <!-- span3 -->
-
-        <div class="span3 offset1">
-            <div class="control-group">
-                <%= f.label :url, "URL", class: 'control-label' %>
-                <div class="controls">
-                    <%= f.text_field :url, id: "url", class: 'input-block-level'  %>
-                </div>
-            </div>
-        </div> <!-- span3 -->
-
-        <div class="span1"></div>
-        <div class="clear"></div>
-    </div> <!-- row-fluid -->
-
-    <div class="row-fluid">
-        <div class="span3">
-            <div class="control-group">
-                <%= f.label :account, "Account", class: 'control-label' %>
-                <div class="controls">
-                    <%= f.text_field :account, id: "account", class: 'input-block-level'  %>
-                </div>
-            </div>
-        </div> <!-- span3 -->
-
-        <div class="span3 offset1">
-        </div> <!-- span3 -->
-
-        <div class="span3 offset1"></div> <!-- span3 -->
-
-        <div class="span1"></div>
-        <div class="clear"></div>
-    </div> <!-- row-fluid -->
-
-    <div class="row-fluid">
-        <div class="span12 text-center">
-            <hr>
-            <% if form_type == 'add' %>
-                <%= f.submit :id => "Add Web Presence", :class => "btn btn-large btn-success" %>
-            <% else %>
-                <%= f.submit :id => "Update Web Presence", :class => "btn btn-large btn-success" %>
-            <% end %>
-        </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <%= f.label :contact_id, "Contact" %>
+        <%= f.select :contact_id, form_select, {}, class: 'form-control' %>
+      </div>
     </div>
+
+    <div class="col-md-3 col-md-offset-1">
+      <div class="form-group">
+        <%= f.label :site, "Social Media Site" %>
+        <%= f.select :site, Presence::SITES, {}, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-md-offset-1">
+      <%= f.label :url, "URL" %>
+      <div class="input-group">
+        <div class="input-group-addon">http://</div>
+        <%= f.text_field :url, id: "url", class: 'form-control'  %>
+      </div>
+    </div>
+
+    <div class="col-md-1"></div>
+    <div class="clear"></div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-3">
+      <div class="form-group">
+        <%= f.label :account, "Account" %>
+        <%= f.text_field :account, id: "account", class: 'form-control'  %>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-md-offset-1"></div>
+
+    <div class="col-md-3 col-md-offset-1"></div>
+
+    <div class="col-md-1"></div>
+    <div class="clear"></div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-12 text-center">
+      <hr>
+      <% if form_type == 'add' %>
+        <%= f.submit :id => "Add Web Presence", :class => "btn btn-large btn-success" %>
+      <% else %>
+        <%= f.submit :id => "Update Web Presence", :class => "btn btn-large btn-success" %>
+      <% end %>
+    </div>
+
+  </div>
 <% end %>

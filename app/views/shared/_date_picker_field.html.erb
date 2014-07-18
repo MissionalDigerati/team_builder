@@ -1,0 +1,8 @@
+<% default_date = Date.today.strftime('%d/%m/%Y') %>
+<% default_value = default_value.blank? ? default_date : default_value %>
+<div class="input-append date input-group date-picker" data-date-format="dd/mm/yyyy" data-date="<%= default_date %>">
+    <%= form.text_field field_name, id: field_name.to_s, class: 'form-control due_date_field', value: default_value %>
+    <span class="input-group-addon add-on">
+        <i class="fa fa-calendar"></i>
+    </span>
+</div>

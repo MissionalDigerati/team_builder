@@ -1,0 +1,86 @@
+.hidden-submit {
+    border: 0 none;
+    height: 0;
+    width: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+.widget-chart {
+    height: 250px;
+    max-width: 100%;
+    width: 100%;
+}
+.sort-spacer {
+    padding: 0px 5px;
+}
+a.white_text{
+    color: white !important;
+}
+.contact-support-state-label .label {
+    text-transform: uppercase;
+    padding: 3px;
+    font-size: 14px;
+}
+.tag_cloud_entry_1 { font-size: 1.0em; }
+.tag_cloud_entry_2 { font-size: 1.4em; }
+.tag_cloud_entry_3 { font-size: 1.6em; }
+.tag_cloud_entry_4 { font-size: 1.8em; }
+.progress .bar {
+    font-weight: bold;
+    font-size: 11px !important;
+}
+.contact-details {
+    border-bottom: 1px solid #dddddd;
+    padding: 5px;
+}
+.contact-details img {
+    max-width: 100%;
+    border: 1px solid #dddddd;
+}
+td.actions {
+    width: 20%;
+    max-width: 20%;
+    word-wrap: break-word;
+}
+.clear {
+    display: block;
+    clear: both;
+    height: 1px;
+}
+.popover {
+    z-index: 1010 !important; /* A value higher than 1010 that solves the problem */
+}
+.popover-title{
+    background: #5eb2d9 !important;
+    color: #ffffff;
+}
+.fc-event-inner:hover {
+    cursor: pointer;
+}
+.add-fields-link-div {
+    padding: 10px 0px;
+}
+.onoffswitch-inner:before {
+    content: "YES";
+}
+
+.onoffswitch-inner:after {
+    content: "NO";
+}
+
+.widget .table .caret {
+    border-top: 4px solid !important;
+    border-right: 4px solid transparent !important;
+    border-left: 4px solid transparent !important;
+}
+.alert {
+    margin: 10px 0px;
+}
+.contact-tags {
+    font-size: 16px;
+}
+
+tr.task-listing span.label {
+    font-size: 12px;
+}

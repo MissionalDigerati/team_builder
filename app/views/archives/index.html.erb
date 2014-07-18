@@ -15,47 +15,40 @@
 <% end %>
 
 
-<div class="container-fluid">
-<div class="row-fluid">
-	
-	<div class="span12">
-		<br/>
-		<%= link_to "Create Backup", archives_path, :method => "post", :class => "btn btn-primary pull-right", :confirm => "The amount of time this process will take is contingent on the amount of data you have stored. Please note that this can take several minutes to complete." %>
-		<br/><br/>
-
-		<div class="widget">
-		  <!-- Widget head -->
-			<div class="widget-head">
-		  	<div class="pull-left">
-		  		Archives
-		  	</div>
-		  	<div class="widget-icons pull-right">
-		    	<a href="#" class="wminimize"><i class="fa fa-chevron-up"></i></a> 
-		    </div>  
-		    <div class="clearfix"></div>
+	<div class="container">
+		<div class="row">
+			
+			<div class="col-md-12">
+				<%= link_to "Create Backup", archives_path, :method => "post", :class => "btn btn-primary pull-right", :confirm => "The amount of time this process will take is contingent on the amount of data you have stored. Please note that this can take several minutes to complete." %>
 			</div>
 
-		<table class="table index table-bordered table-hover table-striped">
-			<tr>
-				<td>File Name</td>
-				<td>Created</td>
-				<td>Action</td>
-			</tr>
-		<% @archives.each do |archive| %>
-			<tr>
-				<td><%= archive.filename %></td>
-				<td><%= archive.created_at.strftime('%m/%d/%Y') %></td>
-				<td class="text_center"><%= link_to delete_button, archive, method: :delete, data: { confirm: 'Are you sure? Please note this will also delete the backup file in the backup directory.' }, :class => "btn btn-danger btn-small" %> <%= link_to "Download <i class='fa fa-download fa fa-white'></i>".html_safe, download_archive_path(archive), :class => "btn btn-success btn-small" %></td>
-			</tr>
-		<% end %>
-		</table>
-		<br/>
-		<br/>
-		<p class="text-warning">Backup files are located in the backups folder, under the root directory of this application.</p>
-	</div> <!-- widget -->
-	<br/><br/>
-	</div><!-- span12 -->
-</div>
-</div><!-- container-fluid -->
+		</div>
 
-</div> <!-- matter -->
+		<div class="row">
+
+
+      <div class="col-md-12">
+        <%= render  :layout => 'shared/widget', :locals => { :title => 'Archives' } do %>
+          <table class="table index table-bordered table-hover table-striped">
+            <tr>
+              <th>Backup</th>
+              <th></th>
+            </tr>
+            <% if @archives.present? %>
+                <%= render @archives%>
+              <% else %>
+                <td colspan="2"><p>Currently, no backups available.</p></td>
+              <% end %>
+          </table>
+          
+          <div class="widget-foot">
+            <p class="text-warning">Backup files are located in the backups folder, under the root directory of this application.</p>
+            <div class="clear"></div>
+          </div>
+        <% end %>
+      </div>
+
+		</div>
+	</div>
+
+</div>

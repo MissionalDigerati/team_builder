@@ -14,9 +14,9 @@
 <div class="matter">
 <% end %>
 
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span12">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
                 <%= render  layout: 'shared/widget', locals: { title: "Add New Task" } do %>
                     <div class="padd"><%= render partial: 'form', locals: { form_type: 'add'} %></div>
                     

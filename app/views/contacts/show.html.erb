@@ -21,7 +21,7 @@
 
 <div class="matter">
 
-    <div class="span12 center_div"> 
+    <div class="container center_div"> 
         <!-- List starts -->
         <center>
             <% if @contact.support_state.present? %>
@@ -29,17 +29,17 @@
                     <%= render partial: 'support_states/support_state' %>
                 </div>
             <% else %>
-                <%= link_to "Create Donation Status", new_contact_support_state_path(@contact), class: "create_donation_status btn btn-small btn-info" %>
+                <%= link_to "Create Donation Status", new_contact_support_state_path(@contact), class: "create_donation_status btn btn-sm btn-info" %>
             <% end %>
         </center>
     </div>
 
 <% end %>
-    <div class="container-fluid">
+    <div class="container">
 
-        <div class="row-fluid">
+        <div class="row">
 
-            <div class="span6">
+            <div class="col-md-6">
                 <%= render  :layout => 'shared/widget', :locals => { :title => 'Details' } do %>
                     <div class="row-fluid contact-details">
                         <div class="span5 text-center">
@@ -114,7 +114,7 @@
                                 <td><%= @contact.updated_at.strftime('%m/%d/%Y') %></td>
                             </tr>
                             <tr>
-                                <td colspan="2">
+                                <td colspan="2" class="contact-tags">
                                     <% @contact.tag_list.each do |tag| %>
                                         <span class="label label-info"><%= link_to tag.titleize, tag_path(tag), :class => "white_text" %></span>
                                     <% end %>
@@ -130,7 +130,7 @@
                 <% end %>
             </div>
 
-            <div class="span6">
+            <div class="col-md-6">
 
                 <%= render  :layout => 'shared/widget', :locals => { :title => 'Phone Number(s)' } do %>
                     <% if @contact.numbers.present?%>
@@ -221,11 +221,11 @@
                     </div>
                 <% end %>
 
-            </div><!-- span6 -->
-        </div><!-- row-fluid -->
-        <div class="row-fluid">
+            </div>
+        </div>
+        <div class="row">
 
-            <div class="span6">
+            <div class="col-md-6">
 
                 <%= render :layout => 'shared/widget', :locals => { :title => 'Note(s)' } do %>
                     <% if @notes.present? %>
@@ -249,9 +249,9 @@
                     </div>
                 <% end %>
 
-            </div><!-- span6 -->
+            </div>
 
-            <div class="span6">
+            <div class="col-md-6">
 
                 <%= render  :layout => 'shared/widget', :locals => {    :title => "Donation(s) - #{currency(@contact.donations.sum(:amount))}" } do %>
                     <% if @contact.donations.present? %>
@@ -275,8 +275,8 @@
                     </div>
                 <% end %>
 
-            </div><!-- span6 -->
+            </div>
 
-        </div> <!-- row fluid -->
-    </div> <!-- container-fluid -->
-</div> <!-- matter -->
+        </div>
+    </div>
+</div>

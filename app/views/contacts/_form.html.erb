@@ -1,108 +1,103 @@
-<%= form_for @contact do |f| %>
+<%= form_for @contact, html: { role: 'form' } do |f| %>
 
-    <div class="row-fluid">
-        <div class="span12">
+    <div class="row">
+        <div class="col-md-12">
             <h6>Photo</h6>
             <hr>
         </div>
     </div>
 
-    <div class="row-fluid">
-        <div class="span3">
+    <div class="row">
+        <div class="col-md-3">
             <% if @contact.avatar.url.present? %>
                 <label class="control-label">Current Photo</label>
                 <%= image_tag @contact.avatar.url(:medium) %>
             <% end %>
-        </div> <!-- span3 -->
-
-        <div class="span3 offset1">
-            <div class="avatar-holder">
-                <%= f.label :avatar, "Upload New Photo", class: 'control-label' %>
-                <%= f.file_field :avatar, class: 'file' %>
+            <div class="avatar-holder text-center">
+                <%= f.file_field :avatar, class: 'file', title: 'Upload a New Photo' %>
             </div>
-        </div> <!-- span3 -->
+        </div> 
 
-        <div class="span3 offset1">
-        </div> <!-- span3 -->
+        <div class="col-md-3 col-md-offset-1">
+        </div> 
 
-        <div class="span1"></div>
+        <div class="col-md-3 col-md-offset-1">
+        </div> 
+
+        <div class="col-md-1"></div>
         <div class="clear"></div>
-    </div> <!-- row-fluid -->
+    </div> <!-- row -->
 
-    <div class="row-fluid">
-        <div class="span12">
+    <div class="row">
+        <div class="col-md-12">
             <h6>Family</h6>
             <hr>
         </div>
     </div>
-    <div class="row-fluid">
-        <div class="span3">
-            <div class="control-group">
-                <%= f.label :first_name, "First Name", class: 'control-label' %>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <%= f.label :first_name, "First Name" %>
+                <%= f.text_field :first_name, id: "first_name", class: 'form-control'  %>
+            </div>
+        </div> 
+
+        <div class="col-md-3 col-md-offset-1">
+            <div class="form-group">
+                <%= f.label :spouse_name, "Spouse Name" %>
+                <%= f.text_field :spouse_name, id: "spouse_name", class: 'form-control'  %>
+            </div>
+        </div> 
+
+        <div class="col-md-3 col-md-offset-1">
+            <div class="form-group">
+                <%= f.label :last_name, "Last Name" %>
                 <div class="controls">
-                    <%= f.text_field :first_name, id: "first_name", class: 'input-block-level'  %>
+                    <%= f.text_field :last_name, id: "last_name", class: 'form-control'  %>
                 </div>
             </div>
-        </div> <!-- span3 -->
+        </div> 
 
-        <div class="span3 offset1">
-            <div class="control-group">
-                <%= f.label :spouse_name, "Spouse Name", class: 'control-label' %>
-                <div class="controls">
-                    <%= f.text_field :spouse_name, id: "spouse_name", class: 'input-block-level'  %>
-                </div>
-            </div>
-        </div> <!-- span3 -->
-
-        <div class="span3 offset1">
-            <div class="control-group">
-                <%= f.label :last_name, "Last Name", class: 'control-label' %>
-                <div class="controls">
-                    <%= f.text_field :last_name, id: "last_name", class: 'input-block-level'  %>
-                </div>
-            </div>
-        </div> <!-- span3 -->
-
-        <div class="span1"></div>
+        <div class="col-md-1"></div>
         <div class="clear"></div>
-    </div> <!-- row-fluid -->
+    </div> <!-- row -->
 
-    <div class="row-fluid">
-        <div class="span3">
-            <div class="control-group">
-                <%= f.label :believer, "Believer?", class: 'control-label' %>
-                <div class="toggle-button">
-                    <%= f.check_box :believer, id: "believer"  %>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <%= f.label :believer, "Believer?" %>
+                <div class="sw-blue">
+                    <%= f.check_box :believer, id: "believer", class: "toggle-button"  %>
                 </div>
             </div>  
-        </div> <!-- span3 -->
+        </div> 
 
-        <div class="span3 offset1">
-            <div class="control-group">
-                <%= f.label :spouse_believer, "Spouse Believer?", class: 'control-label' %>
-                <div class="toggle-button">
-                    <%= f.check_box :spouse_believer, id: "spouse_believer"  %>
+        <div class="col-md-3 col-md-offset-1">
+            <div class="form-group">
+                <%= f.label :spouse_believer, "Spouse Believer?" %>
+                <div class="sw-blue">
+                    <%= f.check_box :spouse_believer, id: "spouse_believer", class: "toggle-button"  %>
                 </div>
             </div>
-        </div> <!-- span3 -->
+        </div> 
 
-        <div class="span3 offset1">
-            <div class="control-group">
-                <%= f.label :children, "Children  (separated by commas)", class: 'control-label' %>
+        <div class="col-md-3 col-md-offset-1">
+            <div class="form-group">
+                <%= f.label :children, "Children  (separated by commas)" %>
                 <div class="controls">
-                    <%= f.text_field :children, id: "children", class: 'input-block-level'  %>
+                    <%= f.text_field :children, id: "children", class: 'form-control'  %>
                 </div>
             </div>
-        </div> <!-- span3 -->
+        </div> 
 
-        <div class="span1"></div>
+        <div class="col-md-1"></div>
         <div class="clear"></div>
-    </div> <!-- row-fluid -->
+    </div> <!-- row -->
 
     <% if form_type == 'add' %>
 
-        <div class="row-fluid">
-            <div class="span12">
+        <div class="row">
+            <div class="col-md-12">
                 <h6>Special Occassions</h6>
                 <hr>
             </div>
@@ -112,129 +107,129 @@
             <%= render 'contacts/occasion_fields', f: builder %>
         <% end %>
 
-        <div class="row-fluid">
-            <div class="span12">
+        <div class="row add-fields-link-div">
+            <div class="col-md-12">
                 <%= link_to_add_fields "Add Special Occasion", f, :occasions %>
             </div>
         </div>
 
     <% end %>
 
-    <div class="row-fluid">
-        <div class="span12">
+    <div class="row">
+        <div class="col-md-12">
             <h6>Emails</h6>
             <hr>
         </div>
     </div>
 
-    <div class="row-fluid">
-        <div class="span3">
-             <div class="control-group">
-                <%= f.label :email, "Email", class: 'control-label' %>
+    <div class="row">
+        <div class="col-md-3">
+             <div class="form-group">
+                <%= f.label :email, "Email" %>
                 <div class="controls">
-                    <%= f.text_field :email, id: "email", class: 'input-block-level'  %>
+                    <%= f.text_field :email, id: "email", class: 'form-control'  %>
                 </div>
             </div>
-        </div> <!-- span3 -->
+        </div> 
 
-        <div class="span3 offset1">
-            <div class="control-group">
-                <%= f.label :spouse_email, "Spouse Email", class: 'control-label' %>
+        <div class="col-md-3 col-md-offset-1">
+            <div class="form-group">
+                <%= f.label :spouse_email, "Spouse Email" %>
                 <div class="controls">
-                    <%= f.text_field :spouse_email, id: "spouse_email", class: 'input-block-level'  %>
+                    <%= f.text_field :spouse_email, id: "spouse_email", class: 'form-control'  %>
                 </div>
             </div>
-        </div> <!-- span3 -->
+        </div> 
 
-        <div class="span3 offset1"></div> <!-- span3 -->
+        <div class="col-md-3 col-md-offset-1"></div> 
 
-        <div class="span1"></div>
+        <div class="col-md-1"></div>
         <div class="clear"></div>
-    </div> <!-- row-fluid -->
+    </div> <!-- row -->
 
-    <div class="row-fluid">
-        <div class="span12">
+    <div class="row">
+        <div class="col-md-12">
             <h6>Address</h6>
             <hr>
         </div>
     </div>
 
-    <div class="row-fluid">
-        <div class="span3">
-             <div class="control-group">
-                <%= f.label :address_1, "Address", class: 'control-label' %>
+    <div class="row">
+        <div class="col-md-3">
+             <div class="form-group">
+                <%= f.label :address_1, "Address" %>
                 <div class="controls">
-                    <%= f.text_field :address_1, id: "address_1", class: 'input-block-level'  %>
+                    <%= f.text_field :address_1, id: "address_1", class: 'form-control'  %>
                 </div>
             </div>
-        </div> <!-- span3 -->
+        </div> 
 
-        <div class="span3 offset1">
-            <div class="control-group">
-                <%= f.label :address_2, "Address 2", class: 'control-label' %>
+        <div class="col-md-3 col-md-offset-1">
+            <div class="form-group">
+                <%= f.label :address_2, "Address 2" %>
                 <div class="controls">
-                    <%= f.text_field :address_2, id: "address_2", class: 'input-block-level'  %>
+                    <%= f.text_field :address_2, id: "address_2", class: 'form-control'  %>
                 </div>
             </div>
-        </div> <!-- span3 -->
+        </div> 
 
-        <div class="span3 offset1">
-            <div class="control-group">
-                <%= f.label :city, "City/Province", class: 'control-label' %>
+        <div class="col-md-3 col-md-offset-1">
+            <div class="form-group">
+                <%= f.label :city, "City/Province" %>
                 <div class="controls">
-                    <%= f.text_field :city, id: "city", class: 'input-block-level'  %>
+                    <%= f.text_field :city, id: "city", class: 'form-control'  %>
                 </div>
             </div>
-        </div> <!-- span3 -->
+        </div> 
 
-        <div class="span1"></div>
+        <div class="col-md-1"></div>
         <div class="clear"></div>
-    </div> <!-- row-fluid -->
+    </div> <!-- row -->
 
-    <div class="row-fluid">
-        <div class="span3">
-             <div class="control-group">
+    <div class="row">
+        <div class="col-md-3">
+             <div class="form-group">
                 <div id="state-selector-holder">
-                    <%= f.label :state_id, "State", class: 'control-label' %>
+                    <%= f.label :state_id, "State" %>
                     <div class="controls">
-                        <%= f.select :state_id, State.all.collect {|s| [s.state_long, s.id]}, {}, class: 'input-block-level' %>
+                        <%= f.select :state_id, State.all.collect {|s| [s.state_long, s.id]}, {}, class: 'form-control' %>
                     </div>
                 </div>
                 <div id="province-input-holder" style="display: none;">
-                    <%= f.label :province, "Province", class: 'control-label' %>
+                    <%= f.label :province, "Province" %>
                     <div class="controls">
-                        <%= f.text_field :province, id: "province", class: 'input-block-level'  %>
+                        <%= f.text_field :province, id: "province", class: 'form-control'  %>
                     </div>
                 </div>
             </div>
-        </div> <!-- span3 -->
+        </div> 
 
-        <div class="span3 offset1">
-            <div class="control-group">
-                <%= f.label :country_id, "Country", class: 'control-label' %>
+        <div class="col-md-3 col-md-offset-1">
+            <div class="form-group">
+                <%= f.label :country_id, "Country" %>
                 <div class="controls">
-                    <%= f.select :country_id, Country.all.collect {|c| [c.printable_name, c.id]}, {}, class: 'input-block-level'  %>
+                    <%= f.select :country_id, Country.all.collect {|c| [c.printable_name, c.id]}, {}, class: 'form-control'  %>
                 </div>
             </div>
-        </div> <!-- span3 -->
+        </div> 
 
-        <div class="span3 offset1">
-            <div class="control-group">
-                <%= f.label :zip, "Zip Code", class: 'control-label' %>
+        <div class="col-md-3 col-md-offset-1">
+            <div class="form-group">
+                <%= f.label :zip, "Zip Code" %>
                 <div class="controls">
-                    <%= f.text_field :zip, id: "zip", class: 'input-block-level'  %>
+                    <%= f.text_field :zip, id: "zip", class: 'form-control'  %>
                 </div>
             </div>
-        </div> <!-- span3 -->
+        </div> 
 
-        <div class="span1"></div>
+        <div class="col-md-1"></div>
         <div class="clear"></div>
-    </div> <!-- row-fluid -->
+    </div> <!-- row -->
 
     <% if form_type == 'add' %>
 
-        <div class="row-fluid">
-            <div class="span12">
+        <div class="row">
+            <div class="col-md-12">
                 <h6>Phone Numbers</h6>
                 <hr>
             </div>
@@ -244,14 +239,14 @@
             <%= render 'contacts/number_fields', f: builder %>
         <% end %>
 
-        <div class="row-fluid">
-            <div class="span12">
+        <div class="row add-fields-link-div">
+            <div class="col-md-12">
                 <%= link_to_add_fields "Add Phone Number", f, :numbers %>
             </div>
         </div>
 
-        <div class="row-fluid">
-            <div class="span12">
+        <div class="row">
+            <div class="col-md-12">
                 <h6>Web Presence</h6>
                 <hr>
             </div>
@@ -261,84 +256,84 @@
             <%= render 'contacts/presence_fields', f: builder %>
         <% end %>
 
-        <div class="row-fluid">
-            <div class="span12">
+        <div class="row add-fields-link-div">
+            <div class="col-md-12">
                 <%= link_to_add_fields "Add Web Presence", f, :presences %>
             </div>
         </div>
 
     <% end %>
 
-    <div class="row-fluid">
-        <div class="span12">
+    <div class="row">
+        <div class="col-md-12">
             <h6>Preferences</h6>
             <hr>
         </div>
     </div>
 
-    <div class="row-fluid">
-        <div class="span3">
-            <div class="control-group">
-                <%= f.label :preferred_contact, "Contact Preference", class: 'control-label' %>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <%= f.label :preferred_contact, "Contact Preference" %>
                 <div class="controls">
-                    <%= f.select :preferred_contact, Contact::CONTACTS, {id: "preferred_contact"}, class: 'input-block-level'  %>
+                    <%= f.select :preferred_contact, Contact::CONTACTS, {id: "preferred_contact"}, class: 'form-control'  %>
                 </div>
             </div>  
-        </div> <!-- span3 -->
+        </div> 
 
-        <div class="span3 offset1">
-            <div class="control-group">
-                <%= f.label :receive_newsletter, "Receive Newsletter?", class: 'control-label' %>
-                <div class="toggle-button">
-                    <%= f.check_box :receive_newsletter, id: "receive_newsletter"  %>
+        <div class="col-md-3 col-md-offset-1">
+            <div class="form-group">
+                <%= f.label :receive_newsletter, "Receive Newsletter?" %>
+                <div class="sw-blue">
+                    <%= f.check_box :receive_newsletter, id: "receive_newsletter", class: "toggle-button"  %>
                 </div>
             </div>
-        </div> <!-- span3 -->
+        </div> 
 
-        <div class="span3 offset1">
-        </div> <!-- span3 -->
+        <div class="col-md-3 col-md-offset-1">
+        </div> 
 
-        <div class="span1"></div>
+        <div class="col-md-1"></div>
         <div class="clear"></div>
-    </div> <!-- row-fluid -->
+    </div> <!-- row -->
 
-    <div class="row-fluid">
-        <div class="span12">
+    <div class="row">
+        <div class="col-md-12">
             <h6>Status</h6>
             <hr>
         </div>
     </div>
 
-    <div class="row-fluid">
-        <div class="span3">
-            <div class="control-group">
-                <%= f.label :account_number, "Account #", class: 'control-label' %>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <%= f.label :account_number, "Account #" %>
                 <div class="controls">
-                    <%= f.text_field :account_number, id: "account_number", class: 'input-block-level'  %>
+                    <%= f.text_field :account_number, id: "account_number", class: 'form-control'  %>
                 </div>
             </div>  
-        </div> <!-- span3 -->
+        </div> 
 
-        <div class="span3 offset1">
-            <div class="control-group">
-                <%= f.label :presented_vision, "Presented Vision?", class: 'control-label' %>
-                <div class="toggle-button">
-                    <%= f.check_box :presented_vision, id: "presented_vision"  %>
+        <div class="col-md-3 col-md-offset-1">
+            <div class="form-group">
+                <%= f.label :presented_vision, "Presented Vision?" %>
+                <div class="sw-blue">
+                    <%= f.check_box :presented_vision, id: "presented_vision", class: "toggle-button"  %>
                 </div>
             </div>
-        </div> <!-- span3 -->
+        </div> 
 
-        <div class="span3 offset1">
-        </div> <!-- span3 -->
+        <div class="col-md-3 col-md-offset-1">
+        </div> 
 
-        <div class="span1"></div>
+        <div class="col-md-1"></div>
         <div class="clear"></div>
-    </div> <!-- row-fluid -->
+    </div> <!-- row -->
 
     <% if form_type == 'add' %>
 
-        <div class="row-fluid">
-            <div class="span12">
+        <div class="row">
+            <div class="col-md-12">
                 <h6>Support State (Select 1)</h6>
                 <hr>
             </div>
@@ -346,140 +341,134 @@
 
         <%= f.fields_for :support_state do |builder| %>
 
-            <div class="row-fluid">
-                <div class="span3">
-                    <div class="control-group">
-                        <label class="checkbox">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="checkbox">
+                        <label>
                             <%= builder.check_box :initial, id: "initial_support_state", class: 'support-state-checkbox' %> Initial
                         </label>
                     </div>
-                    <div class="control-group">
-                        <label class="checkbox">
+                    <div class="checkbox">
+                        <label>
                             <%= builder.check_box :letter_sent, id: "letter_sent_support_state", class: 'support-state-checkbox' %> Letter Sent
                         </label>
                     </div>
-                    <div class="control-group">
-                        <label class="checkbox">
+                    <div class="checkbox">
+                        <label>
                             <%= builder.check_box :contacting, id: "contacting_support_state", class: 'support-state-checkbox' %> Contacting
                         </label>
                     </div>  
-                </div> <!-- span3 -->
+                </div> 
 
-                <div class="span3 offset1">
-                    <div class="control-group">
-                        <label class="checkbox">
+                <div class="col-md-3 col-md-offset-1">
+                    <div class="checkbox">
+                        <label>
                             <%= builder.check_box :seen_presentation, id: "seen_presentation_support_state", class: 'support-state-checkbox' %> Seen Presentation
                         </label>
                     </div>
-                    <div class="control-group">
-                        <label class="checkbox">
+                    <div class="checkbox">
+                        <label>
                             <%= builder.check_box :following_up, id: "following_up_support_state", class: 'support-state-checkbox' %> Following Up
                         </label>
                     </div>
-                    <div class="control-group">
-                        <label class="checkbox">
+                    <div class="checkbox">
+                        <label>
                             <%= builder.check_box :no_response, id: "no_response_support_state", class: 'support-state-checkbox' %> No Response
                         </label>
                     </div> 
-                </div> <!-- span3 -->
+                </div> 
 
-                <div class="span3 offset1">
-                    <div class="control-group">
-                        <label class="checkbox">
+                <div class="col-md-3 col-md-offset-1">
+                    <div class="checkbox">
+                        <label>
                             <%= builder.check_box :not_giving, id: "not_giving_support_state", class: 'support-state-checkbox' %> Not Giving
                         </label>
                     </div>
-                    <div class="control-group">
-                        <label class="checkbox">
+                    <div class="checkbox">
+                        <label>
                             <%= builder.check_box :one_time_gift, id: "one_time_gift_support_state", class: 'support-state-checkbox' %> One Time Gift
                         </label>
                     </div>
-                    <div class="control-group">
-                        <label class="checkbox">
+                    <div class="checkbox">
+                        <label>
                             <%= builder.check_box :monthly_gift, id: "monthly_gift_support_state", class: 'support-state-checkbox' %> Monthly Gift
                         </label>
                     </div>
-                </div> <!-- span3 -->
+                </div> 
 
-                <div class="span1"></div>
+                <div class="col-md-1"></div>
                 <div class="clear"></div>
-            </div> <!-- row-fluid -->
+            </div> <!-- row -->
 
-            <div class="row-fluid">
-                <div class="span12">
+            <div class="row">
+                <div class="col-md-12">
                     <h6>Support State Dates</h6>
                     <hr>
                 </div>
             </div>
 
-            <div class="row-fluid">
-                <div class="span3">
-                    <div class="control-group">
-                        <%= builder.label :letter_sent_on, "Letter Sent On", class: 'control-label' %>
-                        <div class="controls">
-                            <%= builder.text_field :letter_sent_on, id: "letter_sent_on", class: 'input-block-level due_date_field date_select'  %>
-                        </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <%= builder.label :letter_sent_on, "Letter Sent On" %>
+                        <%= render 'shared/date_picker_field', form: builder, field_name: :letter_sent_on %>
                     </div>
-                </div> <!-- span3 -->
+                </div> 
 
-                <div class="span3 offset1">
-                    <div class="control-group">
-                        <%= builder.label :presented_on, "Presented On", class: 'control-label' %>
-                        <div class="controls">
-                            <%= builder.text_field :presented_on, id: "presented_on", class: 'input-block-level due_date_field date_select'  %>
-                        </div>
+                <div class="col-md-3 col-md-offset-1">
+                    <div class="form-group">
+                        <%= builder.label :presented_on, "Presented On" %>
+                        <%= render 'shared/date_picker_field', form: builder, field_name: :presented_on %>
                     </div>
-                </div> <!-- span3 -->
+                </div> 
 
-                <div class="span3 offset1">
-                    <div class="control-group">
-                        <%= builder.label :responding_on, "Responded On", class: 'control-label' %>
-                        <div class="controls">
-                            <%= builder.text_field :responding_on, id: "responding_on", class: 'input-block-level due_date_field date_select'  %>
-                        </div>
+                <div class="col-md-3 col-md-offset-1">
+                    <div class="form-group">
+                        <%= builder.label :responding_on, "Responded On" %>
+                        <%= render 'shared/date_picker_field', form: builder, field_name: :responding_on %>
                     </div>
-                </div> <!-- span3 -->
+                </div> 
 
-                <div class="span1"></div>
+                <div class="col-md-1"></div>
                 <div class="clear"></div>
-            </div> <!-- row-fluid -->
+            </div> <!-- row -->
 
         <% end %>
     
     <% end %>
 
-    <div class="row-fluid">
-        <div class="span12">
+    <div class="row">
+        <div class="col-md-12">
             <h6>Additional Information</h6>
             <hr>
         </div>
     </div>
 
-    <div class="row-fluid">
-        <div class="span3">
-            <div class="control-group">
-                <%= f.label :network, "Network", class: 'control-label' %>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <%= f.label :network, "Network" %>
                 <div class="controls">
-                    <%= f.select :network, Contact::NETWORKS, {id: "network"}, class: 'input-block-level'  %>
+                    <%= f.select :network, Contact::NETWORKS, {id: "network"}, class: 'form-control'  %>
                 </div>
             </div>  
-        </div> <!-- span3 -->
+        </div> 
 
-        <div class="span7 offset1">
-            <div class="control-group">
-                <%= f.label :tag_list, "Tags (separated by commas)", class: 'control-label' %>
+        <div class="col-md-7 col-md-offset-1">
+            <div class="form-group">
+                <%= f.label :tag_list, "Tags (separated by commas)" %>
                 <div class="controls">
-                    <%= f.text_field :tag_list, id: "tag_list", class: 'input-block-level tagger'  %>
+                    <%= f.text_field :tag_list, id: "tag_list", class: 'form-control tagger'  %>
                 </div>
             </div>
-        </div> <!-- span3 -->
+        </div> 
 
-        <div class="span1"></div>
+        <div class="col-md-1"></div>
         <div class="clear"></div>
-    </div> <!-- row-fluid -->
+    </div> <!-- row -->
 
-    <div class="row-fluid">
-        <div class="span12 text-center">
+    <div class="row">
+        <div class="col-md-12 text-center">
             <hr>
             <%= f.submit :id => "create_contact", :class => "btn btn-large btn-success" %>
         </div>
@@ -491,15 +480,8 @@
         var availableTags = <%=raw @tags %>;
         $(document).ready(function() {
             $('input.tagger').tagit({availableTags: availableTags, allowSpaces: true});
-            $("div.avatar-holder input").uniform();
-            $('div.toggle-button').toggleButtons(
-                {
-                    label: {
-                        enabled: "YES",
-                        disabled: "NO"
-                    }
-                }
-            );
+            $('.date-picker').datepicker();
+            $('.toggle-button').onoff();
             /**
              * Handle the country selector
              */

@@ -1,43 +1,50 @@
 
-<%= form_for([@occasions]) do |f| %>
-    <div class="row-fluid">
-        <div class="span3">
-            <div class="control-group">
-                <%= f.label :special_date, "Date", class: 'control-label' %>
-                <div class="controls">
-                    <%= f.text_field :special_date, :required => true, id: "special_date", class: 'input-block-level date_select'  %>
-                </div>
-            </div>
-        </div> <!-- span3 -->
+<%= form_for([@occasion]) do |f| %>
+  <div class="row">
 
-        <div class="span3 offset1">
-            <%= f.label :contact_id, "Contact", class: 'control-label' %>
-            <div class="controls">
-                <%= f.select :contact_id, form_select, {}, class: 'input-block-level' %>
-            </div>
-        </div> <!-- span3 -->
-
-        <div class="span3 offset1">
-            <div class="control-group">
-                <%= f.label :occasion, "Category", class: 'control-label' %>
-                <div class="controls">
-                  <%= f.text_field :occasion, :required => true, id: "occasion", class: 'input-block-level'  %>
-                </div>
-            </div>
-        </div> <!-- span3 -->
-
-        <div class="span1"></div>
-        <div class="clear"></div>
-    </div> <!-- row-fluid -->
-
-    <div class="row-fluid">
-        <div class="span12 text-center">
-            <hr>
-            <% if form_type == 'add' %>
-                <%= f.submit :id => "Add Special Date", :class => "btn btn-large btn-success" %>
-            <% else %>
-                <%= f.submit :id => "Update Special Date", :class => "btn btn-large btn-success" %>
-            <% end %>
-        </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <%= f.label :special_date, "Date" %>
+        <%= render 'shared/date_picker_field', form: f, field_name: :special_date, default_value: @occasion.special_date %>
+      </div>
     </div>
+
+    <div class="col-md-3 col-md-offset-1">
+      <div class="form-group">
+        <%= f.label :contact_id, "Contact" %>
+        <%= f.select :contact_id, form_select, {}, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-md-offset-1">
+      <div class="form-group">
+        <%= f.label :occasion, "Category" %>
+        <%= f.text_field :occasion, :required => true, id: "occasion", class: 'form-control'  %>
+      </div>
+    </div>
+
+    <div class="col-md-1"></div>
+    <div class="clear"></div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-12 text-center">
+      <hr>
+      <% if form_type == 'add' %>
+        <%= f.submit :id => "Add Special Date", :class => "btn btn-large btn-success" %>
+      <% else %>
+        <%= f.submit :id => "Update Special Date", :class => "btn btn-large btn-success" %>
+      <% end %>
+    </div>
+
+  </div>
+<% end %>
+<% content_for :additional_js do %>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.date-picker').datepicker();
+        });
+    </script>
 <% end %>

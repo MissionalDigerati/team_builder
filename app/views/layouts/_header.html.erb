@@ -1,59 +1,59 @@
 <header>
-    <div class="container-fluid">
-      <div class="row-fluid">
+  <div class="container">
+    <div class="row">
 
-        <!-- Logo section -->
-        <div class="span4">
-          <!-- Logo. -->
-          <div class="logo">
-            <h1><a href="/">Team<span class="bold">Builder</span></a></h1>
-            <p class="meta">Supporting Your Team Development</p>
+      <!-- Logo section -->
+      <div class="col-md-4">
+        <!-- Logo -->
+        <div class="logo">
+          <h1><a href="/">Team<span class="bold">Builder</span></a></h1>
+          <p class="meta">Supporting Your Team Development</p>
+        </div>
+        <!-- Logo ends -->
+      </div>
+
+      <!-- Button section -->
+      <div class="col-md-4">&nbsp;
+      </div>
+
+      <div class="col-md-4">
+
+        <div class="header-data">
+
+          <div class="hdata">
+            <div class="mcol-left">
+              <i class="fa fa-check bred"></i> 
+            </div>
+            <div class="mcol-right">
+              <p><a href="<%= tasks_path %>"><%= number_of_overdue_tasks %></a> <em>Overdue <%= pluralize_without_count(number_of_overdue_tasks, 'Task') %></em></p>
+            </div>
+            <div class="clearfix"></div>
           </div>
-          <!-- Logo ends -->
-        </div>
-
-        <!-- Button section -->
-        <div class="span4">
-        </div>
-
-        <div class="span4">
-
-          <div class="header-data text-right">
-
-            <div class="hdata">
+          <div class="hdata">
+            <div class="mcol-left">
+              <i class="fa fa-group bblue"></i> 
+            </div>
+            <div class="mcol-right">
+              <p><a href="<%= contacts_path %>"><%= number_of_contacts %></a> <em>Total <%= pluralize_without_count(number_of_contacts, 'Contact') %></em></p>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="hdata">
               <div class="mcol-left">
-                <i class="fa fa-check bred"></i> 
+                  <i class="fa fa-calendar bgreen"></i> 
               </div>
               <div class="mcol-right">
-                <p><a href="<%= tasks_path %>"><%= number_of_overdue_tasks %></a> <em>Overdue <%= pluralize_without_count(number_of_overdue_tasks, 'Task') %></em></p>
+                  <p><a href="<%= occasions_path %>"><%= occasions_today %></a> <em><%= pluralize_without_count(occasions_today, 'Occasion') %> Today</em></p>
               </div>
               <div class="clearfix"></div>
-            </div>
-            <div class="hdata">
-              <div class="mcol-left">
-                <i class="fa fa-group bblue"></i> 
-              </div>
-              <div class="mcol-right">
-                <p><a href="<%= contacts_path %>"><%= number_of_contacts %></a> <em>Total <%= pluralize_without_count(number_of_contacts, 'Contact') %></em></p>
-              </div>
-              <div class="clearfix"></div>
-            </div>
-            <div class="hdata">
-                <div class="mcol-left">
-                    <i class="fa fa-calendar bgreen"></i> 
-                </div>
-                <div class="mcol-right">
-                    <p><a href="<%= occasions_path %>"><%= occasions_today %></a> <em><%= pluralize_without_count(occasions_today, 'Occasion') %> Today</em></p>
-                </div>
-                <div class="clearfix"></div>
-            </div>                        
-
-          </div>
+          </div>                        
 
         </div>
-
-        <!-- Data section -->
 
       </div>
+
+      <!-- Data section -->
+
     </div>
-  </header>
+  </div>
+</header>

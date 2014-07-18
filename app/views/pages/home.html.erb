@@ -10,9 +10,9 @@
 <% content_for :stats do %>
 
 <div class="matter">
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span12"> 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12"> 
                 <!-- List starts -->
                 <ul class="today-datas">
                     <!-- List #1 -->
@@ -42,9 +42,9 @@
 <% end %>
 
 
-    <div class="container-fluid">
-        <div class="row-fluid">
-            <div class="span8">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
                 <!-- task within week range begin -->
                 <%= render  :layout => 'shared/widget', :locals => {:title => 'Tasks Due This Week (Check to Complete)'} do %>
                     <% if @tasks_within_week_range.present? %>
@@ -65,7 +65,7 @@
                     <% end %>
                     <div class="widget-foot text-right">
                         <%= link_to "Add New Task", new_task_path, :class => "btn btn-primary" %>
-                        <%= link_to "View All Task", tasks_path, :class => "btn" %>
+                        <%= link_to "View All Task", tasks_path, :class => "btn btn-info" %>
                         <div class="clear"></div>
                     </div>
                 <% end %>
@@ -91,13 +91,13 @@
                     <% end %>
                     <div class="widget-foot text-right">
                         <%= link_to "Add New Task", new_task_path, :class => "btn btn-primary" %>
-                        <%= link_to "View All Tasks", tasks_path, :class => "btn" %>
+                        <%= link_to "View All Tasks", tasks_path, :class => "btn btn-info" %>
                         <div class="clear"></div>
                     </div>
                 <% end %>
                 <!-- incomplete tasks end -->
             </div>
-            <div class="span4">
+            <div class="col-md-4">
                 <%= render  :layout => 'shared/widget', :locals => { :title => 'Upcoming Special Dates' } do %>
                     <div class="padd">
                         <% if @occasions_week.present? %>
@@ -107,7 +107,7 @@
                         <% end %>
                     </div>
                     <div class="widget-foot text-right">
-                        <%= link_to "View All Special Dates", occasions_path, :class => "btn" %>
+                        <%= link_to "View All Special Dates", occasions_path, :class => "btn btn-info btn-sm" %>
                         <div class="clear"></div>
                     </div>
                 <% end %>

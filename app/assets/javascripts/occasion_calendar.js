@@ -44,7 +44,6 @@ function callbackEventsAfterRender(event, element) {
 function callbackEventsClicked(event, jsEvent, view) {
     $('#manage-occasion-modal').find('#occasion-title-holder').text(event.title);
     $('#manage-occasion-modal').find('a#edit-occasion-link').attr('href', event.editOccasionLink);
-    console.log(event.contact);
     if ($.isEmptyObject(event.contact)) {
         $('a#occasion-view-contact-link').attr('href', '#').addClass('disabled');
         $('#manage-occasion-modal').find('#occasion-body-holder div.contact-details').html("<strong>"+event.date_formatted+"</strong>: "+event.title+"<br>");

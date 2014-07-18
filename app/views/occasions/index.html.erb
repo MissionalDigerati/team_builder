@@ -1,65 +1,66 @@
 <% content_for :header do %>
-<h2 class="pull-left"><i class="fa fa-calendar"></i> Special Dates</h2>
+  <h2 class="pull-left"><i class="fa fa-calendar"></i> Special Dates</h2>
 
-    <!-- Breadcrumb -->
-    <div class="bread-crumb pull-right">
-      <%= link_to "Dashboard", root_path, class: "bread-crumb" %>
-      <span class="divider">/</span> 
-      <%= link_to "Special Dates", occasions_path, class: "bread-current" %>
-    </div>
+  <!-- Breadcrumb -->
+  <div class="bread-crumb pull-right">
+    <%= link_to "Dashboard", root_path, class: "bread-crumb" %>
+    <span class="divider">/</span> 
+    <%= link_to "Special Dates", occasions_path, class: "bread-current" %>
+  </div>
 <% end %>
 
 <% content_for :stats do %>
 
-<div class="matter">
+  <div class="matter">
 
 <% end %>
-    <div class="container-fluid">
+    <div class="container">
 
-        <div class="row-fluid">
-            <div class="span12 text-right">
-                <%= link_to 'Add New Special Date', new_occasion_path, class: "btn btn-primary" %>
-                <div class="clear"></div>
-            </div>
+      <div class="row">
+
+        <div class="col-md-12 text-right">
+          <%= link_to 'Add New Special Date', new_occasion_path, class: "btn btn-primary" %>
+          <div class="clear"></div>
         </div>
 
-        <div class="row-fluid">
+      </div>
 
-            <div class="span8">
-                <%= render  :layout => 'shared/widget', locals: { title: 'Special Dates' } do %>
-                    <div class="padd text-center"><br><br>
-                        <div id="special-dates-calendar"></div>
-                    </div>
-                    <div class="widget-foot">
-                    </div>
-                <% end %>
+      <div class="row">
 
-            </div> <!-- span8 -->
-
-            <div class="span4">
-                <%= render  :layout => 'shared/widget', :locals => { :title => 'Upcoming Special Dates' } do %>
-                    <div class="padd">
-                        <% if @occasions_week.present? %>
-                            <%= render :partial => 'occasions/occasion_mini', :collection => @occasions_week %>
-                        <% else %>
-                            <p>Currently, no upcoming special dates.</p>
-                        <% end %>
-                    </div>
-                    <div class="widget-foot text-right">
-                        <%= link_to "View All Special Dates", occasions_path, :class => "btn" %>
-                        <div class="clear"></div>
-                    </div>
-                <% end %>
+        <div class="col-md-8">
+          <%= render  :layout => 'shared/widget', locals: { title: 'Special Dates' } do %>
+            <div class="padd text-center"><br><br>
+              <div id="special-dates-calendar"></div>
             </div>
+            <div class="widget-foot">
+            </div>
+          <% end %>
+        </div>
 
-        </div> <!-- row fluid -->
-    </div> <!-- container-fluid -->
-</div> <!-- matter -->
+        <div class="col-md-4">
+          <%= render  :layout => 'shared/widget', :locals => { :title => 'Upcoming Special Dates' } do %>
+            <div class="padd">
+              <% if @occasions_week.present? %>
+                <%= render :partial => 'occasions/occasion_mini', :collection => @occasions_week %>
+              <% else %>
+                <p>Currently, no upcoming special dates.</p>
+              <% end %>
+            </div>
+            <div class="widget-foot text-right">
+              <%= link_to "View All Special Dates", occasions_path, :class => "btn" %>
+              <div class="clear"></div>
+            </div>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div>
 <% content_for :additional_js do %>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            setUpCalendar("<%= occasions_path(format: 'json') %>");
-        });
-    </script>
-    <%= render  partial: 'manage_modal' %>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      setUpCalendar("<%= occasions_path(format: 'json') %>");
+    });
+  </script>
+  <%= render  partial: 'manage_modal' %>
 <% end %>

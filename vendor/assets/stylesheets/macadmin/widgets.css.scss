@@ -147,6 +147,11 @@
 	border-bottom: 1px solid #eee;
 }
 
+.recent li:last-child{
+	border-bottom:0px;
+	padding-bottom:0px;
+}
+
 /* Recent posts and comments widget ends */
 
 /* File upload widget starts */
@@ -182,7 +187,13 @@
 }
 
 .file-upload .progress{
+	height:15px;
 	margin: 5px 0px !important;
+}
+
+.file-upload .progress-bar{
+	font-size:11px !important;
+	line-height:16px !important;
 }
 
 /* File upload widget ends */
@@ -206,6 +217,12 @@
   background: -o-linear-gradient(top, #fafafa, #f6f6f6);
   background: linear-gradient(top, #fafafa, #f6f6f6);	
   border-top: 1px solid #ccc;
+}
+
+.task input{
+	position:relative;
+	top:2px;
+	margin-right:5px;
 }
 
 .task li:first-child{
@@ -301,6 +318,12 @@
   background: -o-linear-gradient(top, #fafafa, #f6f6f6);
   background: linear-gradient(top, #fafafa, #f6f6f6);	
   border-top: 1px solid #ccc;
+}
+
+.project input{
+	position:relative;
+	top:3px;
+	margin-right:8px;
 }
 
 .project li:first-child{
