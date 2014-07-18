@@ -17,7 +17,7 @@ class Contact < ActiveRecord::Base
   accepts_nested_attributes_for :occasions, :reject_if => lambda { |a| a[:occasion].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :presences, :reject_if => lambda { |a| a[:url].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :support_state
-  
+
   validates :first_name, :last_name, :email, :presence => true
 
   has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "115x115>" }, :default_url => "/images/missing/:style/missing.png"
@@ -29,7 +29,7 @@ class Contact < ActiveRecord::Base
   include AASM
 
   aasm column: :team_status do
-    state :intial, initial: true
+    state :pending, initial: true
     state :sent_letter
     state :setting_up_a_meeting
     state :presented_vision

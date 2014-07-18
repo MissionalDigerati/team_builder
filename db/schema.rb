@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20140718221216) do
     t.datetime "avatar_updated_at"
     t.string   "account_number"
     t.string   "province"
-    t.string   "team_status",         default: "initial"
+    t.string   "team_status",         default: "pending"
   end
 
   add_index "contacts", ["team_status"], name: "index_contacts_on_team_status", using: :btree
