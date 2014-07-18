@@ -49,29 +49,3 @@
 //= require file-input/bootstrap.file-input
 //= require_self
 //= require_tree .
-
-$(document).ready(function(){
-
-	$('input.support-state-checkbox').click(function(event){
-		$('input.support-state-checkbox').attr('checked', false);
-		$(this).attr('checked', true);
-	});
-
-	$('.wminimize').click(function(e){
-	  e.preventDefault();
-	  var $wcontent = $(this).parent().parent().next('.widget-content');
-	  if($wcontent.is(':visible')) 
-	  {
-	    $(this).children('i').removeClass('icon-chevron-up');
-	    $(this).children('i').addClass('icon-chevron-down');
-	  }
-	  else 
-	  {
-	    $(this).children('i').removeClass('icon-chevron-down');
-	    $(this).children('i').addClass('icon-chevron-up');
-	  }            
-	  $wcontent.toggle(500);
-	});
-	
-	$('input[type=file]').bootstrapFileInput();
-});
