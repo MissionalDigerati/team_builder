@@ -305,7 +305,17 @@
     </div>
 
     <div class="row">
+
         <div class="col-md-3">
+            <div class="form-group">
+                <%= f.label :team_status, "Team Status" %>
+                <div class="controls">
+                    <%= f.select :team_status, Contact.aasm.states_for_select, {id: "team_status_input"}, class: 'form-control'  %>
+                </div>
+            </div> 
+        </div>
+
+        <div class="col-md-3 col-md-offset-1">
             <div class="form-group">
                 <%= f.label :account_number, "Account #" %>
                 <div class="controls">
@@ -321,9 +331,6 @@
                     <%= f.check_box :presented_vision, id: "presented_vision", class: "toggle-button"  %>
                 </div>
             </div>
-        </div> 
-
-        <div class="col-md-3 col-md-offset-1">
         </div> 
 
         <div class="col-md-1"></div>
