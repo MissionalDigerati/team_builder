@@ -29,7 +29,6 @@ end
 gem 'paperclip'
 gem 'kaminari'
 gem 'acts-as-taggable-on'
-gem 'bootstrap-kaminari-views'
 gem 'rails-backup-migrate'
 gem 'jbuilder'
 gem 'birthday'
