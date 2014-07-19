@@ -47,5 +47,6 @@
 //= require tag-it/tag-it.min
 //= require macadmin/bootstrap-datepicker
 //= require file-input/bootstrap.file-input
+//= require match-height/jquery.match-height.min
 //= require_self
 //= require_tree .

@@ -34,6 +34,9 @@ class Contact < ActiveRecord::Base
     state :setting_up_a_meeting
     state :presented_vision
     state :following_up
+
+    # These states are 100%
+    #
     state :no_response
     state :cannot_give
     state :special_gift

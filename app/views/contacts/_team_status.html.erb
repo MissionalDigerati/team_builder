@@ -1,0 +1,90 @@
+<div class="row step hidden-md hidden-sm hidden-xs">
+        <div id="team-status-step-1" class="col-md-1 col-md-offset-2 team-status-change" data-new-status="sent_letter">
+            <span class="fa fa-paper-plane"></span>
+            <p>Sent Letter</p>
+        </div>
+        <div id="team-status-step-2" class="col-md-1 team-status-change" data-new-status="setting_up_a_meeting">
+            <span class="fa fa-coffee"></span>
+            <p>Setting Up a Meeting</p>
+        </div>
+        <div id="team-status-step-3" class="col-md-1 team-status-change" data-new-status="presented_vision">
+            <span class="fa fa-video-camera"></span>
+            <p>Presented Vision</p>
+        </div>
+        <div id="team-status-step-4" class="col-md-1 team-status-change activestep" data-new-status="following_up">
+            <span class="fa fa-mail-reply"></span>
+            <p>Following Up</p>
+        </div>
+        <div id="team-status-step-5" class="col-md-1 team-status-change" data-new-status="no_response">
+            <span class="fa fa-exclamation-circle"></span>
+            <p>No Response</p>
+        </div>
+        <div id="team-status-step-6" class="col-md-1 team-status-change" data-new-status="cannot_give">
+            <span class="fa fa-times"></span>
+            <p>Cannot Give</p>
+        </div>
+        <div id="team-status-step-7" class="col-md-1 team-status-change" data-new-status="special_gift">
+            <span class="fa fa-gift"></span>
+            <p>Special Gift</p>
+        </div>
+        <div id="team-status-step-8" class="col-md-1 team-status-change" data-new-status="monthly_supporter">
+            <span class="fa fa-group"></span>
+            <p>Monthly Supporter</p>
+        </div>
+</div>
+<div class="row mini-step visible-md visible-sm visible-xs">
+        <div id="team-status-steps-collect-1" class="col-xs-4">
+            <div class="team-status-change" data-new-status="sent_letter">
+                <span class="fa fa-paper-plane"></span>
+                <p>Sent Letter</p>
+            </div>
+            <div class="team-status-change activestep" data-new-status="setting_up_a_meeting">
+                <span class="fa fa-coffee"></span>
+                <p>Setting Up a Meeting</p>
+            </div>
+            <div class="team-status-change" data-new-status="presented_vision">
+                <span class="fa fa-video-camera"></span>
+                <p>Presented Vision</p>
+            </div>
+        </div>
+        <div id="team-status-steps-collect-2" class="col-xs-4">
+            <div class="team-status-change" data-new-status="following_up">
+                <span class="fa fa-mail-reply"></span>
+                <p>Following Up</p>
+            </div>
+            <div class="team-status-change" data-new-status="no_response">
+                <span class="fa fa-exclamation-circle"></span>
+                <p>No Response</p>
+            </div>
+            <div class="team-status-change" data-new-status="cannot_give">
+                <span class="fa fa-times"></span>
+                <p>Cannot Give</p>
+            </div>
+        </div>
+        <div id="team-status-steps-collect-2" class="col-xs-4">
+            <div class="team-status-change" data-new-status="special_gift">
+                <span class="fa fa-gift"></span>
+                <p>Special Gift</p>
+            </div>
+            <div class="team-status-change" data-new-status="monthly_supporter">
+                <span class="fa fa-group"></span>
+                <p>Monthly Supporter</p>
+            </div>
+        </div>
+</div>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="progress" id="team-status-progress-bar">
+            <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                60%
+            </div>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="clear"></div>
+</div>
+<% content_for :additional_js do %>
+    <script type="text/javascript">
+        $('.team-status-change').matchHeight(false);
+    </script>
+<% end %>

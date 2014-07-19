@@ -28,3 +28,98 @@ table.tasks{
 		width: 20%;
 	}
 }
+/* Support States on show page */
+.progress {
+    position: relative;
+    height: 25px;
+}
+
+.progress > .progress-type {
+    position: absolute;
+    left: 0px;
+    font-weight: 800;
+    padding: 3px 30px 2px 10px;
+    color: rgb(255, 255, 255);
+    background-color: rgba(25, 25, 25, 0.2);
+}
+
+.progress > .progress-completed {
+    position: absolute;
+    right: 0px;
+    font-weight: 800;
+    padding: 3px 10px 2px;
+}
+
+.step {
+    text-align: center;
+}
+
+.step .col-md-1 {
+    background-color: #fff;
+    border: 1px solid #C0C0C0;
+    border-right: none;
+}
+
+.step .col-md-1:last-child {
+    border: 1px solid #C0C0C0;
+}
+
+.step .col-md-1:first-child {
+    @include border-left-radius(5px);
+}
+
+.step .col-md-1:last-child {
+    @include border-right-radius(5px);
+}
+
+.step .col-md-1:hover {
+    color: #428bca;
+    cursor: pointer;
+}
+
+.step .activestep {
+    color: #428bca;
+    border-left: 6px solid #357ebd !important;
+    border-right: 6px solid #357ebd !important;
+    border-top: 3px solid #357ebd !important;
+    border-bottom: 3px solid #357ebd !important;
+    vertical-align: central;
+}
+
+.step .fa {
+    padding-top: 15px;
+    font-size: 25px;
+}
+/* Mini Version */
+.mini-step {
+    text-align: center;
+}
+
+.mini-step .team-status-change {
+    background-color: #fff;
+    border: 1px solid #C0C0C0;
+    margin-bottom: 5px;
+}
+
+.mini-step .team-status-change {
+    @include border-radius(5px);
+}
+
+.mini-step .team-status-change:hover {
+    color: #428bca;
+    cursor: pointer;
+}
+
+.mini-step .activestep {
+    color: #428bca;
+    border-left: 6px solid #357ebd !important;
+    border-right: 6px solid #357ebd !important;
+    border-top: 3px solid #357ebd !important;
+    border-bottom: 3px solid #357ebd !important;
+    vertical-align: central;
+}
+
+.mini-step .fa {
+    padding-top: 15px;
+    font-size: 25px;
+}
