@@ -1,8 +1,8 @@
 <tr>
 	<td class="user">
 		<div class="contact-support-state-label pull-right">
-	    	<span class="label status-<%= contact.support_state.progress.downcase.parameterize %>">
-	    		<i class="<%= state_icon(contact.support_state.progress) %> fa icon-white"></i> <%= contact.support_state.progress %>
+	    	<span class="label status-<%= contact.team_status.humanize.downcase.parameterize %>">
+	    		<i class="<%= state_icon(contact.team_status.to_sym) %> icon-white"></i> <%= contact.team_status.humanize.titlecase %>
 	    	</span>
 	   	</div>
 	    <div class="user-pic">
