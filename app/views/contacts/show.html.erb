@@ -23,12 +23,12 @@
 <% end %>
     <div class="container">
 
-        <%= render partial: 'team_status' %>
+        <%= render partial: 'team_status'%>
         
         <div class="row">
 
             <div class="col-md-6">
-                <%= render  :layout => 'shared/widget', :locals => { :title => 'Details' } do %>
+                <%= render  :layout => 'shared/widget', locals: { title: 'Details' } do %>
                     <div class="row-fluid contact-details">
                         <div class="span5 text-center">
                             <% if @contact.avatar.url.present? %>
@@ -104,14 +104,14 @@
                             <tr>
                                 <td colspan="2" class="contact-tags">
                                     <% @contact.tag_list.each do |tag| %>
-                                        <span class="label label-info"><%= link_to tag.titleize, tag_path(tag), :class => "white_text" %></span>
+                                        <span class="label label-info"><%= link_to tag.titleize, tag_path(tag), class: "white_text" %></span>
                                     <% end %>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <div class="widget-foot text-right">
-                        <%= link_to 'Edit Details', edit_contact_path(@contact), :class => "btn btn-primary" %>
+                        <%= link_to 'Edit Details', edit_contact_path(@contact), class: "btn btn-primary" %>
                         <div class="clear"></div>
                     </div>
 
@@ -128,7 +128,7 @@
                                 <th>Action</th>
                             </thead>
                             <tbody>
-                                <%= render :partial => 'numbers/number', :collection => @contact.numbers %>
+                                <%= render partial: 'numbers/number', collection: @contact.numbers %>
                             </tbody>
                         </table>
                     <% else %>
@@ -137,12 +137,12 @@
                         </div>
                     <% end %>
                     <div class="widget-foot text-right">
-                        <%= link_to 'Add Phone Number', new_number_path(contact_id: @contact.id), :class => "btn btn-primary" %>
+                        <%= link_to 'Add Phone Number', new_number_path(contact_id: @contact.id), class: "btn btn-primary" %>
                         <div class="clear"></div>
                     </div>
                 <% end %>
 
-                <%= render :layout => 'shared/widget', :locals => {    :title => 'Web Presence' } do %>
+                <%= render :layout => 'shared/widget', locals: {    title: 'Web Presence' } do %>
                     <% if @contact.presences.present? %>
                         <table class="table table-striped presence table-bordered">
                             <thead>
@@ -150,7 +150,7 @@
                                 <th>Action</th>
                             </thead>
                             <tbody>
-                                <%= render :partial => 'presences/presence', :collection => @contact.presences, :locals => {:hide_contact => true} %>
+                                <%= render partial: 'presences/presence', collection: @contact.presences, locals: {hide_contact: true} %>
                             </tbody>
                         </table>
                     <% else %>
@@ -159,12 +159,12 @@
                         </div>
                     <% end %>
                     <div class="widget-foot text-right">
-                        <%= link_to 'Add Web Presence', new_presence_path(@contact), :class => "btn btn-primary" %>
+                        <%= link_to 'Add Web Presence', new_presence_path(@contact), class: "btn btn-primary" %>
                         <div class="clear"></div>
                     </div>
                 <% end %>
 
-                <%= render  :layout => 'shared/widget', :locals => { :title => 'Special Date(s)' } do %>
+                <%= render  :layout => 'shared/widget', locals: { title: 'Special Date(s)' } do %>
                     <% if @contact.occasions.present? %>
                         <table class="table table-striped occasions table-bordered">
                             <thead>
@@ -172,7 +172,7 @@
                                 <th>Action</th>
                             </thead>
                             <tbody>
-                                <%= render :partial => 'occasions/occasion', :collection => @contact.occasions.order("special_date ASC"), :locals => {:hide_contact => true} %>
+                                <%= render partial: 'occasions/occasion', collection: @contact.occasions.order("special_date ASC"), locals: {hide_contact: true} %>
                             </tbody>
                         </table>
                     <% else %>
@@ -181,12 +181,12 @@
                         </div>
                     <% end %>
                     <div class="widget-foot text-right">
-                        <%= link_to 'Add Special Date', new_occasion_path(contact_id: @contact.id), :class => "btn btn-primary" %>
+                        <%= link_to 'Add Special Date', new_occasion_path(contact_id: @contact.id), class: "btn btn-primary" %>
                         <div class="clear"></div>
                     </div>
                 <% end %>
 
-                <%= render  :layout => 'shared/widget', :locals => { :title => 'Task(s)' } do %>
+                <%= render  :layout => 'shared/widget', locals: { title: 'Task(s)' } do %>
                     <% if @tasks.present? %>
                         <table class="table table-striped tasks table-bordered">
                             <thead>
@@ -195,7 +195,7 @@
                                 <th>Action</th>
                             </thead>
                             <tbody>
-                                <%= render :partial => 'tasks/task', :collection => @tasks.order("due_date ASC"), :locals => {:hide_contact => true} %>
+                                <%= render partial: 'tasks/task', collection: @tasks.order("due_date ASC"), locals: {hide_contact: true} %>
                             </tbody>
                         </table>
                     <% else %>
@@ -204,7 +204,7 @@
                         </div>
                     <% end %>
                     <div class="widget-foot text-right">
-                        <%= link_to 'Add Task', new_task_path(contact_id: @contact.id), :class => "btn btn-primary" %>
+                        <%= link_to 'Add Task', new_task_path(contact_id: @contact.id), class: "btn btn-primary" %>
                         <div class="clear"></div>
                     </div>
                 <% end %>
@@ -215,7 +215,7 @@
 
             <div class="col-md-6">
 
-                <%= render :layout => 'shared/widget', :locals => { :title => 'Note(s)' } do %>
+                <%= render :layout => 'shared/widget', locals: { title: 'Note(s)' } do %>
                     <% if @notes.present? %>
                         <table class="table table-striped notes table-bordered">
                             <thead>
@@ -223,7 +223,7 @@
                                 <th>Action</th>
                             </thead>
                             <tbody>
-                                <%= render :partial => 'notes/note', :collection => @notes, :locals => {:hide_contact => true} %>
+                                <%= render partial: 'notes/note', collection: @notes, locals: {hide_contact: true} %>
                             </tbody>
                         </table>
                     <% else %>
@@ -232,7 +232,7 @@
                         </div>
                     <% end %>
                     <div class="widget-foot text-right">
-                        <%= link_to 'Add Note', new_note_path(contact_id: @contact.id), :class => "btn btn-primary" %>
+                        <%= link_to 'Add Note', new_note_path(contact_id: @contact.id), class: "btn btn-primary" %>
                         <div class="clear"></div>
                     </div>
                 <% end %>
@@ -241,7 +241,7 @@
 
             <div class="col-md-6">
 
-                <%= render  :layout => 'shared/widget', :locals => {    :title => "Donation(s) - #{currency(@contact.donations.sum(:amount))}" } do %>
+                <%= render  :layout => 'shared/widget', locals: {    title: "Donation(s) - #{currency(@contact.donations.sum(:amount))}" } do %>
                     <% if @contact.donations.present? %>
                         <table class="table table-striped donations table-bordered">
                             <thead>
@@ -249,7 +249,7 @@
                                 <th>Action</th>
                             </thead>
                             <tbody>
-                                <%= render :partial => 'donations/donation', :collection => @contact.donations.order("donation_date DESC"), :locals => {:hide_contact => true} %>
+                                <%= render partial: 'donations/donation', collection: @contact.donations.order("donation_date DESC"), locals: {hide_contact: true} %>
                             </tbody>
                         </table>
                     <% else %>
@@ -258,7 +258,7 @@
                         </div>
                     <% end %>
                     <div class="widget-foot text-right">
-                        <%= link_to 'Add Donation', new_donation_path(contact_id: @contact.id), :class => "btn btn-primary" %>
+                        <%= link_to 'Add Donation', new_donation_path(contact_id: @contact.id), class: "btn btn-primary" %>
                         <div class="clear"></div>
                     </div>
                 <% end %>
