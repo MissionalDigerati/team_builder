@@ -70,6 +70,64 @@ describe Contact, :type => :model do
   
   context "methods" do
 
+    context ".invite_to_team_percent" do
+
+      it "should return the correct percent for pending" do
+        expected_percent = 0
+        contact = FactoryGirl.create(:defaulted_contact, team_status: :pending)
+        expect(contact.invite_to_team_percent).to eq(expected_percent)
+      end
+
+      it "should return the correct percent for sent_letter" do
+        expected_percent = 20
+        contact = FactoryGirl.create(:defaulted_contact, team_status: :sent_letter)
+        expect(contact.invite_to_team_percent).to eq(expected_percent)
+      end
+
+      it "should return the correct percent for setting_up_a_meeting" do
+        expected_percent = 40
+        contact = FactoryGirl.create(:defaulted_contact, team_status: :setting_up_a_meeting)
+        expect(contact.invite_to_team_percent).to eq(expected_percent)
+      end
+
+      it "should return the correct percent for presented_vision" do
+        expected_percent = 60
+        contact = FactoryGirl.create(:defaulted_contact, team_status: :presented_vision)
+        expect(contact.invite_to_team_percent).to eq(expected_percent)
+      end
+
+      it "should return the correct percent for following_up" do
+        expected_percent = 80
+        contact = FactoryGirl.create(:defaulted_contact, team_status: :following_up)
+        expect(contact.invite_to_team_percent).to eq(expected_percent)
+      end
+
+      it "should return the correct percent for no_response" do
+        expected_percent = 100
+        contact = FactoryGirl.create(:defaulted_contact, team_status: :no_response)
+        expect(contact.invite_to_team_percent).to eq(expected_percent)
+      end
+
+      it "should return the correct percent for cannot_give" do
+        expected_percent = 100
+        contact = FactoryGirl.create(:defaulted_contact, team_status: :cannot_give)
+        expect(contact.invite_to_team_percent).to eq(expected_percent)
+      end
+
+      it "should return the correct percent for special_gift" do
+        expected_percent = 100
+        contact = FactoryGirl.create(:defaulted_contact, team_status: :special_gift)
+        expect(contact.invite_to_team_percent).to eq(expected_percent)
+      end
+
+      it "should return the correct percent for monthly_supporter" do
+        expected_percent = 100
+        contact = FactoryGirl.create(:defaulted_contact, team_status: :monthly_supporter)
+        expect(contact.invite_to_team_percent).to eq(expected_percent)
+      end
+
+    end
+
     context ".family_name" do
 
       it "should only return the fullname if no spouse" do

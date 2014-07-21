@@ -59,6 +59,23 @@ class Contact < ActiveRecord::Base
   def family_name
     self.spouse_name.blank? ? self.fullname.titleize : "#{self.first_name} & #{self.spouse_name} #{self.last_name}".titleize
   end
+
+  def invite_to_team_percent
+    case self.team_status.to_sym
+      when :no_response, :cannot_give, :special_gift, :monthly_supporter
+        100
+      when :following_up
+        80
+      when :presented_vision
+        60
+      when :setting_up_a_meeting
+        40
+      when :sent_letter
+        20
+      else
+        0
+    end
+  end
   
   def self.non_believers
     Contact.where("believer = ?", false).length
