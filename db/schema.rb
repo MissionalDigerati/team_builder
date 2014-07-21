@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140718221216) do
+ActiveRecord::Schema.define(version: 20140721224919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20140718221216) do
     t.string   "account_number"
     t.string   "province"
     t.string   "team_status",         default: "pending"
+    t.boolean  "sent_letter",         default: false
   end
 
   add_index "contacts", ["team_status"], name: "index_contacts_on_team_status", using: :btree

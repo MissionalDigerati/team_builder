@@ -140,6 +140,7 @@ class Contact < ActiveRecord::Base
     if self.aasm.states.map(&:name).include?(status)
       self.team_status = status
       self.presented_vision = true if status == :presented_vision
+      self.sent_letter = true if status == :sent_letter
       self.save
     else
       false
