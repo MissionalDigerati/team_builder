@@ -15,7 +15,7 @@
             <span class="fa fa-video-camera"></span>
             <p>Presented Vision</p>
         </div>
-        <div id="team-status-step-4" class="col-md-1 team-status-change activestep" data-new-status="following_up">
+        <div id="team-status-step-4" class="col-md-1 team-status-change" data-new-status="following_up">
             <span class="fa fa-mail-reply"></span>
             <p>Following Up</p>
         </div>
@@ -46,7 +46,7 @@
                 <span class="fa fa-paper-plane"></span>
                 <p>Sent Letter</p>
             </div>
-            <div class="team-status-change activestep" data-new-status="setting_up_a_meeting">
+            <div class="team-status-change" data-new-status="setting_up_a_meeting">
                 <span class="fa fa-coffee"></span>
                 <p>Setting Up a Meeting</p>
             </div>
@@ -98,6 +98,6 @@
 </div>
 <% content_for :additional_js do %>
     <script type="text/javascript">
-        setUpTeamStatus(<%= contact.id %>);
+        setUpTeamStatus(<%= contact.id %>, "<%= contact.team_status %>");
     </script>
 <% end %>

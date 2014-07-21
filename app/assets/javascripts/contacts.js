@@ -18,10 +18,12 @@ $(document).ready(function() {
 /**
  * Setup the team status selector for choosing the status of the team member
  * @param Integer contactId the id of the contact to update
+ * @param String teamStatus the current team status
  * @return void
  */
-function setUpTeamStatus(contactId) {
+function setUpTeamStatus(contactId, teamStatus) {
     $('.team-status-change').matchHeight(false);
+    $('body').find("div[data-new-status='"+teamStatus+"']").addClass('activestep');
     $('.team-status-change').click(function(event) {
         var new_status = $(this).data('new-status');
         $('input#contact_team_status').val(new_status);
