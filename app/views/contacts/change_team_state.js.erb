@@ -10,20 +10,20 @@
 var alertEle = $('<div/>').addClass('alert '+alertClass).html('<a class="close" data-dismiss="alert" href="#">&times;</a>'+message);
 $('div#alert-holder').hide('fast', function() {
     $(this).html('').append(alertEle).slideDown('slow', function() {
-        if ($('div.team-status-change').length > 0) {
-            $('div.team-status-change').removeClass('activestep');
-            $('body').find("div[data-new-status='<%= @contact.team_status %>']").addClass('activestep');
-            var progressBar = $('div#progress-invite-team');
-            var currentProgress = parseInt(progressBar.attr('aria-valuenow'), 10);
-            var newProgress = <%= @contact.invite_to_team_percent %>;
-            if (currentProgress > newProgress) {
-                for (var i = currentProgress; i >= newProgress; i--) {
-                    progressBar.css('width', i + '%').attr('aria-valuenow', i).text(i+'%');
-                };
-            } else if (currentProgress < newProgress) {
-                for (var i = currentProgress; i <= newProgress; i++) {
-                    progressBar.css('width', i + '%').attr('aria-valuenow', i).text(i+'%');
-                };
+        $('td.sent-letter-result').text("<%= @contact.sent_letter.yes_or_no %>");
+        $('td.presented-vision-result').text("<%= @contact.presented_vision.yes_or_no %>");
+        $('div.team-status-change').removeClass('activestep');
+        $('body').find("div[data-new-status='<%= @contact.team_status %>']").addClass('activestep');
+        var progressBar = $('div#progress-invite-team');
+        var currentProgress = parseInt(progressBar.attr('aria-valuenow'), 10);
+        var newProgress = <%= @contact.invite_to_team_percent %>;
+        if (currentProgress > newProgress) {
+            for (var i = currentProgress; i >= newProgress; i--) {
+                progressBar.css('width', i + '%').attr('aria-valuenow', i).text(i+'%');
+            };
+        } else if (currentProgress < newProgress) {
+            for (var i = currentProgress; i <= newProgress; i++) {
+                progressBar.css('width', i + '%').attr('aria-valuenow', i).text(i+'%');
             };
         };
     });

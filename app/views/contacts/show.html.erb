@@ -80,8 +80,12 @@
                                 <td><%= @contact.receive_newsletter.yes_or_no %></td>
                             </tr>
                             <tr>
+                                <td class="bold">Sent Invitation Letter?</td>
+                                <td class="sent-letter-result"><%= @contact.sent_letter.yes_or_no %></td>
+                            </tr>
+                            <tr>
                                 <td class="bold">Presented Vision?</td>
-                                <td><%= @contact.presented_vision.yes_or_no %></td>
+                                <td class="presented-vision-result"><%= @contact.presented_vision.yes_or_no %></td>
                             </tr>
                             <tr>
                                 <td class="bold">Believer:</td>
