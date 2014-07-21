@@ -8,8 +8,10 @@
     <% flash.delete(:notice) %>
 <% end %>
 var alertEle = $('<div/>').addClass('alert '+alertClass).html('<a class="close" data-dismiss="alert" href="#">&times;</a>'+message);
-$('div.team-status-change').removeClass('activestep');
-$('body').find("div[data-new-status='<%= @contact.team_status %>']").addClass('activestep');
 $('div#alert-holder').hide('fast', function() {
     $(this).html('').append(alertEle).slideDown('slow');
 });
+if ($('div.team-status-change').length > 0) {
+    $('div.team-status-change').removeClass('activestep');
+    $('body').find("div[data-new-status='<%= @contact.team_status %>']").addClass('activestep');
+};
