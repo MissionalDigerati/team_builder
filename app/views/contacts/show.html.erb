@@ -1,10 +1,6 @@
 <% content_for :header do %>
     <div class="pull-left">
-        <h2><i class="fa fa-group"></i> <%= @contact.family_name %>
-            <span class="label status-<%= @contact.support_state.progress.downcase.parameterize %>">
-                <i class="<%= state_icon(@contact.support_state.progress) %> fa icon-white"></i> <%= @contact.support_state.progress %>
-            </span>
-        </h2>
+        <h2><i class="fa fa-group"></i> <%= @contact.family_name %></h2>
     </div>
 
     <!-- Breadcrumb -->
