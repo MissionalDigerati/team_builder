@@ -26,6 +26,7 @@ class ContactsController < ApplicationController
   def show
     @state = @contact.support_state
     respond_to do |format|
+      format.js
       format.html # show.html.erb
       format.json { render json: @contact }
     end
@@ -64,7 +65,7 @@ class ContactsController < ApplicationController
         format.json { render json: @contact, status: :created, location: @contact }
       else
         format.html { render action: "new" }
-        flash[:notice] = @contact.errors.empty? ? "Your Contact has not been saved" : "Your Contact has not been saved because: " + @contact.errors.full_messages.to_sentence
+        flash[:alert] = @contact.errors.empty? ? "Your Contact has not been saved" : "Your Contact has not been saved because: " + @contact.errors.full_messages.to_sentence
       end
     end
   end
@@ -76,11 +77,11 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.update_attributes(contact_params)
-        format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
+        format.html { redirect_to @contact, notice: "The information for #{@contact.family_name} has been updated!" }
         format.json { head :no_content }
       else
+        flash[:alert] = @contact.errors.empty? ? "The information for #{@contact.family_name} has not been updated" : "The information for #{@contact.family_name} has not been updated because: " + @contact.errors.full_messages.to_sentence
         format.html { render action: "edit" }
-        flash[:notice] = @contact.errors.empty? ? "Your Contact has not been updated" : "Your Contact has not been updated because: " + @contact.errors.full_messages.to_sentence
       end
     end
   end

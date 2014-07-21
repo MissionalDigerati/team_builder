@@ -79,12 +79,17 @@
                 60%
             </div>
         </div>
+        <div class="hidden">
+            <%= form_for contact, remote: true, html: { id: "update-team-status" } do |f| %>
+                <% f.hidden_field :team_status %>
+            <% end %>
+        </div>
     </div>
     <div class="col-md-1"></div>
     <div class="clear"></div>
 </div>
 <% content_for :additional_js do %>
     <script type="text/javascript">
-        $('.team-status-change').matchHeight(false);
+        setUpTeamStatus(<%= contact.id %>);
     </script>
 <% end %>

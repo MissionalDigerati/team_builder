@@ -15,3 +15,16 @@ $(document).ready(function() {
         $('#'+wrapper_id).slideDown('slow');
     });
 });
+/**
+ * Setup the team status selector for choosing the status of the team member
+ * @param Integer contactId the id of the contact to update
+ * @return void
+ */
+function setUpTeamStatus(contactId) {
+    $('.team-status-change').matchHeight(false);
+    $('.team-status-change').click(function(event) {
+        var new_status = $(this).data('new-status');
+        $('input#contact_team_status').val(new_status);
+        $('form#update-team-status').trigger('submit.rails');
+    });
+};
