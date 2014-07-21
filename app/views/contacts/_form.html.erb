@@ -326,12 +326,31 @@
 
         <div class="col-md-3 col-md-offset-1">
             <div class="form-group">
+                <%= f.label :sent_letter, "Sent Invitation Letter?" %>
+                <div class="sw-blue">
+                    <%= f.check_box :sent_letter, id: "sent_letter", class: "toggle-button"  %>
+                </div>
+            </div>
+        </div> 
+
+        <div class="col-md-1"></div>
+        <div class="clear"></div>
+    </div> <!-- row -->
+
+    <div class="row">
+
+        <div class="col-md-3">
+            <div class="form-group">
                 <%= f.label :presented_vision, "Presented Vision?" %>
                 <div class="sw-blue">
                     <%= f.check_box :presented_vision, id: "presented_vision", class: "toggle-button"  %>
                 </div>
             </div>
-        </div> 
+        </div>
+
+        <div class="col-md-3 col-md-offset-1"></div> 
+
+        <div class="col-md-3 col-md-offset-1"></div> 
 
         <div class="col-md-1"></div>
         <div class="clear"></div>
