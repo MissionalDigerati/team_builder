@@ -1,9 +1,11 @@
 <% if flash[:alert].present? %>
     var message = "Sorry, unable to update the information for <%= @contact.family_name %>!";
     var alertClass = "alert-danger";
+    <% flash.delete(:alert) %>
 <% else %>
     var message = "The information for <%= @contact.family_name %> has been updated!";
     var alertClass = "alert-info";
+    <% flash.delete(:notice) %>
 <% end %>
 var alertEle = $('<div/>').addClass('alert '+alertClass).html('<a class="close" data-dismiss="alert" href="#">&times;</a>'+message);
 $('div.team-status-change').removeClass('activestep');

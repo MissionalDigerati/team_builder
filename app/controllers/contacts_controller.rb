@@ -77,11 +77,14 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.update_attributes(contact_params)
-        format.html { redirect_to @contact, notice: "The information for #{@contact.family_name} has been updated!" }
+        flash[:notice] = "The information for #{@contact.family_name} has been updated!"
+        format.html { redirect_to @contact }
         format.json { head :no_content }
+        format.js
       else
         flash[:alert] = @contact.errors.empty? ? "The information for #{@contact.family_name} has not been updated" : "The information for #{@contact.family_name} has not been updated because: " + @contact.errors.full_messages.to_sentence
         format.html { render action: "edit" }
+        format.js
       end
     end
   end
