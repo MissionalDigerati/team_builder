@@ -136,4 +136,14 @@ class Contact < ActiveRecord::Base
     self.includes(:support_state).all
   end
 
+  def update_team_status(status)
+    if self.aasm.states.map(&:name).include?(status)
+      self.team_status = status
+      self.presented_vision = true if status == :presented_vision
+      self.save
+    else
+      false
+    end
+  end
+
 end

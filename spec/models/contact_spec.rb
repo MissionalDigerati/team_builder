@@ -128,6 +128,27 @@ describe Contact, :type => :model do
 
     end
 
+    context ".update_team_status" do
+
+      it "should return false if you pass a non AASM state" do
+        default_contact = FactoryGirl.create(:defaulted_contact)
+        expect(default_contact.update_team_status(:loves_yogurt)).to eq(false)
+      end
+
+      it "should return true and update if you pass a valid AASM state" do
+        default_contact = FactoryGirl.create(:defaulted_contact)
+        expect(default_contact.update_team_status(:monthly_supporter)).to eq(true)
+        expect(default_contact.team_status).to eq(:monthly_supporter)
+      end
+
+      it "should updated presented_vision when the sate is set to :presented_vision" do
+        default_contact = FactoryGirl.create(:defaulted_contact, presented_vision: false)
+        expect(default_contact.update_team_status(:presented_vision)).to eq(true)
+        expect(default_contact.presented_vision).to eq(true)
+      end
+
+    end
+
     context ".family_name" do
 
       it "should only return the fullname if no spouse" do
