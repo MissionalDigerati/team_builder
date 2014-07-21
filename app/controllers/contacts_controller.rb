@@ -80,12 +80,33 @@ class ContactsController < ApplicationController
         flash[:notice] = "The information for #{@contact.family_name} has been updated!"
         format.html { redirect_to @contact }
         format.json { head :no_content }
-        format.js
       else
         flash[:alert] = @contact.errors.empty? ? "The information for #{@contact.family_name} has not been updated" : "The information for #{@contact.family_name} has not been updated because: " + @contact.errors.full_messages.to_sentence
         format.html { render action: "edit" }
-        format.js
       end
+    end
+  end
+
+  # PUT /contacts/1/change-team-state (Update the team status)
+  #
+  def change_team_state
+    @contact = Contact.find(params[:id])
+    new_team_status = params[:contact][:team_status].to_sym
+
+    if Contact.aasm.states.map(&:name).include?(new_team_status)
+      @contact.team_status = new_team_status
+      @contact.presented_vision = true if new_team_status == :presented_vision
+      if @contact.save
+        flash[:notice] = "The information for #{@contact.family_name} has been updated!"
+      else
+        flash[:alert] = @contact.errors.empty? ? "The information for #{@contact.family_name} has not been updated" : "The information for #{@contact.family_name} has not been updated because: " + @contact.errors.full_messages.to_sentence
+      end
+    else
+      flash[:alert] = "The information for #{@contact.family_name} has not been updated"
+    end
+
+    respond_to do |format|
+      format.js
     end
   end
 

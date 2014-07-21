@@ -88,7 +88,7 @@
             </div>
         </div>
         <div class="hidden">
-            <%= form_for contact, remote: true, html: { id: "update-team-status" } do |f| %>
+            <%= form_for contact, url: change_team_state_path(contact), remote: true, html: { id: "update-team-status" } do |f| %>
                 <% f.hidden_field :team_status %>
             <% end %>
         </div>

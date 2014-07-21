@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   get 'tasks/completed/:id', to: 'tasks#completed', as: :complete_task
   get 'tags/:tag', to: 'contacts#index', as: :tag
 
+  patch 'contacts/:id/change-team-state', to: 'contacts#change_team_state', as: :change_team_state
+
   root 'pages#home'
 
 end
