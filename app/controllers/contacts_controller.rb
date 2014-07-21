@@ -127,7 +127,8 @@ class ContactsController < ApplicationController
       params.require(:contact).permit(
         :first_name, :last_name, :spouse_name, :email, :spouse_email, :network, :address_1, :address_2, :city, :province,
         :state_id, :zip, :country_id, :receive_newsletter, :children, :preferred_contact, :believer, :spouse_believer, 
-        :presented_vision, :avatar, :account_number, :tag_list, :team_status, :sent_letter,
+        :presented_vision, :avatar, :account_number, :tag_list, :team_status, :sent_letter,:letter_sent_on, :presented_vision_on,
+        :responded_on,
         support_state_attributes: 
           [
             :contact_id, :initial, :letter_sent, :letter_sent_on, :contacting, :seen_presentation, :presented_on, 

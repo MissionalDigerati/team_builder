@@ -139,6 +139,7 @@ class Contact < ActiveRecord::Base
   def update_team_status(status)
     if self.aasm.states.map(&:name).include?(status)
       self.team_status = status
+      self.team_status_updated_on = Date.today
       self.presented_vision = true if status == :presented_vision
       self.sent_letter = true if status == :sent_letter
       self.save

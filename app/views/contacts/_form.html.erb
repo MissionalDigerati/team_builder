@@ -356,112 +356,32 @@
         <div class="clear"></div>
     </div> <!-- row -->
 
-    <% if form_type == 'add' %>
+    <div class="row">
 
-        <div class="row">
-            <div class="col-md-12">
-                <h6>Support State (Select 1)</h6>
-                <hr>
+        <div class="col-md-3">
+            <div class="form-group">
+                <%= f.label :letter_sent_on, "Letter Sent On" %>
+                <%= render 'shared/date_picker_field', form: f, field_name: :letter_sent_on %>
             </div>
         </div>
 
-        <%= f.fields_for :support_state do |builder| %>
-
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="checkbox">
-                        <label>
-                            <%= builder.check_box :initial, id: "initial_support_state", class: 'support-state-checkbox' %> Initial
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <%= builder.check_box :letter_sent, id: "letter_sent_support_state", class: 'support-state-checkbox' %> Letter Sent
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <%= builder.check_box :contacting, id: "contacting_support_state", class: 'support-state-checkbox' %> Contacting
-                        </label>
-                    </div>  
-                </div> 
-
-                <div class="col-md-3 col-md-offset-1">
-                    <div class="checkbox">
-                        <label>
-                            <%= builder.check_box :seen_presentation, id: "seen_presentation_support_state", class: 'support-state-checkbox' %> Seen Presentation
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <%= builder.check_box :following_up, id: "following_up_support_state", class: 'support-state-checkbox' %> Following Up
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <%= builder.check_box :no_response, id: "no_response_support_state", class: 'support-state-checkbox' %> No Response
-                        </label>
-                    </div> 
-                </div> 
-
-                <div class="col-md-3 col-md-offset-1">
-                    <div class="checkbox">
-                        <label>
-                            <%= builder.check_box :not_giving, id: "not_giving_support_state", class: 'support-state-checkbox' %> Not Giving
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <%= builder.check_box :one_time_gift, id: "one_time_gift_support_state", class: 'support-state-checkbox' %> One Time Gift
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <%= builder.check_box :monthly_gift, id: "monthly_gift_support_state", class: 'support-state-checkbox' %> Monthly Gift
-                        </label>
-                    </div>
-                </div> 
-
-                <div class="col-md-1"></div>
-                <div class="clear"></div>
-            </div> <!-- row -->
-
-            <div class="row">
-                <div class="col-md-12">
-                    <h6>Support State Dates</h6>
-                    <hr>
-                </div>
+        <div class="col-md-3 col-md-offset-1">
+            <div class="form-group">
+                <%= f.label :presented_vision_on, "Presented Vision On" %>
+                <%= render 'shared/date_picker_field', form: f, field_name: :presented_vision_on %>
             </div>
+        </div> 
 
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="form-group">
-                        <%= builder.label :letter_sent_on, "Letter Sent On" %>
-                        <%= render 'shared/date_picker_field', form: builder, field_name: :letter_sent_on %>
-                    </div>
-                </div> 
+        <div class="col-md-3 col-md-offset-1">
+            <div class="form-group">
+                <%= f.label :responded_on, "They Responded On" %>
+                <%= render 'shared/date_picker_field', form: f, field_name: :responded_on %>
+            </div>
+        </div> 
 
-                <div class="col-md-3 col-md-offset-1">
-                    <div class="form-group">
-                        <%= builder.label :presented_on, "Presented On" %>
-                        <%= render 'shared/date_picker_field', form: builder, field_name: :presented_on %>
-                    </div>
-                </div> 
-
-                <div class="col-md-3 col-md-offset-1">
-                    <div class="form-group">
-                        <%= builder.label :responding_on, "Responded On" %>
-                        <%= render 'shared/date_picker_field', form: builder, field_name: :responding_on %>
-                    </div>
-                </div> 
-
-                <div class="col-md-1"></div>
-                <div class="clear"></div>
-            </div> <!-- row -->
-
-        <% end %>
-    
-    <% end %>
+        <div class="col-md-1"></div>
+        <div class="clear"></div>
+    </div> <!-- row -->
 
     <div class="row">
         <div class="col-md-12">

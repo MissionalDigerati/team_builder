@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140721224919) do
+ActiveRecord::Schema.define(version: 20140721233624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,23 +35,27 @@ ActiveRecord::Schema.define(version: 20140721224919) do
     t.string   "state_id"
     t.string   "zip"
     t.string   "country_id"
-    t.boolean  "receive_newsletter",  default: false
+    t.boolean  "receive_newsletter",     default: false
     t.string   "children"
     t.string   "preferred_contact"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.boolean  "believer"
-    t.integer  "donations_count",     default: 0
+    t.integer  "donations_count",        default: 0
     t.boolean  "spouse_believer"
-    t.boolean  "presented_vision",    default: false
+    t.boolean  "presented_vision",       default: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "account_number"
     t.string   "province"
-    t.string   "team_status",         default: "pending"
-    t.boolean  "sent_letter",         default: false
+    t.string   "team_status",            default: "pending"
+    t.boolean  "sent_letter",            default: false
+    t.date     "letter_sent_on"
+    t.date     "presented_vision_on"
+    t.date     "responded_on"
+    t.date     "team_status_updated_on"
   end
 
   add_index "contacts", ["team_status"], name: "index_contacts_on_team_status", using: :btree

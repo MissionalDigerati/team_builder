@@ -141,16 +141,22 @@ describe Contact, :type => :model do
         expect(default_contact.team_status).to eq(:monthly_supporter)
       end
 
-      it "should updated presented_vision when the state is set to :presented_vision" do
+      it "should update presented_vision when the state is set to :presented_vision" do
         default_contact = FactoryGirl.create(:defaulted_contact, presented_vision: false)
         expect(default_contact.update_team_status(:presented_vision)).to eq(true)
         expect(default_contact.presented_vision).to eq(true)
       end
 
-      it "should updated sent_letter when the state is set to :sent_letter" do
+      it "should update sent_letter when the state is set to :sent_letter" do
         default_contact = FactoryGirl.create(:defaulted_contact, sent_letter: false)
         expect(default_contact.update_team_status(:sent_letter)).to eq(true)
         expect(default_contact.sent_letter).to eq(true)
+      end
+
+      it "should updated the team_status_updated_on field when updated" do
+        default_contact = FactoryGirl.create(:defaulted_contact, team_status_updated_on: Date.parse('2001-12-01'))
+        expect(default_contact.update_team_status(:sent_letter)).to eq(true)
+        expect(default_contact.team_status_updated_on).to eq(Date.today)
       end
 
     end
