@@ -23,6 +23,11 @@ class Contact < ActiveRecord::Base
 
   validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/gif", "image/png"]
 
+  # Scopes
+  #
+  scope :received_letters, -> { where(sent_letter: true) }
+  scope :saw_presentation, -> { where(presented_vision: true) }
+
   # AASM State machine settings
   #
   include AASM

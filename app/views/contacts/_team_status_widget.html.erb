@@ -1,0 +1,39 @@
+<%= render  :layout => 'shared/widget', :locals => { title: 'Team Status' } do %>
+    <div class="padd text-center">
+        <div id="team-status-summary-wiget" class="widget-chart"></div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th colspan="2" class="text-center">Totals</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Letters Sent</td>
+                    <td><%= Contact.received_letters.length %></td>
+                </tr>
+                <tr>
+                    <td>Presentations Seen</td>
+                    <td><%= Contact.saw_presentation.length %></td>
+                </tr>
+                <tr>
+                    <td>Non-Believers</td>
+                    <td><%= Contact.non_believers %></td>
+                </tr>
+                <tr>
+                    <td>Contacts</td>
+                    <td><%= Contact.all.length %></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="widget-foot text-right team-status-total-widget">
+    </div>
+<% end %>
+<% content_for :additional_js do %>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            teamStatusSummaryWidget(<%=raw widget_team_status_summary_data %>);
+        });
+    </script>
+<% end %>

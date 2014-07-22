@@ -67,6 +67,28 @@ describe Contact, :type => :model do
     end
 
   end
+
+  context "scopes" do
+
+    context "received_letters" do
+
+      it "should retrieve the total number of people who received letters" do
+        FactoryGirl.create(:defaulted_contact, sent_letter: true)
+        FactoryGirl.create(:defaulted_contact, sent_letter: true)
+        FactoryGirl.create(:defaulted_contact, sent_letter: false)
+        expect(Contact.received_letters.length).to eq(2)
+      end
+
+      it "should retrieve the total number of people who saw the presentation" do
+        FactoryGirl.create(:defaulted_contact, presented_vision: true)
+        FactoryGirl.create(:defaulted_contact, presented_vision: false)
+        FactoryGirl.create(:defaulted_contact, presented_vision: false)
+        expect(Contact.saw_presentation.length).to eq(1)
+      end
+
+    end
+
+  end
   
   context "methods" do
 
