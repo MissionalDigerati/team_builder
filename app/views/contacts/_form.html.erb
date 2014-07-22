@@ -361,21 +361,21 @@
         <div class="col-md-3">
             <div class="form-group">
                 <%= f.label :letter_sent_on, "Letter Sent On" %>
-                <%= render 'shared/date_picker_field', form: f, field_name: :letter_sent_on %>
+                <%= render 'shared/date_picker_field', form: f, field_name: :letter_sent_on, default_value: @contact.letter_sent_on %>
             </div>
         </div>
 
         <div class="col-md-3 col-md-offset-1">
             <div class="form-group">
                 <%= f.label :presented_vision_on, "Presented Vision On" %>
-                <%= render 'shared/date_picker_field', form: f, field_name: :presented_vision_on %>
+                <%= render 'shared/date_picker_field', form: f, field_name: :presented_vision_on, default_value: @contact.presented_vision_on %>
             </div>
         </div> 
 
         <div class="col-md-3 col-md-offset-1">
             <div class="form-group">
                 <%= f.label :responded_on, "They Responded On" %>
-                <%= render 'shared/date_picker_field', form: f, field_name: :responded_on %>
+                <%= render 'shared/date_picker_field', form: f, field_name: :responded_on, default_value: @contact.responded_on %>
             </div>
         </div> 
 

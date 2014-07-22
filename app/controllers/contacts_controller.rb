@@ -24,7 +24,6 @@ class ContactsController < ApplicationController
   # GET /contacts/1
   # GET /contacts/1.json
   def show
-    @state = @contact.support_state
     respond_to do |format|
       format.js
       format.html # show.html.erb
@@ -39,7 +38,6 @@ class ContactsController < ApplicationController
     @contact.numbers.build
     @contact.occasions.build
     @contact.presences.build
-    @contact.build_support_state
     @tags = ActsAsTaggableOn::Tag.all.collect(&:name)
     
     respond_to do |format|
@@ -129,11 +127,6 @@ class ContactsController < ApplicationController
         :state_id, :zip, :country_id, :receive_newsletter, :children, :preferred_contact, :believer, :spouse_believer, 
         :presented_vision, :avatar, :account_number, :tag_list, :team_status, :sent_letter,:letter_sent_on, :presented_vision_on,
         :responded_on,
-        support_state_attributes: 
-          [
-            :contact_id, :initial, :letter_sent, :letter_sent_on, :contacting, :seen_presentation, :presented_on, 
-            :following_up, :responding_on, :one_time_gift, :monthly_gift, :not_giving, :no_response, :progress_percent
-          ],
         numbers_attributes:
           [
             :phone_type, :number, :contact_id, :note

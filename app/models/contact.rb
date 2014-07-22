@@ -16,7 +16,6 @@ class Contact < ActiveRecord::Base
   accepts_nested_attributes_for :numbers, :reject_if => lambda { |a| a[:number].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :occasions, :reject_if => lambda { |a| a[:occasion].blank? }, :allow_destroy => true
   accepts_nested_attributes_for :presences, :reject_if => lambda { |a| a[:url].blank? }, :allow_destroy => true
-  accepts_nested_attributes_for :support_state
 
   validates :first_name, :last_name, :email, :presence => true
 
