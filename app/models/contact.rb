@@ -131,10 +131,6 @@ class Contact < ActiveRecord::Base
     self.tagged_with(tag)
   end
 
-  def self.contact_report_query
-    self.includes(:support_state).all
-  end
-
   def update_team_status(status)
     if self.aasm.states.map(&:name).include?(status)
       self.team_status = status

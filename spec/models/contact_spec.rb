@@ -229,12 +229,5 @@ describe Contact, :type => :model do
       expect(search.first).to eq(user_with_tag)
     end
 
-    it "should query all contacts including their support state." do
-      contact = FactoryGirl.create(:defaulted_contact, tag_list: "fred")
-      query = Contact.contact_report_query
-      expect(query.first).to eq(contact)
-      expect(query.first.support_state).to eq(contact.support_state)
-    end
-
   end
 end
