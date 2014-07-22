@@ -63,11 +63,11 @@ describe Task, :type => :model do
     context "#overdue" do
 
       it "should return all overdue tasks" do
-        FactoryGirl.create(:defaulted_task, completed: false, task: "task1", due_date: 1.day.ago.to_date)
+        FactoryGirl.create(:defaulted_task, completed: false, task: "task1", due_date: 2.days.ago.to_date)
         FactoryGirl.create(:defaulted_task, completed: false, task: "task2", due_date: 5.days.ago.to_date)
         FactoryGirl.create(:defaulted_task, completed: false, task: "task3", due_date: 1.week.ago.to_date)
         FactoryGirl.create(:defaulted_task, completed: false, task: "task3b", due_date: 2.weeks.ago.to_date)
-        FactoryGirl.create(:defaulted_task, completed: false, task: "task4", due_date: 1.day.from_now.to_date)
+        FactoryGirl.create(:defaulted_task, completed: false, task: "task4", due_date: 10.days.from_now.to_date)
         results = Task.overdue
         expect(results.count).to eq(4)
         results.each do |t|
