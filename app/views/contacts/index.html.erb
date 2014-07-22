@@ -96,6 +96,13 @@
                 <% end %>
             </div>
             <div class="col-md-4">
+                <%= render  :layout => 'shared/widget', :locals => { title: 'Team Status' } do %>
+                    <div class="padd text-center">
+                        <div id="team-status-summary-wiget" class="widget-chart"></div>
+                    </div>
+                    <div class="widget-foot text-right team-status-total-widget">
+                    </div>
+                <% end %>
                 <%= render  :layout => 'shared/widget', :locals => { :title => 'Tags' } do %>
                     <div class="padd">
                         <% if @tags.present? %>
@@ -118,5 +125,11 @@
         </div>
     </div> <!-- container-fluid end -->
 </div> <!-- div class mattter ends -->
-
+<% content_for :additional_js do %>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            teamStatusSummaryWidget(<%=raw widget_team_status_summary_data %>);
+        });
+    </script>
+<% end %>
 

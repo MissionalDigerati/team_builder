@@ -161,6 +161,94 @@ describe Contact, :type => :model do
 
     end
 
+    context ".team_status_total" do
+
+      it "should default to all contacts if no status specified" do
+        FactoryGirl.create(:defaulted_contact, team_status: :presented_vision)
+        FactoryGirl.create(:defaulted_contact, team_status: :pending)
+        FactoryGirl.create(:defaulted_contact, team_status: :following_up)
+        expect(Contact.team_status_total).to eq(3)
+      end
+
+      it "should return total number of contacts set to pending" do
+        FactoryGirl.create(:defaulted_contact, team_status: :presented_vision)
+        FactoryGirl.create(:defaulted_contact, team_status: :pending)
+        FactoryGirl.create(:defaulted_contact, team_status: :pending)
+        FactoryGirl.create(:defaulted_contact, team_status: :pending)
+        FactoryGirl.create(:defaulted_contact, team_status: :pending)
+        FactoryGirl.create(:defaulted_contact, team_status: :following_up)
+        expect(Contact.team_status_total(:pending)).to eq(4)
+      end
+
+      it "should return total number of contacts set to sent_letter" do
+        FactoryGirl.create(:defaulted_contact, team_status: :presented_vision)
+        FactoryGirl.create(:defaulted_contact, team_status: :sent_letter)
+        FactoryGirl.create(:defaulted_contact, team_status: :sent_letter)
+        FactoryGirl.create(:defaulted_contact, team_status: :pending)
+        FactoryGirl.create(:defaulted_contact, team_status: :pending)
+        FactoryGirl.create(:defaulted_contact, team_status: :following_up)
+        expect(Contact.team_status_total(:sent_letter)).to eq(2)
+      end
+
+      it "should return total number of contacts set to setting_up_a_meeting" do
+        FactoryGirl.create(:defaulted_contact, team_status: :setting_up_a_meeting)
+        FactoryGirl.create(:defaulted_contact, team_status: :setting_up_a_meeting)
+        FactoryGirl.create(:defaulted_contact, team_status: :setting_up_a_meeting)
+        FactoryGirl.create(:defaulted_contact, team_status: :setting_up_a_meeting)
+        FactoryGirl.create(:defaulted_contact, team_status: :pending)
+        FactoryGirl.create(:defaulted_contact, team_status: :setting_up_a_meeting)
+        expect(Contact.team_status_total(:setting_up_a_meeting)).to eq(5)
+      end
+
+      it "should return total number of contacts set to presented_vision" do
+        FactoryGirl.create(:defaulted_contact, team_status: :presented_vision)
+        FactoryGirl.create(:defaulted_contact, team_status: :setting_up_a_meeting)
+        FactoryGirl.create(:defaulted_contact, team_status: :setting_up_a_meeting)
+        FactoryGirl.create(:defaulted_contact, team_status: :setting_up_a_meeting)
+        FactoryGirl.create(:defaulted_contact, team_status: :pending)
+        FactoryGirl.create(:defaulted_contact, team_status: :setting_up_a_meeting)
+        expect(Contact.team_status_total(:presented_vision)).to eq(1)
+      end
+
+      it "should return total number of contacts set to following_up" do
+        FactoryGirl.create(:defaulted_contact, team_status: :following_up)
+        FactoryGirl.create(:defaulted_contact, team_status: :setting_up_a_meeting)
+        FactoryGirl.create(:defaulted_contact, team_status: :setting_up_a_meeting)
+        FactoryGirl.create(:defaulted_contact, team_status: :following_up)
+        FactoryGirl.create(:defaulted_contact, team_status: :pending)
+        FactoryGirl.create(:defaulted_contact, team_status: :following_up)
+        expect(Contact.team_status_total(:following_up)).to eq(3)
+      end
+
+      it "should return total number of contacts set to following_up" do
+        FactoryGirl.create(:defaulted_contact, team_status: :following_up)
+        FactoryGirl.create(:defaulted_contact, team_status: :no_response)
+        FactoryGirl.create(:defaulted_contact, team_status: :setting_up_a_meeting)
+        expect(Contact.team_status_total(:no_response)).to eq(1)
+      end
+
+      it "should return total number of contacts set to cannot_give" do
+        FactoryGirl.create(:defaulted_contact, team_status: :cannot_give)
+        FactoryGirl.create(:defaulted_contact, team_status: :cannot_give)
+        FactoryGirl.create(:defaulted_contact, team_status: :setting_up_a_meeting)
+        expect(Contact.team_status_total(:cannot_give)).to eq(2)
+      end
+
+      it "should return total number of contacts set to special_gift" do
+        FactoryGirl.create(:defaulted_contact, team_status: :special_gift)
+        FactoryGirl.create(:defaulted_contact, team_status: :special_gift)
+        FactoryGirl.create(:defaulted_contact, team_status: :special_gift)
+        expect(Contact.team_status_total(:special_gift)).to eq(3)
+      end
+
+      it "should return total number of contacts set to monthly_supporter" do
+        FactoryGirl.create(:defaulted_contact, team_status: :monthly_supporter)
+        FactoryGirl.create(:defaulted_contact, team_status: :special_gift)
+        FactoryGirl.create(:defaulted_contact, team_status: :monthly_supporter)
+        expect(Contact.team_status_total(:monthly_supporter)).to eq(2)
+      end
+    end
+
     context ".family_name" do
 
       it "should only return the fullname if no spouse" do

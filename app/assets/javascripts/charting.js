@@ -152,6 +152,15 @@ function tasksSummaryWidget(data) {
         }
     });
 };
+function teamStatusSummaryWidget(data) {
+    $.plot('#team-status-summary-wiget', data, {
+        series: {
+            pie: {
+                show: true
+            }
+        }
+    });
+};
 function toCurrency(amount) {
     return '$' + parseFloat(amount, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString();
 };

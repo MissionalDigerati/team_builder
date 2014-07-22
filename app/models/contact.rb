@@ -143,4 +143,12 @@ class Contact < ActiveRecord::Base
     end
   end
 
+  def self.team_status_total(status = nil)
+    if self.aasm.states.map(&:name).include?(status)
+      self.where(team_status: status).length
+    else
+      self.all.length
+    end
+  end
+
 end
