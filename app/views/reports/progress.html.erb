@@ -45,65 +45,8 @@
 <% end %>
 
 
-	<div class="container-fluid">
-		<div class="row-fluid">
-			<div class="span12">
-				<div class="clear"></div>
-
-			<%= tag_param %>
-		    <% if @contacts.present? %>
-		    <%= link_to 'New Contact', new_contact_path, :class => "btn btn-primary pull-right" %>
-		    <br/><br/>
-			    <div class="widget">
-			      <!-- Widget head -->
-			    	<div class="widget-head">
-			        <div class="pull-left">Contacts</div>
-			        <div class="widget-icons pull-right">
-			          <a href="#" class="wminimize"><i class="fa fa-chevron-up"></i></a> 
-			        </div>  
-			        <div class="clearfix"></div>
-			      </div>              
-			
-			      <!-- Widget content -->
-			      <div class="widget-content support_progress">
-			      	
-			      	<div class="progress">
-			      		<div class="bar bar-warning progress_text" style="width: 25%">Initial (<%= SupportState.count_by_progress(:initial) %>)</div>
-			      		<div class="bar bar-info progress_text" style="width: 25%">Contacting (<%= SupportState.count_by_progress(:letter_sent, :contacting, :seen_presentation, :following_up) %>)</div>
-			      		<div class="bar bar-success progress_text" style="width: 25%">Giving (<%= SupportState.count_by_progress(:one_time_gift, :monthly_gift) %>)</div>
-			      		<div class="bar bar-danger progress_text" style="width: 25%">Not Giving (<%= SupportState.count_by_progress(:not_giving, :no_response) %>)</div>
-			      	</div>
-
-			      	<table class="table index table-hover table-striped", id="contacts">
-			      	  <tr>
-			      	  	<th>
-			      	  		Contact
-			      	  	</th>
-			      	  </tr>
-
-			      		<% @contacts.each do |contact| %>
-			      			<tr>
-			      				<td>
-			      					<% if contact.avatar.url.present? %>
-			      						<%= link_to image_tag(contact.avatar.url(:thumb)), contact_path(contact) %>
-			      					<% end %>
-			      					<div class="clear"></div>
-			      					<%= link_to contact.fullname, contact_path(contact) %>
-			      					<div class="clear"></div>
-			      					<%= display_progress_bar(contact.support_state) %>
-			      				</td>
-			      			</tr>
-			      		<% end %>
-
-			      	</table>
-						<div class="widget-foot">
-	                  	</div>
-			      </div>
-			    </div>
-		    <% end %>
-		    <%= link_to 'New Contact', new_contact_path, :class => "btn btn-primary pull-right" %>
-		    <br/><br/>
-		  </div>
+	<div class="container">
+		<div class="row">
 		</div>
-	</div> <!-- container-fluid end -->
-</div> <!-- div class mattter ends -->
+	</div>
+</div>
